@@ -17,8 +17,8 @@ For example:
 > Read RepoStew_skills/SKILL.md and handle repositories in the new list. Process issues in the assigned window, then audit actual code. Respect target rules and submit regular open PRs when eligible. Finish authorized source release and repository records; retain incomplete work with reasons instead of claiming completion.
 
 Full audits finish the entire assigned issue review and all code before grouped delivery: combine common root causes, keep independent problems reviewable, and do not publish slice findings during the audit.
-Every repair PR links a corresponding issue; reuse an existing issue or create one first when none matches.
-Group each repository's minor documentation errors in one errata PR and corresponding issue; extend an open errata PR instead of splitting corrections by file or error.
+PRs need no separate issue; reuse and link a matching issue when available, otherwise explain the error and evidence directly in the PR. Honor explicit target requirements.
+Group each repository's minor documentation errors in one errata PR; extend an open errata PR instead of splitting corrections by file or error.
 Before submission, apply the [general contribution standards](references/contribution-value.md#general-submission-standards): actual impact, clear benefit and proportionate maintenance cost.
 
 The Skill defines the method; the execution environment supplies repository, mail, file and scheduling tools. Saving instructions does not start jobs, create chats or resume paused schedules.

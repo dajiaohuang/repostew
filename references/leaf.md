@@ -38,9 +38,9 @@ The coordinator may change this cadence for a specific assignment.
    finish the whole assigned issue review and all code before publishing new findings;
    retain candidates locally until consolidated delivery, not a stream of slice findings.
    Combine the same root cause/fix in one issue/PR; submit independent problems in
-   separate linked issues/PRs. Every repair PR links a corresponding issue;
-   reuse a matching issue or create one before the PR, without duplicating reports.
-   Minor documentation errors share one repository errata PR and corresponding issue;
+   separate contributions. PRs need no separate issue; reuse and link a matching issue
+   when available, following explicit target requirements. Do not create companion issues
+   solely for linkage. Minor documentation errors share one repository errata PR;
    reuse an open errata PR rather than submitting individual corrections.
    Followed/continuation work uses its assigned scope without an unrequested full audit.
 2. Initially reconcile current issues, discussions, relevant all-state PRs, claims and

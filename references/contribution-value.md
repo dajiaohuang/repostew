@@ -6,6 +6,8 @@ Apply to new issues/PRs and existing authored contributions, independently of in
 Use one mandatory gate for filing an issue, opening a PR and reassessing existing work:
 establish an actual-use error or a verifiable documentation error before proceeding.
 Passing target policy or CI does not waive this gate; Drafts have the same necessity gate.
+PRs need no separate issue. Reuse and link a matching issue when available; honor an
+explicit target requirement without inventing companion issues or duplicate reports.
 Only submit or retain defect repairs for concrete errors reachable through actual
 supported use and calls. Establish that trigger before choosing the smallest complete
 compatible repair; hypothetical risk or cleaner implementation is insufficient.
@@ -44,7 +46,8 @@ unpublished evidence remains protected, and public withdrawals require authority
 5. Before filing an issue, establish the trigger, actual/expected behavior, impact and
    evidence, or the exact documentation error and its authoritative correction.
    Before opening a PR, verify that it fixes that same established error completely;
-   describe the minimal change, validation and remaining limits. Reassessment applies
+   describe the minimal change, validation and remaining limits. Without an issue,
+   include the trigger/error evidence directly in the PR. Reassessment applies
    the same gate to the current base and diff, including inherited issues and patches;
    correct or withdraw unsupported defect reports within authority rather than keeping
    them to justify a PR. Follow

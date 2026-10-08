@@ -130,14 +130,15 @@ accepted work, records and resources, and apply the storage disposition check.
 For a full-audit assignment, finish the entire assigned issue review and all applicable code/documentation
 before publishing new findings. Then present findings as distinct points and deliver
 them together: combine the same root cause/fix in one issue/PR, submit independent
-problems in separate linked issues/PRs, and remove duplicates/non-defects. Every repair
-PR links a corresponding issue. Reuse matching existing objects instead of duplicating
-them. Do not file issues/PRs while auditing
+problems in separate contributions, and remove duplicates/non-defects. PRs need no
+separate issue; reuse and link a matching issue when available, following explicit
+target requirements. Do not create issues solely to accompany PRs or duplicate objects.
+Do not file issues/PRs while auditing
 individual slices. Partial coverage or a blocker does not unlock publication; retain
 findings locally, with security details protected. Incremental follow-up keeps its
 assigned scope, and existing submissions are not withdrawn merely for this timing rule.
-Group each repository's minor documentation errors into one errata PR with a
-corresponding issue; reuse matching issues and an open errata PR for further corrections,
+Group each repository's minor documentation errors into one errata PR;
+reuse matching issues and an open errata PR for further corrections,
 rather than splitting them by file or individual error.
 
 Immediately before a bounded batch of state edits, read affected sections once and

@@ -118,7 +118,8 @@ does not itself authorize a new cadence, another state writer or paused-job resu
    refusal of external PRs/the proposed method is a skip for this category.
    Only after complete issue review and code coverage, consolidate findings into
    distinct points, combine common root causes in one issue/PR and keep independent
-   problems in separate linked issues/PRs; reuse matching existing objects. Validate
+   problems in separate contributions; reuse matching existing objects without requiring
+   a companion issue for every PR. Validate
    and submit the grouped delivery under the same authority and security boundaries. Do not publish a
    stream of findings from an unfinished audit.
 4. Apart from a confirmed suitability skip, remove the repository bullet only after issue work and audit are genuinely done.
@@ -227,7 +228,8 @@ assignment. This is a short conversation, not a new receipt/schema or proof dema
   commit or fork when the allowed submission route is still available): ask the leaf
   to continue investigation/fix/validation/publication under existing scope and target
   rules, and return the actual outcome. Prefer regular open PRs when their gates pass;
-  enforce any user-required issue-to-PR linkage without duplicate issue creation.
+  link matching existing issues when available and honor explicit target requirements;
+  do not impose a general issue-to-PR linkage gate.
 - Publication or execution is uncertain: clarify in-flight effects before continuation
   or handoff. Unanswered clarification is not completion; retain uncertainty and
   continue independent repositories. Do not expand authority or start a second writer.
