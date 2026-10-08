@@ -160,6 +160,17 @@ User-directed reassignment replaces superseded skill defaults, including file-re
 ledgers and compulsory companion issues. Explicit current user/target requirements
 still apply; do not misrepresent an old workflow default as a user whole-source mandate.
 
+When the selected batch/shard includes required existing-contribution reassessment,
+finish that whole review set and its feasible authorized actions before dispatching
+new audits. Capture the review subset from assigned history and native author/repository
+metadata first; do not let remaining new-list entries hide earlier submissions or
+pre-audit every new repository to find that subset. At a safe boundary, preserve
+in-flight new-audit work and give available slots to remaining reassessment. An empty
+local review set must be established, not assumed. Reliably retained external blockers
+do not require waiting indefinitely, but missing capture or feasible review work does
+not unlock new-audit refill. Strict withdrawal follows evidence and authority, not
+the desire to reach a lower submission count.
+
 1. **Select once.** Establish the finite selected list/shard, applicable history or
    object batch and already completed/in-flight work. Preserve the full requested scope:
    earlier processed repositories are included when the user selects their contributions
@@ -173,12 +184,15 @@ still apply; do not misrepresent an old workflow default as a user whole-source 
    Reuse the active same-repository leaf: relay changed rules/scope/authority, preserve
    its work and clarify in-flight effects before reassignment. Do not restart it or
    spawn another writer merely because the mode changed.
+   Make the assignment sufficient for independent work; request no acknowledgement,
+   start notice, progress cadence or optional-metadata round trip.
 3. **Keep independent work moving.** When parallelism is explicitly requested, maintain
    the requested active leaves while eligible independent assignments remain; process
    each return and refill its slot without waiting for siblings. A finite drain/pause
    overrides refill until the user explicitly resumes the broader scope. Count actual
    started/running leaves, not requested slots or rejected spawns. Report concrete
    execution limits; use completion/attention events, not repeated progress polling.
+   A wait timeout alone triggers another event wait, not a status query or message.
 4. **Accept and update once.** Trust usable leaf outcomes and reported record writes.
    Missing native outcomes require clarification from that leaf; incomplete capture,
    coverage or feasible authorized work stays incomplete. Apply each mode's completion
@@ -199,6 +213,34 @@ may process repositories in parallel, but their shared-file edits must use an ag
 single writer or serial write windows; nonwriters relay bounded native outcomes when
 communication is authorized, otherwise defer that edit with its exact reason. No locks,
 owners/claims, database, hidden queue or additional coordination service.
+
+### Minimal communication during execution
+
+Make the [leaf communication rule](leaf.md#coordinator-updates) executable in the chosen
+workflow: dispatch once with the full shared policy, finite scope and existing authority;
+then wait for completion or attention requiring intervention. Use the executor's native
+final result when it already reaches the coordinator. Do not request a second report,
+read the running leaf's transcript, poll its records, check every slice or send routine
+reminders. Relay user rule/scope/authority changes once, as one combined delta per
+affected leaf; do not repeat the unchanged prefix or ask it to confirm receipt.
+
+Act on a usable final result without an acknowledgement message: update affected shared
+state and refill from the prioritized remaining work. Ask the original leaf one concise
+clarification only for missing decision-relevant outcomes; include all missing points
+in that message. Optional details, absent empty fields and a lack of newly submitted
+objects are not a reason to ask. If a leaf stops early while feasible assigned work
+remains, send one compact continuation with the remaining work; do not introduce timed
+slices, intermediate finals or a checkpoint/restart cycle. A real execution limit can
+require a checkpoint, but is not task completion. Ordinary context compaction is not
+a reason to stop the assignment.
+
+Ignore unsolicited routine progress for coordination purposes: do not reply, copy it
+into state or request supporting evidence. If repeated chatter or premature returns
+actually occur, correct that specific pattern once with the same leaf and use normal
+events thereafter. Do not add message counters, enforcement scripts, heartbeats,
+success audits or a new protocol. This controls dispatch, waits and responses; it
+does not claim the skill can enforce transport-level suppression. Keep necessary
+human-facing communication separate from coordinator/leaf traffic.
 
 ### Lightweight intake and state updates
 

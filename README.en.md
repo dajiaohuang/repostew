@@ -89,6 +89,8 @@ Fresh dispatches inline current common policy in the [fixed source order](refere
 
 New-audit and reassessment leaves share that prefix; coordinators also put common rules before all shard variables. Keep actual-use repairs and genuine document corrections, repair useful but incorrect work, and consolidate equivalent submissions before authorized withdrawal. Close unnecessary, incorrect, superseded or scoped-rejected authored objects within explicit authority. Preserve legitimate discussions, unavailable-evidence blockers, others' objects and merged work. Explicit user reclassification can replace an old initial-audit assignment without claiming that audit completed.
 
+Finish the whole required reassessment set and feasible actions before new-audit refill. [Minimize execution traffic](references/workflows.md#minimal-communication-during-execution): dispatch once with sufficient scope/authority and wait for completion or necessary intervention. No receipt/start/progress requests, transcript/record polling or slice-result/restart loops. Leaves resolve local questions and continue across compaction, alert only when needed and deliver one native final result. Combine necessary clarifications/rule deltas without acknowledgements; no enforcement scripts or message ledger.
+
 Missing issue/PR outcomes require asking the original leaf: supply omitted links, explain genuinely none, or continue feasible work. Intervene only on concrete failures, contradictions or collisions, preferably through the same leaf. Stop after three failed repairs of the same fault. A long task or one timeout is not failure; silent incorrect successes are not guaranteed detectable.
 
 ## Serious delivery, lean checks

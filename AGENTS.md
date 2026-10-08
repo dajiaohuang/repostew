@@ -20,6 +20,10 @@ New audits, authored-object reassessment and incremental batches share one coord
 and leaf flow. Route selected already-worked repositories to references/reassessment.md;
 new targets use the actual-use/documentation audit. Carry explicit closure authority;
 preserve valid discussions, blocked evidence, merged work and others' objects.
+Finish required reassessment in a mixed selected batch before refilling with new audits.
+Dispatch once, wait on completion/necessary attention, and use one native final result.
+No receipt/progress requests, transcript polling or partial-return/restart loops; combine
+necessary changes/clarifications and let leaves resolve ordinary local questions.
 Only input scope and completion effects differ. Keep patrol cadence/activation in
 workspace scheduler configuration, with the configurable 1/6/24-hour baseline in
 references/patrols.md. Reuse unchanged handling and react to concrete faults, not

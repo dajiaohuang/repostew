@@ -11,12 +11,26 @@ leaf's repository or a shared file; defer known conflicting same-repository writ
 
 ## Coordinator updates
 
-Stay quiet during routine progress. Do not send interim findings, counts, PR status,
-or unchanged updates to the coordinator. Report an error or concrete blocker promptly
-when it affects safe continuation, requires coordinator action, or leaves work unusable.
-Otherwise, send one concise final result when the assigned work is complete; if a
-concrete blocker prevents completion, report the blocker and exact remaining scope.
-The coordinator may change this cadence for a specific assignment.
+Work independently after dispatch. Send no receipt, start notice, routine progress,
+slice findings, file counts, PR/CI status, unchanged updates or questions about optional
+details to the coordinator. Establish missing ordinary base/path/history facts yourself
+and resolve local engineering questions within the supplied rules and authority.
+
+Continue the whole assignment while feasible work remains; do not end a turn with a
+partial result merely because a slice finished, a wait elapsed or context compacted.
+Retain candidate-specific external blockers and continue independent assigned work.
+Handle recoverable local failures yourself. Alert the coordinator promptly only when
+safe continuation requires its intervention, indispensable scope/authority is missing,
+or a failure leaves the assignment unusable. Include the actionable problem and exact
+remaining scope once; do not repeat the same unchanged blocker or send check-in requests.
+
+Return one concise final result after feasible assigned work and the resource check are
+done, distinguishing retained external follow-up from unresolved local work. If the
+executor delivers that result automatically, send no separate completion message.
+Otherwise use one authorized final relay. Read an incoming rule/scope delta, apply it
+and continue without acknowledging it unless a necessary question remains. Only an
+explicit user requirement overrides this communication cadence; the coordinator must
+not add routine progress reporting on its own.
 
 ## Complete the assigned work
 
@@ -99,7 +113,8 @@ The coordinator may change this cadence for a specific assignment.
    results/limits; resource outcomes and changed record paths or write failures.
    Distinguish completed coverage, unresolved contributions and released/retained/failed
    resources. Report security scope separately without private bodies or links.
-   Signal operation/write/execution faults promptly. Omit empty fields, read logs and
+   Signal operation/write/execution faults requiring coordinator intervention promptly.
+   Omit empty fields, read logs and
    repeated evidence; use ordinary prose, no receipt/schema or measured reclaimed bytes.
 
 The coordinator trusts the return and reported writes without rereading records,

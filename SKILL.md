@@ -182,6 +182,8 @@ Choose the leaf by the user's assignment and actual contribution history: genuin
 new targets use new-repository audit; already-worked targets selected for issue/PR
 review use [single-repository reassessment](references/reassessment.md), including
 authorized closure. Notifications and followed batches keep their incremental scope.
+In a mixed selected batch, finish required existing-contribution reassessment and
+feasible authorized actions first; new audits do not fill slots while that review remains.
 The coordinator captures and routes; the leaf makes the engineering decisions. A new
 rule replaces a superseded skill default, not an explicit user/target requirement.
 Every assigned repository leaf follows the complete [leaf delivery](references/leaf.md)
@@ -192,6 +194,11 @@ with all assignment variables last. It includes the communication cadence and ap
 return requirements; do not repeat them per repository. Same-repository continuation
 carries only deltas. Relay changed rules, scope and authority to active leaves when
 messaging is authorized and carry scoped overrides in future assignment suffixes.
+Dispatch once and wait for completion/necessary attention under
+[minimal communication](references/workflows.md#minimal-communication-during-execution):
+no receipt/progress requests, routine transcript/record polling or partial-return loops.
+Use native final delivery once, combine necessary clarifications and policy deltas,
+and continue unchanged work without acknowledgements or duplicate reports.
 Use the leaf's lean validation: reuse unchanged same-repository facts, refresh live
 submission gates by delta, test affected scope plus mandatory requirements, combine
 the final review and establish publication once. Defect proof and full assigned audit
