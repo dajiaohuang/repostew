@@ -28,6 +28,11 @@ then relevant live deltas, affected-scope tests plus mandatory requirements and 
 combined final review. Reuse unchanged facts, not stale volatile decisions. One
 reliable publication result is enough; ambiguous external writes still need reconciliation.
 
+Apply restrictions at their exact source and scope. Avoiding repeated tests means
+reuse unchanged evidence and run necessary affected checks, not a blanket ban on tests,
+builds or regression edits. An actual user/target restriction still governs; name its
+source and the specific unmet prerequisite when reporting a blocker.
+
 ## Feedback-derived review rules
 
 Apply these when the candidate touches the corresponding contract; they do not

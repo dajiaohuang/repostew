@@ -16,6 +16,12 @@ and prove the correction against authoritative sources or actual behavior. Wordi
 formatting, optional additions and consistent standalone example names do not qualify.
 Group minor genuine errors into one repository errata issue/PR.
 
+Triage each candidate while auditing: establish the supported trigger and contract,
+retain a qualifying error, discard an unsupported suspicion after bounded review,
+or name the unavailable evidence and retry condition. Consolidate equivalent candidates
+as they arise; do not defer all necessity decisions until final delivery. Private
+unpublished evidence remains protected, and public withdrawals require authority.
+
 ## Defect evidence for submission and reassessment
 
 1. Require a reachable actual-use chain: supported input/configuration → production call or documented

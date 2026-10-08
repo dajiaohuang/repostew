@@ -22,6 +22,17 @@ Retain unpublished findings that GitHub cannot recover; security findings stay p
 Compact records, migration and modification times never prove audit completion.
 Preserve native IDs/aliases for ambiguous or renamed identities.
 
+Issue review classifies reports; it does not adopt the upstream backlog. Keep assigned
+unresolved actions and explicitly followed objects, plus captured work still awaiting
+handling. A feature proposal, optional refactor or unresolved product decision is not
+automatically our repair task. Preserve source coverage before dropping captured work.
+Report coverage against the same assigned scope/base and unit; inventory size, opened
+files, excerpts and read-line counts are not fully reviewed paths or completed audits.
+
+Read and write records losslessly with real Markdown newlines. Encoding failures,
+mojibake and literal newline escapes require targeted diagnosis; preserve ambiguous
+content instead of silently replacing characters or rewriting other writers' files.
+
 ## Write and read only what changes the action
 
 Write when a next action, constraint, coverage boundary, actual delivery or resource

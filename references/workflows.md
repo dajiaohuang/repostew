@@ -108,6 +108,10 @@ does not itself authorize a new cadence, another state writer or paused-job resu
    Then check duplicates/fixes/competing claims and investigate; retain new findings
    locally until the full assigned review and audit are complete.
 3. Audit all actual code at the current base, not filenames or selected slices.
+   Keep the assigned window and maintained source scope fixed. Consult history only
+   to resolve a concrete current contract, regression or duplicate; a complete historical
+   changelog audit is not an added prerequisite. When the base changes, check affected
+   deltas and candidate applicability rather than restarting unchanged coverage.
    Resource/awesome/documentation targets instead cover their maintained documents,
    links, examples, structure and relevant automation, plus any actual code. They
    require no independent software product or maintenance history; only explicit
@@ -125,6 +129,10 @@ does not itself authorize a new cadence, another state writer or paused-job resu
 Completion does not automatically admit a repository to the followed list. Record
 actual issue/PR contributions briefly in work.md and perform the [lifecycle check](storage.md)
 after each repository pass, whether submitted, no-change, incomplete or blocked.
+
+A full audit can finish with no qualifying errors: establish complete assigned coverage
+and candidate disposition, then report no delivery. Finding counts do not determine
+completion, and continuing to hunt for a submission does not expand the assignment.
 
 ## Explicitly requested coordinator and leaves
 
