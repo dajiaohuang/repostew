@@ -119,7 +119,8 @@ does not itself authorize a new cadence, another state writer or paused-job resu
    inventing a software surface. Apply [grouped delivery](../SKILL.md#assigned-audit-before-grouped-delivery),
    including earlier discussion only when maintainer agreement is needed to continue.
    Review relevant base deltas before publication; do not restart unchanged coverage.
-4. Apart from a confirmed suitability skip, remove the new-repository bullet only when
+4. Apart from a confirmed suitability skip or explicit user reclassification under
+   [coordinator rules](#lightweight-intake-and-state-updates), remove the new-repository bullet only when
    the assigned issue classification and audit scope are complete and all feasible
    authorized initial work has been handled. Findings must be delivered, dismissed
    with evidence, or reliably retained with a concrete external blocker and retry
@@ -141,129 +142,115 @@ completion, and continuing to hunt for a submission does not expand the assignme
 
 ## Explicitly requested coordinator and leaves
 
-This is one shared coordinator/leaf workflow for new-repository work and followed
-new-issue work, not two implementations. The entry point sets selection, assigned
-scope and completion effects: new repositories require recent-issue classification,
-assigned usage/documentation coverage and handled initial work before new-list removal;
-followed batches cover selected new issues and
-related code only, preserve membership and advance their source time when covered
-results have been handled or retained. Do not apply new-list removal or whole-code
-audit requirements to a followed batch. Security work has separate scope and evidence.
+Use one shared orchestration flow; choose the leaf from the user's selection and
+evidenced contribution history, not the list name or a submission-count threshold.
 
-Apply [leaf delivery](leaf.md) for every assignment. For fresh leaves, inline the
-[stable common prefix](leaf.md#dispatch-with-a-stable-common-prefix) in its fixed order,
-then append repository-specific scope, known facts, authority/resource boundaries and
-user overrides. The prefix carries communication and return rules; do not restate
-them per repository. Current complete inline rules need no duplicate reads; load only
-missing/changed policy and live target facts. Reuse unchanged same-repository evidence.
-Carry existing repair/publication/release authority in the suffix without asking again
-or expanding it to historical checkouts. Unknown optional metadata is established by
-the leaf, not a reason for coordinator pre-investigation.
+| Assignment | Leaf scope | Completion effect |
+| --- | --- | --- |
+| Genuinely new repository | Suitability, full assigned recent-issue classification, usage/documentation audit and initial delivery | Apply the new-list completion rule |
+| Already-worked repository selected for issue/PR review | [Authored-object reassessment](reassessment.md): feedback, correction, consolidation and authorized closure | Finish the assigned object set; retain unresolved follow-up |
+| Followed issues, notifications or focused feedback | Captured native objects and affected paths | Preserve membership; advance only the appropriate captured source position |
+| Security | Separate threat, impact and private disclosure scope | Report separately; protect unpublished evidence |
 
-Leaves own distinct target repositories: they make authorized source/public-object
-changes, release their disposable resources and directly maintain their own state.md
-and work.md. Only the coordinator edits shared membership, navigation and cross-repository
-read positions. It does not duplicate leaf record writes. Keep one writer per repository
-or shared file; do not dispatch the same repository twice. Keep live assignments in
-the conversation, not a new owner/claim protocol or hidden queue.
-Use fresh context for every new repository, with the shared policy before its assignment
-and without unrelated repository history. Same-repository continuation carries only
-work/policy deltas, not another unchanged prefix.
-Execution settings belong to the user's environment, not this skill. If requested
-parallel execution is unavailable, report the limitation without pretending to have
-started workers or silently changing the requested workflow.
+An authored issue/PR is history; comments alone are not. Resolve aliases by native
+identity. Unknown history goes to the leaf for clarification, not a coordinator code
+audit. A repository with many previous submissions receives reassessment when the user
+selects that work; it does not need another full audit to justify existing contributions.
+User-directed reassignment replaces superseded skill defaults, including file-read
+ledgers and compulsory companion issues. Explicit current user/target requirements
+still apply; do not misrepresent an old workflow default as a user whole-source mandate.
 
-Report active leaves from actual start/completion events or current execution evidence,
-not requested slot counts or stale assignments. A rejected spawn is not an active
-leaf; distinguish the requested count, actual active count and concrete execution limit.
+1. **Select once.** Establish the finite selected list/shard, applicable history or
+   object batch and already completed/in-flight work. Preserve the full requested scope:
+   earlier processed repositories are included when the user selects their contributions
+   for reassessment. Use existing assignment/history evidence; do not silently substitute
+   only the remaining new-list entries or broaden to every old repository. Capture and
+   deduplicate source batches before dispatch, without pre-investigating engineering.
+2. **Route and dispatch.** Carry the [stable leaf prefix](leaf.md#dispatch-with-a-stable-common-prefix)
+   unchanged, then append type, repository, assigned scope/native links, existing facts
+   and action/resource authority. A fresh repository receives fresh context without
+   another repository's history. Optional unknown base/path facts are the leaf's job.
+   Reuse the active same-repository leaf: relay changed rules/scope/authority, preserve
+   its work and clarify in-flight effects before reassignment. Do not restart it or
+   spawn another writer merely because the mode changed.
+3. **Keep independent work moving.** When parallelism is explicitly requested, maintain
+   the requested active leaves while eligible independent assignments remain; process
+   each return and refill its slot without waiting for siblings. A finite drain/pause
+   overrides refill until the user explicitly resumes the broader scope. Count actual
+   started/running leaves, not requested slots or rejected spawns. Report concrete
+   execution limits; use completion/attention events, not repeated progress polling.
+4. **Accept and update once.** Trust usable leaf outcomes and reported record writes.
+   Missing native outcomes require clarification from that leaf; incomplete capture,
+   coverage or feasible authorized work stays incomplete. Apply each mode's completion
+   effect, retain exact external blockers/retry conditions and continue independent work.
+   No default wait for CI, merge or maintainer decisions, repeated tests, remote queries,
+   record rereads, proof packets or success sampling.
+5. **Finish the selected scope.** Account for every assigned repository/object batch as
+   completed, evidenced unsuitable, or unfinished with exact scope/blocker/retry. Do not
+   call a whole shard complete after its current leaves return. Separate audit/review
+   coverage, public outcomes/resolution and released/retained/failed resources. Carry
+   remaining external follow-up in authoritative records; zero findings/closures is valid.
 
-Maintain the requested number of active leaves while independent work remains. When
-a leaf finishes, process its result and immediately fill the vacant slot with a fresh
-repository leaf; do not wait for the slowest sibling. Wait on completion/attention
-events and inspect concrete inactivity or failures instead of repeatedly polling.
-Trust the leaf's factual return and reported writes by default. Use its stated coverage,
-ordinary/Draft/fork-only/rejected/no-change outcome, recorded unresolved items and
-released/retained/failed disposition directly. An explicit full-completion report is
-sufficient to update membership; do not demand proof bundles or reread written files.
-Do not recheck source, tests, public objects, heads, deletion or record persistence as
-routine acceptance, and do not sample-audit successful returns. A returned slot alone,
-without an outcome, is not a completion report. If issue/PR publication outcomes are
-omitted or unclear, use the clarification below before accepting delivery or removing
-membership. No default CI/merge wait.
-Apply the new-list completion rule above: incomplete audit coverage or feasible initial
-work stays listed; external follow-up after completed coverage is retained in repository
-state or protected material. Confirmed suitability skips are removed with their
-reason/source, without claiming audit completion. Continue other repositories without
-reassigning the same blocker repeatedly. Report coverage completion separately from
-delivery, resolution and resource outcomes.
-
-Follow [workspace lifecycle](storage.md) for every repository outcome, not only after
-a submission or in parallel mode. A replenished slot is not a deletion outcome;
-record the operation result without post-release verification or capacity measurement.
+Leaves make engineering decisions and authorized public/source changes, perform the
+resource check and write only their own repository state.md/work.md. The coordinator
+writes affected shared membership/navigation/cross-repository positions, not leaf records.
+Keep one writer per repository and shared file across shards/patrols. Distinct shards
+may process repositories in parallel, but their shared-file edits must use an agreed
+single writer or serial write windows; nonwriters relay bounded native outcomes when
+communication is authorized, otherwise defer that edit with its exact reason. No locks,
+owners/claims, database, hidden queue or additional coordination service.
 
 ### Lightweight intake and state updates
 
-Read the selected list and establish scope/window once at pass entry. Reuse that
-working selection, counts, instructions and reported progress; refresh affected shared
-sections before edits or after a known selection change, not the whole workspace per leaf.
-Keep shared policy text identical across fresh dispatches; append the repository,
-scope/window or native objects, authority/resources, relevant facts and overrides last.
-Do not repeat investigation, return checklists or policy wording in that suffix.
-Process each return once: update affected membership/navigation and progress, then refill.
-Update navigation only for affected containers, using the leaf's reported unresolved
-status and state path, without reading it back. Complete unfinished-work patrol still
-enumerates authoritative states in its own scope; intake is not a substitute for it.
-Advance cross-repository positions only after all required leaf coverage is reported
-complete and unresolved items recorded. Trust those reports without repeating capture.
+Reuse the working selection and reported progress. Refresh only affected shared sections
+before an edit or after a known selection change. Process each return once; update only
+affected membership/navigation/positions, then refill if authorized. The unfinished
+view is navigation, not assignment authority or complete coverage; full unfinished patrol
+still enumerates every authoritative repository container in its own scope.
+
+A reassessment does not automatically remove a new-audit entry or alter followed/old
+membership. If the user explicitly reclassifies already-worked targets from initial
+audit to existing-object review, remove superseded initial-audit membership under
+that selection authority, without claiming its old audit completed. Keep its selected
+shard entry until reassessment is actually handled. Preserve relevant
+unfinished coverage/private evidence and historical old membership; retain the review
+scope until it is actually handled. Otherwise apply the new-list rule above. Advance
+a source position only after complete capture and required handling/reliable retention;
+a review result is not evidence that another source window was scanned.
+
+For fresh coordinators, use the same canonical leaf prefix first, then the dispatch
+section of leaf.md, this coordinator section and any relevant source-entry rules, each
+with stable relative source labels. Keep that common text identical across a shard batch;
+append all shard paths, identities, concurrency settings, existing activity, authority
+and user overrides last. Load no unrelated repository-specific lessons in that prefix.
+Active coordinators/leaves need only changed rules and task deltas. Policy delivery
+does not itself resume paused schedules, create chats/leaves or grant public/cleanup
+authority; the user's assignment must authorize those actions.
 
 ### Detect errors through existing signals, not routine audits
 
-Use normal execution completion/attention/error events and the leaf's own reports.
-Do not add a watchdog service, polling loop, mandatory heartbeat, timed proof packet or
-hidden registry. A long-running audit or one wait timeout alone is not a failure.
+Use normal completion/attention/error signals and the leaf's own report. A long task
+or one timeout is not failure. No watchdog, mandatory heartbeat or timed proof packet.
 
-If a leaf has not returned what issues/PRs it submitted or followed up, communicate
-with that same leaf rather than guessing that nothing was published or independently
-searching its work. Ask for existing native links/outcomes, or explicit confirmation
-that there are none and why, and whether eligible work remains actionable in the
-assignment. This is a short conversation, not a new receipt/schema or proof demand.
+If outcomes are omitted, ask the original leaf for native links/states (including
+closures/consolidation), or explicit none and why, plus remaining feasible work.
+Accept supplied links and completed records directly; do not search again or create
+duplicate objects. An external gate or no qualifying finding is valid. A local patch,
+commit, fork or recommendation is insufficient when authorized engineering/delivery
+remains feasible; have the same leaf complete it without quotas. Unknown in-flight
+effects need clarification before retry/handoff, not inferred completion.
 
-- Already published but omitted: have the leaf supply the links and complete its own
-  records without creating duplicate issues/PRs. Accept the corrected return directly.
-- None, with no eligible finding or a genuine policy/security/assignment/service gate:
-  accept the explicit explanation; retain incomplete scope/blockers as appropriate.
-  Do not impose an issue/PR quota or repeatedly question the same unchanged explanation.
-- None yet, but feasible authorized work remains (including stopping at a local patch,
-  commit or fork when the allowed submission route is still available): ask the leaf
-  to continue investigation/fix/validation/publication under existing scope and target
-  rules, and return the actual outcome. Prefer regular open PRs when their gates pass;
-  link matching existing issues when available and honor explicit target requirements;
-  do not impose a general issue-to-PR linkage gate.
-- Publication or execution is uncertain: clarify in-flight effects before continuation
-  or handoff. Unanswered clarification is not completion; retain uncertainty and
-  continue independent repositories. Do not expand authority or start a second writer.
-
-- Intervene for an explicit operation/record-write failure, failed/interrupted execution,
-  missing usable final outcome, internally contradictory return, known same-repository
-  writer collision, or concrete reported scope/security/authority violation. Ordinary
-  retained resources, Drafts, unrun checks and external blockers are not execution faults.
-- Ask the same leaf to resolve the specific problem using its context. Read only the
-  affected fact or file if needed to understand an actual fault, not its entire work.
-  Do not downgrade successful unrelated writes because another operation failed.
-- For suspected inactivity, make one targeted status/context check. If it is still
-  working, wait on normal events; if failed or unable to continue, preserve its partial
-  work and clarify actual in-flight writes before a same-repository repair/handoff.
-  Never retry an ambiguous public mutation or deletion blindly or start a duplicate
-  writer. Pause only affected work and continue independent repositories.
-- A recovery attempt stays inside existing authority. After three failed fixes of the
-  same fault, stop that repair, record the doubtful assumption and concrete blocker;
-  do not endlessly respawn or broaden permissions. New authority requires user direction.
-- Leaves report failed writes and ambiguous external effects promptly, preserving
-  successful outcomes and uncertainty in ordinary prose/records. Correct known erroneous
-  completion reports and affected state only; no full acceptance audit after recovery.
-
-This detects signaled or visible faults, not every silently incorrect success report.
-Independent patrol/review remains its own task; do not turn it into per-leaf acceptance.
+Intervene only for an explicit execution/operation/write failure, unusable or
+contradictory outcome, known writer collision or concrete scope/security/authority
+violation. Resolve the specific fault with the original leaf; inspect only affected
+evidence if needed, preserve successful unrelated work and continue independent
+repositories. For suspected inactivity, make one targeted status check and otherwise
+wait on normal events. Reconcile ambiguous public writes/deletions before retrying;
+never start a duplicate writer. After three failed repairs of the same fault, stop
+that repair and retain its doubtful assumption/blocker; do not respawn indefinitely
+or expand authority. Correct erroneous completion/state only, without a full acceptance
+audit. Independent contribution reassessment is its own selected engineering task,
+not a routine check of successful leaf returns.
 
 ## Followed old repositories
 
@@ -366,6 +353,10 @@ rules used for new issues/PRs. Distinguish discussion from defect claims; reuse 
 established evidence, revise useful work and handle
 unsupported reports/PRs through the bounded review and withdrawal rules in
 [contribution standards](contribution-value.md#defect-evidence-for-submission-and-reassessment).
+
+For assigned repository-wide authored-object review, use the
+[reassessment leaf](reassessment.md) with explicit withdrawal authority. Incremental
+patrol batches keep their captured scope; coordinator acceptance is not reassessment.
 
 Fully enumerate authored/commented open issues and authored open PRs, plus every
 authoritative unfinished link from container-root repository state.md files under

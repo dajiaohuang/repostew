@@ -72,6 +72,12 @@ effort alone do not establish necessity. Cosmetic changes and optional completio
 not repairs. Do not manufacture scenarios, repeat unchanged tests or set closure/submission quotas
 to justify contributions; a linked issue and PR are one contribution.
 
+For assigned existing-object review, follow [single-repository reassessment](reassessment.md):
+capture the full assigned set, act on valid feedback, preserve necessary work when
+consolidating and withdraw incorrect/unnecessary authored objects within explicit
+authority. Real discussions and temporarily unavailable required evidence retain
+their questions/blockers; merged/others' work is not withdrawal scope.
+
 ## HKUDS batch contribution thresholds
 
 These user-selected filters apply to proactive full audits in the HKUDS organization batch. Other selections keep their existing rules.

@@ -36,7 +36,8 @@ Use ordinary file tools to read and edit Markdown under `state/` and `work/`.
 No custom runtime scripts or intermediate task protocol.
 
 - new-repositories.md: owner/repo bullets; incomplete assigned audit or feasible initial
-  work stays listed. External follow-up after completion remains in repository state.
+  work stays listed, unless the user explicitly reclassifies the assignment. External
+  follow-up after completion remains in repository state.
 - old-repositories.md: the full historical old-repository membership list, not the followed subset.
 - followed-repositories.md: sublists under user-selected headings.
   A repository may belong to several groups. Scan the union once; removing one membership
@@ -177,14 +178,20 @@ from the skill, and verify the remote head; do not force-push or treat Git as a 
 
 Default to serial work; reading does not reserve a repository. For explicitly requested
 parallel leaves, use the coordinator guidance in [workflows](references/workflows.md).
+Choose the leaf by the user's assignment and actual contribution history: genuinely
+new targets use new-repository audit; already-worked targets selected for issue/PR
+review use [single-repository reassessment](references/reassessment.md), including
+authorized closure. Notifications and followed batches keep their incremental scope.
+The coordinator captures and routes; the leaf makes the engineering decisions. A new
+rule replaces a superseded skill default, not an explicit user/target requirement.
 Every assigned repository leaf follows the complete [leaf delivery](references/leaf.md)
 workflow: satisfy target rules, prefer a regular open PR when the submission gate passes,
 verify publication, finish authorized release and return facts for state.
 Fresh leaf dispatches use the [stable common prefix](references/leaf.md#dispatch-with-a-stable-common-prefix)
 with all assignment variables last. It includes the communication cadence and applicable
 return requirements; do not repeat them per repository. Same-repository continuation
-carries only deltas. When the user changes the cadence, relay it to active leaves when
-messaging is authorized and carry the override in future assignment suffixes.
+carries only deltas. Relay changed rules, scope and authority to active leaves when
+messaging is authorized and carry scoped overrides in future assignment suffixes.
 Use the leaf's lean validation: reuse unchanged same-repository facts, refresh live
 submission gates by delta, test affected scope plus mandatory requirements, combine
 the final review and establish publication once. Defect proof and full assigned audit

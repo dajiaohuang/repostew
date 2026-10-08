@@ -71,20 +71,23 @@ The central `unfinished.md` only links to repository records. A complete unfinis
 
 Authorized Trending entries, awesome-list repositories and their linked projects enter the new list after identity, approved filters, the [contribution suitability rule](SKILL.md#skip-unsuitable-contribution-targets) and deduplication. Use lightweight policy, purpose and maintenance evidence without cloning or auditing. Existing repositories continue their scope without resetting progress or automatic following. Unsuitable list repositories can still serve as discovery sources. Expand list-to-list links in bounded, cycle-free batches, not ordinary project dependencies.
 
-New repositories and followed new issues reuse one [coordinator](references/workflows.md#explicitly-requested-coordinator-and-leaves) and [leaf delivery flow](references/leaf.md). Only scope and completion effects differ:
+New audits, existing-contribution reassessment and incremental feedback reuse one [coordinator](references/workflows.md#explicitly-requested-coordinator-and-leaves) and [leaf delivery flow](references/leaf.md), routed by user scope and actual authored history:
 
 | Entry point | Leaf assignment | Completion effect |
 | --- | --- | --- |
 | New repository | Suitability first; classify all recent issues and audit assigned usage paths/documentation facts | Apply initial-audit completion rules; retain external blockers with next actions and retry conditions |
+| Already-worked repository selected for contribution review | [Enumerate authored issues/PRs; handle feedback, correct, consolidate and close within authority](references/reassessment.md) | Evidence-backed dispositions and completed feasible actions; retain legitimate discussion/external blockers |
 | Followed new issues | This batch of issues and related code | Preserve membership; advance scan time after full capture and handling or retention |
 
 Fix the assignment scope and base, then review relevant deltas before submission. Separate audit coverage, contribution outcomes and resource disposition. Incomplete coverage or feasible initial work stays in the new list. Review, CI, maintainer decisions or external delivery gates after completed coverage remain unresolved follow-up, without repeated whole-repository audits.
 
-Serial by default. Explicit parallel authorization allows distinct repository leaves; the coordinator captures, deduplicates, groups, dispatches and refills without duplicating engineering investigation. No new issues means no leaf. One writer per repository. A discoverer authorized to append directly arranges a bounded append window with the coordinator, not a lock service.
+Serial by default. Explicit parallel authorization allows distinct repository leaves; the coordinator captures, deduplicates, routes, dispatches and refills without duplicating engineering investigation. Empty followed-issue batches need no leaf; contribution reassessment needs no new issue. Keep one writer per repository and serialize shared-file edits across shards through an agreed writer or bounded windows. Relay changed rules/modes to the existing leaf. Finish the whole selected shard, not only its current leaves; no lock service.
 
 Leaves investigate, edit, validate, publish, release authorized source and write their own `state.md`/`work.md`. The coordinator writes shared lists, navigation and cross-repository positions. Trust factual returns and reported writes: no duplicate tests, remote queries or record-readback acceptance.
 
 Fresh dispatches inline current common policy in the [fixed source order](references/leaf.md#dispatch-with-a-stable-common-prefix), preserving identical prefix text before repository, kind, scope, authority, resources and existing facts. Cadence and return rules stay in that prefix; full inline policy needs no duplicate reads, and same-repository continuation sends only deltas. Refresh changed policy and verify live target facts. No prompt compiler or task protocol is needed.
+
+New-audit and reassessment leaves share that prefix; coordinators also put common rules before all shard variables. Keep actual-use repairs and genuine document corrections, repair useful but incorrect work, and consolidate equivalent submissions before authorized withdrawal. Close unnecessary, incorrect, superseded or scoped-rejected authored objects within explicit authority. Preserve legitimate discussions, unavailable-evidence blockers, others' objects and merged work. Explicit user reclassification can replace an old initial-audit assignment without claiming that audit completed.
 
 Missing issue/PR outcomes require asking the original leaf: supply omitted links, explain genuinely none, or continue feasible work. Intervene only on concrete failures, contradictions or collisions, preferably through the same leaf. Stop after three failed repairs of the same fault. A long task or one timeout is not failure; silent incorrect successes are not guaranteed detectable.
 

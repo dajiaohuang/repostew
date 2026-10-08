@@ -16,13 +16,19 @@ Archives outside this skill are recovery only.
 Preserve unknown/dirty data, mailbox privacy, credentials and unrelated projects.
 Membership lists are not status tables; per-repository state.md is authoritative,
 work.md records actual contributions, and the unfinished view is navigation only.
-New repositories and followed-new-issue batches share one coordinator and leaf flow;
-only input scope and completion effects differ. Keep patrol cadence/activation in
+New audits, authored-object reassessment and incremental batches share one coordinator
+and leaf flow. Route selected already-worked repositories to references/reassessment.md;
+new targets use the actual-use/documentation audit. Carry explicit closure authority;
+preserve valid discussions, blocked evidence, merged work and others' objects.
+Only input scope and completion effects differ. Keep patrol cadence/activation in
 workspace scheduler configuration, with the configurable 1/6/24-hour baseline in
 references/patrols.md. Reuse unchanged handling and react to concrete faults, not
 routine acceptance audits. Mail is restricted to the selected folder and never sent.
 Authorized discoverer appends use a bounded single-writer window, not a lock service.
 Leaf dispatch reuses the exact current common-policy prefix in the order defined by
 references/leaf.md, with all repository/authority/resource variables appended last.
+Coordinator batches also share stable policy text before all shard variables. Relay
+policy/mode changes to existing leaves; preserve their work and avoid second writers.
+Parallel shards serialize shared-file writes; reassessment is not routine leaf acceptance.
 Full inline policy satisfies reading gates; continuation sends only deltas. Keep this
 ordinary text, without prompt compilers, hashes or task protocols.

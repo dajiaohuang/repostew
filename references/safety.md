@@ -2,6 +2,9 @@
 
 - Read target AGENTS.md, CONTRIBUTING, templates and SECURITY.md. Contributor scope
   does not grant merge/close/delete/release/upstream-push or maintainer authority.
+  Explicit user authorization to withdraw their incorrect/unnecessary submissions
+  applies to in-scope authored open issues and unmerged PRs under [reassessment](reassessment.md).
+  Carry existing authority forward; do not ask again per object or extend it to others' work.
 - Resolve evidenced useful defects with implementation, tests and eligible delivery.
   Difficulty alone is not a blocker. No fabricated issue, PR or quota.
 - Check existing issue/PR/discussion/fix and policy before submission. Respect

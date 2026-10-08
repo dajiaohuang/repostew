@@ -31,6 +31,8 @@ The coordinator may change this cadence for a specific assignment.
    [new-repository rules](workflows.md#new-repository); only that entry point uses the
    default 90/30/7-day selection. Followed batches, notifications and existing issue/PR
    continuation use their assigned objects/window and affected paths.
+   Existing authored-object review follows [single-repository reassessment](reassessment.md),
+   including correction/consolidation and closure only within explicit user authority.
    Ordinary audits follow [actual-use audit](audit.md), completing the assigned usage
    and documentation scope rather than defaulting to file-by-file reads. Security
    assignments or concrete security findings use [security audit](security.md).
@@ -65,6 +67,8 @@ The coordinator may change this cadence for a specific assignment.
    - Security finding: use the authorized private disclosure/remediation path.
    - Required evidence or submission gate unavailable: retain the concrete blocker
      and retry condition; continue feasible independent work.
+   - Existing contribution fails reassessment: correct, consolidate or withdraw under
+     [reassessment rules](reassessment.md); no closure merely from a changed selection.
    - No qualifying finding: report none and whether the assigned scope is complete.
 
    Only when creating/updating a PR, establish or reuse the contributor fork, owned
@@ -119,7 +123,9 @@ For authorized fresh leaves, supply current canonical text inline in this fixed 
 [contribution standards](contribution-value.md) before the HKUDS batch section;
 [ordinary audit](audit.md); [security audit](security.md); [safety](safety.md);
 [records](records.md); [storage](storage.md); the
-[new-repository section](workflows.md#new-repository) of workflows.
+[new-repository section](workflows.md#new-repository) of workflows;
+[single-repository reassessment](reassessment.md). Both leaf kinds share this prefix;
+only the assignment suffix activates their different scope and completion rules.
 Use stable relative source labels. Reuse identical wording, order, whitespace and
 separators while policy is unchanged. Append every variable after this common text:
 repository, assignment kind, window/URLs, baseline, authority, resources, existing
@@ -135,7 +141,7 @@ is needed. Prefix reuse is an execution optimization, not evidence of cache savi
 
 Append a short assignment in ordinary prose, for example:
 
-> Repository: <owner/repo>. Assignment: <new audit / incremental follow-up / security>.
+> Repository: <owner/repo>. Assignment: <new audit / authored-object reassessment / incremental follow-up / security>.
 > Scope: <assigned window, native links and explicit boundaries>.
 > Authority/resources: <permitted actions, actual checkout/temp and exact release authority>.
 > Existing facts/overrides: <relevant known base, unfinished work and source links>.
@@ -144,3 +150,9 @@ Omit inapplicable details and avoid copied discussions/CI. The leaf establishes 
 base/path facts and ordinary usage scope; unspecified release authority permits no deletion.
 Communication cadence and return requirements are already in the common prefix; add
 only an explicit user override in the suffix. This template grants no new execution authority.
+
+For reassessment, append the author, whole-repository or explicit object scope, and
+the user's exact correction/consolidation/closure authority when known. For a new audit,
+append an explicit window/scope override only when assigned. Preserve existing work
+when changing the kind of an active same-repository leaf; send changed rules and scope
+to that leaf rather than starting another writer.

@@ -36,6 +36,12 @@ updated_at alone cannot prove unchanged CI. Fill missing evidence narrowly witho
 adding a persisted interaction/CI registry. Do not rescan mail, sweep all old-repository
 new issues or repeat whole-code audits.
 
+When existing contributions require repository-wide reassessment, use the
+[reassessment leaf](reassessment.md) within the selected object scope and explicit
+closure authority. Empty followed-new-issue batches do not prohibit that separate
+assignment. Coordinator acceptance of a prior leaf is not this review. Shard work and
+changed policy do not implicitly resume paused patrol schedules.
+
 ## One execution stream, bounded repository parallelism
 
 Prefer one existing patrol conversation for these entry points so it can deduplicate
