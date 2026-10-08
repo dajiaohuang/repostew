@@ -3,6 +3,9 @@
 ## General submission standards
 
 Apply to new issues/PRs and existing authored contributions, independently of intake filters.
+Use one mandatory gate for filing an issue, opening a PR and reassessing existing work:
+establish an actual-use error or a verifiable documentation error before proceeding.
+Passing target policy or CI does not waive this gate; Drafts have the same necessity gate.
 Only submit or retain defect repairs for concrete errors reachable through actual
 supported use and calls. Establish that trigger before choosing the smallest complete
 compatible repair; hypothetical risk or cleaner implementation is insufficient.
@@ -32,8 +35,13 @@ Group minor genuine errors into one repository errata issue/PR.
    authored PRs whose necessity remains unestablished, within the user's authority. State
    "necessity not established", not "no defect" or "fixed". Temporarily inaccessible
    required evidence retains its concrete blocker and retry condition; it is not a defect verdict.
-5. Explain trigger, actual/expected behavior, impact and evidence in the issue; explain the
-   minimal complete change, validation and remaining limits in the PR. Follow
+5. Before filing an issue, establish the trigger, actual/expected behavior, impact and
+   evidence, or the exact documentation error and its authoritative correction.
+   Before opening a PR, verify that it fixes that same established error completely;
+   describe the minimal change, validation and remaining limits. Reassessment applies
+   the same gate to the current base and diff, including inherited issues and patches;
+   correct or withdraw unsupported defect reports within authority rather than keeping
+   them to justify a PR. Follow
    [direct claim and Open PR rules](safety.md#prefer-a-regular-open-pr).
 
 Artificial bad data, isolated helper calls, representation changes, green CI and prior
@@ -51,5 +59,5 @@ The user selected only the priority group: nanobot, LightRAG, DeepTutor, DeepCod
 - README, badges, contact details, licenses, automated dependency updates, non-default-branch pushes, our own submissions and maintainer self-merges do not alone establish maintenance or outside reception. Inspect actual changed files and native contributor/maintainer evidence. Unknown remains observation, not a claim of abandonment.
 - Newly released software and one-off research implementations without continued maintenance/reception evidence remain observational; a concrete user need or accepted reproducibility problem can receive focused work.
 - Resource collections and organization showcases remain eligible for useful targeted documentation repairs, but do not receive proactive full-audit batches merely because PRs are welcome. Prefer corrections affecting actual navigation, referenced sources or usage; related small documentation repairs belong in one coherent PR. Cosmetic wording, badges and alternative-text improvements alone do not justify a new proactive submission.
-- Deliver concrete improvements to behavior, installation, data correctness, reliability, performance or essential usage documentation, supported by reproduction or strong source evidence. Keep the full-assigned-audit and root-cause grouping rules for admitted full audits; do not impose a PR quota. Security work retains its real-threat-boundary and disclosure requirements.
+- Apply the same mandatory error gate to behavior, installation, data correctness, reliability, performance and documentation repairs; benefit alone does not qualify. Keep the full-assigned-audit and root-cause grouping rules for admitted full audits; do not impose a PR quota. Security work retains its real-threat-boundary and disclosure requirements.
 - Selection changes retain historical membership, records and existing unresolved contributions. Continue necessary PR follow-up; never infer authorization to close public objects or erase followed membership from a reduced audit selection.

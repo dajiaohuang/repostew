@@ -125,7 +125,10 @@ No additional general approval or mandatory Draft stage is required; honor expli
    project conventions; do not submit a known ineffective candidate.
 4. The smallest complete, reviewable and reversible patch preserves interfaces/defaults
    and crosses no separate dependency, service, security or authority gate.
-5. Reproduction or strong source proof exists; relevant feasible checks pass and target-
+5. The mandatory [error gate](contribution-value.md#general-submission-standards) passes:
+   actual supported use/calls reach the defect, or documentation contains a verifiable
+   existing error. Reproduction or strong source proof establishes that error;
+   relevant feasible checks pass and target-
    mandated prerequisites are satisfied. Separate unrun environment-dependent checks
    from explicit submission requirements; no local native toolchain alone is not a ban.
    Apply the [actual-use evidence standard](contribution-value.md#defect-evidence-for-submission-and-reassessment).

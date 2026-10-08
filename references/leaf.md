@@ -48,7 +48,10 @@ The coordinator may change this cadence for a specific assignment.
    than fetching the same complete history again. If no reliable delta is available,
    reread only the affected objects and current submission gates.
    Apply the [actual-use and reassessment standards](contribution-value.md#defect-evidence-for-submission-and-reassessment).
-   Prove the actual defect and implement the smallest compatible change. Correct an
+   Require the same error gate before filing an issue, opening a PR or retaining an
+   existing contribution: actual supported calls must trigger the error, or the document
+   must contain a verifiable existing error. Prove it and implement the smallest complete
+   compatible change. Correct an
    ineffective inherited patch instead of pushing it to satisfy a submission count.
    Add behavior evidence or appropriate configuration/document checks. Run checks for
    the affected behavior/configuration plus target-mandated prerequisites, not an
