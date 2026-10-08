@@ -54,6 +54,8 @@ Security uses its separate threat/disclosure rules and protected records.
   a legitimate discussion issue with its exact question. Retain the concrete blocker
   and retry condition. Unsupported suspicions do not become discussion issues merely
   to keep an old contribution alive. Continue feasible independent work.
+  Keep an evidenced contract question as discussion; withdraw an unproven repair PR
+  within authority. An unsettled question alone does not establish a PR's necessity.
 
 A PR needs no companion issue unless the target explicitly requires one. Assess the
 issue and PR separately: an unresolved real error or valid discussion can remain after
