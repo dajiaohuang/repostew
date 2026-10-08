@@ -17,7 +17,8 @@ Apply this to audits, feedback, patrols, coordinators/leaves and resource dispos
 - Membership: names only. `unfinished.md`: repository-state links only, never details.
   Native read positions retain exact IDs, UTC times and boundaries in existing files.
 
-Keep necessary current coverage and remaining audit scope, not a log of every read.
+Keep the audit base, meaningful usage/documentation coverage and remaining scope,
+not a log of every read. Report security scope separately and keep its evidence private.
 Retain unpublished findings that GitHub cannot recover; security findings stay private.
 Compact records, migration and modification times never prove audit completion.
 Preserve native IDs/aliases for ambiguous or renamed identities.
@@ -28,6 +29,10 @@ handling. A feature proposal, optional refactor or unresolved product decision i
 automatically our repair task. Preserve source coverage before dropping captured work.
 Report coverage against the same assigned scope/base and unit; inventory size, opened
 files, excerpts and read-line counts are not fully reviewed paths or completed audits.
+Audit coverage, contribution outcomes and resource disposition are separate facts.
+Completed initial coverage with reliably retained external follow-up may leave the
+new list under [workflows](workflows.md#new-repository); retain the unfinished action
+and retry condition rather than marking it resolved or repeatedly auditing the repository.
 
 Read and write records losslessly with real Markdown newlines. Encoding failures,
 mojibake and literal newline escapes require targeted diagnosis; preserve ambiguous

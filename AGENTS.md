@@ -1,6 +1,10 @@
 # RepoStew skill maintenance
 
-Keep the skill instruction-first: SKILL.md and focused workflow, safety and lifecycle references.
+Keep the skill instruction-first: SKILL.md and focused audit, workflow, safety and lifecycle references.
+Ordinary audits trace actual use/calls and verify real documentation errors; security
+audits use independent threat evidence and private disclosure. Explicit whole-source
+assignments retain their scope. Keep audit coverage, contribution outcomes and resource
+disposition distinct; do not convert old read counts into completed usage-path coverage.
 Executors directly read and edit ordinary Markdown in `state/` and `work/`, relative to the
 workspace root containing `RepoStew_skills/`. Reference links resolve from their file.
 Keep instructions independent of execution clients, model vendors, operating systems

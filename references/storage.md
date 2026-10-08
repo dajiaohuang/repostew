@@ -47,8 +47,10 @@ have CI finished before source deletion; engineering and source disposition stay
 4. Return the deletion command/tool outcome for state.md: released when it reports
    success, retained with the known reason, or failed with the actual error. Do not
    independently recheck path disappearance, Git registrations, archive usability,
-   logical size, free space or virtual-disk allocation. The coordinator records this
-   result without repeating those checks. Do not claim measured reclaimed bytes.
+   logical size, free space or virtual-disk allocation. The leaf or serial executor
+   records this result in its repository state; the coordinator updates only shared
+   navigation/membership, without repeating those checks or repository writes.
+   Do not claim measured reclaimed bytes.
    Apply [minimal records](records.md): replace the affected current resource line;
    unchanged retained resources need no new dated paragraph or work entry.
 

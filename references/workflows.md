@@ -16,7 +16,10 @@ Every issue, PR and reassessment follows the same
 [evidence and action rules](contribution-value.md#general-submission-standards): repair
 actual-use errors or verifiable documentation errors; open/reuse discussion issues for
 evidenced actual-use questions requiring maintainer agreement. Discussion is not defect
-proof or PR readiness. Apply target policy, security and assigned delivery timing.
+proof or PR readiness. Apply target policy and
+[assigned delivery timing](../SKILL.md#assigned-audit-before-grouped-delivery).
+Use [ordinary audit](audit.md) for actual-use/document errors and the separate
+[security audit](security.md) for threat evidence and disclosure.
 
 ## Discover and admit new repositories directly
 
@@ -102,36 +105,37 @@ does not itself authorize a new cadence, another state writer or paused-job resu
    days is the minimum: if it still contains more than 100, retain the full 7-day
    scope and process all of it. Record the exact UTC boundaries and count. Ask once
    only if the required end time or an explicitly assigned lower bound is missing.
-2. Fetch all issue pages before acting, count only issues (not PRs), and inspect them
-   newest-created first. Preserve native createdAt timestamps and pagination; do not
+2. Fetch all issue pages before acting, count only issues (not PRs), and deduplicate and
+   classify them newest-created first. Preserve native createdAt timestamps and pagination; do not
    skip older issues inside the selected window when a large batch is inconvenient.
-   Then check duplicates/fixes/competing claims and investigate; retain new findings
-   locally until the full assigned review and audit are complete.
-3. Audit all actual code at the current base, not filenames or selected slices.
-   Keep the assigned window and maintained source scope fixed. Consult history only
-   to resolve a concrete current contract, regression or duplicate; a complete historical
-   changelog audit is not an added prerequisite. When the base changes, check affected
-   deltas and candidate applicability rather than restarting unchanged coverage.
-   Resource/awesome/documentation targets instead cover their maintained documents,
-   links, examples, structure and relevant automation, plus any actual code. They
-   require no independent software product or maintenance history; only explicit
-   refusal of external PRs/the proposed method is a skip for this category.
-   Only after complete issue review and code coverage, consolidate findings into
-   distinct points, combine common root causes in one issue/PR and keep independent
-   problems in separate contributions; reuse matching existing objects without requiring
-   a companion issue for every PR. Validate
-   and submit the grouped delivery under the same authority and security boundaries. Do not publish a
-   stream of findings from an unfinished audit.
-4. Apart from a confirmed suitability skip, remove the repository bullet only after issue work and audit are genuinely done.
-   Otherwise retain it and retain specific unresolved public links plus one-line reasons
-   in that repository's work/<owner>/<repo>/state.md. Private blockers stay in protected notes. Continue independent
-   actionable work; difficulty alone is not a blocker.
+   Read enough to classify each report; investigate actual-use problems, contract
+   questions and applicable maintainer direction. Check duplicates/fixes/competing
+   claims without adopting the upstream backlog.
+3. Establish the maintained usage/documentation scope and base, then follow
+   [ordinary audit](audit.md). Trace real use and calls, and verify genuine document
+   errors; explicit whole-source assignments retain their scope. Security work follows
+   its separate [audit](security.md). Resource/awesome/documentation targets cover their
+   maintained facts, instructions, references, examples and relevant automation without
+   inventing a software surface. Apply [grouped delivery](../SKILL.md#assigned-audit-before-grouped-delivery),
+   including earlier discussion only when maintainer agreement is needed to continue.
+   Review relevant base deltas before publication; do not restart unchanged coverage.
+4. Apart from a confirmed suitability skip, remove the new-repository bullet only when
+   the assigned issue classification and audit scope are complete and all feasible
+   authorized initial work has been handled. Findings must be delivered, dismissed
+   with evidence, or reliably retained with a concrete external blocker and retry
+   condition in repository state or protected material. Audit coverage blocked by
+   missing evidence, or feasible initial investigation/fix/validation/publication left
+   undone, stays listed. Mere difficulty or a local patch is not completion.
+   Pending review/CI, maintainer decisions or external delivery/disclosure gates after
+   completed coverage remain unfinished follow-up; they do not keep the repository in
+   the initial-audit list or cause repeated full audits. Preserve unresolved links,
+   unpublished evidence and required resources; do not label retained work resolved.
 
 Completion does not automatically admit a repository to the followed list. Record
 actual issue/PR contributions briefly in work.md and perform the [lifecycle check](storage.md)
 after each repository pass, whether submitted, no-change, incomplete or blocked.
 
-A full audit can finish with no qualifying errors: establish complete assigned coverage
+An ordinary audit can finish with no qualifying errors: establish complete assigned coverage
 and candidate disposition, then report no delivery. Finding counts do not determine
 completion, and continuing to hunt for a submission does not expand the assignment.
 
@@ -139,11 +143,12 @@ completion, and continuing to hunt for a submission does not expand the assignme
 
 This is one shared coordinator/leaf workflow for new-repository work and followed
 new-issue work, not two implementations. The entry point sets selection, assigned
-scope and completion effects: new repositories require recent issues plus a full
-code audit before new-list removal; followed batches cover selected new issues and
+scope and completion effects: new repositories require recent-issue classification,
+assigned usage/documentation coverage and handled initial work before new-list removal;
+followed batches cover selected new issues and
 related code only, preserve membership and advance their source time when covered
 results have been handled or retained. Do not apply new-list removal or whole-code
-audit requirements to a followed batch.
+audit requirements to a followed batch. Security work has separate scope and evidence.
 
 Apply [leaf delivery](leaf.md) for every repository assignment and continuation;
 reuse available unchanged policy/evidence for the same repository instead of rereading
@@ -184,10 +189,12 @@ routine acceptance, and do not sample-audit successful returns. A returned slot 
 without an outcome, is not a completion report. If issue/PR publication outcomes are
 omitted or unclear, use the clarification below before accepting delivery or removing
 membership. No default CI/merge wait.
-Blocked or partially audited suitable repositories stay listed; confirmed suitability
-skips are removed with their reason/source, without claiming audit completion. Continue other repositories
-without reassigning the same blocker repeatedly during this pass. Distinguish a pass
-over retained repositories from actual completion of all engineering work.
+Apply the new-list completion rule above: incomplete audit coverage or feasible initial
+work stays listed; external follow-up after completed coverage is retained in repository
+state or protected material. Confirmed suitability skips are removed with their
+reason/source, without claiming audit completion. Continue other repositories without
+reassigning the same blocker repeatedly. Report coverage completion separately from
+delivery, resolution and resource outcomes.
 
 Follow [workspace lifecycle](storage.md) for every repository outcome, not only after
 a submission or in parallel mode. A replenished slot is not a deletion outcome;

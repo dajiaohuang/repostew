@@ -14,13 +14,14 @@ RepoStew is a portable repository-stewardship Skill for discovery, issue handlin
 
 For example:
 
-> Read RepoStew_skills/SKILL.md and handle repositories in the new list. Process issues in the assigned window, then audit actual code. Respect target rules and submit regular open PRs when eligible. Finish authorized source release and repository records; retain incomplete work with reasons instead of claiming completion.
+> Read RepoStew_skills/SKILL.md and handle repositories in the new list. Fully capture and classify the assigned issue window, trace agreed actual-use/call paths and verify genuine documentation errors. Respect target rules and submit regular open PRs when eligible. Finish authorized source release and repository records; retain incomplete work with concrete reasons.
 
-Full audits finish the entire assigned issue review and all code before grouped delivery: combine common root causes, keep independent problems reviewable, and do not publish slice findings during the audit.
+[Ordinary audits](references/audit.md) cover agreed usage paths and documentation facts without default file-by-file reading; explicit whole-source assignments retain their scope. [Security audits](references/security.md) separately establish deployment, attacker capabilities, trust boundaries and impact, with private disclosure.
+Complete assigned issue classification and usage/documentation coverage before grouped repair delivery: combine common root causes, keep independent problems reviewable, and do not publish slice findings during the audit.
 PRs need no separate issue; reuse and link a matching issue when available, otherwise explain the error and evidence directly in the PR. Honor explicit target requirements.
-For evidenced actual-use questions needing maintainer agreement on behavior or repair direction, open or reuse a discussion issue in the target repository; establish the error before a repair PR.
+For evidenced actual-use questions needing maintainer agreement, open or reuse a discussion issue. A concrete question necessary to continue investigation may be raised earlier with observed behavior and the unresolved point; establish the error and intended correction before a repair PR.
 Group each repository's minor documentation errors in one errata PR; extend an open errata PR instead of splitting corrections by file or error.
-Before submission, apply the [general contribution standards](references/contribution-value.md#general-submission-standards): actual impact, clear benefit and proportionate maintenance cost.
+Before submission, apply the [general contribution standards](references/contribution-value.md#general-submission-standards): prove an actual-use error or a verifiable existing documentation error, then assess correction impact and maintenance cost. Benefit or cleaner implementation cannot replace error evidence.
 
 The Skill defines the method; the execution environment supplies repository, mail, file and scheduling tools. Saving instructions does not start jobs, create chats or resume paused schedules.
 
@@ -51,7 +52,7 @@ Three membership lists select repositories and entry points:
 
 | List | Purpose |
 | --- | --- |
-| `new-repositories.md` | Pending new repositories; remove evidenced unsuitable targets, otherwise finish recent issues and actual full code audit |
+| `new-repositories.md` | Initial new-repository work; remove evidenced unsuitable targets or completed assigned audits and feasible initial work; retain external follow-up in repository records |
 | `old-repositories.md` | Full historical old membership; repository names, not duplicated status |
 | `followed-repositories.md` | Named, overlapping groups; scan their deduplicated union |
 
@@ -60,7 +61,7 @@ Resource lists, awesome collections and documentation repositories are eligible 
 Each repository's `state.md` alone holds evidenced patrol scope, time and boundary, unfinished native links with short reasons, and local resource outcomes. `work.md` briefly records issues handled, PRs submitted or followed up, and known dates/results.
 General lessons become shared skill rules; repository lessons live in `references/repositories/<owner>/<repo>.md` with scope and sources, read on demand. Current facts stay in state; raw interactions remain at native sources or in authorized private archives.
 
-Feedback is distilled into [repository references](references/repositories/README.md) and [five shared review rules](references/safety.md#feedback-derived-review-rules): contract evidence, complete paths, real regressions, lifecycle and uncertainty, and feedback scope.
+Feedback is distilled into [repository references](references/repositories/README.md) and [shared review rules](references/safety.md#feedback-derived-review-rules), applied to relevant contracts without expanding the assignment.
 
 Use [minimal records](references/records.md): write only material changes, one line per unfinished action or actual delivery, and scoped maintainer constraints with source links. Retrieve details from GitHub when needed. Omit empty sections, source-read logs, unchanged patrol entries and parallel progress diaries. Explicitly requested, private or irreplaceable evidence has one canonical raw copy.
 
@@ -74,8 +75,10 @@ New repositories and followed new issues reuse one [coordinator](references/work
 
 | Entry point | Leaf assignment | Completion effect |
 | --- | --- | --- |
-| New repository | Suitability first; retained targets receive complete recent-issue handling plus actual full code audit | Remove evidenced unsuitable targets with a reason; otherwise complete both scopes |
+| New repository | Suitability first; classify all recent issues and audit assigned usage paths/documentation facts | Apply initial-audit completion rules; retain external blockers with next actions and retry conditions |
 | Followed new issues | This batch of issues and related code | Preserve membership; advance scan time after full capture and handling or retention |
+
+Fix the assignment scope and base, then review relevant deltas before submission. Separate audit coverage, contribution outcomes and resource disposition. Incomplete coverage or feasible initial work stays in the new list. Review, CI, maintainer decisions or external delivery gates after completed coverage remain unresolved follow-up, without repeated whole-repository audits.
 
 Serial by default. Explicit parallel authorization allows distinct repository leaves; the coordinator captures, deduplicates, groups, dispatches and refills without duplicating engineering investigation. No new issues means no leaf. One writer per repository. A discoverer authorized to append directly arranges a bounded append window with the coordinator, not a lock service.
 
@@ -89,7 +92,7 @@ Read target policies before source and discussion bodies. Respect contribution, 
 
 Reuse unchanged same-repository facts; refresh relevant deltas before submission. Test affected behavior plus mandatory target checks, combine final diff/style/public-text review, and establish the real PR URL, state and published head once from reliable responses or one live lookup.
 
-Prefer regular open PRs when eligible, not a local patch, commit or fork as the endpoint. Draft requires a concrete remaining uncertainty. Missing local native tools do not automatically require Draft, and mandatory target prerequisites still apply. No fabricated findings or submission quotas; no default CI/merge wait.
+Prefer regular open PRs when eligible, not a local patch, commit or fork as the endpoint. Draft also requires an established error and intended correction, with concrete remaining implementation or validation uncertainty. Missing local native tools do not automatically require Draft, and mandatory target prerequisites still apply. No fabricated findings or submission quotas; no default CI/merge wait.
 
 Every repository pass—including unchanged or blocked work—decides resource disposition. Update the current resource line only when its outcome changes; do not append unchanged entries. For external contribution source, satisfy existing authorization, delivery and non-use gates, delete only named `checkout/`/`temp/` and record the operation result. No new recovery copies, unique/unknown-data inventory, post-delete verification or disk-space measurement. Preserve known undelivered/active/unrelated material, permanent records and existing archives. Self-owned repositories are excluded; do not clean Go caches/toolchains. Submission, coverage, resolution and release are separate facts.
 
@@ -118,6 +121,7 @@ Mail positions, private links, security bodies, credentials, source trees and re
 ## Reference map
 
 - [SKILL.md](SKILL.md): workspace, state and execution boundaries.
+- [Ordinary audit](references/audit.md) / [Security audit](references/security.md): usage-path/document errors and separate threat evidence/private disclosure.
 - [Workflows](references/workflows.md): discovery, new/followed work and shared coordination.
 - [Leaf delivery](references/leaf.md): fixes, validation, publication, records and release.
 - [Patrol cadence](references/patrols.md): complementary entry points, deduplication and activation.

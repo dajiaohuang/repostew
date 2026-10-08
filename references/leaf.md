@@ -25,34 +25,27 @@ The coordinator may change this cadence for a specific assignment.
    adapt at a restriction, not after a batched broad content read. Within the same
    repository, reuse the read version and refresh only
    relevant changed instructions, changed scope/base or newly applicable nested rules.
-   Establish the permitted current base and actual existing checkout. Use an explicitly
-   assigned issue window when present; otherwise start with 90 days and count distinct
-   issues (excluding PRs), narrowing to 30 days above 100 and then to 7 days if the
-   30-day count still exceeds 100. Seven days is the minimum; handle every issue if
-   that window still exceeds 100. Retain exact UTC boundaries; keep counts when needed
-   to establish capture completeness or window selection. Review issues
-   newest-created first, with complete pagination and native timestamps.
-   Inspect prior work before reuse; preserve unrelated edits. New repositories require
-   complete recent-issue handling and actual code audit, not only a candidate patch.
-   Apply [full audit before grouped delivery](../SKILL.md#full-audit-before-grouped-delivery):
-   finish the whole assigned issue review and all code before publishing new findings;
-   retain candidates locally until consolidated delivery, not a stream of slice findings.
-   Combine the same root cause/fix in one issue/PR; submit independent problems in
-   separate contributions. PRs need no separate issue; reuse and link a matching issue
-   when available, following explicit target requirements. Do not create companion issues
-   solely for linkage. Minor documentation errors share one repository errata PR;
-   reuse an open errata PR rather than submitting individual corrections.
-   Followed/continuation work uses its assigned scope without an unrequested full audit.
+   Establish the assignment kind, scope, permitted base and actual existing checkout
+   before applying defaults. Inspect prior work before reuse; preserve unrelated edits.
+   New-repository work captures and classifies the whole recent-issue window under
+   [new-repository rules](workflows.md#new-repository); only that entry point uses the
+   default 90/30/7-day selection. Followed batches, notifications and existing issue/PR
+   continuation use their assigned objects/window and affected paths.
+   Ordinary audits follow [actual-use audit](audit.md), completing the assigned usage
+   and documentation scope rather than defaulting to file-by-file reads. Security
+   assignments or concrete security findings use [security audit](security.md).
+   Apply [assigned audit before grouped delivery](../SKILL.md#assigned-audit-before-grouped-delivery),
+   including its earlier discussion exception for necessary maintainer agreement.
 2. Initially reconcile current issues, discussions, relevant all-state PRs, claims and
    current-base fixes. Before submission, refresh changes since that inspection rather
    than fetching the same complete history again. If no reliable delta is available,
    reread only the affected objects and current submission gates.
    Apply the [actual-use and reassessment standards](contribution-value.md#defect-evidence-for-submission-and-reassessment).
-   Apply the same action rules to new and existing work: establish actual-use or document
-   errors before repairs; open/reuse a discussion issue for an evidenced use question
-   needing maintainer agreement, without claiming a defect. Follow assigned delivery
-   timing. Once the error is established, implement the smallest complete compatible
-   change. Correct an
+   Apply the same action rules to new and existing ordinary work: establish actual-use
+   or document errors before repairs; open/reuse discussion for an evidenced use
+   question needing maintainer agreement. Security uses its threat and disclosure gates.
+   Once the error and intended correction are established, implement the smallest
+   complete compatible change. Correct an
    ineffective inherited patch instead of pushing it to satisfy a submission count.
    Add behavior evidence or appropriate configuration/document checks. Run checks for
    the affected behavior/configuration plus target-mandated prerequisites, not an
@@ -61,8 +54,9 @@ The coordinator may change this cadence for a specific assignment.
    remain unchanged; rerun affected checks after relevant edits. Keep defect proof.
    Combine full diff/range, style/whitespace and public-text/security/identity review
    into one final pre-publication pass; review later changes, not unchanged material.
-3. Apply [direct claim and regular PR rules](safety.md#prefer-a-regular-open-pr). Claim
-   available issues through the permitted target process; prefer a normal open PR when all
+3. Apply [direct claim and regular PR rules](safety.md#prefer-a-regular-open-pr). For new
+   work, claim available issues through the permitted target process; continue existing
+   submissions directly within their current scope. Prefer a normal open PR when all
    conditions pass. Verify/create the actual contributor fork once, and reuse confirmed
    fork, owned branch and permitted remote/base facts unless they change or an operation
    fails. Refresh volatile base/availability facts through the pre-submission delta.
@@ -95,7 +89,9 @@ The coordinator may change this cadence for a specific assignment.
    publication outcome; each resource released/retained/failed with its relative path
    and any retention reason or actual error; no recovery copy/location is required;
    unresolved native links, reasons and retry conditions; which record writes succeeded
-   or failed and whether the assigned issue work/audit is complete. Signal operation,
+   or failed; distinguish audit coverage, contribution outcomes and resource disposition.
+   State whether assigned scope and feasible initial work are complete; report security
+   scope separately without exposing private evidence. Signal operation,
    state-write and execution faults promptly, not only at the end; distinguish an
    expected blocker from an error. Report deletion outcomes,
    not measured reclaimed bytes. No terminal JSON protocol or hidden task registry.
@@ -109,6 +105,7 @@ Missing issue/PR outcomes trigger a short same-leaf clarification, not inferred
 no-change or a duplicate search. Supply omitted links or explain why there are none;
 continue feasible authorized work when asked rather than stopping at a local artifact.
 Submitted is not merged; released is not validated; an open PR does not prove a complete
-new-repository audit. Apart from a confirmed suitability skip, remove new-list membership only when the whole assigned issue
-work and audit are genuinely complete. Continue independent repositories without
+new-repository audit. Apply the [new-list completion rule](workflows.md#new-repository):
+incomplete coverage or feasible initial work stays listed; reliably retained external
+follow-up after completed coverage does not reopen the audit. Continue independent repositories without
 redispatching an unchanged external blocker repeatedly.

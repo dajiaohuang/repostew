@@ -14,7 +14,8 @@
 - Preserve dirty/unpushed/unknown work. No reset or cleanup of independent projects,
   Go caches/toolchains/build output. Use isolated work when needed.
 - Security findings/mail/credentials stay private. Without an authorized disclosure
-  channel, retain the concrete blocker.
+  channel, retain the concrete blocker. Use the separate [security audit](security.md)
+  for threat evidence; ordinary supported-input criteria do not exclude attacker inputs.
 - Update only contributor-controlled branches. Reconcile uncertain remote effects
   before retrying, rather than submitting duplicates.
 - Validate changes and distinguish local/CI/deployed evidence and scanned/tested/
@@ -130,13 +131,15 @@ No additional general approval or mandatory Draft stage is required; honor expli
    project conventions; do not submit a known ineffective candidate.
 4. The smallest complete, reviewable and reversible patch preserves interfaces/defaults
    and crosses no separate dependency, service, security or authority gate.
-5. The mandatory [error gate](contribution-value.md#general-submission-standards) passes:
-   actual supported use/calls reach the defect, or documentation contains a verifiable
-   existing error. Reproduction or strong source proof establishes that error;
-   relevant feasible checks pass and target-
-   mandated prerequisites are satisfied. Separate unrun environment-dependent checks
+5. Evidence and required checks pass. Ordinary repairs satisfy the mandatory
+   [error gate](contribution-value.md#general-submission-standards): actual supported
+   use/calls reach the defect, or documentation contains a verifiable
+   existing error. Reproduction or strong source proof establishes that error.
+   Security repairs instead establish the [threat and impact](security.md#threat-and-evidence)
+   and satisfy the target disclosure gate. For either kind, relevant feasible checks
+   pass and target-mandated prerequisites are satisfied. Separate unrun environment-dependent checks
    from explicit submission requirements; no local native toolchain alone is not a ban.
-   Apply the [actual-use evidence standard](contribution-value.md#defect-evidence-for-submission-and-reassessment).
+   For ordinary repairs, apply the [actual-use evidence standard](contribution-value.md#defect-evidence-for-submission-and-reassessment).
    Check numerical bounds and language semantics;
    performance claims need evidence of an actual bottleneck.
 6. Follow the permitted base branch, style, templates, public identity and truthful
@@ -151,7 +154,8 @@ No claimed native, CI or runtime pass may replace an unrun check.
 
 If a hosting service limits open regular PRs, submit an otherwise ready contribution as Draft with the limit stated, then mark it ready when a slot becomes available.
 
-Use Draft otherwise only for a concrete remaining implementation/validation/decision uncertainty
+Use Draft otherwise only after the error and intended correction are established,
+for a concrete remaining implementation or validation uncertainty
 when early submissions are permitted, describing that uncertainty without closing
 keywords or implying approval. Required prior invitation/assignment/agreement prohibits
 an upstream Draft too; use a permitted fork-only proposal or retain a tested branch.

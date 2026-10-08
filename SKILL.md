@@ -9,6 +9,9 @@ Read [workflows](references/workflows.md) for execution
 and [safety](references/safety.md) before target changes or external actions.
 Read [workspace lifecycle](references/storage.md) when provisioning, finishing or
 releasing a repository checkout.
+Use [ordinary audit](references/audit.md) to discover errors through actual usage
+paths and verifiable documentation facts; use [security audit](references/security.md)
+for security work, with its separate threat, evidence and disclosure rules.
 Apply [minimal records](references/records.md) to every state/history write and
 continuation: write only material changes, prefer live GitHub details, and keep no
 parallel progress diaries.
@@ -30,7 +33,8 @@ level, command wrapper or tool API is required.
 Use ordinary file tools to read and edit Markdown under `state/` and `work/`.
 No custom runtime scripts or intermediate task protocol.
 
-- new-repositories.md: owner/repo bullets; unfinished new-repository work stays listed.
+- new-repositories.md: owner/repo bullets; incomplete assigned audit or feasible initial
+  work stays listed. External follow-up after completion remains in repository state.
 - old-repositories.md: the full historical old-repository membership list, not the followed subset.
 - followed-repositories.md: sublists under user-selected headings.
   A repository may belong to several groups. Scan the union once; removing one membership
@@ -79,7 +83,7 @@ No task owner, reservation, identity binding, capacity, access cache or receipt.
 Old-repository patrol timestamps are factual history, not an orchestration protocol or
 an inferred per-repository source cursor.
 Apply [contribution and reassessment standards](references/contribution-value.md)
-before filing issues, opening PRs and reassessing existing contributions. Repairs require
+before filing issues, opening PRs and reassessing existing contributions. Ordinary repairs require
 an error reachable through actual supported use/calls or a verifiable documentation error;
 evidenced actual-use questions needing maintainer agreement go to discussion issues,
 without claiming an unconfirmed defect. Policy compliance, CI and intended improvement
@@ -126,18 +130,23 @@ or alter historical/followed membership. Coordinate active writers first. Close 
 our unmerged PRs/issues when withdrawal is authorized; preserve others' objects,
 accepted work, records and resources, and apply the storage disposition check.
 
-## Full audit before grouped delivery
+## Assigned audit before grouped delivery
 
-For a full-audit assignment, finish the entire assigned issue review and all applicable code/documentation
-before publishing new findings. Then present findings as distinct points and deliver
+For an ordinary audit assignment, finish the assigned issue classification and
+usage/documentation scope before publishing new repair findings. Follow
+[ordinary audit](references/audit.md); explicit whole-source assignments retain their
+scope. Then present findings as distinct points and deliver
 them together: combine the same root cause/fix in one issue/PR, submit independent
 problems in separate contributions, and remove duplicates/non-defects. PRs need no
 separate issue; reuse and link a matching issue when available, following explicit
 target requirements. Do not create issues solely to accompany PRs or duplicate objects.
-Do not file issues/PRs while auditing
-individual slices. Partial coverage or a blocker does not unlock publication; retain
-findings locally, with security details protected. Incremental follow-up keeps its
-assigned scope, and existing submissions are not withdrawn merely for this timing rule.
+Do not publish a stream of repair findings from partial slices or narrow the assigned
+scope to publish early. A concrete actual-use question requiring maintainer agreement
+to continue investigation may be raised earlier as a discussion issue: state observed
+behavior, evidence and the exact question, without a defect verdict. This exception
+does not unlock repair publication. Security findings follow their private disclosure
+workflow. Incremental follow-up keeps its assigned scope, and existing submissions
+are not withdrawn merely for this timing rule.
 Group each repository's minor documentation errors into one errata PR;
 reuse matching issues and an open errata PR for further corrections,
 rather than splitting them by file or individual error.
@@ -185,7 +194,7 @@ and whether it can continue eligible work. Trust the clarification; do not infer
 publication, impose a quota or duplicate public objects.
 If another execution is writing the same affected file/repository, defer. Do not create chats, subagents
 or schedules implicitly.
-New repository: apply the suitability rule first. For retained targets, select the issue window by volume (90, 30, then 7 days; narrow when a window contains more than 100 issues), review issues newest first, then perform the actual code audit; remove only when complete. An explicitly assigned window takes precedence.
+New repository: apply the suitability rule first. For retained targets, select the issue window by volume (90, 30, then 7 days; narrow when a window contains more than 100 issues), classify issues newest first and audit the assigned usage/documentation scope. An explicitly assigned window takes precedence. Remove only under the completion rule in [workflows](references/workflows.md#new-repository); retained follow-up is not resolved work.
 Followed repository: new issues since the saved global time, not another full audit.
 Its approved coordinator/leaf mode reuses the same workflow: group captured issues
 by repository, dispatch only nonempty groups and let leaves assess engineering action.
