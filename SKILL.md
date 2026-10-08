@@ -5,6 +5,8 @@ description: Handle repository issues, audits, notifications and contribution fo
 
 # RepoStew
 
+Complete current canonical policy supplied inline satisfies its reading gate; read
+only missing or changed policy, while target instructions and live facts still need checking.
 Read [workflows](references/workflows.md) for execution
 and [safety](references/safety.md) before target changes or external actions.
 Read [workspace lifecycle](references/storage.md) when provisioning, finishing or
@@ -178,10 +180,11 @@ parallel leaves, use the coordinator guidance in [workflows](references/workflow
 Every assigned repository leaf follows the complete [leaf delivery](references/leaf.md)
 workflow: satisfy target rules, prefer a regular open PR when the submission gate passes,
 verify publication, finish authorized release and return facts for state.
-Every leaf dispatch must carry the communication cadence in `references/leaf.md`:
-silence routine progress, report concrete errors/blockers promptly, and return one final
-result when done. When the user changes this cadence, relay it to every active leaf and
-include the updated cadence in all future dispatches. Apply it until the user changes it.
+Fresh leaf dispatches use the [stable common prefix](references/leaf.md#dispatch-with-a-stable-common-prefix)
+with all assignment variables last. It includes the communication cadence and applicable
+return requirements; do not repeat them per repository. Same-repository continuation
+carries only deltas. When the user changes the cadence, relay it to active leaves when
+messaging is authorized and carry the override in future assignment suffixes.
 Use the leaf's lean validation: reuse unchanged same-repository facts, refresh live
 submission gates by delta, test affected scope plus mandatory requirements, combine
 the final review and establish publication once. Defect proof and full assigned audit

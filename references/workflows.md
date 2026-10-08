@@ -150,16 +150,15 @@ related code only, preserve membership and advance their source time when covere
 results have been handled or retained. Do not apply new-list removal or whole-code
 audit requirements to a followed batch. Security work has separate scope and evidence.
 
-Apply [leaf delivery](leaf.md) for every repository assignment and continuation;
-reuse available unchanged policy/evidence for the same repository instead of rereading
-or refetching everything. A fresh repository/context loads its applicable instructions.
-Every leaf dispatch must explicitly inherit the communication cadence in leaf.md:
-no routine progress reports; report errors or concrete blockers promptly when they
-need coordinator action, then provide one concise final result when done. Use this for
-all current and future leaves unless the user changes it.
-Include the user's authorized repair/publication scope and exact disposable resource
-boundary in the assignment; carry existing release authority rather than requesting
-the same approval again. Do not expand it to unrelated historical checkouts.
+Apply [leaf delivery](leaf.md) for every assignment. For fresh leaves, inline the
+[stable common prefix](leaf.md#dispatch-with-a-stable-common-prefix) in its fixed order,
+then append repository-specific scope, known facts, authority/resource boundaries and
+user overrides. The prefix carries communication and return rules; do not restate
+them per repository. Current complete inline rules need no duplicate reads; load only
+missing/changed policy and live target facts. Reuse unchanged same-repository evidence.
+Carry existing repair/publication/release authority in the suffix without asking again
+or expanding it to historical checkouts. Unknown optional metadata is established by
+the leaf, not a reason for coordinator pre-investigation.
 
 Leaves own distinct target repositories: they make authorized source/public-object
 changes, release their disposable resources and directly maintain their own state.md
@@ -167,7 +166,9 @@ and work.md. Only the coordinator edits shared membership, navigation and cross-
 read positions. It does not duplicate leaf record writes. Keep one writer per repository
 or shared file; do not dispatch the same repository twice. Keep live assignments in
 the conversation, not a new owner/claim protocol or hidden queue.
-Use fresh context for every new repository and a delta for same-repository continuation.
+Use fresh context for every new repository, with the shared policy before its assignment
+and without unrelated repository history. Same-repository continuation carries only
+work/policy deltas, not another unchanged prefix.
 Execution settings belong to the user's environment, not this skill. If requested
 parallel execution is unavailable, report the limitation without pretending to have
 started workers or silently changing the requested workflow.
@@ -205,8 +206,9 @@ record the operation result without post-release verification or capacity measur
 Read the selected list and establish scope/window once at pass entry. Reuse that
 working selection, counts, instructions and reported progress; refresh affected shared
 sections before edits or after a known selection change, not the whole workspace per leaf.
-Dispatch the repository, assigned scope/window, authority/resource boundaries and relevant
-existing facts, not a repeated investigation or long acceptance checklist.
+Keep shared policy text identical across fresh dispatches; append the repository,
+scope/window or native objects, authority/resources, relevant facts and overrides last.
+Do not repeat investigation, return checklists or policy wording in that suffix.
 Process each return once: update affected membership/navigation and progress, then refill.
 Update navigation only for affected containers, using the leaf's reported unresolved
 status and state path, without reading it back. Complete unfinished-work patrol still

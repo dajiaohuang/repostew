@@ -22,3 +22,7 @@ workspace scheduler configuration, with the configurable 1/6/24-hour baseline in
 references/patrols.md. Reuse unchanged handling and react to concrete faults, not
 routine acceptance audits. Mail is restricted to the selected folder and never sent.
 Authorized discoverer appends use a bounded single-writer window, not a lock service.
+Leaf dispatch reuses the exact current common-policy prefix in the order defined by
+references/leaf.md, with all repository/authority/resource variables appended last.
+Full inline policy satisfies reading gates; continuation sends only deltas. Keep this
+ordinary text, without prompt compilers, hashes or task protocols.

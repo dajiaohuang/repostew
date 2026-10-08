@@ -84,6 +84,8 @@ Serial by default. Explicit parallel authorization allows distinct repository le
 
 Leaves investigate, edit, validate, publish, release authorized source and write their own `state.md`/`work.md`. The coordinator writes shared lists, navigation and cross-repository positions. Trust factual returns and reported writes: no duplicate tests, remote queries or record-readback acceptance.
 
+Fresh dispatches inline current common policy in the [fixed source order](references/leaf.md#dispatch-with-a-stable-common-prefix), preserving identical prefix text before repository, kind, scope, authority, resources and existing facts. Cadence and return rules stay in that prefix; full inline policy needs no duplicate reads, and same-repository continuation sends only deltas. Refresh changed policy and verify live target facts. No prompt compiler or task protocol is needed.
+
 Missing issue/PR outcomes require asking the original leaf: supply omitted links, explain genuinely none, or continue feasible work. Intervene only on concrete failures, contradictions or collisions, preferably through the same leaf. Stop after three failed repairs of the same fault. A long task or one timeout is not failure; silent incorrect successes are not guaranteed detectable.
 
 ## Serious delivery, lean checks

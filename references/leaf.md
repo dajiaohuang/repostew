@@ -1,8 +1,8 @@
 # Single-repository delivery and release
 
-Apply this to every assigned repository. Load the policy for a new repository;
-same-repository continuation can reuse available, unchanged instructions and evidence.
-Refresh only changed or missing facts; a new context must load what it does not have.
+Apply this to every assigned repository. Complete current policy supplied inline
+satisfies its reading gate; do not reread the same files. Load missing or changed
+policy only. Same-repository continuation reuses unchanged instructions and evidence.
 Keep the skill, state and work root workspace-local; target source lives in the user's
 relative layout. No execution client, vendor, operating system or tool API is required.
 The leaf writes its own repository state.md/work.md; only the coordinator writes
@@ -54,20 +54,26 @@ The coordinator may change this cadence for a specific assignment.
    remain unchanged; rerun affected checks after relevant edits. Keep defect proof.
    Combine full diff/range, style/whitespace and public-text/security/identity review
    into one final pre-publication pass; review later changes, not unchanged material.
-3. Apply [direct claim and regular PR rules](safety.md#prefer-a-regular-open-pr). For new
-   work, claim available issues through the permitted target process; continue existing
-   submissions directly within their current scope. Prefer a normal open PR when all
-   conditions pass. Verify/create the actual contributor fork once, and reuse confirmed
-   fork, owned branch and permitted remote/base facts unless they change or an operation
-   fails. Refresh volatile base/availability facts through the pre-submission delta.
-   Push the owned branch and create the PR against the permitted base. Establish its
-   native URL, state and exact published head once from reliable operation responses
-   or one live lookup; match the expected pushed commit. Do not routinely duplicate
-   this with separate PR queries and remote-ref queries. Follow-up pushes need evidence
-   for the new head, not another verification of unchanged publication facts. Reconcile ambiguous
-   writes before retrying. Do not stop at a local commit, infer a fork prohibition from
-   upstream read-only access, or use lack of native tooling as an automatic Draft gate.
-   Missing checks are disclosed; mandatory target requirements are not waived.
+3. Deliver according to the established outcome:
+
+   - Proven ordinary error and clear correction: complete the eligible repair under
+     [direct claim and regular PR rules](safety.md#prefer-a-regular-open-pr).
+     Claim available new work through the permitted process; update existing submissions
+     directly. Prefer a regular Open PR when its gates pass; no companion issue is required.
+   - Evidenced behavior with an unsettled contract/direction: open or reuse discussion,
+     observing the earlier-question exception; no repair PR before error/correction proof.
+   - Security finding: use the authorized private disclosure/remediation path.
+   - Required evidence or submission gate unavailable: retain the concrete blocker
+     and retry condition; continue feasible independent work.
+   - No qualifying finding: report none and whether the assigned scope is complete.
+
+   Only when creating/updating a PR, establish or reuse the contributor fork, owned
+   branch and permitted remote/base. Push and establish the native URL, state and exact
+   published head once from reliable responses or one lookup. An issue has no PR head.
+   Refresh relevant volatile facts before submission; reuse unchanged publication facts.
+   Reconcile ambiguous writes before retrying. Do not stop at a local patch when eligible
+   delivery remains, infer fork restrictions from upstream read-only access, or waive
+   mandatory checks. Disclose unrun checks; missing native tooling alone is not a Draft gate.
 4. Finish [resource lifecycle](storage.md) before returning, including blocked/no-change
    work. Honor the assignment's existing release authorization and exact boundaries.
    This release flow excludes self-owned repositories. Use established delivery and
@@ -83,18 +89,14 @@ The coordinator may change this cadence for a specific assignment.
    only for actual delivery/resolution. No source-slice or unchanged-pass logs and no
    copies of the return in other ledgers. Preserve unrelated content. Read affected
    sections once before focused edits; no stale bulk overwrite.
-   Return a concise factual result: actual coverage/base/window; findings and public
-   issue/PR URLs with published heads (or explicitly none, why, and whether further
-   eligible work remains); checks run and unrun; ordinary/Draft/rejected
-   publication outcome; each resource released/retained/failed with its relative path
-   and any retention reason or actual error; no recovery copy/location is required;
-   unresolved native links, reasons and retry conditions; which record writes succeeded
-   or failed; distinguish audit coverage, contribution outcomes and resource disposition.
-   State whether assigned scope and feasible initial work are complete; report security
-   scope separately without exposing private evidence. Signal operation,
-   state-write and execution faults promptly, not only at the end; distinguish an
-   expected blocker from an error. Report deletion outcomes,
-   not measured reclaimed bytes. No terminal JSON protocol or hidden task registry.
+   Return only applicable facts: actual scope/base/window and completion; actual
+   deliveries with native links/state (head only for a created/updated PR), or explicitly
+   none and why; remaining actions/blockers and retry conditions; necessary validation
+   results/limits; resource outcomes and changed record paths or write failures.
+   Distinguish completed coverage, unresolved contributions and released/retained/failed
+   resources. Report security scope separately without private bodies or links.
+   Signal operation/write/execution faults promptly. Omit empty fields, read logs and
+   repeated evidence; use ordinary prose, no receipt/schema or measured reclaimed bytes.
 
 The coordinator trusts the return and reported writes without rereading records,
 repeating tests/audits/publication queries or requiring a proof packet. It updates
@@ -109,3 +111,36 @@ new-repository audit. Apply the [new-list completion rule](workflows.md#new-repo
 incomplete coverage or feasible initial work stays listed; reliably retained external
 follow-up after completed coverage does not reopen the audit. Continue independent repositories without
 redispatching an unchanged external blocker repeatedly.
+
+## Dispatch with a stable common prefix
+
+For authorized fresh leaves, supply current canonical text inline in this fixed order:
+[SKILL.md](../SKILL.md); this file before this dispatch section;
+[contribution standards](contribution-value.md) before the HKUDS batch section;
+[ordinary audit](audit.md); [security audit](security.md); [safety](safety.md);
+[records](records.md); [storage](storage.md); the
+[new-repository section](workflows.md#new-repository) of workflows.
+Use stable relative source labels. Reuse identical wording, order, whitespace and
+separators while policy is unchanged. Append every variable after this common text:
+repository, assignment kind, window/URLs, baseline, authority, resources, existing
+facts and scoped user/target overrides. Do not prepend dates, names, progress or
+unrelated repository history, or rebuild the rules as a per-task summary.
+
+Full current inline content satisfies the corresponding policy reads; paths or
+summaries alone do not. Read missing/changed rules and live target instructions as
+needed. Refresh the common text when policy changes; an old default does not override
+current rules. Same-repository continuation sends only the work delta and changed
+rules, without repeating an unchanged prefix. No compiler, hash registry or task protocol
+is needed. Prefix reuse is an execution optimization, not evidence of cache savings.
+
+Append a short assignment in ordinary prose, for example:
+
+> Repository: <owner/repo>. Assignment: <new audit / incremental follow-up / security>.
+> Scope: <assigned window, native links and explicit boundaries>.
+> Authority/resources: <permitted actions, actual checkout/temp and exact release authority>.
+> Existing facts/overrides: <relevant known base, unfinished work and source links>.
+
+Omit inapplicable details and avoid copied discussions/CI. The leaf establishes unknown
+base/path facts and ordinary usage scope; unspecified release authority permits no deletion.
+Communication cadence and return requirements are already in the common prefix; add
+only an explicit user override in the suffix. This template grants no new execution authority.
