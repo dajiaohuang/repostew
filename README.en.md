@@ -18,6 +18,7 @@ For example:
 
 Full audits finish the entire assigned issue review and all code before grouped delivery: combine common root causes, keep independent problems reviewable, and do not publish slice findings during the audit.
 PRs need no separate issue; reuse and link a matching issue when available, otherwise explain the error and evidence directly in the PR. Honor explicit target requirements.
+For evidenced actual-use questions needing maintainer agreement on behavior or repair direction, open or reuse a discussion issue in the target repository; establish the error before a repair PR.
 Group each repository's minor documentation errors in one errata PR; extend an open errata PR instead of splitting corrections by file or error.
 Before submission, apply the [general contribution standards](references/contribution-value.md#general-submission-standards): actual impact, clear benefit and proportionate maintenance cost.
 

@@ -12,11 +12,11 @@ actual checkout, not an assumed workspace repository. Count repository bullets,
 not header or blank lines. Use the local environment's supported commands without
 embedding client, model, operating-system or command-wrapper preferences in this skill.
 
-Every issue, PR and reassessment uses the same mandatory
-[error gate](contribution-value.md#general-submission-standards): actual supported
-use/calls must reach a concrete error, or documentation must contain a verifiable
-existing error. Apply it before publication and to existing work during feedback or
-open-object review; target policy and successful checks are additional requirements.
+Every issue, PR and reassessment follows the same
+[evidence and action rules](contribution-value.md#general-submission-standards): repair
+actual-use errors or verifiable documentation errors; open/reuse discussion issues for
+evidenced actual-use questions requiring maintainer agreement. Discussion is not defect
+proof or PR readiness. Apply target policy, security and assigned delivery timing.
 
 ## Discover and admit new repositories directly
 
@@ -352,8 +352,9 @@ pagination or revisions do not establish coverage, retain the previous position.
 
 ## Open-object patrol
 
-Reassess changed or not-yet-established necessity under the same error gate used for
-new issues/PRs. Reuse unchanged established evidence; revise useful work and handle
+Reassess changed or not-yet-established necessity under the same evidence and action
+rules used for new issues/PRs. Distinguish discussion from defect claims; reuse unchanged
+established evidence, revise useful work and handle
 unsupported reports/PRs through the bounded review and withdrawal rules in
 [contribution standards](contribution-value.md#defect-evidence-for-submission-and-reassessment).
 

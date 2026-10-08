@@ -79,10 +79,11 @@ No task owner, reservation, identity binding, capacity, access cache or receipt.
 Old-repository patrol timestamps are factual history, not an orchestration protocol or
 an inferred per-repository source cursor.
 Apply [contribution and reassessment standards](references/contribution-value.md)
-as a mandatory gate before filing issues, opening PRs and reassessing existing contributions:
-prove an error reachable through actual supported use/calls or a verifiable existing
-documentation error. Policy compliance, CI and intended improvement do not substitute
-for this gate. HKUDS selection thresholds
+before filing issues, opening PRs and reassessing existing contributions. Repairs require
+an error reachable through actual supported use/calls or a verifiable documentation error;
+evidenced actual-use questions needing maintainer agreement go to discussion issues,
+without claiming an unconfirmed defect. Policy compliance, CI and intended improvement
+do not replace error proof for a repair. HKUDS selection thresholds
 remain scoped to the user's HKUDS full-audit batch.
 Apply only the user's configured selection filters. A followed-selection filter does
 not erase the old full table or change new work or open-object patrol.

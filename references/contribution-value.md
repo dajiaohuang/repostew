@@ -3,8 +3,13 @@
 ## General submission standards
 
 Apply to new issues/PRs and existing authored contributions, independently of intake filters.
-Use one mandatory gate for filing an issue, opening a PR and reassessing existing work:
-establish an actual-use error or a verifiable documentation error before proceeding.
+Use the same evidence and action rules for new issues, PRs and reassessment.
+Repairs require an actual-use error or a verifiable documentation error. When actual
+supported use exposes a concrete behavior but the intended contract or repair direction
+needs maintainer agreement, open or reuse a discussion issue in the target repository:
+describe the trigger, observed behavior, evidence and exact question without claiming
+an unconfirmed defect. Apply target submission/security rules and assigned delivery timing.
+Proceed to a repair PR only after its error and intended correction are established.
 Passing target policy or CI does not waive this gate; Drafts have the same necessity gate.
 PRs need no separate issue. Reuse and link a matching issue when available; honor an
 explicit target requirement without inventing companion issues or duplicate reports.
@@ -19,8 +24,9 @@ formatting, optional additions and consistent standalone example names do not qu
 Group minor genuine errors into one repository errata issue/PR.
 
 Triage each candidate while auditing: establish the supported trigger and contract,
-retain a qualifying error, discard an unsupported suspicion after bounded review,
-or name the unavailable evidence and retry condition. Consolidate equivalent candidates
+retain a qualifying error, route an evidenced design/behavior question to a discussion
+issue, discard an unsupported suspicion after bounded review, or name the unavailable
+evidence and retry condition. Consolidate equivalent candidates
 as they arise; do not defer all necessity decisions until final delivery. Private
 unpublished evidence remains protected, and public withdrawals require authority.
 
@@ -43,14 +49,15 @@ unpublished evidence remains protected, and public withdrawals require authority
    authored PRs whose necessity remains unestablished, within the user's authority. State
    "necessity not established", not "no defect" or "fixed". Temporarily inaccessible
    required evidence retains its concrete blocker and retry condition; it is not a defect verdict.
-5. Before filing an issue, establish the trigger, actual/expected behavior, impact and
-   evidence, or the exact documentation error and its authoritative correction.
+5. A defect issue states the trigger, actual/expected behavior, impact and evidence,
+   or the exact documentation error and authoritative correction. A discussion issue
+   states evidenced actual behavior and the unresolved question; it is not a defect verdict.
    Before opening a PR, verify that it fixes that same established error completely;
    describe the minimal change, validation and remaining limits. Without an issue,
    include the trigger/error evidence directly in the PR. Reassessment applies
    the same gate to the current base and diff, including inherited issues and patches;
-   correct or withdraw unsupported defect reports within authority rather than keeping
-   them to justify a PR. Follow
+   distinguish legitimate discussion from unsupported defect claims; correct or withdraw
+   the latter within authority rather than keeping them to justify a PR. Follow
    [direct claim and Open PR rules](safety.md#prefer-a-regular-open-pr).
 
 Artificial bad data, isolated helper calls, representation changes, green CI and prior
