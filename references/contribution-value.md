@@ -3,19 +3,24 @@
 ## General submission standards
 
 Apply to new issues/PRs and existing authored contributions, independently of intake filters.
-Prioritize concrete failures in supported use; choose the smallest complete compatible
-repair whose benefit justifies its maintenance and review cost.
+Only submit or retain defect repairs for concrete errors reachable through actual
+supported use and calls. Establish that trigger before choosing the smallest complete
+compatible repair; hypothetical risk or cleaner implementation is insufficient.
 
-Documentation repairs correct misleading facts, commands, paths, links, API usage or
-example behavior. Use authoritative sources and group minor errors into one repository
-errata issue/PR. Internally consistent standalone examples need not share names.
+Documentation repairs must correct a verifiable existing error in facts, commands,
+paths, links, API usage or examples. Identify the erroneous statement or instruction
+and prove the correction against authoritative sources or actual behavior. Wording,
+formatting, optional additions and consistent standalone example names do not qualify.
+Group minor genuine errors into one repository errata issue/PR.
 
 ## Defect evidence for submission and reassessment
 
-1. Trace actual use: supported input/configuration → production call or documented
+1. Require a reachable actual-use chain: supported input/configuration → production call or documented
    public API → concrete error → violated existing contract. Check upstream/downstream
-   consumers, state transitions and final results; use reproduction or strong source proof.
-   A documented public API needs no in-repository caller. Invalid input is relevant
+   consumers, state transitions and final results. Reproduction or strong source proof
+   must establish the complete trigger and error, not merely suspicious code.
+   A documented public API needs no in-repository caller, but requires a concrete supported
+   invocation that reaches the error. Invalid input is relevant
    when validation, rejection or recovery is an explicit contract.
 2. Restore intended behavior across the affected path, following project design,
    compatibility and applicable maintainer direction. For full-audit assignments, finish
