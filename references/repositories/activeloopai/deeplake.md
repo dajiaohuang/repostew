@@ -1,0 +1,13 @@
+# activeloopai/deeplake
+
+Lessons distilled from October 2026 feedback. Apply only to the stated direction;
+recheck current contribution policy and volatile facts. These are not current PR
+status or maintainer authority. See the [reference scope](../README.md).
+
+- The corresponding retry review repeats the need for real imported-module tests and bounded failure for an all-invalid dataset; treat equivalent retry candidates together rather than as unrelated fixes. [Feedback #3194](https://github.com/activeloopai/deeplake/pull/3194#pullrequestreview-5394526311).
+- Cancellation semantics need the actual promise/set_value path, waiter notification and callback behavior. Silently discarding results is not automatically correct for every caller. [Feedback #3234](https://github.com/activeloopai/deeplake/pull/3234).
+- Bound retries after reproducing the invalid-sample failure and all-invalid termination. Test normal module imports rather than extracting and executing source snippets. [Feedback #3196](https://github.com/activeloopai/deeplake/pull/3196).
+- Sparse-filter cardinality is not the highest index bound; use real column/filter paths. Removing a break requires evidence that duplicate view indices are actually reachable. [Feedback #3176](https://github.com/activeloopai/deeplake/pull/3176).
+- The project review identifies this public tree as a snapshot: verify canonical-source applicability before pursuing equivalent fixes. Specific removed/already-fixed paths were recommended for withdrawal; this does not reject all external contributions. [Source](https://github.com/activeloopai/deeplake/pull/3174#issuecomment-6022373851).
+- Do not assume PostgreSQL btree ordering for the project's own `deeplake_index` access method; a comparator rewrite can change its intended element-wise contract. The review also says current conversion rejects NULL elements before comparison. [Review](https://github.com/activeloopai/deeplake/pull/3251#pullrequestreview-5432683465), [current-source clarification](https://github.com/activeloopai/deeplake/pull/3251#issuecomment-6022446766).
+- Source approval does not approve standalone test executables or `#define private public`/prebuilt-SDK workarounds. Use the actual gtest harness in the canonical tree; retain component proof privately when that tree is unavailable. The project review intends to carry gtests for the accepted filtered-view and cancellation fixes. [Filtered view](https://github.com/activeloopai/deeplake/pull/3176#pullrequestreview-5432654779), [cancellation](https://github.com/activeloopai/deeplake/pull/3234#pullrequestreview-5432654552).

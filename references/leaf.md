@@ -9,6 +9,15 @@ The leaf writes its own repository state.md/work.md; only the coordinator writes
 shared membership, navigation and cross-repository positions. Never write another
 leaf's repository or a shared file; defer known conflicting same-repository writes.
 
+## Coordinator updates
+
+Stay quiet during routine progress. Do not send interim findings, counts, PR status,
+or unchanged updates to the coordinator. Report an error or concrete blocker promptly
+when it affects safe continuation, requires coordinator action, or leaves work unusable.
+Otherwise, send one concise final result when the assigned work is complete; if a
+concrete blocker prevents completion, report the blocker and exact remaining scope.
+The coordinator may change this cadence for a specific assignment.
+
 ## Complete the assigned work
 
 1. Read live target instructions, contribution rules, templates and disclosure policy
@@ -16,14 +25,29 @@ leaf's repository or a shared file; defer known conflicting same-repository writ
    adapt at a restriction, not after a batched broad content read. Within the same
    repository, reuse the read version and refresh only
    relevant changed instructions, changed scope/base or newly applicable nested rules.
-   Establish the permitted current base, issue window and actual existing checkout.
+   Establish the permitted current base and actual existing checkout. Use an explicitly
+   assigned issue window when present; otherwise start with 90 days and count distinct
+   issues (excluding PRs), narrowing to 30 days above 100 and then to 7 days if the
+   30-day count still exceeds 100. Seven days is the minimum; handle every issue if
+   that window still exceeds 100. Retain exact UTC boundaries; keep counts when needed
+   to establish capture completeness or window selection. Review issues
+   newest-created first, with complete pagination and native timestamps.
    Inspect prior work before reuse; preserve unrelated edits. New repositories require
    complete recent-issue handling and actual code audit, not only a candidate patch.
+   Apply [full audit before grouped delivery](../SKILL.md#full-audit-before-grouped-delivery):
+   finish the whole assigned issue review and all code before publishing new findings;
+   retain candidates locally until consolidated delivery, not a stream of slice findings.
+   Combine the same root cause/fix in one issue/PR; submit independent problems in
+   separate linked issues/PRs. Every repair PR links a corresponding issue;
+   reuse a matching issue or create one before the PR, without duplicating reports.
+   Minor documentation errors share one repository errata PR and corresponding issue;
+   reuse an open errata PR rather than submitting individual corrections.
    Followed/continuation work uses its assigned scope without an unrequested full audit.
 2. Initially reconcile current issues, discussions, relevant all-state PRs, claims and
    current-base fixes. Before submission, refresh changes since that inspection rather
    than fetching the same complete history again. If no reliable delta is available,
    reread only the affected objects and current submission gates.
+   Apply the [actual-use and reassessment standards](contribution-value.md#defect-evidence-for-submission-and-reassessment).
    Prove the actual defect and implement the smallest compatible change. Correct an
    ineffective inherited patch instead of pushing it to satisfy a submission count.
    Add behavior evidence or appropriate configuration/document checks. Run checks for
@@ -33,7 +57,8 @@ leaf's repository or a shared file; defer known conflicting same-repository writ
    remain unchanged; rerun affected checks after relevant edits. Keep defect proof.
    Combine full diff/range, style/whitespace and public-text/security/identity review
    into one final pre-publication pass; review later changes, not unchanged material.
-3. Apply [the regular PR and Draft gates](safety.md). Prefer a normal open PR when all
+3. Apply [direct claim and regular PR rules](safety.md#prefer-a-regular-open-pr). Claim
+   available issues through the permitted target process; prefer a normal open PR when all
    conditions pass. Verify/create the actual contributor fork once, and reuse confirmed
    fork, owned branch and permitted remote/base facts unless they change or an operation
    fails. Refresh volatile base/availability facts through the pre-submission delta.
@@ -55,9 +80,11 @@ leaf's repository or a shared file; defer known conflicting same-repository writ
    size survey, disk-space detection or virtual-disk measurement. Never delete the
    repository container, state.md/work.md, remote contribution refs, private or existing
    recovery material. Waiting for merge/CI is not a source-retention requirement.
-5. Write the repository's state.md and short work.md directly, recording actual
-   coverage, unresolved links/reasons and resource outcomes while preserving unrelated
-   content. Read affected sections once before focused edits; no stale bulk overwrite.
+5. Apply [minimal records](records.md): update state only for changed current coverage,
+   unfinished actions, constraints or resource outcomes; write one short history line
+   only for actual delivery/resolution. No source-slice or unchanged-pass logs and no
+   copies of the return in other ledgers. Preserve unrelated content. Read affected
+   sections once before focused edits; no stale bulk overwrite.
    Return a concise factual result: actual coverage/base/window; findings and public
    issue/PR URLs with published heads (or explicitly none, why, and whether further
    eligible work remains); checks run and unrun; ordinary/Draft/rejected
@@ -78,6 +105,6 @@ Missing issue/PR outcomes trigger a short same-leaf clarification, not inferred
 no-change or a duplicate search. Supply omitted links or explain why there are none;
 continue feasible authorized work when asked rather than stopping at a local artifact.
 Submitted is not merged; released is not validated; an open PR does not prove a complete
-new-repository audit. Remove new-list membership only when the whole assigned issue
+new-repository audit. Apart from a confirmed suitability skip, remove new-list membership only when the whole assigned issue
 work and audit are genuinely complete. Continue independent repositories without
 redispatching an unchanged external blocker repeatedly.

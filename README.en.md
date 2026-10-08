@@ -16,6 +16,11 @@ For example:
 
 > Read RepoStew_skills/SKILL.md and handle repositories in the new list. Process issues in the assigned window, then audit actual code. Respect target rules and submit regular open PRs when eligible. Finish authorized source release and repository records; retain incomplete work with reasons instead of claiming completion.
 
+Full audits finish the entire assigned issue review and all code before grouped delivery: combine common root causes, keep independent problems reviewable, and do not publish slice findings during the audit.
+Every repair PR links a corresponding issue; reuse an existing issue or create one first when none matches.
+Group each repository's minor documentation errors in one errata PR and corresponding issue; extend an open errata PR instead of splitting corrections by file or error.
+Before submission, apply the [general contribution standards](references/contribution-value.md#general-submission-standards): actual impact, clear benefit and proportionate maintenance cost.
+
 The Skill defines the method; the execution environment supplies repository, mail, file and scheduling tools. Saving instructions does not start jobs, create chats or resume paused schedules.
 
 ## State is Markdown in directories
@@ -45,23 +50,30 @@ Three membership lists select repositories and entry points:
 
 | List | Purpose |
 | --- | --- |
-| `new-repositories.md` | Pending new repositories; remove only after recent issues and actual full code audit are complete |
+| `new-repositories.md` | Pending new repositories; remove evidenced unsuitable targets, otherwise finish recent issues and actual full code audit |
 | `old-repositories.md` | Full historical old membership; repository names, not duplicated status |
 | `followed-repositories.md` | Named, overlapping groups; scan their deduplicated union |
 
+Resource lists, awesome collections and documentation repositories are eligible for document repairs. Skip this category only for explicit refusal of external PRs or a forbidden submission method, not lack of software maintenance, activity or previous outside merges. Review documents, links, examples, structure and relevant automation; reuse prior coverage and retain concrete submission blockers.
+
 Each repository's `state.md` alone holds evidenced patrol scope, time and boundary, unfinished native links with short reasons, and local resource outcomes. `work.md` briefly records issues handled, PRs submitted or followed up, and known dates/results.
+General lessons become shared skill rules; repository lessons live in `references/repositories/<owner>/<repo>.md` with scope and sources, read on demand. Current facts stay in state; raw interactions remain at native sources or in authorized private archives.
+
+Feedback is distilled into [repository references](references/repositories/README.md) and [five shared review rules](references/safety.md#feedback-derived-review-rules): contract evidence, complete paths, real regressions, lifecycle and uncertainty, and feedback scope.
+
+Use [minimal records](references/records.md): write only material changes, one line per unfinished action or actual delivery, and scoped maintainer constraints with source links. Retrieve details from GitHub when needed. Omit empty sections, source-read logs, unchanged patrol entries and parallel progress diaries. Explicitly requested, private or irreplaceable evidence has one canonical raw copy.
 
 The central `unfinished.md` only links to repository records. A complete unfinished-work patrol enumerates every container-root state, including nonmembers, excluding source, temporary trees and recovery archives. Read discussions, reviews, CI and mail bodies live; do not mirror an interaction database or invent missing facts.
 
 ## Discovery through delivery
 
-Authorized Trending entries, awesome-list repositories and their linked projects enter the new list directly after identity, approved filters and deduplication. No pre-admission clone, relevance judgment, issue investigation or code audit. Existing repositories continue their scope without resetting progress or automatic following. Expand list-to-list links in bounded, cycle-free batches, not ordinary project dependencies.
+Authorized Trending entries, awesome-list repositories and their linked projects enter the new list after identity, approved filters, the [contribution suitability rule](SKILL.md#skip-unsuitable-contribution-targets) and deduplication. Use lightweight policy, purpose and maintenance evidence without cloning or auditing. Existing repositories continue their scope without resetting progress or automatic following. Unsuitable list repositories can still serve as discovery sources. Expand list-to-list links in bounded, cycle-free batches, not ordinary project dependencies.
 
 New repositories and followed new issues reuse one [coordinator](references/workflows.md#explicitly-requested-coordinator-and-leaves) and [leaf delivery flow](references/leaf.md). Only scope and completion effects differ:
 
 | Entry point | Leaf assignment | Completion effect |
 | --- | --- | --- |
-| New repository | Complete recent-issue handling plus actual full code audit | Remove new membership only when both are complete |
+| New repository | Suitability first; retained targets receive complete recent-issue handling plus actual full code audit | Remove evidenced unsuitable targets with a reason; otherwise complete both scopes |
 | Followed new issues | This batch of issues and related code | Preserve membership; advance scan time after full capture and handling or retention |
 
 Serial by default. Explicit parallel authorization allows distinct repository leaves; the coordinator captures, deduplicates, groups, dispatches and refills without duplicating engineering investigation. No new issues means no leaf. One writer per repository. A discoverer authorized to append directly arranges a bounded append window with the coordinator, not a lock service.
@@ -78,7 +90,7 @@ Reuse unchanged same-repository facts; refresh relevant deltas before submission
 
 Prefer regular open PRs when eligible, not a local patch, commit or fork as the endpoint. Draft requires a concrete remaining uncertainty. Missing local native tools do not automatically require Draft, and mandatory target prerequisites still apply. No fabricated findings or submission quotas; no default CI/merge wait.
 
-Every repository pass—including unchanged or blocked work—records resource disposition. For external contribution source, satisfy existing authorization, delivery and non-use gates, delete only named `checkout/`/`temp/` and record the operation result. No new recovery copies, unique/unknown-data inventory, post-delete verification or disk-space measurement. Preserve known undelivered/active/unrelated material, permanent records and existing archives. Self-owned repositories are excluded; do not clean Go caches/toolchains. Submission, coverage, resolution and release are separate facts.
+Every repository pass—including unchanged or blocked work—decides resource disposition. Update the current resource line only when its outcome changes; do not append unchanged entries. For external contribution source, satisfy existing authorization, delivery and non-use gates, delete only named `checkout/`/`temp/` and record the operation result. No new recovery copies, unique/unknown-data inventory, post-delete verification or disk-space measurement. Preserve known undelivered/active/unrelated material, permanent records and existing archives. Self-owned repositories are excluded; do not clean Go caches/toolchains. Submission, coverage, resolution and release are separate facts.
 
 ## Three complementary patrols
 

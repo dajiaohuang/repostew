@@ -49,6 +49,8 @@ have CI finished before source deletion; engineering and source disposition stay
    independently recheck path disappearance, Git registrations, archive usability,
    logical size, free space or virtual-disk allocation. The coordinator records this
    result without repeating those checks. Do not claim measured reclaimed bytes.
+   Apply [minimal records](records.md): replace the affected current resource line;
+   unchanged retained resources need no new dated paragraph or work entry.
 
 An error or ambiguous result is not successful deletion; handle the concrete failure
 without an unconditional success audit or repeated blind deletion. Historic archives

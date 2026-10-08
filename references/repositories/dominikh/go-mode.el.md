@@ -1,0 +1,3 @@
+# dominikh/go-mode.el
+
+Before proposing changes to `go-rename.el`, check the maintainer's removal direction. On [issue #452](https://github.com/dominikh/go-mode.el/issues/452#issuecomment-5998327032), the maintainer said `go-rename` is slated for removal and linked [issue #442](https://github.com/dominikh/go-mode.el/issues/442#issuecomment-2711446762), where the maintainer said deleting `go-rename.el` is the remaining action. Do not submit fixes limited to this retiring command unless the maintainer changes direction or the work supports its removal/migration. This guidance is scoped to `go-rename`; it does not reject unrelated `go-mode.el` fixes.

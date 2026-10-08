@@ -9,6 +9,9 @@ Read [workflows](references/workflows.md) for execution
 and [safety](references/safety.md) before target changes or external actions.
 Read [workspace lifecycle](references/storage.md) when provisioning, finishing or
 releasing a repository checkout.
+Apply [minimal records](references/records.md) to every state/history write and
+continuation: write only material changes, prefer live GitHub details, and keep no
+parallel progress diaries.
 
 ## Portable workspace layout
 
@@ -50,6 +53,18 @@ Missing evidence remains unknown. Resolve an item only after actual resolution.
 was submitted or followed up, and the actual result/date when known. It is not a task
 queue, permission cache, source cursor or mirror of interactions. Do not invent a
 work history from a migrated status or an object link alone.
+Keep current unfinished objects to one actionable line each; omit empty sections.
+Record actual deliveries in one short history line. Replace superseded current facts
+instead of appending slice/patrol/CI narratives. No material change means no write.
+Distill general lessons into shared skill rules. Keep reusable repository-specific
+contribution directions, validation requirements and pitfalls in
+`references/repositories/<owner>/<repo>.md`, with exact scope and source links.
+Use the [repository reference index](references/repositories/README.md) to locate
+feedback lessons and apply the [shared review rules](references/safety.md#feedback-derived-review-rules).
+Read only the relevant reference and recheck volatile facts; experience is not current
+status or authority. State keeps pending work, coverage, positions and resource facts;
+work.md keeps actual deliveries. Raw interactions stay on native sources or in an
+authorized private archive, without duplicate transcripts.
 Membership files alone select/classify repositories; they do not repeat per-repository
 status. A summary view can be stale: enumerate repository `state.md` files for a
 complete unfinished-work patrol, including containers absent from membership lists.
@@ -63,12 +78,64 @@ repository records or summary views.
 No task owner, reservation, identity binding, capacity, access cache or receipt.
 Old-repository patrol timestamps are factual history, not an orchestration protocol or
 an inferred per-repository source cursor.
+Apply [contribution and reassessment standards](references/contribution-value.md)
+to new issues/PRs and existing authored contributions. HKUDS selection thresholds
+remain scoped to the user's HKUDS full-audit batch.
 Apply only the user's configured selection filters. A followed-selection filter does
 not erase the old full table or change new work or open-object patrol.
 For authorized discovery, use [direct admission](references/workflows.md#discover-and-admit-new-repositories-directly):
 real identity, approved filters and deduplication, then append new repositories.
-No extra description/relevance screen, clone, issue investigation or code audit at
-intake. Existing repositories continue their own scope; intake does not auto-follow.
+Apply the suitability rule below before admission or new-repository work; do not
+clone or audit to decide suitability. Existing repositories continue their own
+scope; intake does not auto-follow.
+
+## Skip unsuitable contribution targets
+
+For resource lists, awesome collections, bibliographies, prompt/configuration
+collections and documentation targets, skip only on explicit refusal of external PRs
+or a target rule forbidding the proposed submission method. No software maintenance,
+inactivity or missing outside merges is not a skip reason for this category. Preserve
+scoped refusals: rejecting promotional additions does not reject document repairs.
+Archived/read-only/unavailable sources without refusal remain with concrete blockers.
+
+For other targets, use current policy, project purpose, substantive development and
+maintainer handling of outside contributions. Skip when evidenced:
+
+- Archived, retired, read-only mirror, or the target refuses this contribution method.
+- Mainly a course, personal configuration, showcase or one-off paper/experiment,
+  without continuing software maintenance and reception of outside contributions.
+- No substantive development and no maintainer handling of outside contributions
+  for a year; automated updates and our own submissions do not count as activity.
+
+Unknown stays pending. Low stars, expensive validation, a new unmerged PR, a single
+rejection or requested revisions alone do not disqualify a repository. Existing
+acceptance evidence matters; do not ban every research or educational project.
+A mirror flag alone does not prove read-only; verify its contribution route.
+Review maintained documents, links, examples, organization and relevant automation;
+review code where present without inventing a software surface for a documentation
+repository. Correct older list-only/inactivity skips and restore unfinished membership
+through its current coordinator. Preserve historical withdrawals; do not reopen public
+objects or claim completed audits merely because selection policy changed.
+On a confirmed skip, record the reason/source in repository state.md and remove new
+membership and the assigned shard entry without a full audit; do not mark it audited
+or alter historical/followed membership. Coordinate active writers first. Close only
+our unmerged PRs/issues when withdrawal is authorized; preserve others' objects,
+accepted work, records and resources, and apply the storage disposition check.
+
+## Full audit before grouped delivery
+
+For a full-audit assignment, finish the entire assigned issue review and all applicable code/documentation
+before publishing new findings. Then present findings as distinct points and deliver
+them together: combine the same root cause/fix in one issue/PR, submit independent
+problems in separate linked issues/PRs, and remove duplicates/non-defects. Every repair
+PR links a corresponding issue. Reuse matching existing objects instead of duplicating
+them. Do not file issues/PRs while auditing
+individual slices. Partial coverage or a blocker does not unlock publication; retain
+findings locally, with security details protected. Incremental follow-up keeps its
+assigned scope, and existing submissions are not withdrawn merely for this timing rule.
+Group each repository's minor documentation errors into one errata PR with a
+corresponding issue; reuse matching issues and an open errata PR for further corrections,
+rather than splitting them by file or individual error.
 
 Immediately before a bounded batch of state edits, read affected sections once and
 preserve unrelated lines. Reread after an intervening change or another writer;
@@ -97,6 +164,10 @@ parallel leaves, use the coordinator guidance in [workflows](references/workflow
 Every assigned repository leaf follows the complete [leaf delivery](references/leaf.md)
 workflow: satisfy target rules, prefer a regular open PR when the submission gate passes,
 verify publication, finish authorized release and return facts for state.
+Every leaf dispatch must carry the communication cadence in `references/leaf.md`:
+silence routine progress, report concrete errors/blockers promptly, and return one final
+result when done. When the user changes this cadence, relay it to every active leaf and
+include the updated cadence in all future dispatches. Apply it until the user changes it.
 Use the leaf's lean validation: reuse unchanged same-repository facts, refresh live
 submission gates by delta, test affected scope plus mandatory requirements, combine
 the final review and establish publication once. Defect proof and full assigned audit
@@ -109,7 +180,7 @@ and whether it can continue eligible work. Trust the clarification; do not infer
 publication, impose a quota or duplicate public objects.
 If another execution is writing the same affected file/repository, defer. Do not create chats, subagents
 or schedules implicitly.
-New repository: recent issue work, then actual code audit; remove only when complete.
+New repository: apply the suitability rule first. For retained targets, select the issue window by volume (90, 30, then 7 days; narrow when a window contains more than 100 issues), review issues newest first, then perform the actual code audit; remove only when complete. An explicitly assigned window takes precedence.
 Followed repository: new issues since the saved global time, not another full audit.
 Its approved coordinator/leaf mode reuses the same workflow: group captured issues
 by repository, dispatch only nonempty groups and let leaves assess engineering action.
