@@ -1,140 +1,44 @@
 # RepoStew
 
-把开源贡献做完，也把后续维护接起来。
+面向多 agent harness 的仓库维护 Skill。Coordinator 按范围与权限组装 Worker；直接读写 Markdown，默认串行。
 
-RepoStew 是一套可移植的仓库维护 Skill：发现新库、处理 issue、审计代码、修复与验证、提交 PR，并继续处理评审、CI 和未完成事项。执行者直接读写 Markdown；不需要额外运行脚本、数据库、任务协议或协调服务，也不绑定执行客户端、模型供应商或操作系统。
+[English](README.en.md) · [完整入口](SKILL.md) · [网站](https://dajiaohuang.github.io/RepoStew_skills/)
 
-[English](README.en.md) · [Skill](SKILL.md) · [项目网站](https://dajiaohuang.github.io/RepoStew_skills/)
+## 全部流程
 
-## 从这里开始
+1. **准备与组装**：确定目标、范围、已有工作、权限和资源；[Coordinator](roles/coordinator.md) 按
+   [组装规则](references/worker-assembly.md) 选择形态与方法，用 [prompt](prompts/README.md) 指派
+   [Worker](roles/worker.md)。[Harness](references/harness.md) 承载执行；[协作](references/orchestration.md)
+   一次派发、等待结果、整合、增量续办、必要交接与局部恢复。
+2. **选择形态**：[发现入库](references/work-forms/discovery.md)、[新库审计](references/work-forms/new-repository.md)、
+   [投稿复审](references/work-forms/contribution-reassessment.md)、[增量反馈](references/work-forms/incremental-feedback.md)、
+   [持续巡查](references/work-forms/recurring-patrol.md)。增量来源为
+   [关注新 issue](references/workflows/followed-issues.md)、[通知／选定邮件](references/workflows/notifications.md)、
+   [开放／未完成对象](references/workflows/open-objects.md)；分别抓取、去重、保留位置。
+3. **调查**：[实际使用与文档查错](references/audit.md)，按 [贡献门槛](references/contribution-value.md) 证明错误；
+   有证据但契约未定时讨论；[安全调查与私密披露](references/security.md) 独立处理。完成审计范围后集中交付。
+4. **交付与跟进**：[最小修复、验证、投稿](references/workflows/delivery.md)，遵守 [目标与安全门槛](references/safety.md)；
+   处理反馈、合并同根因、在授权内撤回。优先普通 Open PR；无合格发现可直接结束。
+5. **记录与收尾**：[极简记录／授权迁移](references/records.md)、[历史核对／恢复／重分类](references/workflows/history.md)、
+   [请求后的审阅备份](references/workflows/records-and-backup.md)、[源码准备与资源处置](references/storage.md)。
+   覆盖、交付、解决和释放分别记录。
 
-1. 将此仓库放在工作区的 `RepoStew_skills/`，按下方布局准备名单和记录目录。
-2. 在工作区约定筛选范围、近期 issue 时间窗口、维护权限及可释放目录；首次扫描没有读取位置时，明确起始时间。
-3. 让执行者读取 [SKILL.md](SKILL.md)，指定本次入口与行动范围。需要并行或定时执行时，再明确授权执行方式、数量和周期。
+## 必须保留的边界
 
-例如：
+- 修复必须有实际错误；禁止防御性编程，内部信任契约、源头修错，必要边界校验保留。
+- 文件可读就按需读取；否则传完整适用正文。角色在 roles/，模板在 prompts/，专项规则在
+  [references/forges/](references/forges/README.md) 保存原生 CLI 映射及仓库规则；不复制政策或给每个 Worker 装载全部方法。
+- Worker 写本库记录，Coordinator 写共享名单／位置；同文件单写入者。先完成指定投稿复审，再补入新库。
+- 并行、调度、公共操作、撤回和清理只按授权；保留脏／未推送／未知／私密数据及恢复材料。
+- [巡查配置](references/patrols.md) 不代表执行完成；暂停任务保持暂停。只读选定邮件，不发邮件，不改已读／订阅。
+- 复用未变证据，必要检查照做；不例行回读验收、轮询进度或新增 PR 审查阶段。资源检查不授予删除权限。
 
-> 读取 RepoStew_skills/SKILL.md，处理新库名单中的仓库。完整抓取、分类指定窗口的 issue，沿约定的实际使用和调用链查错，并核对真正的文档错误；遵守目标库规则，符合门槛时提交普通 open PR。完成授权的源码释放并写入每库记录；未完成的保留具体原因。
+## 使用
 
-普通审计按[实际使用路径与文档事实](references/audit.md)覆盖约定范围，不默认逐文件通读；明确要求全源码审查的任务仍按原范围完成。[安全审计](references/security.md)独立评估部署、攻击者能力、信任边界与安全影响，走私密披露流程。
-完成指定 issue 分类与使用/文档范围后集中交付修复；同根因合并，独立问题分别评审，不连续发布切片发现。
-PR 不强制关联 issue；有匹配 issue 就复用和关联，没有也可直接开 PR，在正文说明错误与证据，并遵守目标库明确要求。
-实际使用中有证据、但需维护者确认预期行为或修复方向的问题，在目标库开或复用讨论 issue；为继续调查所必需的具体问题可以提前提出，说明已知行为和待确认点。确认真实错误与修复方向后再提交修复 PR。
-每库的小型文档错误集中到一个勘误 PR；已有开放勘误 PR 就继续补充，不按文件或单条错误拆分。
-提交前按[通用贡献标准](references/contribution-value.md#general-submission-standards)证明实际使用错误或可验证的现有文档错误，再确认修复影响与相称的维护代价；收益或更整洁的实现不能代替错误证据。
+使用工作区 RepoStew_skills/ 或 [Codex/Claude/Pi/OMP 接入包](integrations/README.md)。
+优先适配 [Pi 工作区绑定](references/harnesses/pi.md) 与 [Codex 原生 Worker](references/harnesses/codex.md)，复用官方执行能力。
+state/、work/<owner>/<repo>/ 和 MAINTAINED_REPOSITORIES.md 保留在所选工作区。
+[工作区布局](references/workspace.md) 定义成员名单、独立读取位置、每库 state.md/work.md 与 checkout/temp。
+读取 SKILL.md，指定本次范围与权限；具体 harness 的能力需实际验证，规则不自动创建任务或计划。
 
-Skill 定义方法，执行环境提供仓库、邮件、文件及调度工具。保存规则不会自动启动任务、创建对话或恢复暂停的计划。
-
-## 状态是目录里的 Markdown
-
-所有工作路径从工作区根目录解析，文档链接从所在文件解析；进入目标仓库后也不改变这个基准。没有机器绝对路径。
-
-```text
-workspace/
-├── RepoStew_skills/          Skill 与参考规则
-├── state/
-│   ├── new-repositories.md
-│   ├── old-repositories.md
-│   ├── followed-repositories.md
-│   ├── unfinished.md        仅导航，不是工程状态
-│   ├── read-positions.md
-│   └── private/
-│       └── mail-position.md 私密，不同步
-├── work/<owner>/<repo>/
-│   ├── state.md             本库事实与未完成事项
-│   ├── work.md              简短贡献记录
-│   ├── checkout/            可处置源码
-│   └── temp/                可选临时材料
-└── MAINTAINED_REPOSITORIES.md 维护权限输入
-```
-
-三个成员名单只决定“哪些仓库、走哪个入口”：
-
-| 名单 | 用途 |
-| --- | --- |
-| `new-repositories.md` | 待处理新库；适配跳过或完成约定审计与可推进初始工作后移除，外部后续待办保留在每库记录 |
-| `old-repositories.md` | 完整历史旧库成员，只保存仓库名，不重复存状态 |
-| `followed-repositories.md` | 标题分组的关注名单，允许重合；扫描去重后的并集 |
-
-资源清单、awesome、资料与文档仓库可以做文档修复。这类仅在明确拒绝外部 PR 或禁止本次投稿方式时跳过；不能因无软件维护、不活跃或无外部合入而排除。审阅文档、链接、示例、组织与相关自动化，并复用已有覆盖；投稿暂不可用时保留具体阻塞。
-
-每库 `state.md` 是巡检范围、时间与覆盖边界、未完成原生链接和一句原因、本地资源结果的唯一权威。`work.md` 只简记实际做了什么 issue、发了或跟进了什么 PR，以及已知日期和结果。
-通用经验提炼为 skill 公共规则；逐库经验存于 `references/repositories/<owner>/<repo>.md`，附适用范围与来源，按需读取。当前操作事实留在 state，交互原文回原生来源或授权私密归档查。
-
-已归纳负面反馈的[逐库参考](references/repositories/README.md)与[公共审查规则](references/safety.md#feedback-derived-review-rules)，按相关契约读取，不扩大本次范围。
-
-采用[极简记录制度](references/records.md)：只在实质变化时写入；待办一项一行，实际交付一行历史，长期维护者约束附原始链接。细节需要时回 GitHub 查，不写阅读切片、无变化巡查或平行进度账；空章节省略。私密或不可替代证据、明确要求归档的反馈只保留一份原文。
-
-中央 `unfinished.md` 只是到每库状态的导航。完整未完成巡检要枚举所有仓库容器的状态，包括不在成员名单中的库，排除源码、临时目录和恢复归档。讨论、review、CI 和邮件正文实时读取，不复制成交互数据库；未知事实保持未知。
-
-## 从发现到交付
-
-获授权的 Trending、awesome 清单库及清单内项目，确认真实身份、应用已有筛选和 [贡献适配规则](SKILL.md#skip-unsuitable-contribution-targets)、去重后直接追加新库名单末尾。仅轻量核对政策、用途和维护活动，不提前克隆或审计；已有仓库接续原范围，不重置进度、不自动关注。清单库即使不适合贡献，仍可用于发现项目。清单之间有界扩展、防循环，不递归追普通项目依赖。
-
-新库审计、旧库投稿复审与增量反馈共用一套 [协调者规则](references/workflows.md#explicitly-requested-coordinator-and-leaves) 和 [leaf 交付流程](references/leaf.md)，按用户范围及真实投稿历史分流：
-
-| 入口 | Leaf 的工作 | 完成效果 |
-| --- | --- | --- |
-| 新库 | 判断贡献适配；分类完整近期 issue，审计约定使用路径与文档事实 | 按完成规则移出初始审计名单；外部阻塞保留待办与重试条件 |
-| 已做过的库，指定复审已有投稿 | [完整枚举本人 issue/PR，处理反馈、修正、合并与授权关闭](references/reassessment.md) | 每项有依据的处置，可推进工作做完；真实讨论与外部阻塞保留 |
-| 关注库新 issue | 本批新 issue 与相关代码 | 不改成员名单；完整抓取且处理或保留后推进扫描时间 |
-
-固定本次范围与基线，提交前补查相关变化。区分审计覆盖、贡献结果与资源处置：覆盖未完成或仍有可推进的初始工作则保留新库成员；完成覆盖后的评审、CI、维护者决定或外部交付门槛留作后续跟进，不视为已解决，也不重复整库审计。
-
-默认串行。明确授权并行时，每库一个 leaf；协调者只抓取、去重、分流、分派和补位，不重复工程调查。关注新 issue 批次为空就不开 leaf；投稿复审不以新 issue 为前提。同库单写入者，多个分片的共享文件写入由约定的单写入者或串行窗口处理，不引入锁服务。规则或类型改变先交给原 leaf；完成整个选定分片，不以当前 leaf 收尾冒充完成。
-
-Leaf 自行调查、修改、验证、投稿、处置源码，并直接写本库 `state.md`／`work.md`。协调者只写共享名单、导航和跨库读取位置，默认信任 leaf 返回及已报告写入，不重复测试、查远端或回读验收。
-
-新 leaf 的指派按[固定顺序](references/leaf.md#dispatch-with-a-stable-common-prefix)原文内联当前公共规则，保持共同前缀一致，再追加仓库、类型、范围、授权、资源和已有事实。前缀包含沟通与返回要求，不逐库重写；完整内联规则不用重读，同库续办只传变化。规则更新才刷新前缀，目标政策与实时事实仍须核实；不需要生成脚本或任务协议。
-
-新库与复审 leaf 共用前缀；协调者也把公共规则放在全部分片变量之前。复审只保留实际使用可触发的修复和真正文档错误：有用但修错的继续修正，同根因及小型文档勘误合并后再关闭冗余投稿；无必要、不正确、被替代或明确拒绝的本人投稿在授权内关闭。有效讨论、暂不可得的必要证据、他人对象和已合入工作分别保留。用户明确改派旧库复审可以撤销原新库审计指派，但不宣称旧审计已完成。
-
-混合分片先过完全部需要的既有投稿复审和可推进行动，再用新库补位。[执行时极少交流](references/workflows.md#minimal-communication-during-execution)：一次充分指派后等待完成或必要介入信号；不索取确认、开始或进度，不轮询 leaf 对话/记录，不反复让它交切片结果再续跑。Leaf 自行解决本地问题并跨上下文压缩继续，有具体必要才告警，原生最终结果只交一次。必要澄清和规则变化合成最短一条，收到不回执；不新增执行脚本或消息台账。
-
-缺少 issue/PR 结果就问原 leaf：补已有链接；确实没有则说明原因；仍有可行工作则继续。明确失败、矛盾或写入冲突才局部恢复，优先原 leaf；相同故障连续三次修复失败，保留具体门槛。长任务或一次超时不算失败，这套规则也不保证发现每个静默错误。
-
-## 交付认真，检查精简
-
-先读目标库政策，再读源码和讨论。尊重贡献规则、分配、邀请和安全披露门槛；证明真实缺陷，做最小兼容修改。
-
-同库复用未变规则和已确认事实，投稿前只刷新相关增量。测试覆盖受影响行为与目标强制项；最终 diff、格式和公开文本审阅合为一次。可靠操作返回或一次实时查询确认实际 PR 链接、状态和发布 head，不重复验收。
-
-满足投稿门槛时优先普通 open PR，不停在本地补丁、commit 或 fork。Draft 同样要求错误与修复方向成立，并说明剩余实现或验证不确定性；缺本机原生工具不自动要求 Draft，目标强制条件也不能省。无合格发现不强造 issue/PR，不默认等待 CI 或合并。
-
-每次仓库工作结束，包括无变化或阻塞，都判断资源处置；仅在结果变化时替换当前资源记录，不追加无变化流水。外部贡献源码通过授权、交付和非占用门槛后，删除指定 `checkout/`／`temp/` 并记录操作结果：不新建恢复副本、不盘点独有或未知数据、不做删后核验或磁盘空间检测。保留已知未交付、被占用及无关材料、永久记录和已有归档；自有库不适用，不清 Go 缓存或工具链。提交、覆盖、解决和释放是不同事实。
-
-## 三个互补巡检入口
-
-[1／6／24 小时](references/patrols.md) 是可配置基线，不是自动安装的计划，也不是完成时限。
-
-| 周期 | 范围与处理 |
-| --- | --- |
-| 1 小时 | 仓库通知与选定邮件文件夹平级增量，各自读取位置；相同 issue/PR 合并处理 |
-| 6 小时 | 完整抓取关注并集的新 issue，按仓库分派非空批次，复用同一协调者与 leaf |
-| 24 小时 | 全量找本人创建／评论过的开放 issue、创建的开放 PR，以及所有每库未完成链接；只深入处理变化、未知处理或仍可推进事项 |
-
-优先共用一个现有巡检对话；上轮没结束就继续，不叠加执行。无变化复用已有结果，不重读整段讨论、重测或重克隆。CI 变化不能只靠 `updated_at` 判断；信息不足只补缺失的实时事实。
-
-通知和选定文件夹分别保留原生 ID、修订、时间及边界。只读选定邮件文件夹，不扫其他文件夹、不发邮件、不改已读或订阅状态；实质回复在工程对象上完成。完整抓取且事项处理或可靠保留后才推进位置；失败不是空结果，读到不是解决。
-
-无变化或相同不可操作状态保持安静，仅实质进展、失败或需用户决定时通知。停机、限流或长任务会延后；报告实际缺口，不用定时配置冒充执行证据。
-
-## 权限与隐私
-
-关注和历史贡献不授予维护权限。未经授权不合并、关闭、推送上游、扩大清理范围或公开安全发现；遵守真实披露要求，保留未知及无关改动。
-
-邮件位置、私密链接、安全正文、凭据、源码和恢复归档不进入公开发布。明确请求状态备份时，只逐项审阅并发布允许的成员名单、公开位置和每库记录；Skill 与状态分别提交，不强推。
-
-## 规则入口
-
-- [SKILL.md](SKILL.md)：工作区、状态和执行边界。
-- [普通审计](references/audit.md)／[安全审计](references/security.md)：使用链与文档查错、独立威胁证据与私密披露。
-- [工作流程](references/workflows.md)：发现、新库、旧库与共享协调。
-- [Leaf 交付](references/leaf.md)：修复、验证、投稿、记录和释放。
-- [投稿复审](references/reassessment.md)：单库已有 issue/PR 的反馈、修正、合并与授权关闭。
-- [巡检周期](references/patrols.md)：互补入口、去重与启停边界。
-- [安全](references/safety.md)／[存储](references/storage.md)：投稿门槛和资源处置。
-
-旧脚本、JSON 和测试的恢复材料不参与运行。
-
-[MIT License](LICENSE)
+[MIT](LICENSE)

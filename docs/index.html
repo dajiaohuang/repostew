@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="RepoStew：直接读写 Markdown 的可移植仓库维护 Skill，从发现与修复到 PR 交付和持续巡检。" />
+  <meta name="description" content="RepoStew：面向多 agent harness 的仓库维护 Skill，由 Coordinator 按任务组装 Worker，直接读写 Markdown 状态。" />
   <title>RepoStew · 从贡献到持续维护</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
@@ -21,7 +21,7 @@
       <div class="hero-copy">
         <p class="kicker">Portable repository stewardship</p>
         <h1>把贡献做完。<br /><em>把维护接起来。</em></h1>
-        <p class="hero-lede">一套直接读写 Markdown 的仓库维护 Skill：发现、处理 issue、审计、修复、验证、交付 PR，再持续跟进评审、CI 和未完成事项。不绑定执行器、模型供应商或操作系统，不需要额外运行脚本、数据库或协调服务。</p>
+        <p class="hero-lede">面向多 agent harness 的仓库维护 Skill：按范围与权限组装 Worker，完成发现、调查、交付和持续跟进；状态直接写 Markdown。</p>
         <div class="hero-actions">
           <a class="button button-primary" href="https://github.com/dajiaohuang/RepoStew_skills/blob/main/README.md">从 README 开始</a>
           <a class="button button-secondary" href="https://github.com/dajiaohuang/RepoStew_skills/blob/main/SKILL.md">读取 Skill</a>
@@ -32,44 +32,37 @@
       <div class="section-heading"><h2>名单选范围。<br />每库记录存事实。</h2></div>
       <div class="capability-grid">
         <article class="capability-card"><h3>三个成员名单</h3><p>新库待处理、旧库历史全表、分组关注名单。名单只保存成员；关注组允许重合，扫描去重并集。</p></article>
-        <article class="capability-card"><h3>极简记录，按需回查</h3><p>state.md 留当前待办和必要边界；work.md 每次实际交付一行。通用经验进入 skill 规则，逐库经验进入按需读取的 reference，附范围与来源。公共审查规则按相关契约应用，不扩大任务范围。实质变化才写，交互原文回原生来源或授权私密归档查，中央 unfinished.md 仅导航。</p></article>
+        <article class="capability-card"><h3>极简记录，按需回查</h3><p>state.md 留当前事实与待办，work.md 留实际交付；细节回原生来源。专项规则按需读取，unfinished.md 仅导航。</p></article>
         <article class="capability-card"><h3>相对目录，源码可处置</h3><p>工作区保留 RepoStew_skills/、state/ 和 work/owner/repo/。源码在 checkout/，释放源码不删除记录。</p></article>
         <article class="capability-card"><h3>来源独立，隐私隔离</h3><p>通知与关注扫描位置在 read-positions.md，邮箱位置在 private/。保留原生边界，正文实时读，不复制交互数据库。</p></article>
       </div>
     </section>
     <section class="manifesto section-shell" id="workflow">
       <div>
-        <h2>一套交付流程。<br />两种指派范围。</h2>
-        <p>获授权的 Trending、awesome 清单库及清单内项目，确认真实身份、贡献适配、既定筛选并去重后追加新库名单末尾，不提前克隆或审计。资源与 awesome 清单可做文档修复，仅在明确拒绝外部 PR 或禁止本次投稿方式时跳过。已有库接续原范围，不重置进度或自动关注。</p>
-        <p>有依据的不适合贡献新库记录原因后直接跳过；其余完整分类近期 issue，沿约定的实际使用和调用链查错，并核对真正的文档错误，不默认逐文件通读。完成约定范围后集中交付修复；明确要求全源码审查的任务仍按原范围完成。关注旧库只处理本批新 issue 和相关代码，不重复全审计、不改成员名单；没有新 issue 就不开 leaf。</p>
-        <p>固定本次范围与基线，提交前补查相关变化。审计覆盖与可推进初始工作完成后移出新名单；评审、CI、维护者决定或外部交付门槛保留待办和重试条件，不视为已解决，不重复整库审计。安全审计独立评估部署、攻击者能力、信任边界与安全影响；攻击者输入不必是正常用户支持的输入，发现与证据走私密披露流程。</p>
-        <p>新库走使用链与文档审计，已有投稿的库按用户范围走单库 issue/PR 复审：处理反馈、修正、合并与授权关闭；增量反馈保留原范围。默认串行，明确授权后才并行。协调者抓取、去重、分流、分派和补位，leaf 直接完成工程行动与本库记录，协调者只写共享名单、导航和位置并信任返回。同库单写入者，分片间共享文件串行写入；规则改变交给原 leaf，完成整个选定分片而非只收尾当前 leaf。</p>
-        <p>新 leaf 先接收固定顺序、保持一致的公共规则原文，再追加仓库、范围、授权与资源等任务信息；沟通与返回要求共用前缀。完整内联规则不重读，同库续办只传变化；规则改变才刷新前缀，目标政策和实时事实仍须核实。</p>
-        <p>新库与复审 leaf 共用前缀，协调者也把公共规则放在分片变量之前。复审只保留有实际使用错误或真正文档错误的修复；必要但修错的继续修正，合并后关闭冗余投稿，无必要或不正确的本人投稿在授权内关闭。有效讨论、证据暂不可得的阻塞、他人对象和已合入工作分别保留。明确改派旧库复审不冒充旧审计完成，不恢复暂停计划。</p>
-        <p>混合分片先过完所需既有投稿复审，再开新库。协调者充分指派一次后等待完成或必要介入，不索取确认/进度、不轮询 leaf 记录或对话、不制造切片交结果再续跑的循环。Leaf 自行解决本地问题、跨压缩继续，仅必要阻塞告警，原生最终结果交一次；必要澄清和规则变化合为最短一条，不发回执。</p>
-        <p>先读目标政策，证明实际使用错误或可验证的现有文档错误，聚焦受影响检查与强制项，合并最终审阅；收益或更整洁的实现不能代替错误证据。PR 不强制关联 issue，有匹配项就复用和关联，否则在 PR 中说明错误证据，并遵守目标库明确要求。实际使用中有证据但需确认预期或方向的问题，开或复用讨论 issue；为继续调查所必需的具体问题可以提前提出，确认错误与修复方向后再提修复 PR。每库文档小错误集中到一个勘误 PR，已有开放勘误 PR 就继续补充。符合门槛优先普通 open PR；Draft 同样要求错误和修复方向成立。不强造投稿、不默认等 CI 或合并。缺少 issue/PR 结果就问原 leaf，仍可推进则继续；明确失败、矛盾或冲突才局部恢复。</p>
-        <p>外部贡献源码通过精确授权、交付和非占用门槛后，删除指定 checkout/temp 并记录操作结果。不新建恢复副本，不盘点独有或未知数据，不做删后核验或磁盘检测；保留已知未交付、占用及无关材料、永久记录和现有归档。自有库不适用，不清 Go 缓存或工具链。</p>
+        <h2>全部流程。<br />精要指派。</h2>
+        <p>准备目标、范围、权限和资源；Coordinator 选择形态与方法，用集中模板组装 Worker。一次派发、等待结果、整合，续办只传变化；必要时交接或局部恢复。</p>
+        <p>五类形态：发现入库、新库审计、既有投稿复审、增量反馈、持续巡查。增量来源：关注新 issue、通知与选定邮件、开放与未完成对象。抓取去重，按库指派，分别维护位置。</p>
+        <p>沿实际使用与文档事实查错；契约未定时讨论，安全调查与披露独立私密处理。完成指定审计后集中修复、验证、投稿，再处理反馈、合并同根因或授权撤回。</p>
+        <p>记录只写实质变化；按请求迁移、核对历史、恢复或重分类、审阅后备份。每次仓库工作都判断资源处置，区分覆盖、交付、解决和释放。</p>
+        <p>默认串行，授权后并行；同文件单写入者。内部信任契约、源头修错，禁止冗余防御，必要边界校验保留。真实错误才投稿，保留未知与私密材料；正常检查保留，不增加 PR 审查阶段。</p>
+        <p>roles/ 定义职责，prompts/ 集中启动、续办和交接。可读文件按需加载，否则传完整适用正文。Harness 按原生能力接入；无隐式权限、任务、计划或额外编排服务。</p>
       </div>
     </section>
     <section class="manifesto section-shell" id="patrols">
       <div>
-        <h2>及时接续。<br />低频兜底。</h2>
-        <p>可配置 1／6／24 小时基线：每小时通知与选定邮件文件夹平级增量，各自位置、合并重复对象；每 6 小时完整抓取关注库新 issue，按库分派；每 24 小时全量找本人创建/评论的开放 issue、创建的开放 PR 和全部每库未完成链接。</p>
-        <p>优先共用现有巡检对话，上轮未结束就继续，不叠加。兜底先看状态、head 与 CI 概况，仅变化、未知处理或仍可推进事项深入处理；不重读整段讨论、重测或重克隆，也不只靠 updated_at 判断 CI 没变化。</p>
-        <p>只读选定邮件文件夹，不读其他文件夹、不发邮件、不改已读或订阅；实质回复在工程对象完成。完整抓取且处理或可靠保留才推进位置，失败不当空结果。无变化安静，仅进展、失败或需用户决定时通知。</p>
-        <p>周期与启停由工作区调度配置；Skill 不自动启动任务或恢复暂停计划，周期也不是完成时限。关注和历史贡献不授予维护权限。私密邮件、安全正文、凭据、源码及恢复材料不进入公开状态或备份。</p>
+        <h2>有界巡查。<br />可靠接续。</h2>
+        <p>可配置基线：每小时通知与选定邮件，每 6 小时关注新 issue，每 24 小时开放／未完成对象兜底。继续未完批次，不叠加；无变化复用已有处理。</p>
+        <p>完整抓取并处理或可靠保留后才推进位置；不发邮件、不改已读／订阅、不扩大邮箱范围。调度不证明覆盖，暂停保持暂停；资源处置、私密材料和备份按授权边界执行。</p>
       </div>
     </section>
     <section class="section-shell" id="english" lang="en">
       <div>
-        <h2>Finish contributions. Continue stewardship.</h2>
-        <p>A portable Skill with direct Markdown state, three membership lists and persistent per-repository records. No extra runtime service, database or required client/vendor.</p>
-        <p>One lightweight coordinator/leaf delivery flow: skip evidenced unsuitable new targets; classify assigned recent issues and audit agreed usage paths and documentation facts. Ordinary audits do not default to file-by-file reading; explicit whole-source assignments retain their scope. Security audits independently establish threat boundaries and impact with private disclosure. Followed batches cover their issues and affected paths only. Completed initial audits retain external follow-up without declaring it resolved or repeating the audit.</p>
-        <p>New targets use usage/documentation audits; selected already-worked targets use single-repository authored issue/PR reassessment, including feedback, correction, consolidation and authorized withdrawal. Preserve legitimate discussions, inaccessible-evidence blockers, others' objects and merged work. Share stable prefixes, serialize shared-file writes across shards and finish the whole selected scope. PRs need no companion issue unless required by the target. Repair PRs, including Drafts, need established errors and intended corrections. Coordinators trust reported outcomes and react to concrete faults.</p>
-        <p>Fresh leaves receive identical current common policy in a fixed order before all assignment variables. Full inline rules need no duplicate reads; same-repository continuation sends only deltas. Refresh changed policy and verify live target facts.</p>
-        <p>Configurable hourly notifications/selected-folder mail, six-hour followed new issues and daily open-object fallback. Independent positions, deduplicated action, unchanged-work reuse and quiet runs. Schedules need explicit authorization; configured is not active or complete.</p>
-        <p>Authorized external source release keeps records and known undelivered/active material safe, without new recovery copies or post-delete disk checks. Self-owned repositories are excluded. Private sources and credentials stay private.</p>
-        <p><a href="https://github.com/dajiaohuang/RepoStew_skills/blob/main/README.en.md">Read the English README</a> · <a href="https://github.com/dajiaohuang/RepoStew_skills">Source and detailed rules</a></p>
+        <h2>Complete scope. Keep instructions concise.</h2>
+        <p>Prepare and assemble bounded Workers; dispatch, wait, integrate, continue, hand off or recover through native harness capabilities. Use native forge CLIs and scoped repository rules. Roles define responsibilities; templates stay together; state is direct Markdown.</p>
+        <p>Discover/admit, audit new targets, reassess contributions, handle incremental feedback and run recurring passes. Capture followed issues, notifications/selected mail and open/unfinished objects under separate positions.</p>
+        <p>Prove actual-use/document errors, discuss unsettled contracts or investigate/disclose security privately. Repair, validate, publish and follow up; consolidate or withdraw only within authority.</p>
+        <p>Write minimal records; migrate, reconcile/recover/reclassify history and publish reviewed backups when requested. Check resources every pass. Preserve single writers, privacy, paused jobs and evidence gates; no defensive programming, inferred permissions or added PR-review stage.</p>
+        <p><a href="https://github.com/dajiaohuang/RepoStew_skills/blob/main/integrations/README.md">Codex / Claude / Pi / OMP</a> · <a href="https://github.com/dajiaohuang/RepoStew_skills/blob/main/README.en.md">English README</a> · <a href="https://github.com/dajiaohuang/RepoStew_skills">Full rules</a></p>
       </div>
     </section>
   </main>

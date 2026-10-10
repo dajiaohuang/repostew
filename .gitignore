@@ -23,6 +23,9 @@ contributions.json
 .repostew/
 /.history/
 
+# Generated harness bundles
+/dist/
+
 # Workspace records, private sources and recovery material belong outside the skill
 /state/
 /work/

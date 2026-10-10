@@ -2,91 +2,52 @@
 
 ## General submission standards
 
-Apply to new issues/PRs and existing authored contributions, independently of intake filters.
-Use the same evidence and action rules for new issues, PRs and reassessment.
-Ordinary discovery follows [actual-use audit](audit.md). Security findings follow
-[security audit](security.md), with separate threat evidence and disclosure gates;
-ordinary supported-input rules do not exclude attacker inputs.
-Ordinary repairs require an actual-use error or a verifiable documentation error. When actual
-supported use exposes a concrete behavior but the intended contract or repair direction
-needs maintainer agreement, open or reuse a discussion issue in the target repository:
-describe the trigger, observed behavior, evidence and exact question without claiming
-an unconfirmed defect. Apply target submission/security rules and
-[assigned delivery timing](../SKILL.md#assigned-audit-before-grouped-delivery), including
-an earlier discussion when maintainer agreement is needed to continue investigation.
-Proceed to a repair PR only after its error and intended correction are established.
-Passing target policy or CI does not waive this gate; Drafts have the same necessity gate.
-PRs need no separate issue. Reuse and link a matching issue when available; honor an
-explicit target requirement without inventing companion issues or duplicate reports.
-Only submit or retain ordinary defect repairs for concrete errors reachable through actual
-supported use and calls. Establish that trigger before choosing the smallest complete
-compatible repair; hypothetical risk or cleaner implementation is insufficient.
-
-Documentation repairs must correct a verifiable existing error in facts, commands,
-paths, links, API usage or examples. Identify the erroneous statement or instruction
-and prove the correction against authoritative sources or actual behavior. Wording,
-formatting, optional additions and consistent standalone example names do not qualify.
-Group minor genuine errors into one repository errata issue/PR.
-
-Triage each candidate while auditing: establish the supported trigger and contract,
-retain a qualifying error, route an evidenced design/behavior question to a discussion
-issue, discard an unsupported suspicion after bounded review, or name the unavailable
-evidence and retry condition. Consolidate equivalent candidates
-as they arise; do not defer all necessity decisions until final delivery. Private
-unpublished evidence remains protected, and public withdrawals require authority.
+New issues/PRs and authored-object reassessment share one necessity gate:
+ordinary repair needs actual-use error; documentation repair needs a verifiable existing error.
+[Security](security.md) uses independent threat/disclosure gates. CI, linked issues, cosmetics,
+optional improvements, artificial data, isolated helpers and prior effort do not establish necessity.
+Triage immediately: proven error, evidenced discussion, discard unsupported suspicion, or retain
+unavailable evidence with blocker/retry. Group common roots; do not accumulate suspicions.
 
 ## Defect evidence for submission and reassessment
 
-These steps assess ordinary repairs; security uses its separate threat and disclosure rules.
+1. Prove supported input/configuration -> production/public API calls -> final concrete error
+   -> violated contract, including consumers/state/results. Reproduction or strong source proof suffices.
+   Public APIs need concrete supported invocation, not internal callers; invalid inputs count only
+   where validation/rejection/recovery is contractual. Documentation needs an exact false fact,
+   instruction/link/example and authoritative/behavioral correction; wording/formatting alone fails.
+2. Follow project design, compatibility and maintainer direction; fix the complete affected path minimally.
+   Establish intended correction before a repair PR. Evidenced unsettled behavior goes to a discussion
+   stating trigger, observation, evidence and exact question, without an unconfirmed defect verdict.
+3. Validate affected behavior and target-required checks; reuse unchanged evidence, test concrete uncertainty.
+   Separate source proof, local, CI and actual-use acceptance; no invented checks or contribution quotas.
+4. Revise useful work/incorrect claims. After bounded review, withdraw authored unnecessary/incorrect
+   objects only within authority; say "necessity not established", not "no defect"/"fixed" without proof.
+   Retain real discussions, unavailable-evidence blockers, merged/others' work and private evidence.
+5. Before publication, confirm the claim and complete repair match. State trigger/actual/expected/impact/
+   evidence, minimal change, validation/limits. Reuse matching objects; PRs need no companion issue unless
+   required. Existing work uses [reassessment](reassessment.md); Drafts retain the same necessity gate.
 
-1. Require a reachable actual-use chain: supported input/configuration → production call or documented
-   public API → concrete error → violated existing contract. Check upstream/downstream
-   consumers, state transitions and final results. Reproduction or strong source proof
-   must establish the complete trigger and error, not merely suspicious code.
-   A documented public API needs no in-repository caller, but requires a concrete supported
-   invocation that reaches the error. Invalid input is relevant
-   when validation, rejection or recovery is an explicit contract.
-2. Restore intended behavior across the affected path, following project design,
-   compatibility and applicable maintainer direction. For ordinary audit assignments, finish
-   the assigned scope before grouped delivery; combine the same root cause and reuse matching objects.
-3. Verify the behavioral correction and target-required checks; reuse unchanged evidence
-   and expand testing for concrete uncertainty. Separate local, CI and actual-use acceptance.
-4. Revise useful work according to valid feedback and correct mistaken explanations.
-   After one bounded review of available source, contracts and relevant evidence, withdraw
-   authored PRs whose necessity remains unestablished, within the user's authority. State
-   "necessity not established", not "no defect" or "fixed". Temporarily inaccessible
-   required evidence retains its concrete blocker and retry condition; it is not a defect verdict.
-5. A defect issue states the trigger, actual/expected behavior, impact and evidence,
-   or the exact documentation error and authoritative correction. A discussion issue
-   states evidenced actual behavior and the unresolved question; it is not a defect verdict.
-   Before opening a PR, verify that it fixes that same established error completely;
-   describe the minimal change, validation and remaining limits. Without an issue,
-   include the trigger/error evidence directly in the PR. Reassessment applies
-   the same gate to the current base and diff, including inherited issues and patches;
-   distinguish legitimate discussion from unsupported defect claims; correct or withdraw
-   the latter within authority rather than keeping them to justify a PR. Follow
-   [direct claim and Open PR rules](safety.md#prefer-a-regular-open-pr).
+## Code implementation: prohibit defensive programming
 
-Artificial bad data, isolated helper calls, representation changes, green CI and prior
-effort alone do not establish necessity. Cosmetic changes and optional completion are
-not repairs. Do not manufacture scenarios, repeat unchanged tests or set closure/submission quotas
-to justify contributions; a linked issue and PR are one contribution.
+Code written/modified by RepoStew must eliminate defensive programming:
 
-For assigned existing-object review, follow [single-repository reassessment](reassessment.md):
-capture the full assigned set, act on valid feedback, preserve necessary work when
-consolidating and withdraw incorrect/unnecessary authored objects within explicit
-authority. Real discussions and temporarily unavailable required evidence retain
-their questions/blockers; merged/others' work is not withdrawal scope.
+1. Internal callers satisfy preconditions; callees guarantee results. Trust input/output/state contracts;
+   do not recheck guaranteed types, fields, non-nullness or state.
+2. No just-in-case defaults, empty substitutes, swallowed exceptions, unjustified retries/alternate paths
+   or out-of-contract accommodation. Handle legitimate optional/business/failure branches by contract.
+3. Fix violations at the responsible producer/caller; no downstream masking, normal-result conversion
+   or continued invalid-state propagation.
+4. Necessary external-input/security checks and contracted failure handling belong at their boundaries;
+   internal code trusts validated results, without layer-by-layer defense.
+5. Remove redundant defenses within changed scope; this rule alone never justifies wider cleanup or
+   contributions without error proof. Contribution/security gates still apply.
 
-## HKUDS batch contribution thresholds
+## Assigned audit before grouped delivery
 
-These user-selected filters apply to proactive full audits in the HKUDS organization batch. Other selections keep their existing rules.
-
-The user selected only the priority group: nanobot, LightRAG, DeepTutor, DeepCode, RAG-Anything, Vibe-Trading, CLI-Anything, ViMax, AgentSpace, OpenOPC, OpenHarness, CatchMe, OpenSpace, AI-Trader, VideoAgent, ClawTeam and OpenPhone. Continue this batch serially; observation, deferred and documentation groups are outside its new-audit scope. Existing contributions retain necessary follow-up.
-
-- Default to software with at least 500 stars, substantive source/runtime changes within 180 days, and a useful outside contribution merged or substantive maintainer response to an engineering problem within 180 days. Stars are an allocation filter, not proof of quality. Explicit user selection, actual use or maintainer invitation may justify a scoped exception.
-- README, badges, contact details, licenses, automated dependency updates, non-default-branch pushes, our own submissions and maintainer self-merges do not alone establish maintenance or outside reception. Inspect actual changed files and native contributor/maintainer evidence. Unknown remains observation, not a claim of abandonment.
-- Newly released software and one-off research implementations without continued maintenance/reception evidence remain observational; a concrete user need or accepted reproducibility problem can receive focused work.
-- Resource collections and organization showcases remain eligible for useful targeted documentation repairs, but do not receive proactive full-audit batches merely because PRs are welcome. Prefer corrections affecting actual navigation, referenced sources or usage; related small documentation repairs belong in one coherent PR. Cosmetic wording, badges and alternative-text improvements alone do not justify a new proactive submission.
-- Apply the same mandatory error gate to ordinary behavior, installation, data correctness, reliability, performance and documentation repairs; benefit alone does not qualify. Keep assigned-audit and root-cause grouping rules for admitted audits; do not impose a PR quota. Security work uses its separate threat and disclosure requirements.
-- Selection changes retain historical membership, records and existing unresolved contributions. Continue necessary PR follow-up; never infer authorization to close public objects or erase followed membership from a reduced audit selection.
+Finish assigned issue classification and [usage/documentation audit](audit.md) before repair publication;
+explicit whole-source scope remains. Group same-root repairs and minor document errata; separate independent
+errors, reuse matching issues/open errata PRs, discard duplicates/non-defects. No slice publication or early
+scope narrowing. A necessary evidenced maintainer question may precede completion as discussion only;
+it does not unlock repair PRs. Security stays private. Incremental work retains its scope; this timing
+rule alone does not withdraw existing submissions.
