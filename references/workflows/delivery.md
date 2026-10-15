@@ -20,6 +20,11 @@
    For PR writes only, establish owned fork/branch/permitted remote/base; publish and confirm URL/state/exact
    head once via reliable result or lookup. Reconcile ambiguity before retry; disclose unrun checks.
    No stopping at a local patch when eligible delivery remains; upstream read-only is not fork prohibition.
-5. Finish [resources](../storage.md), write changed [records](../records.md), and return applicable facts once
+5. When ordinary work temporarily cannot open a PR, use the permitted user-owned fork branch to
+   preserve reviewed changes, confirm its remote head and record exact recovery/next-action facts;
+   no PR is required for preservation. Under standing workspace release authority, then release unused
+   disposable source/temp rather than retaining it for PR/CI waits or merely because it was unpushed.
+   Keep private/security work protected and forbidden publication blocked; follow [resources](../storage.md).
+   Write changed [records](../records.md), and return applicable facts once
    under [Worker](../../roles/worker.md#final-result). Retain unresolved/private evidence; separate local/CI/
    actual-use acceptance, coverage, contribution outcomes and released/retained/failed resources.

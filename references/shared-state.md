@@ -15,6 +15,15 @@ meaningful coverage and exact event positions where applicable. Preserve unknown
 a URL or migrated record does not prove delivery, resolution, current status or authority.
 Use exact forge namespaces (including GitLab subgroups); never merge identities based on similar names.
 
+## Ordinary fork preservation and local release
+
+With explicit standing workspace authorization, preserve ordinary not-yet-PR work on a distinct
+user-owned permitted fork branch, confirm the remote head and record native target/fork URL/branch/
+commit/base, next action and validation limits here before releasing unused disposable checkout/temp.
+PR/CI waits and dirty/unpushed work call for preservation, not indefinite local retention. Do not upload
+private/security evidence, secrets or prohibited work; retain concrete blockers and active/shared resources.
+Follow [storage](storage.md). This does not authorize deleting local state.md/work.md during additive migration.
+
 ## Additive migration
 
 1. Read the applicable local container-root state.md/work.md and existing shared record. Review the

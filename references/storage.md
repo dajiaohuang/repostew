@@ -14,14 +14,30 @@ unknown/unavailable resources remain retained with reasons. No client-specific s
 Apply disposition after every pass, including serial/parallel/no-change/blocked. Disposable-source release
 excludes self-owned/canonical repositories. CI/review/merge waits alone do not require retaining source.
 
-1. Use existing exact release authority; check resolved target remains inside its named boundary,
-   excluding container/shared store/unrelated paths or links. The check grants no new authority.
-2. Use established delivery/non-use facts. Retain known undelivered/active/shared/dirty/unpushed/private
-   material. No unique/unknown-data inventory, recovery copy/archive, restore/hash gate or process survey.
+1. Under an explicit workspace standing release authorization, end-of-pass removal of unused disposable
+   project checkout/temp is included; do not demand a new per-directory approval. Check the resolved
+   target remains inside its named boundary, excluding container/shared store/unrelated paths or links.
+   Without standing or exact authority, retain the concrete authority blocker; do not infer permission.
+2. For ordinary work temporarily not opening a PR, first review and commit the intended source/test/doc
+   changes to a distinct owned branch on the user's permitted fork; confirm the actual remote branch
+   head and record recovery facts before release. This is preservation, not a PR, acceptance or delivery
+   claim. An upstream PR/invitation/CI wait alone does not block permitted fork preservation or release.
+   Include unpublished combined commits and valuable ordinary untracked changes only after review;
+   do not blindly add everything, force-push, overwrite unrelated refs or publish rejected/prohibited work.
+   Dirty/unpushed/undelivered is a preservation action, not an indefinite retention reason. If no valuable
+   change exists, an unused disposable clean checkout needs no empty preservation commit or branch.
+   Retain active/shared resources, private/security material and concrete failed/forbidden/unknown
+   preservation cases with exact blocker and next action. Never push secrets, private evidence or
+   undisclosed security work to a public fork (or assume private Git authorizes protected uploads).
+   No broad unique/unknown-data inventory, recovery archive, restore/hash gate or process survey.
 3. Delete only authorized disposable checkout/temp; linked/shared worktrees need supported Git removal.
    Preserve records, remote refs, private material and existing recovery archives. No Go/cache/toolchain/
    unrelated-build cleanup, broad roots, forced unlocks or disk compaction.
-4. Record operation result: released, retained/reason, or failed/error. Ambiguity is not success;
+4. Before deletion, record native target, owned fork URL, branch, exact confirmed remote commit,
+   upstream base and remaining work/validation limits in shared state/repositories/<host>/<namespace>/<repo>.md
+   when shared state is enabled (otherwise the assigned project record). Never claim recoverability for
+   excluded local-only material; record any specific protected/non-reproducible blocker without its evidence.
+   Record operation result: released, retained/reason, or failed/error. Ambiguity is not success;
    recover the concrete fault, never blindly retry. No post-delete path/Git/archive checks or size/free-space
    measurements; never claim measured reclaimed bytes.
 5. Worker writes changed resource outcome under [records](records.md); Coordinator changes shared
