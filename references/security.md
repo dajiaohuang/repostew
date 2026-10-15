@@ -19,6 +19,12 @@ or designated security contact; never open a public issue/PR/discussion or expos
 If no usable private channel or disclosure authority exists, retain protected evidence and blocker/retry;
 never fall back to public reporting. Keep findings/exploits/private links protected and unsynced.
 Public remediation requires prior private reporting and satisfied disclosure gates; it is not an initial report.
+Confirmed receipt by the authorized private channel can end retention of an unused disposable clone:
+record protected reporting/follow-up facts locally, preserve unique evidence outside the checkout if the
+channel does not retain it, then release under [storage](storage.md) authority. Waiting for triage alone
+is not a source-retention reason. Sending is not confirmed receipt, remediation or disclosure completion;
+failed/ambiguous reports, active investigation and unpreserved evidence retain a concrete blocker.
+No security patch or evidence is pushed to a public fork for preservation.
 Validate affected security/mitigations and required checks;
 reuse evidence, separate source/local/deployed acceptance. Report scope/remaining boundaries/outcomes
 separately; investigation completion does not resolve remediation/disclosure blockers.

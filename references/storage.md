@@ -29,7 +29,15 @@ excludes self-owned/canonical repositories. CI/review/merge waits alone do not r
    Retain active/shared resources, private/security material and concrete failed/forbidden/unknown
    preservation cases with exact blocker and next action. Never push secrets, private evidence or
    undisclosed security work to a public fork (or assume private Git authorizes protected uploads).
-   No broad unique/unknown-data inventory, recovery archive, restore/hash gate or process survey.
+   For security work, confirmed delivery to the authorized private reporting channel can also close
+   the local-source retention boundary: record the report's protected reference/acceptance and remaining
+   follow-up locally, then release unused disposable source under standing authority. Report submission
+   is not remediation or disclosure completion. Do not keep a reproducible clone solely to await triage.
+   Preserve unique evidence/reproduction material not retained in that private channel in protected local
+   storage outside the disposable checkout before release; never publish it to a fork or shared Git.
+   Failed/ambiguous reporting, active investigation or evidence available only inside the checkout is a
+   concrete retention blocker until reporting/evidence preservation is resolved. No broad unique/unknown-data
+   inventory, recovery archive, restore/hash gate or process survey.
 3. Delete only authorized disposable checkout/temp; linked/shared worktrees need supported Git removal.
    Preserve records, remote refs, private material and existing recovery archives. No Go/cache/toolchain/
    unrelated-build cleanup, broad roots, forced unlocks or disk compaction.
