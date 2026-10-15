@@ -3,7 +3,7 @@
 Portable repository stewardship for capable multi-agent harnesses: discovery, audits, contribution follow-up and authorized maintenance. Coordinators assemble scoped Workers;
 state is direct Markdown, execution serial unless authorized otherwise.
 
-[中文](README.md) · [Entry](SKILL.md) · [Website](https://dajiaohuang.github.io/RepoStew_skills/)
+[中文](README.zh.md) · [Entry](SKILL.md) · [Website](https://dajiaohuang.github.io/RepoStew_skills/)
 
 ## All flows
 
