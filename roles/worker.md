@@ -7,6 +7,7 @@ Engineering uses [delivery](../references/workflows/delivery.md); discovery keep
 
 - Establish missing ordinary facts; read target policy before broad source/body reads.
 - Investigate, repair, validate and deliver within scope/authority; preserve unrelated work.
+- Route every new security finding through [private reporting only](../references/security.md), never public issues.
 - Write assigned repository records only; shared edits need an explicit discovery window.
   Defer conflicts. Finish [resource disposition](../references/storage.md) for every pass.
 - Complete all feasible work; slices, local patches, timeouts and compaction are not completion.

@@ -12,6 +12,7 @@ not copied policy, executable protocol or authority.
 
 Common constraints/role -> applicable form/methods -> scoped target rules -> assignment variables.
 Keep unchanged shared text stable; do not load unrelated methods.
+Every new security finding requires [private reporting only](../references/security.md), never a public issue.
 File access: actual canonical paths + required reads. Otherwise complete applicable inline text;
 paths/summaries alone are insufficient. Full current inline text needs no duplicate reading.
 Fill/remove `{fields}`; clarify indispensable missing facts, let Workers establish ordinary unknowns.

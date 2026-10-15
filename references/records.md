@@ -5,11 +5,14 @@
 - state.md: current native URL + next action/wait reason, minimal identity/base/meaningful coverage/resource facts.
   One object per line; replace superseded facts, remove only after resolution, omit empty/unknown boilerplate.
 - work.md: one short dated line/native link per actual delivery/withdrawal/verified resolution; combine steps.
+  Maintenance includes issue disposition, PR review/amendment/merge and actual code/docs/CI/test revisions.
   Migrated links alone prove no date/result/history. Membership = names; unfinished.md = state links only.
 - Preserve exact positions/aliases and unpublished/private evidence. Use the same assigned scope/base/coverage
   unit; read counts, inventory, migration dates and record compactness never prove audit completion.
   Classification does not adopt upstream backlog. Keep assigned/followed/captured work until handled/retained;
   feature wishes/refactors/product questions are not automatically repair tasks.
+All roles/forms share one repository state/history. Record form/base/coverage only when needed to resume;
+authority lives in state/maintained-repositories.md or the explicit assignment, never inferred from history.
 
 ## Write and read only what changes the action
 
@@ -18,6 +21,8 @@ parallel diaries or copied reports. One current home and one history line per ac
 Read affected state and relevant live objects; history only for concrete questions. Reread after another writer,
 skip occupied repositories, preserve unrelated/ambiguous data. Lossless Markdown/newlines; diagnose encoding
 failures rather than silently replacing text. Separate coverage, contribution, resolution and resource facts.
+Transient session restrictions require scope/source and rechecking; never turn them into permanent repository bans.
+Worker counts, processes, native task/session lifecycle and scheduling stay with the harness, not engineering state.
 
 ## Feedback and evidence
 

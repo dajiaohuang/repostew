@@ -9,7 +9,8 @@
    Investigate actual-use/contract/maintainer questions and duplicates/fixes/claims, not the whole backlog.
 3. Complete assigned [usage/document audit](../audit.md) and [grouped delivery](../contribution-value.md#assigned-audit-before-grouped-delivery).
    Explicit whole-source scope remains; document collections need no invented software surface.
-   [Security](../security.md) stays separate/private. Before publication, reconcile relevant base deltas.
+   Every new [security finding](../security.md) uses private reporting only, never public issues.
+   Before ordinary publication, reconcile relevant base deltas.
 4. Remove new membership only for evidenced skip, explicit reclassification, or completed classification/
    coverage plus handled feasible initial work. Deliver/dismiss candidates or reliably retain external
    blockers/retry/private evidence. Missing coverage or feasible investigation/fix/check/publication stays listed.

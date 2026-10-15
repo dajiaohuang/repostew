@@ -8,5 +8,6 @@ Choose under [assembly](../worker-assembly.md); forms define scope/end condition
 - [Discovery/admission](discovery.md): bounded authorized source intake.
 - [Recurring patrol](recurring-patrol.md): successive bounded passes/finite Workers.
 
-Combine only with stage entry/completion conditions. [Security](../security.md) is an independent
-method/disclosure path; no added PR-review form. Normal delivery checks remain mandatory.
+Combine only with stage entry/completion conditions. [Maintainer](../../roles/maintainer.md) uses these
+forms with [maintain](../workflows/maintain.md); new [security findings](../security.md) use private reports only.
+Assigned maintainer PR review is work, not a universal pre-publication gate. Normal delivery checks remain.

@@ -31,11 +31,12 @@ Apply only to affected contracts; load [scoped forge/repository evidence](forges
 
 ## Prefer a regular open PR
 
-Claim available work through the permitted route; submit/update regular Open PR when:
+New security findings follow [private reporting](security.md), not the ordinary Open PR route.
+Claim ordinary work through the permitted route; submit/update regular Open PR when:
 
 1. Target invitation/assignment/design/security/submission gates permit it.
 2. No competing claim/PR, equivalent base fix or applicable rejection; check all relevant states.
-3. Error and correction are established under [ordinary](contribution-value.md) or [security](security.md) evidence.
+3. Error and correction are established under [ordinary](contribution-value.md) evidence.
 4. Smallest complete compatible change respects interfaces/defaults and dependency/service/authority boundaries.
 5. Required evidence/checks pass; unrun environment checks are disclosed, never claimed as acceptance.
 6. Permitted fork/branch/base, style/templates, public identity and truthful caveats are satisfied.

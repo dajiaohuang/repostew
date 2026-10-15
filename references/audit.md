@@ -26,4 +26,5 @@ Finish assigned classification/coverage before [grouped delivery](contribution-v
 Report base, meaningful covered/remaining paths, dispositions and blockers; file/read counts are not coverage.
 Zero qualifying errors is valid. Fill actual gaps without restarting unchanged work. Apply
 [new-list completion](workflows/new-repository.md); follow-up does not reopen completed coverage.
-[Security](security.md) remains independently scoped and private.
+Every new security finding, including suspected findings in ordinary audits, follows [private reporting only](security.md);
+never open a public issue. Security investigation keeps its separate evidence/scope gates.

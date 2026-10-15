@@ -26,3 +26,12 @@ excludes self-owned/canonical repositories. CI/review/merge waits alone do not r
    measurements; never claim measured reclaimed bytes.
 5. Worker writes changed resource outcome under [records](records.md); Coordinator changes shared
    navigation only. No unchanged paragraphs/history or repeated publication checks. Archives stay recovery-only.
+
+## Temporary services and shared runtimes
+
+- Within existing authority, Workers normally stop their unused temporary processes/services/containers
+  after a task, preserving data.
+- Coordinators stop a WSL distribution only after confirming no active Worker, user task or shared
+  service still depends on it, within existing authority.
+- High memory use alone does not prove idleness. Do not force-kill `vmmem` or shared Docker/WSL;
+  `wsl --shutdown` terminates all running distributions and the WSL VM.

@@ -4,10 +4,12 @@
 
 New issues/PRs and authored-object reassessment share one necessity gate:
 ordinary repair needs actual-use error; documentation repair needs a verifiable existing error.
-[Security](security.md) uses independent threat/disclosure gates. CI, linked issues, cosmetics,
+[Security](security.md) findings use private reports only and independent threat/disclosure gates. CI, linked issues, cosmetics,
 optional improvements, artificial data, isolated helpers and prior effort do not establish necessity.
 Triage immediately: proven error, evidenced discussion, discard unsupported suspicion, or retain
 unavailable evidence with blocker/retry. Group common roots; do not accumulate suspicions.
+Authorized [maintenance](workflows/maintain.md) may revise code/CI/tests to these standards within
+assigned scope; it does not require inventing a defect or waive evidence for public defect claims.
 
 ## Defect evidence for submission and reassessment
 
@@ -42,6 +44,8 @@ Code written/modified by RepoStew must eliminate defensive programming:
    internal code trusts validated results, without layer-by-layer defense.
 5. Remove redundant defenses within changed scope; this rule alone never justifies wider cleanup or
    contributions without error proof. Contribution/security gates still apply.
+6. Every CI/test change retains only actual supported call/use coverage and essential checks;
+   authorized maintenance also removes excess. Never drop necessary checks to mask failures.
 
 ## Assigned audit before grouped delivery
 
@@ -49,5 +53,5 @@ Finish assigned issue classification and [usage/documentation audit](audit.md) b
 explicit whole-source scope remains. Group same-root repairs and minor document errata; separate independent
 errors, reuse matching issues/open errata PRs, discard duplicates/non-defects. No slice publication or early
 scope narrowing. A necessary evidenced maintainer question may precede completion as discussion only;
-it does not unlock repair PRs. Security stays private. Incremental work retains its scope; this timing
+it does not unlock repair PRs. New security findings use private reports only. Incremental work retains its scope; this timing
 rule alone does not withdraw existing submissions.

@@ -13,9 +13,13 @@ no inferred attacks on live services or others' data.
 
 ## Handling and completion
 
-Read disclosure policy; use an authorized private channel. Keep findings/exploits/private links protected
-and unsynced. Missing disclosure authority is a blocker/retry, never permission for public issue/PR/discussion.
-Public remediation must pass disclosure gates. Validate affected security/mitigations and required checks;
+Every new security finding, including suspected findings from ordinary audits, stays private.
+Read disclosure policy and send evidenced reports only through an authorized private advisory/report channel
+or designated security contact; never open a public issue/PR/discussion or expose details in public comments.
+If no usable private channel or disclosure authority exists, retain protected evidence and blocker/retry;
+never fall back to public reporting. Keep findings/exploits/private links protected and unsynced.
+Public remediation requires prior private reporting and satisfied disclosure gates; it is not an initial report.
+Validate affected security/mitigations and required checks;
 reuse evidence, separate source/local/deployed acceptance. Report scope/remaining boundaries/outcomes
 separately; investigation completion does not resolve remediation/disclosure blockers.
 Apply [safety](safety.md), [records](records.md) and [resources](storage.md) without exposing evidence.

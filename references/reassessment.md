@@ -16,7 +16,7 @@ Pending/cancelled/action-required checks are not passes or withdrawal grounds al
 ## Decide and complete the engineering action
 
 Trace supported use/contract and affected results; separate real repair from defenses/helper artifacts/cosmetics.
-Security uses protected threat/disclosure rules. After bounded evidence review:
+All new security findings use [private reporting only](security.md). For ordinary work, after bounded evidence review:
 
 - Keep/repair: error remains; handle feedback, remove unsupported parts, correct claims, minimally fix/validate,
   update the existing PR and ready eligible Drafts. A wrong patch does not invalidate a real error.
@@ -36,7 +36,8 @@ its scope, not optional suggestions; follow latest evidence-backed direction.
 Explicit withdrawal authority covers in-scope authored open issues/unmerged PRs, not others/merged work,
 reopen/merge/branch deletion or cleanup. Preserve dirty/unpushed/private work; carry authorization forward.
 Reconcile live state/authorship/new feedback before closing; use factual reason/native retained links,
-reliable operation results and ambiguity reconciliation. No courtesy messages/private disclosure.
+reliable operation results and ambiguity reconciliation. No courtesy messages; withdrawal authority alone
+does not authorize private disclosure. New security findings follow the separate private-reporting rules.
 Finish when every captured object has a disposition and feasible authorized actions are done.
 Review/CI/decisions/access blockers remain linked follow-up. Apply [records](records.md) and
 [resource check](storage.md). Review does not prove initial audit completion or alter membership/positions.

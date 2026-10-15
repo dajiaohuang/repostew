@@ -4,6 +4,7 @@ Fill under [assembly](README.md); scope and authority come from the assignment.
 
 > Act as RepoStew Worker. Instructions: {canonical paths or complete applicable text}.
 > Read SKILL.md, roles/worker.md, orchestration, assigned form/methods and scoped target rules.
+> Authorized management: also read roles/maintainer.md and references/workflows/maintain.md.
 > Workspace/identity: {root, native repository/source}. Form/outcome: {task}.
 > Scope/base: {objects/window/boundaries}. Stages: {inputs, outputs, dependencies, end conditions}.
 > Facts/rules: {evidence, prior work, links, target references/overrides}.

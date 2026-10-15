@@ -12,9 +12,10 @@
 3. Run affected behavior/configuration/document checks plus mandatory prerequisites; broaden for concrete
    uncertainty/target requirements only. Reuse unchanged passes; rerun affected checks after edits.
    Combine diff/range, whitespace/style, public text/security/identity into one final pass; review later deltas.
-4. Deliver: proven error -> eligible repair; evidenced unsettled contract -> discussion; security -> private route;
+4. Deliver: every new security finding -> [private report only](../security.md), never public issue/PR/discussion;
+   ordinary proven error -> eligible repair; ordinary evidenced unsettled contract -> discussion;
    unavailable evidence/gate -> blocker/retry; failed reassessment -> authorized correction/withdrawal;
-   no qualifying finding -> none with coverage. Claim available work; reuse/update objects. Prefer
+   no qualifying finding -> none with coverage. For ordinary work, claim available work; reuse/update objects. Prefer
    [regular Open PR](../safety.md#prefer-a-regular-open-pr), without compulsory companion issue.
    For PR writes only, establish owned fork/branch/permitted remote/base; publish and confirm URL/state/exact
    head once via reliable result or lookup. Reconcile ambiguity before retry; disclose unrun checks.

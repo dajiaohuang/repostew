@@ -6,6 +6,7 @@ Construct ordinary text using [templates](../prompts/README.md); no compiler or 
 ## Establish intent before choosing a template
 
 1. Establish outcome, exact scope, prior work, authority/resources; never infer permissions.
+   For authorized managed/self-owned work, add [Maintainer](../roles/maintainer.md) and [maintain](workflows/maintain.md).
 2. Choose [form](work-forms/README.md) from assignment/native authored history; comments are not authorship.
 3. Capture/deduplicate; normally one complete repository batch per engineering Worker,
    one bounded source batch for discovery. Resolve known writer conflicts before dispatch.
@@ -19,6 +20,7 @@ Order: [SKILL.md](../SKILL.md) + role + [orchestration](orchestration.md) -> sel
 -> scoped target references -> task facts/overrides. Keep unchanged shared text stable.
 Include workspace/records for state, safety for external changes, storage for repository passes,
 contribution standards for engineering. Do not send every method to every Worker.
+Any new security finding requires [private-reporting rules](security.md), even during ordinary work.
 Task facts: workspace, native identity, objects/window/base, dependencies, authority/resources,
 evidence, overrides, end condition and result delivery. Omit inapplicable fields/transcripts;
 Workers establish ordinary unknowns; clarify indispensable missing scope/authority.

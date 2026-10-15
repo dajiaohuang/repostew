@@ -5,6 +5,7 @@ This compatibility entry contains no separate policy. Select a
 [Worker assembly](worker-assembly.md), and use the canonical source/work methods below.
 Role responsibilities are in [Coordinator](../roles/coordinator.md) and
 [Worker](../roles/worker.md); all initial/continuation templates are in [prompts](../prompts/README.md).
+Authorized management uses [Maintainer](../roles/maintainer.md) and [maintain](workflows/maintain.md).
 
 ## Discover and admit new repositories directly
 
