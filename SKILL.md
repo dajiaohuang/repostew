@@ -9,6 +9,8 @@ RepoStew supplies policy, work methods and Worker construction; harness supplies
 tools, permissions and lifecycle. Coordinator assembles/coordinates; Workers complete assigned work.
 Read applicable canonical files or complete current inline text; continue by delta.
 Policy/state belong to the selected [workspace](references/workspace.md), not the package or checkout.
+Authorized multi-device [shared state](references/shared-state.md) uses additive reviewed summaries in state/;
+work/ stays local and intact, with explicit per-project handoff rather than an inferred global cutover.
 Roles: [Coordinator](roles/coordinator.md), [Worker](roles/worker.md), [Maintainer](roles/maintainer.md).
 Wording: [prompts](prompts/README.md); native access: [harness](references/harness.md), [forges](references/forges/README.md).
 

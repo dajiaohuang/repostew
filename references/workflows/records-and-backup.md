@@ -6,6 +6,14 @@ reread after intervening writes and defer conflicts. Navigation derives from aut
 Preserve through/last_seen_id/last_seen_revision/boundary_ids exactly; private mail positions stay private.
 No inferred cursors, unknown completion, duplicate bodies/logs or stale bulk rewrite.
 
+## Authorized shared-state publication
+
+An explicitly authorized [shared-state transition](../shared-state.md) may publish reviewed
+state/repositories/ summaries in the designated private repository. Additive migration preserves
+local work and existing remote files/history; cleanup requires a separately reconciled replacement.
+Never bulk-copy work/ or treat partial backfill as a completed live-state cutover. The backup rules
+below still govern privacy, explicit staging, separate skill/state commits and head verification.
+
 ## Reviewed backup
 
 Only when requested: individually review/stage the three membership lists, public read positions and

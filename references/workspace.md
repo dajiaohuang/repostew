@@ -7,6 +7,13 @@ not the plugin cache/cwd/target checkout. Skill files may be bundled or at RepoS
 links use their containing file. Installation never changes the workspace authority or state root.
 Unknown root needs clarification. Use actual paths/versions and native interfaces, without vendor/OS binding.
 
+## Additive shared-state transition
+
+When authorized, use [shared state](shared-state.md) to add reviewed cross-device coordination
+facts under state/repositories/<host>/<owner>/<repo>.md while keeping work/ local and intact.
+During backfill these records are snapshots, not evidence of handoff or exclusive authority;
+reconcile legacy updates before acting. Do not switch all projects merely because some records exist.
+
 ## State you edit directly
 
 - state/maintained-repositories.md: standing managed repository/action authority; apply [maintain](workflows/maintain.md)

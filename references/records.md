@@ -37,6 +37,10 @@ Mail/security stay protected/unsynced. Advancing positions never resolves engine
 
 ## Authorized migration
 
+For multi-device state/local-work separation, follow [shared state](shared-state.md): add reviewed
+coordination summaries without deleting or rewriting work/. During backfill reconcile legacy deltas;
+explicit per-project handoff, not mere summary creation, changes coordination authority.
+
 When requested, enumerate container-root records plus active global/private records, including nonmembers;
 exclude source/temp/archives/unrelated data. Preserve native text/positions/aliases, unfinished/private findings
 and safety/validation boundaries; remove repeats/superseded logs/empty templates only.
