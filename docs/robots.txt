@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dajiaohuang.github.io/RepoStew_skills/sitemap.xml
+Sitemap: https://dajiaohuang.github.io/repostew/sitemap.xml

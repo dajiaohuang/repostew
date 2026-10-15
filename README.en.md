@@ -1,49 +1,198 @@
 # RepoStew
 
-Portable repository stewardship for capable multi-agent harnesses: discovery, audits, contribution follow-up and authorized maintenance. Coordinators assemble scoped Workers;
-state is direct Markdown, execution serial unless authorized otherwise.
+**Automated repository maintenance for coding agents: discover repositories, investigate real problems, deliver fixes, and keep following the work through review and resolution.**
 
-[中文](README.zh.md) · [Entry](SKILL.md) · [Website](https://dajiaohuang.github.io/RepoStew_skills/)
+RepoStew is a portable Skill for multi-agent harnesses. It defines how agents select work, audit code and documentation, handle issues and pull requests, respond to feedback, and maintain authorized repositories over time. It also defines what agents must skip, keep private, preserve, or leave blocked.
 
-## All flows
+[中文](README.zh.md) · [Website](https://dajiaohuang.github.io/repostew/) · [Skill entry](SKILL.md) · [Harness packages](integrations/README.md)
 
-1. Prepare outcome/scope/prior work/authority/resources. [Coordinator](roles/coordinator.md)
-   uses [assembly](references/worker-assembly.md) and [templates](prompts/README.md) to assign
-   [Workers](roles/worker.md), adding [Maintainer](roles/maintainer.md) for authorized management. [Harness](references/harness.md) supplies execution;
-   [orchestration](references/orchestration.md) dispatches, waits, integrates, continues, hands off and recovers.
-2. Select [discovery](references/work-forms/discovery.md), [new audit](references/work-forms/new-repository.md),
-   [reassessment](references/work-forms/contribution-reassessment.md), [incremental feedback](references/work-forms/incremental-feedback.md)
-   or [recurring patrol](references/work-forms/recurring-patrol.md). Capture/deduplicate
-   [followed issues](references/workflows/followed-issues.md), [notifications/selected mail](references/workflows/notifications.md)
-   and [open/unfinished objects](references/workflows/open-objects.md) under separate source positions.
-3. [Trace actual use/documents](references/audit.md), prove [necessity](references/contribution-value.md),
-   discuss ordinary unsettled contracts; every new security finding uses [private reports only](references/security.md), never public issues.
-   Complete assigned audit coverage before grouped repair delivery.
-4. [Repair, validate, publish](references/workflows/delivery.md) under [target/safety gates](references/safety.md);
-   handle feedback, consolidate roots and withdraw within authority; [maintain](references/workflows/maintain.md)
-   managed/self-owned repositories' issues, PRs, code, documents and CI/tests.
-5. Write [minimal records/migrate when authorized](references/records.md),
-   [reconcile/recover/reclassify history](references/workflows/history.md),
-   [publish reviewed backup when requested](references/workflows/records-and-backup.md),
-   [provision/dispose resources](references/storage.md). Separate coverage, delivery, resolution and release.
+## How automation works
 
-## Boundaries
+An agent harness supplies execution, tools, permissions, native delegation and scheduling. RepoStew supplies maintenance policy, work methods, role definitions and assignment templates. With an authorized assignment and the required access, an agent can carry a bounded maintenance task from discovery through investigation, repair, publication and follow-up. Authorized recurring jobs can resume this work from saved Markdown records.
 
-- Apply [user-selected exclusions](references/forges/github/exclusions/agentscan.md) before selecting or continuing GitHub work; preserve existing objects/history without inferring withdrawal or deletion authority.
-- Establish scope/authority; roles, membership, history and installation grant no permission or task.
-  Serial by default; delegation, parallelism, schedules and external actions require authorization.
-- Follow actual use/contracts and [quality standards](references/contribution-value.md), without invented defects/necessity.
-  Prohibit defensive programming, trust internal contracts, retain necessary boundary checks.
-- One writer per resource; Coordinator owns shared state, Workers repository records. Preserve unrelated/dirty/unpushed/unknown/private/recovery material.
-- Dispatch sufficiently once, continue by delta, trust usable finals; no routine receipts/progress/readback loops.
-- Direct Markdown, no custom runtime/queue/claims/database; report coverage, outcomes, unfinished work and resource release accurately.
+Installing the Skill does not start a daemon, create jobs, enable parallel agents, grant maintainer rights or authorize public actions. One-off work and recurring maintenance use the same rules; actual capabilities must be verified in the selected harness.
 
-## Use
+- **Coordinator:** selects scope, assembles assignments, deduplicates incoming work, coordinates repository writers, and updates shared membership and read positions.
+- **Worker:** completes an assigned repository investigation or maintenance batch, runs necessary checks, performs authorized actions, and records outcomes and blockers.
+- **Maintainer:** a Worker with explicit management authority for a managed or self-owned repository; it may triage issues and review, amend or merge PRs within that authority and live repository settings.
 
-Use the skill at workspace RepoStew_skills/ or the [Codex/Claude/Pi/OMP package](integrations/README.md).
-Priority adapters: [Pi workspace binding](references/harnesses/pi.md) and [Codex native Workers](references/harnesses/codex.md); reuse official execution.
-Keep state/, work/<owner>/<repo>/ and state/maintained-repositories.md in the selected workspace.
-[Workspace rules](references/workspace.md) define membership, positions, repository records and disposable source.
-Read SKILL.md and assign scope/authority. Verify actual harness capabilities; files never start jobs or schedules.
+Execution is serial by default. Authorized parallel Workers handle distinct repositories, with one writer per repository and serialized shared-state edits. See [roles](roles/coordinator.md), [Worker assembly](references/worker-assembly.md), [orchestration](references/orchestration.md), [harness capabilities](references/harness.md) and [Maintainer authority](roles/maintainer.md).
 
-[MIT](LICENSE)
+## What RepoStew does
+
+### 1. Prepare and assemble the assignment
+
+Establish the selected workspace, native repository identity, desired outcome, objects or time window, base revision, prior work, permissions and resource limits. Read applicable target instructions, contribution rules, templates and security policy before broad investigation or external action.
+
+The Coordinator selects one of five work forms and the applicable methods, then uses the centralized [prompts](prompts/README.md). Dispatch sufficiently once; continue by changed facts, hand off only when the previous writer has ended, and recover concrete failures. Templates and role names grant no authority.
+
+### 2. Discover and admit repositories
+
+Read authorized discovery sources, extract native repository identities, lightly screen suitability and deduplicate existing names and aliases. Append genuinely new candidates to the new-repository list through its shared writer.
+
+Trending and awesome-list discovery can use workspace-approved windows, seeds and linked lists/search/topics. List expansion is bounded and detects cycles; it does not recursively traverse ordinary projects' dependencies. Discovery does not clone, build or audit a project to decide admission. Admission grants no permission to follow, publish or administer that project.
+
+See [discovery form](references/work-forms/discovery.md) and [discovery procedure](references/workflows/discovery.md).
+
+### 3. Audit a new repository
+
+Inspect target policy, suitability, current base and the assigned issue window. Fully paginate issues, exclude PRs, classify newest-created issues first, and investigate affected supported use, contracts, documentation, duplicates and existing fixes.
+
+An explicit window wins. Otherwise the default window narrows from 90 to 30 to 7 days when each exceeds 100 issues; seven days is the minimum, and its entire window is processed even above 100 issues. An explicit whole-source audit remains whole-source scope.
+
+Complete the assigned classification and actual-use/documentation audit before grouped repair publication. Group common-root errors, separate independent errors, reuse matching objects and discard non-defects. Zero qualifying findings is a valid result. Keep incomplete feasible work listed; completed audit coverage with pending review or CI becomes unresolved follow-up.
+
+See [new-audit form](references/work-forms/new-repository.md), [new-repository procedure](references/workflows/new-repository.md) and [audit method](references/audit.md).
+
+### 4. Reassess existing contributions
+
+Review assigned authored issues and PRs against current code, feedback, base/head and current-head CI. A whole-repository reassessment captures authored objects across all states plus authoritative unfinished links; targeted feedback retains its bounded object set. Comments are not authorship, and truncated or inaccessible searches are not empty coverage.
+
+Keep and repair useful work; correct unsupported claims; consolidate duplicates; retain evidenced contract questions or access blockers. Withdraw unnecessary, incorrect, superseded or scoped-rejected authored open objects only within withdrawal authority. Preserve merged work and others' objects. Pending or cancelled CI alone proves neither failure nor grounds for withdrawal.
+
+See [reassessment form](references/work-forms/contribution-reassessment.md) and [reassessment decisions](references/reassessment.md).
+
+### 5. Handle incremental feedback
+
+Capture new feedback and finite repository batches, deduplicate native objects, and investigate changed or unresolved paths. Respond substantively on the native engineering object when needed; update an existing repair instead of publishing a duplicate. Reuse unchanged evidence and checks, retain exact blockers, and avoid repeating a whole audit for each notification.
+
+Sources include [notifications/selected mail](references/workflows/notifications.md), [followed new issues](references/workflows/followed-issues.md), [open/unfinished objects](references/workflows/open-objects.md) and explicitly supplied feedback or maintenance requests. See the [incremental-feedback form](references/work-forms/incremental-feedback.md).
+
+### 6. Maintain authorized repositories
+
+For managed or self-owned repositories, establish authority from the explicit assignment or workspace `state/maintained-repositories.md`, then verify live rights and repository settings.
+
+- **Issues:** classify, answer, link duplicates, close with a factual reason, or implement a warranted repair within assigned scope.
+- **PRs/MRs:** review current changes, request revisions, append necessary commits when branch-edit rights permit, and merge when assigned authority, settings, required checks and approvals permit.
+- **Code and documentation:** audit actual use and documented behavior; make minimal compatible revisions and correct existing errors.
+- **CI and tests:** retain supported-use coverage and essential checks; authorized quality maintenance can remove excess without inventing a defect. Never remove necessary checks to hide failures.
+
+Maintenance uses the existing five forms; it is a role and method, not a sixth form. Per-object maintenance does not impose a whole-repository audit or a universal extra pre-publication review stage. See [maintenance procedure](references/workflows/maintain.md).
+
+### 7. Repair, validate, publish and follow up
+
+For an ordinary repair, establish the supported trigger, observed error, violated contract, intended correction and smallest complete compatible change. Run affected behavioral checks and target-required validation. Confirm current target rules, competing work, base/head and the permitted publication route before writing publicly.
+
+Prefer a regular Open PR when the gates pass. Drafts retain the same necessity gate; they do not bypass invitation or submission restrictions. No compulsory companion issue or additional routine approval stage is added. Keep the existing object's feedback, CI, revisions and final disposition connected through native links.
+
+See [delivery](references/workflows/delivery.md), [contribution standards](references/contribution-value.md) and [publication gates](references/safety.md).
+
+### 8. Record, reconcile and finish
+
+Write material changes to current repository state and short actual-delivery history. Retain unresolved links, reasons and retry conditions. Reconcile history, recover or reclassify only within assigned scope; migrate or back up records only when requested. Check resource disposition after every pass, including blocked or unchanged work.
+
+See [records and migration](references/records.md), [history/reclassification/recovery](references/workflows/history.md), [reviewed backup](references/workflows/records-and-backup.md) and [resource disposition](references/storage.md).
+
+## Recurring maintenance
+
+The [recurring-patrol form](references/work-forms/recurring-patrol.md) uses three complementary entry points. These are configurable baselines, not automatically installed or active schedules.
+
+| Entry point | Baseline | Behavior and boundary |
+| --- | --- | --- |
+| Notifications + selected mail | Every hour | Independent source positions; deduplicate engineering objects and handle them on their native forge. Read only the explicitly selected mail account/folder. |
+| Followed new issues | Every 6 hours | Scan the deduplicated union of followed groups, fully capture the creation-time window, and assign nonempty repository batches. |
+| Open/unfinished-object fallback | Every 24 hours | Inspect authored/commented open issues, authored open PRs and every authoritative unfinished link, including nonmembers and closed/merged-but-unfinished objects. Start with lightweight live metadata/head/CI. |
+
+Continue unfinished passes before starting new ones. Deepen changed, unknown or feasible unresolved work; do not stack duplicate scans, clones, tests or audits. Fallback does not rescan mail or expand into all historical new issues.
+
+Advance each source only through completely captured and handled or reliably retained work. Preserve exact native IDs, revisions, UTC windows and boundaries. Source failure or ambiguous ordering preserves its last confirmed position; reading is not resolution. Scheduling changes never resume paused or retired jobs. See [patrol configuration](references/patrols.md).
+
+## Filtering and admission boundaries
+
+### User-selected exclusions
+
+Apply the configured [GitHub exclusions](references/forges/github/exclusions/agentscan.md) before discovery/admission, audits, reassessment, feedback, patrol and publication. The current policy distinguishes exact owner exclusions from exact owner/repository exclusions, case-insensitively. It does not expand to a participant's employer, an adopter's unrelated repositories or another forge. A later explicit assignment may grant a scoped exception.
+
+Exclusion stops new work in scope; it does not erase membership/history or authorize closure, withdrawal, deletion or unsubscription. Public-adoption evidence does not establish private installations or undisclosed users. The exclusion reference records sources and collection boundaries; it is a user cooperation preference, not a claim of malicious behavior or an upstream AI ban.
+
+### Suitability for external contributions
+
+Apply [suitability rules](references/suitability.md) remotely before admission/new audit; unknown remains pending.
+
+- **Resource, awesome, bibliography, prompt, configuration and document collections:** skip only explicit refusal of external PRs or a forbidden submission method. Inactivity, lack of software maintenance or no observed outside merges alone does not disqualify them. Archived/read-only/unavailable without refusal retains a concrete blocker.
+- **Other targets:** skip evidenced archive/retirement/read-only mirrors/submission refusal; one-off course/config/showcase/paper projects without continued software maintenance and outside reception; or a year without substantive development and maintainer handling of outside contributions. Automation and our own submissions do not count as that evidence.
+- **Insufficient reasons to skip:** low stars, costly validation, one rejection, requested revisions, or a new unmerged PR. Verify mirrors' real contribution routes and preserve legitimate research/education projects and acceptance evidence.
+
+Discovery filters, followed-group filters and maintenance authority have different scope. Followed filters apply to followed-issue scanning, not automatically to intake, notifications or authored-object patrol. Contribution-admission rules apply to maintenance only when intake itself is assigned. Do not invent language, star or activity thresholds. A confirmed skip records reason/source and changes membership through its writer; it never claims an audit was completed.
+
+### Evidence and contribution quality
+
+An ordinary defect claim needs supported input/configuration → production or public API use → concrete wrong result → violated contract. A documentation repair needs an exact existing false fact, instruction, link or example and an authoritative or behavioral correction. Reproduction or strong source proof can establish the error.
+
+Hypothetical risks, isolated helpers, artificial examples, cosmetics, CI failures or prior effort alone do not establish repair necessity. Evidenced unsettled behavior becomes a precise contract question, not a confirmed defect. There are no finding or PR quotas.
+
+Implementation trusts internal contracts: no redundant guaranteed-type/null/state checks, just-in-case defaults, swallowed failures or unjustified retries. Fix the responsible producer/caller; retain necessary external-input/security validation and contractual failure handling at their boundaries. These rules grant no wider cleanup authority. See [code standards](references/contribution-value.md#code-implementation-prohibit-defensive-programming).
+
+## Authority, security and privacy
+
+### Actions stay within explicit authority
+
+Repository membership, following, authored history, account ownership, a role name or installing the Skill does not itself authorize management. Keep existing user authorization and verify live rights. Public posting, upstream pushes, merge/close/reopen, withdrawal, branch deletion, releases, schedules, parallelism and cleanup require applicable authority; one permission does not imply the others.
+
+Respect target-specific contribution, invitation, design, licensing, security and disclosure requirements. Preserve unrelated dirty/unpushed/unknown work and recovery material. Reconcile ambiguous external effects before retrying. Do not fabricate defects, identities or acceptance, or evade truthful disclosure requirements. See [safety](references/safety.md) and [scoped forge rules](references/forges/README.md).
+
+### Every new security finding stays private
+
+This includes suspected findings discovered during ordinary audits and findings in managed/self-owned repositories. Establish the actual deployment/configuration, assets, attacker control, trust boundaries, mitigations, concrete impact and violated security guarantee. Dangerous-looking helpers or hypothetical capability alone are insufficient; security evidence has its own threat model and does not require a normal supported-use trigger or a prior incident.
+
+Use only an authorized private advisory/report channel or designated security contact. Never report a new finding through a public issue, PR, discussion or comment. Without a usable private channel or disclosure authority, keep protected evidence and a blocker/retry; do not fall back to public reporting. Public remediation requires prior private reporting and satisfied disclosure gates.
+
+Test only authorized resources with isolated fixtures; there is no inferred permission to attack live services or others' data. Keep findings, exploits, private links and credentials protected and unsynced. An ordinary audit does not certify security. See [security investigation and disclosure](references/security.md).
+
+### Mail and source positions
+
+Confirm the exact selected account and native folder before reading. Never expand mailbox scope, send/reply by mail, mark notifications read or change subscriptions. Mail only supplies links to native engineering work; substantive handling occurs there. Mail positions and private evidence stay protected, separate from public read positions.
+
+### Resources and backups
+
+Dispose only of explicitly authorized disposable checkout/temp paths inside their resolved boundary. Preserve persistent records, active/shared/dirty/unpushed/private/unknown material, self-owned canonical checkouts and recovery archives. No Go cache, toolchain, module or unrelated build cleanup follows from a repository task.
+
+Stop unused task-owned temporary processes/services only within authority. High memory use does not establish idleness or permit force-killing shared Docker/WSL. Record resources as released, retained with a reason, or failed; ambiguous effects are not success.
+
+Backups are requested, reviewed and narrowly staged into the private state repository: membership lists, public positions and specifically selected repository records. Never recursively upload `work/`, source/temp, mail positions, security findings, credentials or recovery archives. Preserve remote history, separate skill/state commits, and verify actual remote heads.
+
+## State and workspace layout
+
+The selected workspace is the canonical policy/state root. The Skill checkout or installed bundle supplies instructions; the harness owns execution and scheduling. There is no custom runtime, queue, claim registry, receipt service or interaction database.
+
+| Path | Purpose |
+| --- | --- |
+| `state/maintained-repositories.md` | Explicit standing repository/action authority; an assignment may separately grant bounded authority. |
+| `state/new-repositories.md` | Incomplete initial assignments. |
+| `state/old-repositories.md` | Full historical membership; names, not completion or management rights. |
+| `state/followed-repositories.md` | Heading-named followed groups; overlap allowed. |
+| `state/read-positions.md` | Public notification/followed-issue read boundaries. |
+| `state/private/mail-position.md` | Protected account/folder mail positions. |
+| `work/<owner>/<repo>/state.md` | Current facts, live object links, next actions, blockers and resource outcomes. |
+| `work/<owner>/<repo>/work.md` | Short dated actual contribution/maintenance history. |
+| `work/<owner>/<repo>/checkout/`, `temp/` | Source and temporary material, separate from persistent records. |
+| `state/unfinished.md` | Navigation only; repository state remains authoritative, including nonmembers. |
+
+Preserve exact native identities, aliases, revisions and boundaries. Cross-forge/renamed identity needs native proof. Source failure is unknown, not absence; archives are recovery-only. See [workspace](references/workspace.md) and [records](references/records.md).
+
+## Start using RepoStew
+
+1. Load [SKILL.md](SKILL.md) from this checkout or build/load the [Codex, Claude Code, Pi or OMP package](integrations/README.md). Keep state and repository records in the selected workspace, outside the package.
+2. Assign the workspace, repositories/objects/window, outcome and allowed actions. For recurring work, explicitly authorize sources, cadence and activation. For managed work, specify permitted issue/PR/merge actions.
+3. Let the Coordinator select applicable roles, forms and methods; run necessary validation and complete feasible authorized actions. Continue from unresolved records and live sources.
+
+Example assignment:
+
+```text
+Use RepoStew in <workspace> for <owner/repository>.
+Audit the assigned issue window and documented supported workflows at <revision>.
+You may investigate, edit an owned branch, run required checks and publish ordinary
+repair PRs when the target gates pass. Do not merge, close others' objects or create
+schedules. Keep new security findings private; retain blockers without a usable
+authorized private channel. Record coverage, outcomes, unfinished work and resources.
+```
+
+An assignment like this authorizes only its listed scope and actions; it is an example, not standing permission. Adapt it to actual rights and target rules using the [assignment templates](prompts/README.md).
+
+## What counts as completion
+
+Finish the whole selected scope and all feasible authorized actions. Retain inaccessible evidence, pending review/CI, decisions and other external blockers with precise next actions; do not silently narrow an audit or treat a partial Worker return as completion.
+
+Report source proof, local validation, hosted CI, deployed behavior, submission, merge/acceptance, audit coverage, engineering resolution and resource release separately. A green local test is not hosted acceptance; a published PR is not a merge; a read position is not issue resolution; a scheduler wakeup is not completed coverage.
+
+[MIT License](LICENSE)

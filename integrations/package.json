@@ -5,7 +5,7 @@
   "type": "module",
   "license": "MIT",
   "author": {"name": "dajiaohuang"},
-  "repository": "https://github.com/dajiaohuang/RepoStew_skills",
+  "repository": "https://github.com/dajiaohuang/repostew",
   "keywords": ["pi-package", "repository-maintenance", "skills"],
   "pi": {
     "extensions": ["./extensions/pi.js"],
