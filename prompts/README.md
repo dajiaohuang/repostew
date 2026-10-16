@@ -3,6 +3,7 @@
 Use [assembly](../references/worker-assembly.md); templates are ordinary-text skeletons,
 not copied policy, executable protocol or authority.
 
+- [Supervisor start/heartbeat](supervisor-start.md): governance handoff and authorized action-oriented wakeups.
 - [Coordinator start](coordinator-start.md): selected scope and Worker construction.
 - [Worker start](worker-start.md): one complete bounded assignment.
 - [Continue](continue.md): same-task delta or bounded correction with suitable original context.

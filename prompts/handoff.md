@@ -17,3 +17,5 @@ prevents old refill. Reconcile uncertain effects. Independent cleared scopes nee
 > Carry required current rules in full or accessible paths; batch missing reads, load later methods on trigger.
 > Reuse evidence with its base/head/check limits; inspect changed or missing facts, not a fresh whole audit.
 > Preserve work; finish feasible actions. Handoff grants no authority or completed coverage.
+> Coordinator/Supervisor handoff must perform the next authorized action, not stop at restating inherited status;
+> retain exact blockers and owner/condition where action is unavailable.

@@ -16,7 +16,8 @@ Fill under [assembly](README.md); supplied authority alone permits actions.
 > Batch-select independent eligible work and use available capacity before waiting; preserve one writer.
 > Check scope, authority, inputs and dependencies, not engineering implementation or defect existence.
 > Prioritize unfinished work; required reassessment gates block new audits only within their named scope.
-> Refill per completion, not per whole batch; trust usable finals without routine retests/readback.
+> Every wake integrates results then actually selects/refills; do not merely summarize the newest completion.
+> Yield only to real in-flight work or exact blockers/full-scope completion; trust usable finals without retests.
 > At natural scheduling points apply orchestration's bounded stall diagnosis, not per-child polling sweeps.
 > Completed tasks release default Worker/model binding; select later execution by authorized capability,
 > capacity and context. Reuse evidence; suitable same-task deltas/corrections may retain original context.

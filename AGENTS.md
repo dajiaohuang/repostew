@@ -12,7 +12,9 @@
   waiting, refill per completion; name stage-gate scope. Turn/batch/parent end is not whole/descendant completion.
   Completed tasks release Worker/model binding; reuse evidence, not necessarily threads. Keep bounded
   suitable-context corrections, one active writer and handoff gates. T3 semantics live in its harness adapter;
-  no Pi subagent plugins/cap assumptions. No polling service, schedule activation or artificial slot filling.
+  no Pi subagent plugins/cap assumptions. Every wake decides actual continuation, real wait or exact blockers;
+  summaries are not refill. Explicitly authorized heartbeats belong to the Supervisor only; no custom polling
+  service, unrequested schedule activation or artificial slot filling.
   Use applicable files or complete current inline text; unchanged context stays stable, variables last.
   No all-methods prefix, prompt compiler, runtime/queue/claims/receipts/database or vendor/OS binding.
 - Preserve actual-use/document and separate security gates, internal-contract trust, scoped repository

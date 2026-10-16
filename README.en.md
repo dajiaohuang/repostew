@@ -159,6 +159,13 @@ Stop unused task-owned temporary processes/services only within authority. High 
 
 Backups are requested, reviewed and narrowly staged into the private state repository: eligible global records, exact public positions and selected privacy-reviewed project `state.md`. Never recursively add `state/` or upload project `work/`, raw `work.md`, source/temp, mail positions, security findings, credentials or recovery archives. Preserve remote history, separate skill/state commits, and verify actual remote heads.
 
+## Execution continuity
+
+Every completion, continuation or authorized heartbeat resumes the whole mandate: integrate results,
+then dispatch feasible work, wait for actual in-flight work, or retain exact blockers/full-scope completion.
+A summary is not refill. Only the [Supervisor](roles/supervisor.md) owns an explicitly enabled heartbeat;
+[orchestration](references/orchestration.md) defines its bounded action and stopped-writer handoff rules.
+
 ## State and workspace layout
 
 The selected workspace is the canonical policy/state root. The Skill checkout or installed bundle supplies instructions; the harness owns execution and scheduling. There is no custom runtime, queue, claim registry, receipt service or interaction database.

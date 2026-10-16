@@ -23,6 +23,36 @@
    and 'do not fill slots artificially' is not a substitute for selection.
    No repeated audits or scope expansion to fill capacity. Complete the selected scope, not merely a batch.
 
+### Decide the next action on every wake
+
+A completion delivery, continuation, compaction return or authorized heartbeat resumes the whole mandate,
+not just the newest message. Integrate the result, then decide before ending the turn:
+- Feasible authorized work remains: select/refill or send the owning Coordinator a concrete continuation now.
+- Relevant work is actually in flight or capacity is occupied: yield to its native result; do not duplicate it.
+- Remaining work is blocked: retain the affected scope, evidenced reason and next condition/owner. Unknown
+  eligibility requires bounded selection, not a claim that everything is blocked or complete.
+- The whole selected scope is complete: state that scope and its basis, distinct from a finite batch.
+A result summary, stale-record correction or promised follow-up is not dispatch. Zero children plus
+unfinished feasible scope is a continuation failure, not a valid wait for nonexistent completion events.
+Do not demand a new user prompt or the next heartbeat for already authorized feasible work. A completed
+Coordinator turn may be resumed for its unfinished domain; this is not reviving a finished leaf audit.
+
+### Supervisor intervention and authorized heartbeat
+
+An explicitly authorized heartbeat belongs to the designated Supervisor, not separate timers per domain.
+At each bounded tick reconcile the small domain overview, due source boundaries and known blockers with
+available native facts; drill into only concrete anomalies, not every Worker/log/project. Decide and act
+under the wake contract above. If a previous correction produced only a summary/no action, investigate
+that failed continuation and send a specific remedy within authority; 'unchanged' does not close it.
+Verify that continuation was actually accepted through native delivery/result facts; a send acknowledgement
+is not execution or engineering success. Keep the outcome unresolved until real progress or an exact
+blocker appears. No repeated prompts to an active owner, instant retry loop or second engineering acceptance.
+Quiet means no material change and no eligible action, not silently ignoring unfinished work.
+Source freshness, capture/retention and engineering completion are separate. A passed retry lower bound
+allows one authorized reevaluation, never assumed recovery, rate-limit evasion or perpetual retries.
+A paused scheduler is not proof that a separate standing/manual assignment was revoked; conversely a
+heartbeat grants no new source/window or permission to restart paused work. Resolve that exact boundary.
+
 ### Dependencies, capacity and completion
 
 - Priority is not a barrier: selected unfinished work is dispatched first. A true dependency blocks only
@@ -71,7 +101,10 @@ requests native termination; it does not erase outcomes or itself prove terminat
 confirm the affected writer, queued writes and task-owned mutating subprocesses stopped; preserve work
 and reconcile uncertain mutations. A tool timeout/returned call alone does not prove subprocess termination;
 stop only identified task-owned processes within authority, never shared services.
-For replacing a Coordinator, include its descendants and prevent old refill. Independent cleared scopes
+For replacing a Coordinator, include its descendants and prevent old refill. For a Supervisor-only handoff,
+stop its timers/runs/queued writes and retire its governance authority; retain unchanged domain owners
+unless their replacement is also authorized. Transfer native references without assuming task ownership.
+Independent cleared scopes
 may restart without a global drain unless expressly required. Preserve paused schedules and exact authority.
 
 Each repository writer owns its shared root state.md and local work/work.md. Coordinator owns global
@@ -90,7 +123,8 @@ Send applicable changed rules/scope/authority once as a combined delta to the cu
 no blanket wakeup of completed Workers. Clarify material omitted outcomes once using suitable original
 context or exact existing evidence; retain unknowns if neither suffices. No routine second acceptance,
 optional-field demands or inferred outcomes. Continue feasible unfinished work under the task boundary above.
-Compaction is not completion. Correct actual premature returns/chatter once; no heartbeat/enforcement service.
+Compaction is not completion. Correct premature returns under the wake contract; only explicitly authorized
+Supervisor heartbeats are allowed, with no custom enforcement service or per-Worker polling.
 Human-facing updates are separate. Use [prompt templates](../prompts/README.md).
 
 ### Lightweight intake and state updates
@@ -115,7 +149,7 @@ old for its expected operation; inspect only flagged tasks once, distinguishing 
 and external gates. Reuse available lifecycle facts, not a status sweep on every completion; unchanged
 signals do not justify repeated checks. Elapsed time alone never proves failure or authorizes replacement; a sent delta does
 not unblock a running tool. Correct through the owning Coordinator/Worker, then use native events.
-If all work stalls, rely on supported native timeout/attention events or an explicitly authorized one-shot
-check; do not invent heartbeat polling or schedules, or claim event-only coordination detects every stall.
+If all work stalls, use supported native attention/timeout events, an authorized one-shot check or the
+explicitly authorized Supervisor heartbeat above; do not invent schedules or claim events detect every stall.
 After three failed repairs of one fault, stop that repair and retain its doubtful assumption/blocker.
 Independent contribution reassessment is a selected engineering task, not routine Worker acceptance.

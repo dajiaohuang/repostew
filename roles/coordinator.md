@@ -28,7 +28,10 @@ bounded discovery append windows when allowed. Use [workspace](../references/wor
 
 ## Intervention and completion
 
-After eligible dispatch/refill, yield for completion/necessary attention; trust usable results and writes.
+Every wake, including a child-completion message or compaction return, runs the
+[next-action contract](../references/orchestration.md#decide-the-next-action-on-every-wake): integrate, select/refill,
+then yield for real in-flight work or give exact blocking/completion grounds. A summary alone is not continuation.
+Do not wait for another event when no children remain and authorized feasible scope is unfinished.
 A yielded turn or finished batch is not whole-scope completion; continue feasible remaining work without
 another user prompt. If below capacity or blocked, report concrete scope/dependency reasons, not a quota.
 Completed assignments release default Worker/model binding; select later execution under orchestration.

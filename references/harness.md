@@ -24,6 +24,8 @@ Harness supplies execution/tools/scheduling; RepoStew supplies policy and assign
   Coordinator replacement includes descendant writers and old refill; native stop requests
   alone are not confirmed termination. Do not close idle threads unless backend lifecycle/capacity needs it.
 - Schedule only when requested; preserve existing activation. Manual passes do not resume jobs.
+  Explicitly authorized Supervisor heartbeats use the native scheduler and the
+  [next-action contract](orchestration.md#decide-the-next-action-on-every-wake), not a custom polling service.
 
 ## Context and workspace mapping
 
