@@ -14,6 +14,19 @@ Construct ordinary text using [templates](../prompts/README.md); no compiler or 
 5. Establish [harness capabilities](harness.md) and [native forge mapping](forges/README.md); retain blockers,
    never silently substitute exact execution settings.
 
+## Select execution under workspace policy
+
+Use the selected workspace's `state/worker-routing.md` when configured; otherwise use explicit assignment
+limits, never invent a model pool. Reuse its current text; refresh changed policy, not every completion.
+Coordinator owns each new assignment's provider/model/effort choice: assess the preferred model's suitability
+from known task facts, without trial runs; use concrete capability, known capacity or task-fit reasons for an alternative.
+Permission is not a usage target; generic task labels or imagined saturation do not justify departure.
+Put a short reason for nonpreferred choices in the assignment, not a new ledger or routine receipt.
+If a whole round uses nonpreferred models, check its common reason and correct later choices if unsupported;
+do not force ratios, invent work, restart active writers or bypass limits. Use native lifecycle signals,
+not utilization polling. The designated global editor owns current policy; briefs link it instead of copying
+rankings. Escalate authority gaps or exhausted allowed options, not ordinary in-policy choices.
+
 ## Compose the context
 
 Order: [SKILL.md](../SKILL.md) + assigned role/form -> applicable methods/target rules

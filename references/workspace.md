@@ -19,6 +19,10 @@ canonical admission; do not move shared/active material merely to standardize it
 
 ## Global records
 
+- state/worker-routing.md: when configured, current authorized model/effort preferences and delegation
+  limits; one designated global editor. [Assembly](worker-assembly.md#select-execution-under-workspace-policy)
+  defines selection, not vendor-specific defaults. Briefs reference it; native task records hold actual runs.
+
 - state/maintained-repositories.md: explicit standing repository/action authority; apply
   [maintain](workflows/maintain.md) within the assignment and live rights.
 - state/new-repositories.md: incomplete initial assignments; remove only on completion/skip/reclassification.
