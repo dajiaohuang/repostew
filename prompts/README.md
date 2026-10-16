@@ -5,8 +5,9 @@ not copied policy, executable protocol or authority.
 
 - [Coordinator start](coordinator-start.md): selected scope and Worker construction.
 - [Worker start](worker-start.md): one complete bounded assignment.
-- [Continue](continue.md): changed rules/facts and remaining work only.
-- [Handoff](handoff.md): replacement after prior writer ends and mutations reconcile.
+- [Continue](continue.md): same-task delta or bounded correction with suitable original context.
+- [Handoff](handoff.md): normal task-boundary transfer or replacement after prior writer ends and mutations reconcile.
+  Completed tasks release default Worker/model binding; evidence reuse does not require thread reuse.
 
 ## Canonical context and ordering
 

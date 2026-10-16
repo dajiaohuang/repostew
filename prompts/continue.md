@@ -1,6 +1,8 @@
 # Same-task continuation template
 
-Send one combined delta under [orchestration](../references/orchestration.md); no restart/repeated context.
+Use only for a same-task delta or bounded omission/correction with suitable original context under
+[task boundaries](../references/orchestration.md#task-boundaries-and-context-reuse). Send one combined delta,
+not repeated context. Completed tasks do not bind later batches to this Worker/model; otherwise use handoff.
 
 > Continue the existing assignment. Changes: {rules, scope, authority, facts}.
 > Remaining work/stage effects: {exact actions, priority, dependency/gate boundaries, completion}.

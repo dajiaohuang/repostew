@@ -7,7 +7,8 @@
    Comments are not authorship. A complete, deduplicated repository input may proceed while independent
    source capture continues; partial capture is not complete input or permission to advance source positions.
 2. [Assemble](worker-assembly.md) finite assignments; check scope/authority, inputs, writer conflicts,
-   dependencies and end conditions, not implementation. Reuse active same-repository execution.
+   dependencies and end conditions, not implementation. Route in-scope deltas to the current writer;
+   same-repository history alone does not bind future assignments to that Worker.
    No proven defect is needed to assign an authorized audit; zero findings is valid.
 3. Serial unless parallelism is authorized. Batch-select independent eligible work and dispatch into
    available authorized/backend capacity before waiting. Dispatch each assignment once, not one assignment
@@ -49,6 +50,19 @@
   Continue independent permitted sources or captured local work. A retry boundary permits reevaluation,
   not an automatic new timer, polling loop or resumed paused schedule.
 
+### Task boundaries and context reuse
+
+A completed finite assignment releases its default Worker binding, not its evidence or unfinished scope.
+For the next batch/stage, select a suitable authorized model/provider and execution using capability,
+available capacity and relevant context; do not inherit the old choice solely for cache or thread reuse.
+Do not manufacture tasks, violate rate limits or restart active writers to balance model counts.
+A bounded, concrete omission/correction in the same task may use the original context when still suitable.
+Otherwise hand off normally after the affected writer/queued writes stop; failure is not a prerequisite.
+Reuse valid records, capture, repairs and checks with their scope/base/head/limits, not entire transcripts.
+New task, thread/context and model are separate backend choices. Neither force fresh threads nor keep
+old ones indefinitely; preserve authority, failed-attempt limits and budgets across executor changes.
+Clarification does not restore write authority; independent reviews retain their independence.
+
 ### Drain, pause, cancel and replacement
 
 Drain stops new assignments/refill/continuations while existing accepted work finishes. Pause stops new
@@ -70,8 +84,10 @@ Follow [Worker communication](../roles/worker.md#communication-and-continuation)
 After current eligible dispatch/refill, wait on completion/necessary attention, not transcript/record/progress
 polling. A wait timeout alone is not failure or a replacement trigger; continue other eligible work or wait
 again through native mechanisms. Native final delivery needs no second report/acknowledgement.
-Send changed rules/scope/authority once as a combined delta to the original Worker.
-Ask once for material omitted outcomes, or continue feasible unfinished work; no optional-field demands.
+Send applicable changed rules/scope/authority once as a combined delta to the current affected writer;
+no blanket wakeup of completed Workers. Clarify material omitted outcomes once using suitable original
+context or exact existing evidence; retain unknowns if neither suffices. No routine second acceptance,
+optional-field demands or inferred outcomes. Continue feasible unfinished work under the task boundary above.
 Compaction is not completion. Correct actual premature returns/chatter once; no heartbeat/enforcement service.
 Human-facing updates are separate. Use [prompt templates](../prompts/README.md).
 
@@ -89,7 +105,8 @@ Advance only fully captured, handled/reliably retained source ranges. Incomplete
 ### Detect errors through existing signals, not routine audits
 
 Intervene only on explicit failures, contradictions, collisions or scope/security/authority violations.
-Prefer the original Worker; inspect affected evidence only and preserve unrelated success/work.
+Use suitable original context for a bounded correction, or hand off under the task-boundary rules;
+inspect affected evidence only and preserve unrelated success/work.
 Reconcile ambiguous mutations before retry; never duplicate a writer/object. One timeout is not failure.
 For evidenced suspected inactivity, make one targeted status check, then use native events.
 After three failed repairs of one fault, stop that repair and retain its doubtful assumption/blocker.

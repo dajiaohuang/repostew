@@ -32,6 +32,8 @@ Validate the work actually assigned. Discovery batches identity/exclusion/member
 
 Scheduling follows [orchestration](references/orchestration.md): batch-select independent eligible work, use authorized capacity of the actual delegation backend before waiting, and refill per completion rather than per batch. Unfinished-work priority is not a global barrier; required stage gates name their repository/group/pass boundary. Finite Worker batches and ended Coordinator turns do not complete the whole selection. Continue feasible remaining work without another user prompt; if capacity is unused, explain concrete blockers rather than invent work. Native parent status alone does not prove descendant termination. Drain lets accepted work finish without refill; cancellation requires confirmed affected-writer stop before replacement.
 
+Completed finite assignments release default Worker/model binding. Reuse valid evidence; use original context only for suitable same-task deltas or bounded corrections. Select subsequent execution by authorized capability, capacity and relevant context, with one writer and safe handoff—not cache targets. [T3](references/harnesses/t3.md) distinguishes tasks, conversation threads and models; [Pi](references/harnesses/pi.md) uses host delegation, not subagent plugins or their capacity rules.
+
 ### 2. Discover and admit repositories
 
 Read authorized discovery sources, extract native repository identities, lightly screen suitability and deduplicate existing names and aliases. Append genuinely new candidates to the new-repository list through its shared writer.

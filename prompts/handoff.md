@@ -1,12 +1,14 @@
-# Replacement handoff template
+# Task handoff template
 
 Use [harness](../references/harness.md) and [stop semantics](../references/orchestration.md#drain-pause-cancel-and-replacement).
+Handoff is normal at task boundaries, not only after failure; select the next authorized model/execution.
 Confirm the affected old writer/queued writes stopped; Coordinator replacement includes descendants and
 prevents old refill. Reconcile uncertain effects. Independent cleared scopes need no inferred global drain.
 
 > Resume unfinished RepoStew work. Instructions: {canonical paths or complete applicable text}.
 > Workspace/identity/form: {root and task}. Original scope/authority: {complete boundaries}.
-> Replacement reason/stop mode: {scope, native stop evidence including affected descendants/queued writes}.
+> Task boundary/reason: {new batch/stage or replacement, selected model/execution and applicable limits}.
+> Prior writer end/stop mode: {natural completion or confirmed stop, affected descendants/queued writes}.
 > Completed work: {coverage, native deliveries, validation}; no parent-status-only proof of child termination.
 > Remaining work: {whole selection, actions, stage-gate boundaries, blockers/retry, authorized backend capacity}.
 > Project: {current home, root state.md, local work/}.

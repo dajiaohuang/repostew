@@ -58,7 +58,9 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 - Dispatch each assignment sufficiently once; authorized independent work uses available backend capacity
   before waiting and refills per completion, not per batch. Priority is not a barrier; explicit stage gates
   keep their named scope. Finite batches/turns are not full-scope completion. Follow [orchestration](references/orchestration.md)
-  for capacity, descendant lifecycle and drain/pause/cancel. Continue by delta, trust usable finals;
+  for capacity, descendant lifecycle and drain/pause/cancel. Completed tasks release default Worker/model
+  binding; reuse valid evidence, with short same-task continuation only where context remains suitable.
+  Continue by delta, trust usable finals;
   no routine receipts/progress/readback loops.
   Coordinator checks assignment/coverage, Worker checks engineering. Capture-only and metadata-only work
   do not trigger audit/tests/publication. Reuse applicable evidence; deepen changes, unknowns or concrete risks.

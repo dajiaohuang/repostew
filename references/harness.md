@@ -1,6 +1,6 @@
 # Harness integration
 
-Native adapters: [Pi](harnesses/pi.md), [Codex](harnesses/codex.md). Reuse official coverage.
+Native adapters: [Pi](harnesses/pi.md), [Codex](harnesses/codex.md); host orchestration: [T3](harnesses/t3.md).
 
 Map native capabilities to the selected task; no fixed vendor, model, OS, tool or thread API.
 Harness supplies execution/tools/scheduling; RepoStew supplies policy and assignments.
@@ -16,8 +16,10 @@ Harness supplies execution/tools/scheduling; RepoStew supplies policy and assign
 - Retain native handles; receive final results, attention/errors through events or supported waits after
   eligible dispatch/refill. Turn/parent completion is not descendant completion. No transcript/record polling,
   duplicate relays or custom watcher/receipt service.
-- Continue the same task when supported; otherwise confirm its writer/queued writes stopped, preserve work
-  and hand off. Coordinator replacement includes descendant writers and old refill; native stop requests
+- Map task, thread/context and model separately. Continued context is optional under
+  [task boundaries](orchestration.md#task-boundaries-and-context-reuse), not permanent Worker ownership.
+  Normal handoff needs stopped prior writer/queued writes and preserved work, not a failed Worker.
+  Coordinator replacement includes descendant writers and old refill; native stop requests
   alone are not confirmed termination. Do not close idle threads unless backend lifecycle/capacity needs it.
 - Schedule only when requested; preserve existing activation. Manual passes do not resume jobs.
 

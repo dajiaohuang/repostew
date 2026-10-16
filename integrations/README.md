@@ -21,12 +21,14 @@ Assignments supply that current project home; workers write shared project facts
 or a separate root work tree. Installation never publishes local records or binds a backup as runtime.
 Other skill-capable harnesses can load `skills/repostew/SKILL.md` directly.
 
-Configure native Workers: `rtk python <bundle>/scripts/configure-workers.py <workspace>`.
-This creates project Pi agent and Codex role-config files, preserves different existing definitions,
-and prints Codex CLI overrides; it changes no global config, model, permissions or concurrency.
-Pi delegation uses its shipped `examples/extensions/subagent` directory loaded with `-e`;
-select project agents through native trust. See [Pi](skills/repostew/references/harnesses/pi.md)
-and [Codex](skills/repostew/references/harnesses/codex.md) for lifecycle limits.
+Configure Codex native Workers: `rtk python <bundle>/scripts/configure-workers.py <workspace>`.
+This creates only a Codex role-config file, preserves different existing definitions and prints CLI overrides;
+it changes no global config, model, permissions or concurrency. Existing Pi plugin files are left untouched,
+not generated or loaded. Pi uses the host's authorized delegation, not a subagent plugin.
+See [Pi](skills/repostew/references/harnesses/pi.md), [Codex](skills/repostew/references/harnesses/codex.md)
+and [T3-owned orchestration](skills/repostew/references/harnesses/t3.md) for the actual backend.
+Completed assignments do not bind future work to their Worker/model; reuse valid evidence and select
+suitable execution at task boundaries, preserving one writer and safe handoff.
 
 Formats: [Codex](https://developers.openai.com/plugins/build/plugins),
 [Claude](https://code.claude.com/docs/en/plugins), [Pi](https://pi.dev/docs/latest/packages),

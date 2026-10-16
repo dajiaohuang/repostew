@@ -26,15 +26,19 @@ def validate(bundle, output):
     instructions = tomllib.loads(role.read_text(encoding="utf-8"))["developer_instructions"]
     assert json.dumps(str(workspace)) in instructions
     assert "model" not in tomllib.loads(role.read_text(encoding="utf-8"))
-    preserved = role.read_bytes()
+    assert not (workspace / ".pi").exists(), "Do not generate Pi subagent-plugin definitions"
     pi_agent = workspace / ".pi/agents/repostew-worker.md"
+    pi_agent.parent.mkdir(parents=True)
     pi_agent.write_text("existing project agent", encoding="utf-8")
+    setup.configure(workspace, bundle / "skills/repostew")
+    preserved = role.read_bytes() + b"\n# Existing custom role\n"
+    role.write_bytes(preserved)
     try:
         setup.configure(workspace, bundle / "skills/repostew")
     except FileExistsError:
         pass
     else:
-        raise AssertionError("Different existing agent must be preserved")
+        raise AssertionError("Different existing Codex role must be preserved")
     assert role.read_bytes() == preserved
     assert pi_agent.read_text(encoding="utf-8") == "existing project agent"
     environment = {**os.environ, "CODEX_HOME": str(root / "home")}
@@ -72,7 +76,7 @@ def validate(bundle, output):
         except subprocess.TimeoutExpired:
             process.terminate()
             process.wait(timeout=5)
-    print("Codex native strict config/read, Worker TOML, idempotency and collision preservation passed (no live spawn/model).")
+    print("Codex native strict config/read, Worker TOML, idempotency, collision and legacy-file preservation passed; no Pi definition generated (no live spawn/model).")
 
 
 if __name__ == "__main__":

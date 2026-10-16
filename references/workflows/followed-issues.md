@@ -11,7 +11,8 @@
    or publication checks; metadata-only dispositions reuse relevant evidence. Refill authorized slots
    from captured work, no pre-investigation or new schedule.
 4. Avoid existing notification/fallback/Worker writers; merge through authorized communication or defer
-   with retained links/reason. Trust usable finals; clarify material outcomes with the original Worker only.
+   with retained links/reason. Trust usable finals; clarify material omissions from suitable original context
+   or exact existing evidence, not routine revalidation. Completed tasks do not bind later batches to their Worker.
 5. Retain every unresolved object before advancing one global time. Entire union must be fetched and handled/
    reliably retained; any fetch failure keeps old time. Coordinator updates positions/navigation, not membership.
    The global time gate does not block engineering on independently complete inputs. Recover missing

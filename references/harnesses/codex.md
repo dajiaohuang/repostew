@@ -5,7 +5,7 @@ a bound native Worker configuration. Pass its printed `agents.repostew_worker` C
 existing configuration and model/effort/permissions remain authoritative.
 
 These capacity/close rules apply to Codex native spawn/follow-up/wait/close, not a host-owned backend
-such as T3 merely because its provider is Codex. Use the actual backend's live limits and lifecycle.
+such as [T3](t3.md) merely because its provider is Codex. Use the actual backend's live limits and lifecycle.
 Dispatch each assembled assignment once; eligible independent assignments may run concurrently.
 Deliver only deltas on continuation; fill available authorized capacity before waiting.
 `max_concurrent_threads_per_session` counts open spawned threads, including idle ones. Close unneeded

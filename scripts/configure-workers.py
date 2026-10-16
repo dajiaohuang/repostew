@@ -1,4 +1,4 @@
-"""Create workspace-bound native Worker definitions without changing harness config."""
+"""Create a workspace-bound Codex Worker definition without changing harness config."""
 import argparse
 import json
 from pathlib import Path
@@ -18,8 +18,6 @@ def configure(workspace, core):
         "Load methods before their actions, not full Coordinator briefs; keep permission/privacy gates."
     )
     files = {
-        workspace / ".pi/agents/repostew-worker.md":
-            "---\nname: repostew-worker\ndescription: One bounded RepoStew repository assignment\n---\n\n" + prompt + "\n",
         workspace / ".codex/repostew/worker.toml":
             "developer_instructions = " + json.dumps(prompt) + "\n",
     }

@@ -55,7 +55,9 @@ retain the Coordinator's whole selection; recurrence and activation belong to th
 Check scope, authority, resources, dependencies, end condition and delivery once per assignment;
 dispatch each assignment once. Authorized independent assignments may fill available capacity in one turn.
 This is assignment sufficiency, not a code audit or added PR review.
-[Continue](../prompts/continue.md) by delta with the same execution. Before
-[handoff](../prompts/handoff.md), confirm the prior writer/queued writes stopped and reconcile uncertain
+Completed assignments do not bind the next batch to their Worker/model. Select execution under
+[task boundaries](orchestration.md#task-boundaries-and-context-reuse); use [continuation](../prompts/continue.md)
+only for suitable same-task context, otherwise normal [handoff](../prompts/handoff.md).
+Before assigning writes elsewhere, confirm the prior writer/queued writes stopped and reconcile uncertain
 mutations; replacing a Coordinator includes its descendants and disables old refill.
 Retain unfinished work in repository state; native task IDs are transport handles, not claims/queues.

@@ -30,7 +30,9 @@ bounded discovery append windows when allowed. Use [workspace](../references/wor
 After eligible dispatch/refill, yield for completion/necessary attention; trust usable results and writes.
 A yielded turn or finished batch is not whole-scope completion; continue feasible remaining work without
 another user prompt. If below capacity or blocked, report concrete scope/dependency reasons, not a quota.
-Ask the original Worker for material omissions or necessary continuation only.
+Completed assignments release default Worker/model binding; select later execution under orchestration.
+Use suitable original context only for same-task deltas/bounded corrections; recover material omissions
+from it or exact existing evidence, without a second acceptance or silently restoring write authority.
 Relay changes once; intervene on concrete failures, contradictions, conflicts or authority violations.
 Complete capture/coverage and feasible authorized work; retain external follow-up with retry conditions.
 A current Worker return is not full-shard completion. Drain/cancel/replacement follows orchestration,

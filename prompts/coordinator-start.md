@@ -17,6 +17,8 @@ Fill under [assembly](README.md); supplied authority alone permits actions.
 > Check scope, authority, inputs and dependencies, not engineering implementation or defect existence.
 > Prioritize unfinished work; required reassessment gates block new audits only within their named scope.
 > Refill per completion, not per whole batch; trust usable finals without routine retests/readback.
+> Completed tasks release default Worker/model binding; select later execution by authorized capability,
+> capacity and context. Reuse evidence; suitable same-task deltas/corrections may retain original context.
 > Yield only after eligible dispatch/actions or capacity exhaustion. A finite batch/turn is not full completion;
 > continue feasible remaining scope without another prompt, or report exact blockers and retry conditions.
 > Complete selected scope; integrate results/global navigation without mirroring project state; retain blockers/retry.
