@@ -42,15 +42,20 @@ refill and continuation alone do not. Resolve conflicts before dependent actions
 
 ## Combine stages without combining away their boundaries
 
-State each stage's input/scope/output/permission/entry condition. Finish required reassessment
-and feasible actions before new audits; reliable external blockers need not delay independent work,
-but missing capture/feasible local work blocks refill. Keep stage coverage distinct.
-Recurring Coordinators construct finite batches; cadence/activation belong to the scheduler.
+State each stage's input/scope/output/permission/entry condition and dependency boundary: repository,
+selected group or whole pass. Distinguish unfinished-work priority from a required completion gate.
+Required reassessment and feasible actions precede new audits within the specified gate; unrelated work
+and independent tasks in the same stage need not wait. Missing capture blocks its dependent batch/position,
+not all refill; feasible local unfinished work remains eligible work, not a reason to idle other slots.
+Use [scheduling semantics](orchestration.md#dependencies-capacity-and-completion). Finite Worker batches
+retain the Coordinator's whole selection; recurrence and activation belong to the scheduler.
 
 ## Dispatch, continuation and handoff
 
-Check scope, authority, resources, dependencies, end condition and delivery once; dispatch once.
+Check scope, authority, resources, dependencies, end condition and delivery once per assignment;
+dispatch each assignment once. Authorized independent assignments may fill available capacity in one turn.
 This is assignment sufficiency, not a code audit or added PR review.
 [Continue](../prompts/continue.md) by delta with the same execution. Before
-[handoff](../prompts/handoff.md), end the prior writer and reconcile uncertain mutations.
+[handoff](../prompts/handoff.md), confirm the prior writer/queued writes stopped and reconcile uncertain
+mutations; replacing a Coordinator includes its descendants and disables old refill.
 Retain unfinished work in repository state; native task IDs are transport handles, not claims/queues.

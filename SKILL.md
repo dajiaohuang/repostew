@@ -55,7 +55,11 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 - One writer per project: its Worker writes shared state.md and local work/work.md; Coordinator owns
   global membership/navigation/positions. Serialize Git publication separately; never crawl local work as state.
   Preserve unrelated, dirty/unpushed/unknown/private work and recovery material.
-- Dispatch sufficiently once, continue by delta, trust usable finals; no routine receipts/progress/readback loops.
+- Dispatch each assignment sufficiently once; authorized independent work uses available backend capacity
+  before waiting and refills per completion, not per batch. Priority is not a barrier; explicit stage gates
+  keep their named scope. Finite batches/turns are not full-scope completion. Follow [orchestration](references/orchestration.md)
+  for capacity, descendant lifecycle and drain/pause/cancel. Continue by delta, trust usable finals;
+  no routine receipts/progress/readback loops.
   Coordinator checks assignment/coverage, Worker checks engineering. Capture-only and metadata-only work
   do not trigger audit/tests/publication. Reuse applicable evidence; deepen changes, unknowns or concrete risks.
   Preserve target-required checks, permission/privacy gates, ambiguous-effect reconciliation and safe preservation.

@@ -1,7 +1,9 @@
 # Incremental feedback work form
 
 Input: captured objects/window/boundaries, identity, prior handling, authority/resources.
-Coordinator captures/deduplicates, assigns one nonempty repository batch; Worker handles affected paths only.
+Coordinator supplies complete deduplicated repository inputs, assigning independent nonempty batches
+within authorized capacity; Worker handles affected paths only. Merge later same-repository deltas into
+its existing writer. A complete batch need not await unrelated capture or engineering.
 Select [followed issues](../workflows/followed-issues.md), [notifications/mail](../workflows/notifications.md),
 [open objects](../workflows/open-objects.md) or explicit feedback/maintenance requests; use applicable
 contribution/delivery or authorized [maintain](../workflows/maintain.md) methods.

@@ -8,6 +8,9 @@
 - Select rules/checks by role, form and actual action: supplied text, missing startup reads, conditional methods.
   Reuse current usable text; batch missing reads, no recursive link loading or full Coordinator briefs for leaves.
   Coordinator checks sufficiency/coverage; Worker checks engineering. Keep mandatory safety/target gates.
+  Orchestration owns scheduling: dispatch each assignment once, use authorized backend capacity before
+  waiting, refill per completion; name stage-gate scope. Turn/batch/parent end is not whole/descendant completion.
+  Keep drain/pause/cancel distinct; no polling service, automatic schedule activation or artificial slot filling.
   Use applicable files or complete current inline text; unchanged context stays stable, variables last.
   No all-methods prefix, prompt compiler, runtime/queue/claims/receipts/database or vendor/OS binding.
 - Preserve actual-use/document and separate security gates, internal-contract trust, scoped repository

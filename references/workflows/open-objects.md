@@ -10,6 +10,8 @@
    no repair validation. Load deeper methods only for actionable changes, missing proof or disputed contracts.
 3. Apply [necessity](../contribution-value.md) and scoped [reassessment](../reassessment.md); preserve genuine
    discussions, fix useful work, withdraw only within authority. Retain blockers/retry; remove only resolved entries.
-4. Share the existing serial notification stream; deduplicate and finish an unfinished pass before another.
+4. Share the existing notification coordination stream; deduplicate and finish the same scope's unfinished
+   pass before stacking another. The stream does not serialize independent repository Workers: dispatch
+   complete inputs into authorized capacity and refill per completion, retaining full inventory coverage.
    No mail rescan/all-old new-issue expansion, parallel same-repository writer or resumed paused jobs.
    Configured cadence is not coverage/completion; archives never supply runtime state.

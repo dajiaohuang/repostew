@@ -11,9 +11,14 @@ Harness supplies execution/tools/scheduling; RepoStew supplies policy and assign
   Executions share one authoritative state, not divergent copies. Missing write access is a blocker.
 - Delegate only when authorized, with sufficient context/action limits; child work does not
   authorize top-level conversations or persistent jobs.
-- Retain native handles; receive final results, attention/errors through events or supported waits.
-  No transcript/record polling, duplicate relays or custom watcher/receipt service.
-- Continue the same task when supported; otherwise end its writer, preserve work and hand off.
+- Identify the actual delegation backend, its occupied/queued capacity, release and descendant-stop semantics;
+  model/provider names do not select them. Apply user/aggregate limits without stacking calls to bypass caps.
+- Retain native handles; receive final results, attention/errors through events or supported waits after
+  eligible dispatch/refill. Turn/parent completion is not descendant completion. No transcript/record polling,
+  duplicate relays or custom watcher/receipt service.
+- Continue the same task when supported; otherwise confirm its writer/queued writes stopped, preserve work
+  and hand off. Coordinator replacement includes descendant writers and old refill; native stop requests
+  alone are not confirmed termination. Do not close idle threads unless backend lifecycle/capacity needs it.
 - Schedule only when requested; preserve existing activation. Manual passes do not resume jobs.
 
 ## Context and workspace mapping

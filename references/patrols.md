@@ -10,12 +10,19 @@ Configurable workspace baseline, not automatically installed or resumed:
 
 ## One execution stream, bounded repository parallelism
 
-Use one existing stream when available; complete unfinished passes first. Capture/group through
-[orchestration](orchestration.md); [Workers](../roles/worker.md) receive finite [incremental tasks](work-forms/incremental-feedback.md).
-Separate source positions; retain unresolved work before advancement. No new audit/mail rescan in fallback.
+Use one existing stream when available; resume unfinished capture/handling before a new pass of the
+same source/scope. Do not stack overlapping passes. Complete independent repository inputs may dispatch
+while other capture continues; position advancement retains its own full-coverage gate.
+Capture/group through [orchestration](orchestration.md); [Workers](../roles/worker.md) receive finite
+[incremental tasks](work-forms/incremental-feedback.md). A batch is not the whole Coordinator selection.
+Separate source positions; retain unresolved work before advancement. One source's failure/external wait
+blocks its dependent work, not independent sources or captured engineering. No new audit/mail rescan in fallback.
 Requested concurrency only, one writer per project's shared state.md/local work/; serialize global positions
 and Git publication, not independent project facts. Merge through authorized communication or defer conflicts.
-Trust unchanged handling; inspect actual CI/head changes. No polling registry, repeated tests/clones or progress loops.
+Reuse complete usable capture/unchanged handling; inspect actual CI/head changes. Recover missing local
+capture first, then fill unrecoverable/failed capture gaps within the original authorized scope, without
+repeating complete windows or inventing through. A new window requires existing source/pass authority;
+it does not imply permission to activate a paused schedule. No polling registry, repeated tests/clones or progress loops.
 Scheduler owns cadence/activation/APIs; update matching jobs only when authorized, preserve paused/retired jobs.
 Wakeups/intervals are not active/completed coverage or deadlines. Quiet unchanged runs; report material progress,
 failures, gaps or necessary user action. Scope never authorizes mailbox expansion, email sends or new schedules.

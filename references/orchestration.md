@@ -2,32 +2,74 @@
 
 ## Coordinator execution
 
-1. Capture the full selected scope/current work once; deduplicate, resolve native identity,
-   route by assignment/authored history, not membership or quotas. Comments are not authorship.
-2. [Assemble](worker-assembly.md) and dispatch sufficient finite assignments; check scope/authority,
-   inputs, writer conflicts, dependencies and end conditions once, not implementation. Engineering stays
-   with Workers. Preserve explicit whole-source scope. Reuse active same-repository execution.
-3. Parallelism needs authorization; process returns/refill independently. Finish all required
-   reassessment and feasible actions before new-audit refill; retained external blockers need not wait.
-   Finite drain/pause overrides refill; native occupied slots determine capacity, not requested counts.
-   Track execution, task outcome and writer ownership separately. Refill after native release;
-   cancellation needs confirmed stop before replacing a writer. Close unneeded completed native threads.
-4. Trust usable final outcomes/reported writes; check selected coverage, feasible remaining work and
-   facts needed for global changes, not a second engineering acceptance. No universal review Worker.
-   Apply form-specific membership/position effects. No default CI/merge wait, retest, remote query or readback.
-5. Complete the whole selected shard: coverage, public outcomes and resources separately.
-   Retain exact remaining scope/blocker/retry; zero findings or withdrawals is valid.
+1. Establish the whole selected scope and existing work without narrowing it to the first batch.
+   Resolve native identities, deduplicate and route by assignment/authored history, not quotas or membership.
+   Comments are not authorship. A complete, deduplicated repository input may proceed while independent
+   source capture continues; partial capture is not complete input or permission to advance source positions.
+2. [Assemble](worker-assembly.md) finite assignments; check scope/authority, inputs, writer conflicts,
+   dependencies and end conditions, not implementation. Reuse active same-repository execution.
+   No proven defect is needed to assign an authorized audit; zero findings is valid.
+3. Serial unless parallelism is authorized. Batch-select independent eligible work and dispatch into
+   available authorized/backend capacity before waiting. Dispatch each assignment once, not one assignment
+   per turn. Do not serialize independent repositories behind one long task or an unrelated blocker.
+4. On each completion, integrate its usable result once and refill independently; do not wait for the
+   whole batch. Prefer selected unfinished work; preserve explicit stage gates below. Coordinator checks
+   coverage/remaining work/global effects, not second engineering acceptance, retests or remote readback.
+   Do not wait for CI/merge to dispatch unrelated work. Separate coverage, public outcomes and resources.
+5. End the turn and use native events/supported waits when no further eligible dispatch/action is available
+   or capacity is occupied. For material unused capacity, explain the concrete input/dependency/backend
+   constraint in the next substantive result, not periodic utilization receipts. A limit is not a quota,
+   and 'do not fill slots artificially' is not a substitute for selection.
+   No repeated audits or scope expansion to fill capacity. Complete the selected scope, not merely a batch.
+
+### Dependencies, capacity and completion
+
+- Priority is not a barrier: selected unfinished work is dispatched first. A true dependency blocks only
+  its dependent actions. A required reassessment-before-new-audit gate applies to the explicitly selected
+  stage/group; complete its feasible required actions before new audits. Name that boundary at assembly,
+  never infer a whole-Coordinator/global barrier from one repository. Independent work within the current
+  stage can run concurrently. Retained external blockers need not hold unrelated eligible work.
+- Use the actual delegation backend's capacity and release semantics, bounded by user authorization and
+  any aggregate limit. Reserve capacity for accepted/starting/queued work before further dispatch; report
+  running separately from queued/occupied slots and apply any additional backend idle-thread limits.
+  Do not over-dispatch because accepted work is not yet running. Model/provider name alone does not identify the backend.
+  Close idle completed threads only where that backend counts them against capacity; no universal close gate.
+  If the backend exposes completion only at batch return, refill at that boundary; do not invent streaming,
+  stack calls past its limits or add a watcher to emulate per-child completion.
+- Distinguish turn end, Worker task completion, batch completion and whole-scope completion. A yielded
+  Coordinator may still own live children. A completed turn/parent status or empty parent run queue does
+  not prove all descendants stopped. Use native child/task lifecycle facts, not prose or elapsed time.
+- A finite Worker batch bounds its input, not the Coordinator's entire mandate. Continue eligible remaining
+  work without another user 'continue'. If all remaining work is externally blocked, report exact retained
+  scope/blockers/retry rather than success or indefinite busy waiting. Resume only on an authorized event.
+- Source capture, engineering resolution and position advancement have separate gates. Full-source/global
+  through requirements do not impose an engineering barrier on complete independent repository batches.
+  A missing/failed capture blocks its dependent batch/position, not other complete independent inputs.
+- Rate limits bind the evidenced source/account/endpoint scope; obey Retry-After and never evade limits.
+  Continue independent permitted sources or captured local work. A retry boundary permits reevaluation,
+  not an automatic new timer, polling loop or resumed paused schedule.
+
+### Drain, pause, cancel and replacement
+
+Drain stops new assignments/refill/continuations while existing accepted work finishes. Pause stops new
+work until authorized resumption; state explicitly whether accepted work drains or is cancelled. Cancel
+requests native termination; it does not erase outcomes or itself prove termination. Before replacement,
+confirm the affected writer and queued writes stopped, preserve work and reconcile uncertain mutations.
+For replacing a Coordinator, include its descendants and prevent old refill. Independent cleared scopes
+may restart without a global drain unless expressly required. Preserve paused schedules and exact authority.
 
 Each repository writer owns its shared root state.md and local work/work.md. Coordinator owns global
 membership/navigation/source positions, not a second repository mirror. Serialize global writes through
-their designated editor/bounded windows and Git staging through one publisher. Defer same-project conflicts;
+their designated editor/bounded windows and Git staging through one publisher. This serializes shared
+mutations, not unrelated engineering or all repositories' delivery. Defer same-project conflicts only;
 no locks, claims or hidden queues.
 
 ### Minimal communication during execution
 
 Follow [Worker communication](../roles/worker.md#communication-and-continuation).
-Dispatch once; wait on completion/necessary attention, not transcript/record/progress polling.
-A wait timeout alone means wait again. Native final delivery needs no second report/acknowledgement.
+After current eligible dispatch/refill, wait on completion/necessary attention, not transcript/record/progress
+polling. A wait timeout alone is not failure or a replacement trigger; continue other eligible work or wait
+again through native mechanisms. Native final delivery needs no second report/acknowledgement.
 Send changed rules/scope/authority once as a combined delta to the original Worker.
 Ask once for material omitted outcomes, or continue feasible unfinished work; no optional-field demands.
 Compaction is not completion. Correct actual premature returns/chatter once; no heartbeat/enforcement service.

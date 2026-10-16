@@ -24,11 +24,13 @@ Execution is serial by default. Authorized parallel Workers handle distinct repo
 
 Establish the selected workspace, native repository identity, desired outcome, objects or time window, base revision, prior work, permissions and resource limits. Read target access/privacy/security restrictions before broad content, contribution requirements before engineering, and templates before the corresponding publication.
 
-The Coordinator selects one of five work forms and the applicable methods, then uses the centralized [prompts](prompts/README.md). Dispatch sufficiently once; continue by changed facts, hand off only when the previous writer has ended, and recover concrete failures. Templates and role names grant no authority.
+The Coordinator selects one of five work forms and the applicable methods, then uses the centralized [prompts](prompts/README.md). Dispatch each assignment sufficiently once; continue by changed facts, hand off only after affected writers and queued writes stop, and recover concrete failures. Templates and role names grant no authority.
 
 Load rules by task and action: distinguish complete current text already supplied, missing startup reads and conditional methods. Batch independent missing reads; links are navigation, not recursive reading orders. Leaves receive their applicable boundaries, not entire Coordinator briefs. New stages, changed rules or missing context trigger affected reads; completion events and continuation do not trigger a full reload.
 
 Validate the work actually assigned. Discovery batches identity/exclusion/membership checks; capture validates source completeness without engineering pre-audits. Metadata-only updates need no clone/tests. Reassessment dispositions every assigned object but reuses applicable evidence; repairs run affected and target-required checks. Coordinator checks assignment sufficiency and coverage, not a second engineering acceptance. Permission/privacy, ambiguity reconciliation, confirmed publication and pre-deletion preservation gates remain.
+
+Scheduling follows [orchestration](references/orchestration.md): batch-select independent eligible work, use authorized capacity of the actual delegation backend before waiting, and refill per completion rather than per batch. Unfinished-work priority is not a global barrier; required stage gates name their repository/group/pass boundary. Finite Worker batches and ended Coordinator turns do not complete the whole selection. Continue feasible remaining work without another user prompt; if capacity is unused, explain concrete blockers rather than invent work. Native parent status alone does not prove descendant termination. Drain lets accepted work finish without refill; cancellation requires confirmed affected-writer stop before replacement.
 
 ### 2. Discover and admit repositories
 
@@ -97,7 +99,7 @@ The [recurring-patrol form](references/work-forms/recurring-patrol.md) uses thre
 | Followed new issues | Every 6 hours | Scan the deduplicated union of followed groups, fully capture the creation-time window, and assign nonempty repository batches. |
 | Open/unfinished-object fallback | Every 24 hours | Inspect authored/commented open issues, authored open PRs and every authoritative unfinished link, including nonmembers and closed/merged-but-unfinished objects. Start with lightweight live metadata/head/CI. |
 
-Continue unfinished passes before starting new ones. Deepen changed, unknown or feasible unresolved work; do not stack duplicate scans, clones, tests or audits. Fallback does not rescan mail or expand into all historical new issues.
+Resume the same source/scope's unfinished pass before stacking a new one. Complete independent repository inputs can proceed while other capture continues; full position-advancement gates remain. Recover missing capture locally first, then fill failed or unrecoverable gaps within original authority; do not repeat complete windows. Deepen changed, unknown or feasible unresolved work; do not stack duplicate scans, clones, tests or audits. Fallback does not rescan mail or expand into all historical new issues.
 
 Advance each source only through completely captured and handled or reliably retained work. Preserve exact native IDs, revisions, UTC windows and boundaries. Source failure or ambiguous ordering preserves its last confirmed position; reading is not resolution. Scheduling changes never resume paused or retired jobs. See [patrol configuration](references/patrols.md).
 

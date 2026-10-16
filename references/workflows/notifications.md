@@ -10,7 +10,10 @@
    Handle once under [incremental form](../work-forms/incremental-feedback.md); substantive replies on those
    objects when needed, no receipt replies, duplicate publications or tests. No automatic admission.
    Capture owners validate full source boundaries; engineering Workers inspect assigned current objects,
-   not the same whole source window again. No clone/tests/repair gates for capture-only or metadata-only work.
+   not the same whole source window again. Complete deduplicated repository batches may dispatch while
+   independent capture continues; merge later deltas into the same writer. Recover missing capture locally,
+   then fill failed/unrecoverable gaps within original authority, not repeat complete windows.
+   No clone/tests/repair gates for capture-only or metadata-only work.
 4. Retain unresolved links/reasons in repository state, private links in protected unsynced material;
    advance each source only to its completely captured and handled/retained boundary. Failure preserves
    that source's position; independent capture/handling may proceed. Reading is not resolution.
