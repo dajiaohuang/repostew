@@ -1,60 +1,50 @@
-# Shared state, local work
+# Shared coordination, local execution
 
 ## Boundary
 
-For an explicitly authorized multi-device workspace, state/ is the shared coordination layer in
-its designated private Git repository. work/ remains device-local: source checkouts, uncommitted
-changes, investigation notes, tests, environments and recovery material are not synchronized.
-Never upload credentials, mail positions/content or private security evidence, even to private Git.
-Keep protected material local; share only an appropriately reviewed non-sensitive blocker.
+Use the [workspace layout](workspace.md): state/repositories/<host>/<namespace>/<repo>/state.md is
+shared coordination; the same project's work/ is entirely local. work/work.md records actual delivery
+history; source checkouts, notes, environments, private evidence and imported detailed records stay local.
+Do not maintain a second current state, mirror tree or required legacy state.md under work/.
 
-Global membership, maintainer authority, exclusions and public read positions retain their meanings.
-Add state/repositories/<host>/<owner>/<repo>.md for facts another device needs before acting:
-identity, confirmed responsible Coordinator, current scope/next action/blocker, published object URLs,
-meaningful coverage and exact event positions where applicable. Preserve unknowns and permissions;
-a URL or migrated record does not prove delivery, resolution, current status or authority.
-Use exact forge namespaces (including GitLab subgroups); never merge identities based on similar names.
+Shared facts are identity, responsible writer when established, current scope/next action/real blocker,
+native outcomes, meaningful coverage, exact event positions and fork/branch/commit/base/check limits.
+Keep sensitive reporting references local; share only a non-sensitive constraint. Even private Git never
+receives credentials, mail positions/bodies, source, private security evidence, raw logs or recovery material.
+Use exact reviewed-path admission; test that native namespace/repository names such as work are not
+mistaken for execution directories. Ignore alone neither untracks files nor makes local data disposable.
 
-## Ordinary fork preservation and local release
+## Authority and current writes
 
-With explicit standing workspace authorization, preserve ordinary not-yet-PR work on a distinct
-user-owned permitted fork branch, confirm the remote head and record native target/fork URL/branch/
-commit/base, next action and validation limits here before releasing unused disposable checkout/temp.
-PR/CI waits and dirty/unpushed work call for preservation, not indefinite local retention. Do not upload
-private/security evidence, secrets or prohibited work; retain concrete blockers and active/shared resources.
-Follow [storage](storage.md). This does not authorize deleting local state.md/work.md during additive migration.
+The assigned project writer updates both root state.md and local work/work.md. Coordinator edits globals;
+one designated publisher serializes Git index/commits. Repository state is shared, not a Coordinator-only
+mirror of Worker notes. Neither a record, Git commit, physical move nor device availability grants ownership.
 
-## Additive migration
+Existing backfills remain snapshots until reconciled; do not turn old status or absent records into present
+claims. Explicit handoff changes project responsibility after prior writes/mutations reconcile. Preserve
+membership, maintainer authority, exclusions and public/private source positions; schedules stay paused
+unless explicitly activated. Unknown or conflicting ownership blocks dependent action, not unrelated work.
 
-1. Read the applicable local container-root state.md/work.md and existing shared record. Review the
-   content for privacy and exclusions; exclude source/temp/archives. Do not copy raw records wholesale.
-2. Add only reviewed coordination facts, with source paths and snapshot UTC. Preserve all local work
-   records and intervening edits. Existing shared records need a fresh comparison, not regeneration.
-3. During backfill mark the summary as a snapshot requiring reconciliation. Legacy local records
-   may still receive updates; read their delta and current native objects before consequential action.
-   Missing shared records never mean a project is free, complete or safe to start again.
-4. Transition a project's coordination authority only through an explicit handoff by its current
-   responsible Coordinator. Record the new writer and next action; resolve divergent updates first.
-   Thereafter keep shared action-changing facts current, local work details local. Retained legacy
-   text is evidence, not a competing authority. No deletion is part of additive migration.
-5. Report migrated and deferred scope accurately. Do not infer completeness from file counts or
-   mark unreviewed projects migrated. No permanent migration database, queue or receipt system.
+## Synchronization
 
-## Multiple Coordinators and Git
+Fetch and integrate reviewed remote changes before assigned work. Explicitly stage eligible paths and
+inspect actual staged blobs, including already tracked files; never recursively add state/ or work/.
+Keep skill/state commits separate, push without force, verify actual remote main. On rejection retain local
+work and reconcile semantic conflicts, never blindly choose newer text. A publication copy is not a live
+runtime binding; do not overwrite runtime state or silently choose between conflicting authority records.
 
-One writer per project, explicitly agreed disjoint scopes across Coordinators. Device availability,
-a Git commit, or a locally written ownership line does not acquire/release a project. Unknown ownership
-requires clarification. Designate an editor for global authority/exclusion/membership files; until
-explicit repartition, existing writers retain them. Designate one capturer per account-wide notification
-or mail source; processing can be split by repository. Do not resume or duplicate paused schedules.
+## Authorized housekeeping and relocation
 
-Fetch and integrate reviewed remote changes before taking assigned work. Publish small, explicitly
-staged commits after meaningful coordination updates; review staged content and verify the remote head.
-On rejected push, retain local work, integrate and resolve semantic conflicts; never force-push or
-blindly choose the newest text. Git is synchronization, not a distributed lock. Offline investigation
-can continue within assignment; uncertain ownership or stale action state blocks external publication.
+Follow [records](records.md) and [storage](storage.md). Remove only proved redundant navigation, expired
+scratch or empty obsolete namespaces after preserving necessary facts/positions and fixing current links.
+Retain unfinished/unknown/private work; historical scope or a recovery archive is not a new task queue.
 
-Skill and state commits remain separate. A synchronization checkout is not automatically the runtime
-state root: explicitly bind a device's state/ checkout before treating it as the shared live copy.
-During backfill an external clone is only a publication copy; never overwrite live state/ from it.
-See [workspace](workspace.md), [records](records.md) and [publication](workflows/records-and-backup.md).
+Layout changes require explicit authority: preserve original bytes and dirty refs, never overwrite local
+material, repair supported Git worktree links and actual local references, remove old roots only when empty.
+Identify real blockers; process termination needs its own applicable authority, never a blanket process kill.
+No ACL takeover, elevation, protection bypass or reconstruction of deleted source to force completion.
+
+Ordinary not-yet-PR work follows standing preservation authority: reviewed changes on a distinct permitted
+user-fork branch, actual remote-head confirmation and recovery facts in root state.md before unused-source
+release. PR/CI waits alone do not justify indefinite retention. Protected/prohibited/failed preservation and
+active/shared resources keep concrete boundaries. Local persistent records are never disposable source.

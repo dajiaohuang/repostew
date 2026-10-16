@@ -15,7 +15,10 @@ Pi preserves explicit workspace binding in native session branches and adds one 
 OMP retains its existing command. Neither creates an execution service.
 Roles/forms/methods remain assembled by the Coordinator. Native delegation and permissions
 come from the harness; installation grants no public, maintainer or schedule authority.
-Workspace instructions/state stay in the selected workspace, outside the package.
+Workspace instructions/state stay outside the package: each native project uses
+`state/repositories/<host>/<namespace>/<repo>/state.md` with ignored local `work/`.
+Assignments supply that current project home; workers write shared project facts, not global lists
+or a separate root work tree. Installation never publishes local records or binds a backup as runtime.
 Other skill-capable harnesses can load `skills/repostew/SKILL.md` directly.
 
 Configure native Workers: `rtk python <bundle>/scripts/configure-workers.py <workspace>`.

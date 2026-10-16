@@ -1,6 +1,8 @@
 # Safety without an orchestration protocol
 
-Read target instructions, contribution/templates/security before broad content/actions. Carry exact existing
+Read target access/privacy/security restrictions before broad content; contribution rules before engineering
+and action-specific templates before the corresponding write. Reuse complete current rules, not stale gates.
+Carry exact existing
 user authority; no inferred merge/close/delete/release/upstream push or maintainer rights. Preserve unrelated
 unsafe-to-discard work, credentials/mail/security/recovery material; no Go/toolchain/cache/build cleanup.
 Use owned branches; reconcile ambiguous effects before retry. No fabricated defects/quotas/identity,
@@ -8,6 +10,9 @@ unnecessary public tool/model/agent attribution or evasion of truthful disclosur
 Validate actual changes; separate source/local/CI/deployed, submitted/merged and coverage/resolution/resource
 facts. Apply [delivery](workflows/delivery.md), affected checks and mandatory requirements; reuse unchanged
 passes, not stale volatile decisions. Exact restrictions do not become blanket testing bans.
+Validation follows actual actions: metadata-only work needs no repair tests; source capture needs no PR gates.
+Do not remove mandatory target checks, permission/privacy/exclusion checks, mutation reconciliation or
+pre-deletion preservation. No default second acceptance review by Coordinator.
 
 ## Feedback-derived review rules
 

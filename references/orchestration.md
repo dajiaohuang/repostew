@@ -4,20 +4,24 @@
 
 1. Capture the full selected scope/current work once; deduplicate, resolve native identity,
    route by assignment/authored history, not membership or quotas. Comments are not authorship.
-2. [Assemble](worker-assembly.md) and dispatch sufficient finite assignments; engineering stays
+2. [Assemble](worker-assembly.md) and dispatch sufficient finite assignments; check scope/authority,
+   inputs, writer conflicts, dependencies and end conditions once, not implementation. Engineering stays
    with Workers. Preserve explicit whole-source scope. Reuse active same-repository execution.
 3. Parallelism needs authorization; process returns/refill independently. Finish all required
    reassessment and feasible actions before new-audit refill; retained external blockers need not wait.
    Finite drain/pause overrides refill; native occupied slots determine capacity, not requested counts.
    Track execution, task outcome and writer ownership separately. Refill after native release;
    cancellation needs confirmed stop before replacing a writer. Close unneeded completed native threads.
-4. Trust usable final outcomes/reported writes; apply form-specific membership/position effects.
-   No default wait for CI/merge, repeated testing, remote queries or readback acceptance.
+4. Trust usable final outcomes/reported writes; check selected coverage, feasible remaining work and
+   facts needed for global changes, not a second engineering acceptance. No universal review Worker.
+   Apply form-specific membership/position effects. No default CI/merge wait, retest, remote query or readback.
 5. Complete the whole selected shard: coverage, public outcomes and resources separately.
    Retain exact remaining scope/blocker/retry; zero findings or withdrawals is valid.
 
-Worker writes its repository records; Coordinator writes shared state. Defer same-repository conflicts;
-serialize shared-file writes through one agreed writer/bounded windows. No locks, claims or hidden queues.
+Each repository writer owns its shared root state.md and local work/work.md. Coordinator owns global
+membership/navigation/source positions, not a second repository mirror. Serialize global writes through
+their designated editor/bounded windows and Git staging through one publisher. Defer same-project conflicts;
+no locks, claims or hidden queues.
 
 ### Minimal communication during execution
 
@@ -32,7 +36,10 @@ Human-facing updates are separate. Use [prompt templates](../prompts/README.md).
 ### Lightweight intake and state updates
 
 Read affected current sections before focused edits; reread after another writer/selection change.
-Process each return once. Navigation is not authoritative coverage. Review does not prove initial audit
+Process each return once. Batch finite candidate identity/membership/exclusion checks; reuse applicable
+results, refresh changed rules/identities before dependent actions, retain individual failures. Capture
+owners establish source completeness; repository Workers do not repeat complete source windows.
+Navigation is not authoritative coverage. Review does not prove initial audit
 completion or automatically alter membership; explicit reclassification removes superseded assignment
 without claiming audit completion, preserving prior coverage/private evidence/history.
 Advance only fully captured, handled/reliably retained source ranges. Incomplete feasible work stays open.

@@ -1,23 +1,31 @@
-# Editing and publication
+# Editing and reviewed publication
 
-Use [records](../records.md) and [workspace](../workspace.md): owner/repo bullets, followed headings,
-current URL/action lines, actual delivery history. Read affected sections once; deduplicate/preserve text,
-reread after intervening writes and defer conflicts. Navigation derives from authoritative state.
+Use [records](../records.md), [workspace](../workspace.md) and [shared state](../shared-state.md).
+Assigned repository writer updates root state.md and local work/work.md; Coordinator updates global
+membership/navigation/positions. One designated Git publisher serializes staging/commits, not project facts.
+Read affected sections once; deduplicate/preserve text, reread intervening changes and defer conflicts.
+Record-only work does not reopen engineering validation. Backup checks eligible paths/staged blobs/remote
+heads, not repository source/tests; reported project outcomes need no routine Coordinator readback.
 Preserve through/last_seen_id/last_seen_revision/boundary_ids exactly; private mail positions stay private.
-No inferred cursors, unknown completion, duplicate bodies/logs or stale bulk rewrite.
 
-## Authorized shared-state publication
+## Eligible shared content
 
-An explicitly authorized [shared-state transition](../shared-state.md) may publish reviewed
-state/repositories/ summaries in the designated private repository. Additive migration preserves
-local work and existing remote files/history; cleanup requires a separately reconciled replacement.
-Never bulk-copy work/ or treat partial backfill as a completed live-state cutover. The backup rules
-below still govern privacy, explicit staging, separate skill/state commits and head verification.
+Publish only explicitly requested, privacy-reviewed project state.md and selected global membership,
+authority or public-position records. Project path: state/repositories/<host>/<namespace>/<repo>/state.md.
+Native outcomes/constraints belong there; detailed work.md, notes, checkouts and temporary material do not.
+Navigation is optional, never complete scope, recovery authority or proof of ownership/completion.
 
-## Reviewed backup
+## Publish without leaking local work
 
-Only when requested: individually review/stage the three membership lists, public read positions and
-specified repository state.md/work.md in the private state repository. Navigation is optional, not recovery authority.
-Never recursively stage work/ or upload source/temp/private/mail positions/security/credentials/migration
-staging/recovery archives. Review staged tree; skill/state separate commits; preserve remote history,
-no force-push, verify actual remote main heads. Runtime remains local Markdown, not the backup Git checkout.
+- Use exact reviewed-path admission, not recursive Markdown collection or add state/. Inspect staged blobs
+  and paths, including files already tracked; ignore rules do not untrack existing data.
+- Never stage local work.md/work/, private/local-projects/local-resources, source/temp, credentials, mail,
+  private security evidence, raw records or recovery/migration material, even to private Git.
+- Preserve remote history and unresolved authority/schema differences. Keep skill/state commits separate;
+  no force-push. Verify actual remote main; reconcile conflicts/ambiguous effects rather than choose newer text.
+- Runtime remains the selected local state/ unless explicitly bound otherwise. A backup/publication checkout
+  is not a live cutover, lock, task queue or second coordination authority. Archives remain recovery-only.
+
+Requested housekeeping/relocation follows [records](../records.md#requested-migration-cleanup-and-recovery)
+and [storage](../storage.md): preserve necessary facts and original local material, repair references,
+remove only authorized obsolete/empty paths, retain concrete blockers. No ownership or schedule changes.

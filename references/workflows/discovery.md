@@ -4,7 +4,8 @@
    filters. Extract native identities from source links; query only ambiguous names/aliases/redirects.
 2. Apply [suitability](../suitability.md) lightly, without cloning/auditing/build/history gates or requiring
    issue/PR contribution. Protect private sources; do not invent extra language/star/activity filters.
-3. Deduplicate current membership/known aliases once. Preserve existing assignments/history/following;
+3. Batch native identity, applicable exclusions and current membership/known-alias checks for each finite
+   selection; reuse current rule text, refresh affected results when identities/rules change. Preserve existing assignments/history/following;
    known existing records retain their disposition, not a new audit. Unknown is not zero history.
 4. Append genuinely new names in order to new-repositories.md via Coordinator or explicit bounded writer
    window; reread affected current list, preserve unrelated content. No empty histories, queues/claims/locks,

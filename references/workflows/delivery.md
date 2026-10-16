@@ -2,9 +2,13 @@
 
 ## Complete the assigned work
 
-1. Establish assignment/scope/base/actual checkout; read target instructions, contribution/templates/security
-   before broad README/source/body reads. Adapt to restrictions; preserve prior edits. Reuse unchanged rules,
-   refresh relevant deltas. New audits use [new workflow](new-repository.md); other forms keep assigned objects.
+Execute only stages involved in the assignment: capture/metadata-only work does not trigger repair tests,
+PR publication or source provisioning/release. Load methods before their actions under [assembly](../worker-assembly.md).
+
+1. Establish assignment/scope/base and actual checkout when needed. Read target access/privacy/security
+   restrictions before broad README/source/body reads; contribution requirements before engineering,
+   publication templates before the corresponding write. Preserve prior edits and reuse current rules.
+   New audits use [new workflow](new-repository.md); other forms keep assigned objects.
 2. Reconcile current issues/discussions/all-state PRs/claims/base fixes; refresh only relevant changes before
    publication. Apply [necessity/implementation/grouping](../contribution-value.md), [audit](../audit.md),
    [reassessment](../reassessment.md) or [security](../security.md) as appropriate. Fix completely/minimally;
@@ -12,13 +16,17 @@
 3. Run affected behavior/configuration/document checks plus mandatory prerequisites; broaden for concrete
    uncertainty/target requirements only. Reuse unchanged passes; rerun affected checks after edits.
    Combine diff/range, whitespace/style, public text/security/identity into one final pass; review later deltas.
+   Metadata-only dispositions need no tests. Share unchanged setup/checks across related repairs, not
+   across incompatible bases or contracts. No blanket full suite or extra review agent without a target
+   requirement, assigned review scope or concrete uncertainty.
 4. Deliver: every new security finding -> [private report only](../security.md), never public issue/PR/discussion;
    ordinary proven error -> eligible repair; ordinary evidenced unsettled contract -> discussion;
    unavailable evidence/gate -> blocker/retry; failed reassessment -> authorized correction/withdrawal;
    no qualifying finding -> none with coverage. For ordinary work, claim available work; reuse/update objects. Prefer
    [regular Open PR](../safety.md#prefer-a-regular-open-pr), without compulsory companion issue.
    For PR writes only, establish owned fork/branch/permitted remote/base; publish and confirm URL/state/exact
-   head once via reliable result or lookup. Reconcile ambiguity before retry; disclose unrun checks.
+   head once via reliable result or lookup; a complete reliable result needs no duplicate lookup.
+   Reconcile ambiguity before retry; disclose unrun checks.
    No stopping at a local patch when eligible delivery remains; upstream read-only is not fork prohibition.
 5. When ordinary work temporarily cannot open a PR, use the permitted user-owned fork branch to
    preserve reviewed changes, confirm its remote head and record exact recovery/next-action facts;

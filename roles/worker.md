@@ -8,9 +8,15 @@ Engineering uses [delivery](../references/workflows/delivery.md); discovery keep
 - Establish missing ordinary facts; read target policy before broad source/body reads.
 - Investigate, repair, validate and deliver within scope/authority; preserve unrelated work.
 - Route every new security finding through [private reporting only](../references/security.md), never public issues.
-- Write assigned repository records only; shared edits need an explicit discovery window.
-  Defer conflicts. Finish [resource disposition](../references/storage.md) for every pass.
+- Write the assigned project's root state.md (privacy-reviewed shared facts) and local work/work.md.
+  Do not edit global membership/navigation/positions without separate authority or an explicit discovery
+  window. Git publication needs its designated writer; local work/ never enters Git. Defer conflicts.
+  Apply [resource disposition](../references/storage.md) to resources used or explicitly assigned,
+  including no-change/blocked passes; omit empty resource checks when none are involved.
 - Complete all feasible work; slices, local patches, timeouts and compaction are not completion.
+- Load the assigned form and action-triggered methods via [assembly](../references/worker-assembly.md),
+  reusing complete current text and batching missing reads. Do not reconstruct global capture or read
+  full Coordinator briefs. Validate affected engineering/mandatory checks, not unrelated stages.
 
 ## Communication and continuation
 

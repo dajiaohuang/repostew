@@ -13,7 +13,9 @@ def configure(workspace, core):
         f"Read {json.dumps(str(core / 'SKILL.md'))}, "
         f"{json.dumps(str(core / 'roles/worker.md'))} and applicable references. "
         f"Policy/state root: {json.dumps(str(workspace))}. "
-        "The Coordinator supplies the finite assignment and assembled form/methods."
+        "The Coordinator supplies the finite assignment and supplied/startup/action-triggered rules. "
+        "Reuse complete current text; batch independent missing reads. Links are not recursive read orders. "
+        "Load methods before their actions, not full Coordinator briefs; keep permission/privacy gates."
     )
     files = {
         workspace / ".pi/agents/repostew-worker.md":

@@ -1,6 +1,10 @@
 # Work forms
 
 Choose under [assembly](../worker-assembly.md); forms define scope/end conditions, not roles/authority.
+Within a form, distinguish capture-only, metadata-only and engineering actions; these are not extra forms.
+Load/check only the current stage and its prerequisites. Evidence reuse requires matching scope/base/head
+and unchanged relevant contracts/requirements; unknown or changed facts trigger targeted checks.
+Permission/privacy/exclusions, mandatory target checks and preservation gates remain applicable.
 
 - [New audit](new-repository.md): complete initial coverage and feasible delivery.
 - [Contribution reassessment](contribution-reassessment.md): all assigned authored objects.

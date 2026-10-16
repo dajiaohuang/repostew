@@ -20,7 +20,8 @@ Harness supplies execution/tools/scheduling; RepoStew supplies policy and assign
 
 Use [assembly](worker-assembly.md): readable canonical files or complete applicable inline text.
 Establish needed context inheritance, shared access, result relay and continuation once when unknown.
-Anchor every execution to the actual workspace, not cwd/target checkout; protect private context.
+Bind the actual workspace and assigned native project home, not cwd/target checkout. Share only project
+state.md and necessary task facts; work/ is device-local, not automatically inherited or published context.
 Keep APIs, credentials/accounts/private IDs, models, concurrency, cadence and schedule IDs
 in workspace/harness configuration. Native permissions remain binding; no silent setting substitution.
 

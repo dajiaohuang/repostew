@@ -7,10 +7,13 @@ description: Assemble scoped Workers for repository discovery, audits, contribut
 
 RepoStew supplies policy, work methods and Worker construction; harness supplies execution,
 tools, permissions and lifecycle. Coordinator assembles/coordinates; Workers complete assigned work.
-Read applicable canonical files or complete current inline text; continue by delta.
+Load rules by role, task form and actual action: reuse complete current text, batch missing startup reads,
+and load conditional methods before their action. Links are navigation, not recursive reading orders.
+Continue by delta; unchanged usable rules need no reread. See [assembly](references/worker-assembly.md).
 Policy/state belong to the selected [workspace](references/workspace.md), not the package or checkout.
-Authorized multi-device [shared state](references/shared-state.md) uses additive reviewed summaries in state/;
-work/ stays local and intact, with explicit per-project handoff rather than an inferred global cutover.
+Authorized multi-device [shared state](references/shared-state.md) uses one native project directory under
+state/repositories/<host>/<namespace>/<repo>/: root state.md is shared coordination; work/ holds local
+work.md, notes, checkouts and temporary material, all ignored by Git. No root work/ or second current record.
 Roles: [Coordinator](roles/coordinator.md), [Worker](roles/worker.md), [Maintainer](roles/maintainer.md).
 Wording: [prompts](prompts/README.md); native access: [harness](references/harness.md), [forges](references/forges/README.md).
 
@@ -49,8 +52,12 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
   Serial by default; delegation, parallelism, schedules and external actions require authorization.
 - Act from actual use/contracts and [quality standards](references/contribution-value.md), without invented
   defects or necessity. Prohibit defensive programming; trust internal contracts, retain necessary boundary checks.
-- Keep one writer per affected resource: Coordinator owns shared state, Workers repository records.
+- One writer per project: its Worker writes shared state.md and local work/work.md; Coordinator owns
+  global membership/navigation/positions. Serialize Git publication separately; never crawl local work as state.
   Preserve unrelated, dirty/unpushed/unknown/private work and recovery material.
 - Dispatch sufficiently once, continue by delta, trust usable finals; no routine receipts/progress/readback loops.
+  Coordinator checks assignment/coverage, Worker checks engineering. Capture-only and metadata-only work
+  do not trigger audit/tests/publication. Reuse applicable evidence; deepen changes, unknowns or concrete risks.
+  Preserve target-required checks, permission/privacy gates, ambiguous-effect reconciliation and safe preservation.
 - Use direct Markdown, no custom runtime/queue/claims/database. Report coverage, outcomes, unfinished work and
   resource release accurately; execution status alone never proves completion.

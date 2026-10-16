@@ -5,5 +5,10 @@ Coordinator captures/deduplicates, assigns one nonempty repository batch; Worker
 Select [followed issues](../workflows/followed-issues.md), [notifications/mail](../workflows/notifications.md),
 [open objects](../workflows/open-objects.md) or explicit feedback/maintenance requests; use applicable
 contribution/delivery or authorized [maintain](../workflows/maintain.md) methods.
-Finish feasible batch handling, retain unresolved links/blockers/retry. Empty batches need no Worker.
+Capture-only work validates source identity, pagination/window and deduplication, not repairs; engineering
+Workers reuse supplied capture and inspect their objects' current head/deltas, not the whole source again.
+Metadata-only changes need no clone/tests. Repair checks follow affected contracts; question of value or
+compatibility triggers focused evidence review, not routine full contribution reassessment per notification.
+Already-resolved feedback reuses matching evidence without new edits. Empty batches need no Worker.
+Finish feasible batch handling, retain unresolved links/blockers/retry.
 Coordinator advances only fully captured/handled-or-retained source positions; preserve membership/source independence.

@@ -16,21 +16,29 @@ Construct ordinary text using [templates](../prompts/README.md); no compiler or 
 
 ## Compose the context
 
-Order: [SKILL.md](../SKILL.md) + role + [orchestration](orchestration.md) -> selected form/methods
--> scoped target references -> task facts/overrides. Keep unchanged shared text stable.
-Include workspace/records for state, safety for external changes, storage for repository passes,
-contribution standards for engineering. Do not send every method to every Worker.
-Any new security finding requires [private-reporting rules](security.md), even during ordinary work.
-Task facts: workspace, native identity, objects/window/base, dependencies, authority/resources,
-evidence, overrides, end condition and result delivery. Omit inapplicable fields/transcripts;
+Order: [SKILL.md](../SKILL.md) + assigned role/form -> applicable methods/target rules
+-> task facts/overrides. Keep unchanged shared text stable; variables last.
+Select by actual actions: workspace/records for state, contribution/audit methods for engineering,
+safety and submission templates for external writes, storage for resources used or assigned for disposition.
+Coordinators load [orchestration](orchestration.md); leaves use Worker communication/ownership rules,
+not the full assembly/scheduler or other Coordinators' briefs. Carry their applicable authority/deltas in full.
+Every task keeps private-reporting/privacy boundaries; load [security](security.md) before investigating
+or handling a concrete suspected finding. Do not send every method to every Worker.
+Task facts: workspace, native identity and actual project home, root state.md/local work/ paths,
+objects/window/base, dependencies, authority/resources, evidence, overrides, end condition and result delivery. Omit inapplicable fields/transcripts;
 Workers establish ordinary unknowns; clarify indispensable missing scope/authority.
 
 ## Deliver authoritative instructions
 
-Readable workspace: supply exact paths and require applicable reads before action.
-Otherwise inline complete applicable current text with source labels; paths/summaries are insufficient.
-Full current inline text satisfies reading. Reuse unchanged context; refresh policy/live deltas.
-Resolve user/target/authority conflicts before dependent actions; preserve protected context boundaries.
+State in ordinary text what is already supplied, missing at startup, and conditional on a named action.
+Use exact accessible canonical paths or complete current applicable inline text with source labels;
+a summary/path without accessible required text is insufficient. Full current text in usable context is read.
+Batch known independent missing reads in the same model turn within tool/output limits; recover truncated
+parts, missing dependencies or newly applicable rules only. Links are navigation, not recursive read orders.
+Read target access/privacy restrictions before broad content; read action-specific requirements before that
+action, never defer authority/security gates until after access or publication. A new stage, changed policy,
+changed authority or missing usable context triggers affected reads, not a full restart. Completion events,
+refill and continuation alone do not. Resolve conflicts before dependent actions; keep private context protected.
 
 ## Combine stages without combining away their boundaries
 

@@ -10,7 +10,8 @@ reconcile permitted-base changes through affected paths; reuse coverage, never r
 
 ## Find and establish errors
 
-Capture/deduplicate the full issue window; classify newest first, investigating actual-use problems,
+For assigned issue-window audits, reuse supplied complete capture or capture/deduplicate missing coverage;
+follow-up keeps its object set, without a fresh window. Classify newest first, investigating actual-use problems,
 contract questions and maintainer direction without adopting the upstream backlog.
 Trace input/configuration -> entry/calls/dependencies/state -> final result, including relevant initialization,
 live updates/cancellation/recovery. Read source/tests as needed; prove concrete error and violated contract

@@ -13,7 +13,8 @@ Configurable workspace baseline, not automatically installed or resumed:
 Use one existing stream when available; complete unfinished passes first. Capture/group through
 [orchestration](orchestration.md); [Workers](../roles/worker.md) receive finite [incremental tasks](work-forms/incremental-feedback.md).
 Separate source positions; retain unresolved work before advancement. No new audit/mail rescan in fallback.
-Requested concurrency only, one repository writer and serialized shared edits; authorized merge or defer conflicts.
+Requested concurrency only, one writer per project's shared state.md/local work/; serialize global positions
+and Git publication, not independent project facts. Merge through authorized communication or defer conflicts.
 Trust unchanged handling; inspect actual CI/head changes. No polling registry, repeated tests/clones or progress loops.
 Scheduler owns cadence/activation/APIs; update matching jobs only when authorized, preserve paused/retired jobs.
 Wakeups/intervals are not active/completed coverage or deadlines. Quiet unchanged runs; report material progress,

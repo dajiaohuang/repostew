@@ -12,6 +12,8 @@ Targeted feedback keeps its object set. Comments are not authorship. Split cappe
 unavailable/truncated is not empty coverage. Start with live metadata/base/head/diff/current-head CI;
 deepen changed, unknown or feasible unresolved work only. No repeat clone/audit/tests by default.
 Pending/cancelled/action-required checks are not passes or withdrawal grounds alone.
+Reuse evidence with its scope/base/head and limits; no fresh environment or tests for every object.
+Value/compatibility challenges or changed contracts trigger focused proof, not an unrelated audit.
 
 ## Decide and complete the engineering action
 

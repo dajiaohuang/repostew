@@ -22,9 +22,13 @@ Execution is serial by default. Authorized parallel Workers handle distinct repo
 
 ### 1. Prepare and assemble the assignment
 
-Establish the selected workspace, native repository identity, desired outcome, objects or time window, base revision, prior work, permissions and resource limits. Read applicable target instructions, contribution rules, templates and security policy before broad investigation or external action.
+Establish the selected workspace, native repository identity, desired outcome, objects or time window, base revision, prior work, permissions and resource limits. Read target access/privacy/security restrictions before broad content, contribution requirements before engineering, and templates before the corresponding publication.
 
 The Coordinator selects one of five work forms and the applicable methods, then uses the centralized [prompts](prompts/README.md). Dispatch sufficiently once; continue by changed facts, hand off only when the previous writer has ended, and recover concrete failures. Templates and role names grant no authority.
+
+Load rules by task and action: distinguish complete current text already supplied, missing startup reads and conditional methods. Batch independent missing reads; links are navigation, not recursive reading orders. Leaves receive their applicable boundaries, not entire Coordinator briefs. New stages, changed rules or missing context trigger affected reads; completion events and continuation do not trigger a full reload.
+
+Validate the work actually assigned. Discovery batches identity/exclusion/membership checks; capture validates source completeness without engineering pre-audits. Metadata-only updates need no clone/tests. Reassessment dispositions every assigned object but reuses applicable evidence; repairs run affected and target-required checks. Coordinator checks assignment sufficiency and coverage, not a second engineering acceptance. Permission/privacy, ambiguity reconciliation, confirmed publication and pre-deletion preservation gates remain.
 
 ### 2. Discover and admit repositories
 
@@ -79,7 +83,7 @@ See [delivery](references/workflows/delivery.md), [contribution standards](refer
 
 ### 8. Record, reconcile and finish
 
-Write material changes to current repository state and short actual-delivery history. Retain unresolved links, reasons and retry conditions. Reconcile history, recover or reclassify only within assigned scope; migrate or back up records only when requested. Check resource disposition after every pass, including blocked or unchanged work.
+Write material changes to current repository state and short actual-delivery history. Retain unresolved links, reasons and retry conditions. Reconcile history, recover or reclassify only within assigned scope; migrate or back up records only when requested. Apply resource disposition to resources used or explicitly assigned, including blocked or unchanged work; omit empty checks when no resources are involved.
 
 See [records and migration](references/records.md), [history/reclassification/recovery](references/workflows/history.md), [reviewed backup](references/workflows/records-and-backup.md) and [resource disposition](references/storage.md).
 
@@ -149,7 +153,7 @@ Dispose only of explicitly authorized disposable checkout/temp paths inside thei
 
 Stop unused task-owned temporary processes/services only within authority. High memory use does not establish idleness or permit force-killing shared Docker/WSL. Record resources as released, retained with a reason, or failed; ambiguous effects are not success.
 
-Backups are requested, reviewed and narrowly staged into the private state repository: membership lists, public positions and specifically selected repository records. Never recursively upload `work/`, source/temp, mail positions, security findings, credentials or recovery archives. Preserve remote history, separate skill/state commits, and verify actual remote heads.
+Backups are requested, reviewed and narrowly staged into the private state repository: eligible global records, exact public positions and selected privacy-reviewed project `state.md`. Never recursively add `state/` or upload project `work/`, raw `work.md`, source/temp, mail positions, security findings, credentials or recovery archives. Preserve remote history, separate skill/state commits, and verify actual remote heads.
 
 ## State and workspace layout
 
@@ -163,10 +167,12 @@ The selected workspace is the canonical policy/state root. The Skill checkout or
 | `state/followed-repositories.md` | Heading-named followed groups; overlap allowed. |
 | `state/read-positions.md` | Public notification/followed-issue read boundaries. |
 | `state/private/mail-position.md` | Protected account/folder mail positions. |
-| `work/<owner>/<repo>/state.md` | Current facts, live object links, next actions, blockers and resource outcomes. |
-| `work/<owner>/<repo>/work.md` | Short dated actual contribution/maintenance history. |
-| `work/<owner>/<repo>/checkout/`, `temp/` | Source and temporary material, separate from persistent records. |
+| `state/repositories/<host>/<namespace>/<repo>/state.md` | Reviewed shared facts, links, next actions, blockers and recovery outcomes. |
+| Project `work/work.md` and other local notes | Local delivery history and evidence, including imported records; never Git or a second current state. |
+| Project `work/checkout[-<purpose>]/`, `work/tmp/` | Multiple source checkouts and temporary material; legacy `temp/` names may remain. |
 | `state/unfinished.md` | Navigation only; repository state remains authoritative, including nonmembers. |
+
+One project directory unifies shared state and ignored local work. Its assigned writer updates root state.md and local work/work.md; Coordinator owns globals, and one designated publisher serializes Git. Never crawl project work/ for shared records or infer ownership from missing files. Unknown identities/resources stay local-only; physical relocation transfers no authority.
 
 Preserve exact native identities, aliases, revisions and boundaries. Cross-forge/renamed identity needs native proof. Source failure is unknown, not absence; archives are recovery-only. See [workspace](references/workspace.md) and [records](references/records.md).
 

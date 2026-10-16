@@ -15,5 +15,7 @@
    coverage plus handled feasible initial work. Deliver/dismiss candidates or reliably retain external
    blockers/retry/private evidence. Missing coverage or feasible investigation/fix/check/publication stays listed.
    Completed coverage with pending review/CI/decisions/external gates remains unresolved follow-up, not a new audit.
-5. Record actual deliveries and [resources](../storage.md) after every pass. Zero errors is valid;
+5. Reuse repository setup and still-applicable evidence across findings; check affected contracts and target
+   requirements, not an automatic full suite or second acceptance audit. Record actual deliveries and
+   [resources used/assigned](../storage.md) after each pass. Zero errors is valid;
    no automatic following, manufactured finding or completion inferred from local patches/counts.

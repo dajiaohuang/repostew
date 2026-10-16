@@ -1,42 +1,49 @@
 # Workspace and direct Markdown state
 
-## Portable workspace layout
+## One project directory
 
-Resolve operations from the selected workspace containing state/ and work/,
-not the plugin cache/cwd/target checkout. Skill files may be bundled or at RepoStew_skills/;
-links use their containing file. Installation never changes the workspace authority or state root.
-Unknown root needs clarification. Use actual paths/versions and native interfaces, without vendor/OS binding.
+Resolve the selected workspace, not cwd, a target checkout or installed package. Policy may live at
+RepoStew_skills/ or in a bundle; installation does not select state or grant authority. Unknown root
+needs clarification. Use actual native interfaces and paths without a vendor/OS dependency.
 
-## Additive shared-state transition
+A verified project lives at state/repositories/<host>/<namespace>/<repo>/; preserve native casing and
+GitLab subgroups. Root state.md is its sole coordination record. Its ignored work/ contains work.md
+(local delivery history), detailed notes/evidence, multiple checkout[-<purpose>]/ and tmp/ directories.
+Retain actual existing names such as temp/; never clone into the project root or put persistent records
+inside disposable source. Imported detailed state.md stays local evidence, not another current record.
+No root work/ tree or flat repositories/<repo>.md is part of this layout.
 
-When authorized, use [shared state](shared-state.md) to add reviewed cross-device coordination
-facts under state/repositories/<host>/<owner>/<repo>.md while keeping work/ local and intact.
-During backfill these records are snapshots, not evidence of handoff or exclusive authority;
-reconcile legacy updates before acting. Do not switch all projects merely because some records exist.
+Unknown identities/material remain local-only in state/local-projects/; genuinely shared resources in
+state/local-resources/. Neither is a forge identity or proof of completed work. Resolve identity before
+canonical admission; do not move shared/active material merely to standardize its spelling.
 
-## State you edit directly
+## Global records
 
-- state/maintained-repositories.md: standing managed repository/action authority; apply [maintain](workflows/maintain.md)
-  within explicit assignment and actual rights. Membership/history/following supplies no maintainer authority.
-- state/new-repositories.md: incomplete initial assignments; remove only under completion/skip/reclassification.
+- state/maintained-repositories.md: explicit standing repository/action authority; apply
+  [maintain](workflows/maintain.md) within the assignment and live rights.
+- state/new-repositories.md: incomplete initial assignments; remove only on completion/skip/reclassification.
 - state/old-repositories.md: full historical membership, names only, independent of followed groups.
-- state/followed-repositories.md: heading-named groups, overlap allowed; scan deduplicated union.
-- state/unfinished.md: navigation only; repository state is authoritative, including nonmember containers.
-- state/read-positions.md: notification and followed-issue positions; state/private/mail-position.md: private mail.
-- work/<owner>/<repo>/: state.md = current scope/actions/evidence/resources; work.md = actual contribution/maintenance outcomes;
-  checkout/ and optional temp/ = source/material, never records at container root/source checkout.
+- state/followed-repositories.md: heading-named overlapping groups; scan the deduplicated union.
+- state/unfinished.md: navigation to project state.md, including nonmembers; never complete scope/authority.
+- state/read-positions.md: exact public source positions; state/private/mail-position.md: protected mail.
+- Additional scoped source/selection records retain only necessary boundaries, unfinished scope and
+  applicable constraints, not dispatch receipts, model histories, task queues or copied engineering logs.
 
-Preserve native IDs/aliases/revisions/UTC times/boundaries; cross-service/renamed identity needs native proof,
-not similar names. Unknown remains unknown. Enumerate container-root records, excluding source/temp/archives.
-[Records](records.md) are direct Markdown: no runtime/queue/claims/receipts/database. Membership selects,
-not status or authority. Followed filters never erase history or filter new work/notifications/authored patrol.
-Keep [forge/target rules](forges/README.md) scoped; bodies/CI live on native sources, private evidence unsynced.
-All forms/roles share these records; no role/harness state tables. Exact native URL/host identifies the target;
-resolve cross-forge namespace/path collisions when needed, without parallel authoritative copies.
+Membership/history/following does not confer management rights. Preserve IDs, aliases, revisions, UTC,
+source independence and boundaries. Cross-forge/renamed identity requires native proof, not similar names.
 
-## Live interfaces and focused edits
+## Enumeration, writers and Git
 
-Read affected current sections once, deduplicate URLs, preserve unrelated content; reread after intervening
-writes, defer conflicts, never stale-bulk-rewrite or import navigation as state. Use lossless text.
-Count repository bullets, not headers. Reuse unchanged rules/evidence; refresh volatile facts.
-Unavailable source/ambiguous cursor preserves confirmed position. Archives never recreate runtime.
+Resolve project homes from native identity and authoritative records. Never recursively collect Markdown
+under state/: work/ also contains source, private notes and imported state.md. Traverse native namespaces
+only to established project boundaries, then read root state.md; do not enter project work/ or local-only
+areas. A native namespace/repository named work remains valid. Missing state.md does not mean idle or done.
+
+The assigned repository writer owns its state.md and work/work.md. Coordinator owns global membership,
+navigation and positions; serialize these and the Git index/publication through designated editors.
+See [records](records.md), [orchestration](orchestration.md) and [shared state](shared-state.md).
+
+Whitelist reviewed project state.md and eligible global records. Never publish work.md/work/, private or
+local-only resources, source/temp, credentials or recovery material. Ignore does not untrack existing files.
+The runtime remains the selected local state/; a publication checkout becomes live only by explicit binding.
+No runtime/queue/claims/receipts/database. Archives are recovery-only, never an alternate current state.

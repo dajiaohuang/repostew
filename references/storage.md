@@ -1,6 +1,10 @@
 # Repository containers and storage disposition
 
-Keep persistent state.md/work.md outside disposable checkout/temp; use the actual workspace root.
+Use state/repositories/<host>/<namespace>/<repo>/: shared state.md stays at project root;
+local history is work/work.md; notes/evidence and disposable source/material live under work/,
+with multiple checkout[-<purpose>]/ and tmp/ directories (existing names such as temp/ may remain).
+Project work/ itself is not disposable: preserve persistent records and private/imported notes.
+Use the actual workspace root.
 
 ## Provision and reuse
 
@@ -11,8 +15,10 @@ unknown/unavailable resources remain retained with reasons. No client-specific s
 
 ## Release without a verification ceremony
 
-Apply disposition after every pass, including serial/parallel/no-change/blocked. Disposable-source release
-excludes self-owned/canonical repositories. CI/review/merge waits alone do not require retaining source.
+Apply disposition to resources created, used or explicitly assigned, including no-change/blocked passes.
+If none are involved, omit resource checks/report fields; do not inventory unrelated resources to prove none.
+Known assigned unused resources still need disposition. Disposable-source release excludes self-owned/canonical
+repositories. CI/review/merge waits alone do not require retaining source.
 
 1. Under an explicit workspace standing release authorization, end-of-pass removal of unused disposable
    project checkout/temp is included; do not demand a new per-directory approval. Check the resolved
@@ -42,9 +48,9 @@ excludes self-owned/canonical repositories. CI/review/merge waits alone do not r
    Preserve records, remote refs, private material and existing recovery archives. No Go/cache/toolchain/
    unrelated-build cleanup, broad roots, forced unlocks or disk compaction.
 4. Before deletion, record native target, owned fork URL, branch, exact confirmed remote commit,
-   upstream base and remaining work/validation limits in shared state/repositories/<host>/<namespace>/<repo>.md
-   when shared state is enabled (otherwise the assigned project record). Never claim recoverability for
-   excluded local-only material; record any specific protected/non-reproducible blocker without its evidence.
+   upstream base and remaining work/validation limits in shared state/repositories/<host>/<namespace>/<repo>/state.md
+   regardless of whether this device publishes Git. Never claim recoverability for excluded local-only
+   material; record any protected/non-reproducible blocker without its sensitive evidence.
    Record operation result: released, retained/reason, or failed/error. Ambiguity is not success;
    recover the concrete fault, never blindly retry. No post-delete path/Git/archive checks or size/free-space
    measurements; never claim measured reclaimed bytes.
