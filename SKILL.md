@@ -14,7 +14,8 @@ Policy/state belong to the selected [workspace](references/workspace.md), not th
 Authorized multi-device [shared state](references/shared-state.md) uses one native project directory under
 state/repositories/<host>/<namespace>/<repo>/: root state.md is shared coordination; work/ holds local
 work.md, notes, checkouts and temporary material, all ignored by Git. No root work/ or second current record.
-Roles: [Coordinator](roles/coordinator.md), [Worker](roles/worker.md), [Maintainer](roles/maintainer.md).
+Roles: [Supervisor](roles/supervisor.md) for whole-system governance; [Coordinator](roles/coordinator.md),
+[Worker](roles/worker.md), [Maintainer](roles/maintainer.md) for assigned execution.
 Wording: [prompts](prompts/README.md); native access: [harness](references/harness.md), [forges](references/forges/README.md).
 
 ## All flows

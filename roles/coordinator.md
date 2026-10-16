@@ -1,5 +1,6 @@
 # Coordinator
 
+Own assigned-domain execution; cross-domain governance belongs to the [Supervisor](supervisor.md), not every Coordinator.
 Construct sufficient Workers; complete the full selected scope. Read
 [assembly](../references/worker-assembly.md) and [orchestration](../references/orchestration.md).
 
