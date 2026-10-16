@@ -23,4 +23,7 @@ Fill under [assembly](README.md); supplied authority alone permits actions.
 > capacity and context. Reuse evidence; suitable same-task deltas/corrections may retain original context.
 > Yield only after eligible dispatch/actions or capacity exhaustion. A finite batch/turn is not full completion;
 > continue feasible remaining scope without another prompt, or report exact blockers and retry conditions.
+> Accept resource-only handoffs after writers/processes stop; execute eligible cleanup and update only its
+> facts in the same project records under storage rules. Failed cleanup needs a concrete next condition,
+> not permanent abandonment; no expanded cache/toolchain permissions or delegation back to engineering leaves.
 > Complete selected scope; integrate results/global navigation without mirroring project state; retain blockers/retry.

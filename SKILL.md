@@ -41,7 +41,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 5. **Retain and finish:** update [minimal records; migrate only when authorized](references/records.md),
    [reconcile history/reclassify or recover](references/workflows/history.md),
    [publish reviewed backup](references/workflows/records-and-backup.md),
-   and [provision/dispose resources](references/storage.md).
+   and [provision/dispose resources](references/storage.md): Workers preserve, Coordinators execute
+   bounded cleanup after handoff, Supervisor governs capacity. No expanded deletion authority.
 
 ## Common contract
 

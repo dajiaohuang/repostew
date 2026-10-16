@@ -13,6 +13,23 @@ Establish native identity/existing paths, preserve unknown data, never clone int
 Use Git-aware operations for linked/shared worktrees. Record actual relative/legacy paths;
 unknown/unavailable resources remain retained with reasons. No client-specific storage API is required.
 
+## Ownership: Worker preserves, Coordinator disposes, Supervisor governs capacity
+
+Workers preserve reviewed changes remotely where authorized, retain unique fixtures/logs outside disposable
+source, stop their unused task-owned services and identify exact resource boundaries/blockers. They do not
+delete checkout/tmp. Use the normal final and project records, not a separate disposal queue or receipt.
+The domain Coordinator accepts a resource-only handoff after the project writer and relevant processes
+stop; it becomes the sole writer for that bounded disposition, not for engineering. Reuse reliable existing
+preservation facts; do not wake finished leaves or repeat engineering checks just to obtain a cleanup receipt.
+Actually release eligible material under the gates below. Retain failed/protected cases with exact reason
+and next condition; a recorded blocker is not permanent closure. Diagnose changed conditions only, never
+blind retries, ACL/attribute takeover, shared-service kills or reconstruction solely to delete.
+The Supervisor owns capacity/shared-resource decisions and cross-domain blockers, not routine per-project
+deletion. Existing cache/toolchain/build/privacy restrictions are not relaxed by changing the executor.
+On ENOSPC stop writes to the affected volume, including small state updates, and new work needing them; retain facts
+through native results. Existing complete recovery records remain usable; zero free space is not itself a
+ban on an otherwise authorized, fully preserved release. Missing necessary recovery facts still block deletion.
+
 ## Release without a verification ceremony
 
 Apply disposition to resources created, used or explicitly assigned, including no-change/blocked passes.
@@ -54,8 +71,10 @@ repositories. CI/review/merge waits alone do not require retaining source.
    Record operation result: released, retained/reason, or failed/error. Ambiguity is not success;
    recover the concrete fault, never blindly retry. No post-delete path/Git/archive checks or size/free-space
    measurements; never claim measured reclaimed bytes.
-5. Worker writes changed resource outcome under [records](records.md); Coordinator changes shared
-   navigation only. No unchanged paragraphs/history or repeated publication checks. Archives stay recovery-only.
+5. After the resource handoff, the Coordinator writes only changed disposition facts to the same project
+   records under [records](records.md), preserving engineering facts and single-writer ownership; no mirror.
+   If the result cannot be recorded, retain the native outcome and exact write failure without truncating
+   existing files. No unchanged paragraphs/history or repeated publication checks. Archives stay recovery-only.
 
 ## Temporary services and shared runtimes
 

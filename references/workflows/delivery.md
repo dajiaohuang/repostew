@@ -30,8 +30,9 @@ PR publication or source provisioning/release. Load methods before their actions
    No stopping at a local patch when eligible delivery remains; upstream read-only is not fork prohibition.
 5. When ordinary work temporarily cannot open a PR, use the permitted user-owned fork branch to
    preserve reviewed changes, confirm its remote head and record exact recovery/next-action facts;
-   no PR is required for preservation. Under standing workspace release authority, then release unused
-   disposable source/temp rather than retaining it for PR/CI waits or merely because it was unpushed.
+   no PR is required for preservation. Hand unused disposable source/temp to the Coordinator for release
+   under standing authority; Workers do not delete it. PR/CI waits or formerly unpushed changes alone are
+   not retention reasons after preservation. Keep evidence independent and stop task-owned services first.
    Keep private/security work protected and forbidden publication blocked; follow [resources](../storage.md).
    Write changed [records](../records.md), and return applicable facts once
    under [Worker](../../roles/worker.md#final-result). Retain unresolved/private evidence; separate local/CI/

@@ -43,7 +43,8 @@ under state/: work/ also contains source, private notes and imported state.md. T
 only to established project boundaries, then read root state.md; do not enter project work/ or local-only
 areas. A native namespace/repository named work remains valid. Missing state.md does not mean idle or done.
 
-The assigned repository writer owns its state.md and work/work.md. Coordinator owns global membership,
+The assigned repository writer owns its state.md and work/work.md. A Coordinator may become the sole
+bounded disposal writer under [storage handoff](storage.md), not a parallel engineer. Coordinator owns global membership,
 navigation and positions; serialize these and the Git index/publication through designated editors.
 See [records](records.md), [orchestration](orchestration.md) and [shared state](shared-state.md).
 

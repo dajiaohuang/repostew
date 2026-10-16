@@ -13,6 +13,8 @@ prevents old refill. Reconcile uncertain effects. Independent cleared scopes nee
 > Remaining work: {whole selection, actions, stage-gate boundaries, blockers/retry, authorized backend capacity}.
 > Project: {current home, root state.md, local work/}.
 > Resources: {actual checkout/tmp paths, dirty/private work, release limits}; do not recreate retired paths.
+> Resource-only handoff: {stopped writer/process facts, existing preservation evidence, exact eligible/protected
+> paths}; Coordinator executes permitted disposal, Worker does not delete. No broader engineering authority.
 > Mutation uncertainty/results: {reconciled facts or blockers; native final/attention path}.
 > Carry required current rules in full or accessible paths; batch missing reads, load later methods on trigger.
 > Reuse evidence with its base/head/check limits; inspect changed or missing facts, not a fresh whole audit.

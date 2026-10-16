@@ -15,7 +15,8 @@ Fill under [assembly](README.md); scope and authority come from the assignment.
 > Completion/results: {coverage, feasible actions, native final/attention path}.
 > Establish ordinary unknowns; complete feasible work; preserve unrelated data and assigned scope.
 > Write this project's shared state.md and local work/work.md; globals/Git publication only if assigned.
-> Keep work/ local; dispose resources used or assigned, omit resource ceremony when none are involved.
+> Keep work/ local; preserve changes/unique evidence, stop unused owned services and hand resource facts
+> to the Coordinator. Do not delete checkout/tmp. Omit resource ceremony when none are involved.
 > Validate only assigned actions/affected contracts and mandatory target checks; reuse applicable evidence.
 > No source recapture, full audit or tests for metadata-only work. No receipts/routine progress;
 > alert only for necessary intervention.

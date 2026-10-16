@@ -10,6 +10,8 @@
   Work details/evidence, including imported records, stay local in work/; they are not another current state.
 - Assigned repository writer owns both files. Coordinator owns global membership/navigation/source positions;
   designated publication is separate from permission to edit an assigned shared project state.md.
+  After the stopped-writer [resource handoff](storage.md), the Coordinator is the sole bounded disposal
+  writer and updates only its resource facts in the same records, without taking over engineering.
 
 All forms/roles use these homes. Membership holds identities, unfinished.md links project state only;
 authority lives in state/maintained-repositories.md or explicit assignment, never history/following.

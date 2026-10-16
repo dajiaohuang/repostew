@@ -16,7 +16,9 @@ mistaken for execution directories. Ignore alone neither untracks files nor make
 
 ## Authority and current writes
 
-The assigned project writer updates both root state.md and local work/work.md. Coordinator edits globals;
+The assigned project writer updates both root state.md and local work/work.md. Under a stopped-writer
+[resource handoff](storage.md), the Coordinator updates only disposal facts there, without parallel engineering
+writes or a second record. Otherwise the Coordinator edits globals;
 one designated publisher serializes Git index/commits. Repository state is shared, not a Coordinator-only
 mirror of Worker notes. Neither a record, Git commit, physical move nor device availability grants ownership.
 

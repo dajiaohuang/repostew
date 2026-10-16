@@ -153,6 +153,8 @@ Confirm the exact selected account and native folder before reading. Never expan
 
 ### Resources and backups
 
+Workers preserve changes/evidence and stop unused owned services; Coordinators accept stopped-writer resource handoffs and execute cleanup; the Supervisor governs capacity/shared blockers. Workers do not delete checkout/tmp. Changing the executor does not expand deletion authority.
+
 Dispose only of explicitly authorized disposable checkout/temp paths inside their resolved boundary. Preserve persistent records, active/shared/dirty/unpushed/private/unknown material, self-owned canonical checkouts and recovery archives. No Go cache, toolchain, module or unrelated build cleanup follows from a repository task.
 
 Stop unused task-owned temporary processes/services only within authority. High memory use does not establish idleness or permit force-killing shared Docker/WSL. Record resources as released, retained with a reason, or failed; ambiguous effects are not success.

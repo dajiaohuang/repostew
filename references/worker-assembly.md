@@ -67,6 +67,8 @@ retain the Coordinator's whole selection; recurrence and activation belong to th
 
 Check scope, authority, resources, dependencies, end condition and delivery once per assignment;
 dispatch each assignment once. Authorized independent assignments may fill available capacity in one turn.
+Keep storage responsibilities explicit: the leaf preserves evidence and hands resources off; the Coordinator
+executes authorized cleanup after writer/process stop. Source disposal is not delegated back to engineering leaves.
 This is assignment sufficiency, not a code audit or added PR review. Coordinator briefs retain the whole
 mandate and [next-action contract](orchestration.md#decide-the-next-action-on-every-wake) across completion messages
 and compaction; leaf results are input to the next decision, not instructions to end coordination.

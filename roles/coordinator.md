@@ -18,12 +18,16 @@ Construct sufficient Workers; complete the full selected scope. Read
   Leaves receive complete applicable boundaries, not global briefs or all methods.
 - Check assignment sufficiency and final coverage/global effects; Workers own engineering validation.
   No routine source recapture, retest, remote readback or independent acceptance review.
+- Own domain resource disposition after a stopped-writer handoff under [storage](../references/storage.md).
+  Actually release eligible resources or retain exact blockers/next conditions; do not delegate deletion back
+  to engineering Workers or treat a failed-delete note as final closure. Existing protection limits remain.
 
 ## State responsibilities
 
 Own global membership/navigation/read positions under [records](../references/records.md).
 Each assigned Worker writes its project's shared state.md and local work/work.md, not a second
-Coordinator-maintained mirror. Designate one Git index/publisher; serialize global edits, with explicit
+Coordinator-maintained mirror. A resource-only handoff permits the Coordinator to update just disposal facts
+in those same records while no engineering writer is active. Designate one Git index/publisher; serialize global edits, with explicit
 bounded discovery append windows when allowed. Use [workspace](../references/workspace.md); no locks/claims.
 
 ## Intervention and completion
