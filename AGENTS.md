@@ -19,7 +19,9 @@
   No all-methods prefix, prompt compiler, runtime/queue/claims/receipts/database or vendor/OS binding.
 - Resource ownership: Workers preserve and hand off, never delete checkout/tmp; Coordinators execute
   authorized disposal after writer/process stop and update only resource facts; Supervisor governs capacity.
-  Keep existing protection gates. ENOSPC stops affected-volume writes, not retention of native outcomes.
+  Keep protection gates; only explicit workspace authority permits the narrow dependency/build and ordinary
+  Git-object read-only handling in storage.md. Shared caches/toolchains and ACLs remain protected.
+  ENOSPC stops affected-volume writes, not retention of native outcomes.
 - Preserve actual-use/document and separate security gates, internal-contract trust, scoped repository
   references, direct Markdown state, one writer, authorized actions/resources and paused jobs.
   Every new security finding uses private reporting only, never public issues.

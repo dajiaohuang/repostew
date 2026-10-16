@@ -23,12 +23,33 @@ stop; it becomes the sole writer for that bounded disposition, not for engineeri
 preservation facts; do not wake finished leaves or repeat engineering checks just to obtain a cleanup receipt.
 Actually release eligible material under the gates below. Retain failed/protected cases with exact reason
 and next condition; a recorded blocker is not permanent closure. Diagnose changed conditions only, never
-blind retries, ACL/attribute takeover, shared-service kills or reconstruction solely to delete.
+blind retries, ACL takeover, shared-service kills or reconstruction solely to delete. The narrowly authorized
+Git-object read-only handling below is not permission to change other attributes or access controls.
 The Supervisor owns capacity/shared-resource decisions and cross-domain blockers, not routine per-project
 deletion. Existing cache/toolchain/build/privacy restrictions are not relaxed by changing the executor.
 On ENOSPC stop writes to the affected volume, including small state updates, and new work needing them; retain facts
 through native results. Existing complete recovery records remain usable; zero free space is not itself a
 ban on an otherwise authorized, fully preserved release. Missing necessary recovery facts still block deletion.
+
+## Explicit narrow release permissions
+
+These exceptions require explicit workspace/user authorization; task assignment or a full disk alone is not
+permission. With it, the Coordinator may release task-exclusive, reproducible installed dependencies and
+build outputs inside a named disposable boundary. Establish known source/pins/lock/configuration sufficient
+for reconstruction from existing evidence; no reinstall/rebuild or fresh audit just to prove disposability.
+Preserve source, manifests/locks, fixtures, complete logs and unique evidence outside the deletion target;
+unknown, modified or non-reproducible contents stay protected. A dependency/build directory name alone
+proves nothing. Shared caches/stores, toolchains, global Go/module caches and unrelated outputs remain excluded.
+Remove only eligible subtrees; their presence does not authorize deleting a parent containing protected data.
+A whole disposable checkout is eligible only when every included category and preservation gate permits it.
+
+For an already-authorized, preserved disposable checkout, the Coordinator may clear only the read-only
+flag on ordinary Git-created object files as part of deletion, when that precise handling is authorized.
+Confirm the object is inside the resolved disposable Git object directory, not a symlink/reparse point,
+hardlinked file, alternate/shared store or canonical repository. Do not change ownership/ACLs, elevate,
+clear other attributes, unlock handles or kill processes. On a known read-only failure, apply this bounded
+correction and retry the affected authorized deletion once; other/persistent errors retain an exact blocker.
+Reconcile prior partial deletion from existing results; do not reconstruct source or infer whole-tree success.
 
 ## Release without a verification ceremony
 
@@ -62,15 +83,18 @@ repositories. CI/review/merge waits alone do not require retaining source.
    concrete retention blocker until reporting/evidence preservation is resolved. No broad unique/unknown-data
    inventory, recovery archive, restore/hash gate or process survey.
 3. Delete only authorized disposable checkout/temp; linked/shared worktrees need supported Git removal.
-   Preserve records, remote refs, private material and existing recovery archives. No Go/cache/toolchain/
-   unrelated-build cleanup, broad roots, forced unlocks or disk compaction.
+   Include task-local dependency/build subtrees or Git-object read-only handling only under the explicit
+   narrow permissions above. Preserve records, remote refs, private material and existing recovery archives.
+   No shared/global cache, Go/module-store, toolchain or unrelated-build cleanup, broad roots, forced unlocks
+   or disk compaction.
 4. Before deletion, record native target, owned fork URL, branch, exact confirmed remote commit,
    upstream base and remaining work/validation limits in shared state/repositories/<host>/<namespace>/<repo>/state.md
    regardless of whether this device publishes Git. Never claim recoverability for excluded local-only
    material; record any protected/non-reproducible blocker without its sensitive evidence.
    Record operation result: released, retained/reason, or failed/error. Ambiguity is not success;
    recover the concrete fault, never blindly retry. No post-delete path/Git/archive checks or size/free-space
-   measurements; never claim measured reclaimed bytes.
+   measurements; never claim measured reclaimed bytes. This does not prohibit a Supervisor's bounded
+   volume-capacity check needed to decide whether writes may resume; it is not per-target deletion verification.
 5. After the resource handoff, the Coordinator writes only changed disposition facts to the same project
    records under [records](records.md), preserving engineering facts and single-writer ownership; no mirror.
    If the result cannot be recorded, retain the native outcome and exact write failure without truncating

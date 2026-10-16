@@ -4,7 +4,9 @@ Read target access/privacy/security restrictions before broad content; contribut
 and action-specific templates before the corresponding write. Reuse complete current rules, not stale gates.
 Carry exact existing
 user authority; no inferred merge/close/delete/release/upstream push or maintainer rights. Preserve unrelated
-unsafe-to-discard work, credentials/mail/security/recovery material; no Go/toolchain/cache/build cleanup.
+unsafe-to-discard work, credentials/mail/security/recovery material. No shared/global cache, Go/module-store,
+toolchain or unrelated-build cleanup. Task-exclusive reproducible dependencies/build outputs and ordinary
+Git-object read-only deletion handling require the explicit narrow authority in [storage](storage.md).
 Use owned branches; reconcile ambiguous effects before retry. No fabricated defects/quotas/identity,
 unnecessary public tool/model/agent attribution or evasion of truthful disclosure rules.
 Validate actual changes; separate source/local/CI/deployed, submitted/merged and coverage/resolution/resource

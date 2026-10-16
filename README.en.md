@@ -155,7 +155,7 @@ Confirm the exact selected account and native folder before reading. Never expan
 
 Workers preserve changes/evidence and stop unused owned services; Coordinators accept stopped-writer resource handoffs and execute cleanup; the Supervisor governs capacity/shared blockers. Workers do not delete checkout/tmp. Changing the executor does not expand deletion authority.
 
-Dispose only of explicitly authorized disposable checkout/temp paths inside their resolved boundary. Preserve persistent records, active/shared/dirty/unpushed/private/unknown material, self-owned canonical checkouts and recovery archives. No Go cache, toolchain, module or unrelated build cleanup follows from a repository task.
+Dispose only of explicitly authorized disposable checkout/temp paths inside their resolved boundary. Preserve persistent records, active/shared/dirty/unpushed/private/unknown material, self-owned canonical checkouts and recovery archives. No shared/global cache, Go/module-store, toolchain or unrelated build cleanup follows from a repository task. Explicit workspace authorization may permit task-exclusive reproducible dependencies/build outputs and clearing only ordinary Git-object read-only flags inside a preserved disposable checkout; [storage gates](references/storage.md#explicit-narrow-release-permissions) still protect source, logs, evidence, linked/shared data and access controls.
 
 Stop unused task-owned temporary processes/services only within authority. High memory use does not establish idleness or permit force-killing shared Docker/WSL. Record resources as released, retained with a reason, or failed; ambiguous effects are not success.
 

@@ -45,6 +45,8 @@ Layout changes require explicit authority: preserve original bytes and dirty ref
 material, repair supported Git worktree links and actual local references, remove old roots only when empty.
 Identify real blockers; process termination needs its own applicable authority, never a blanket process kill.
 No ACL takeover, elevation, protection bypass or reconstruction of deleted source to force completion.
+Explicitly authorized ordinary Git-object read-only handling follows [storage](storage.md), not a general
+permission to override access controls or change attributes on linked/shared files.
 
 Ordinary not-yet-PR work follows standing preservation authority: reviewed changes on a distinct permitted
 user-fork branch, actual remote-head confirmation and recovery facts in root state.md before unused-source
