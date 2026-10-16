@@ -68,7 +68,9 @@ Clarification does not restore write authority; independent reviews retain their
 Drain stops new assignments/refill/continuations while existing accepted work finishes. Pause stops new
 work until authorized resumption; state explicitly whether accepted work drains or is cancelled. Cancel
 requests native termination; it does not erase outcomes or itself prove termination. Before replacement,
-confirm the affected writer and queued writes stopped, preserve work and reconcile uncertain mutations.
+confirm the affected writer, queued writes and task-owned mutating subprocesses stopped; preserve work
+and reconcile uncertain mutations. A tool timeout/returned call alone does not prove subprocess termination;
+stop only identified task-owned processes within authority, never shared services.
 For replacing a Coordinator, include its descendants and prevent old refill. Independent cleared scopes
 may restart without a global drain unless expressly required. Preserve paused schedules and exact authority.
 
@@ -110,7 +112,8 @@ inspect affected evidence only and preserve unrelated success/work.
 Reconcile ambiguous mutations before retry; never duplicate a writer/object. One timeout is not failure.
 At natural completion/refill points, use available lifecycle timestamps to flag in-flight work unusually
 old for its expected operation; inspect only flagged tasks once, distinguishing tools, model/backend waits
-and external gates. Elapsed time alone never proves failure or authorizes replacement; a sent delta does
+and external gates. Reuse available lifecycle facts, not a status sweep on every completion; unchanged
+signals do not justify repeated checks. Elapsed time alone never proves failure or authorizes replacement; a sent delta does
 not unblock a running tool. Correct through the owning Coordinator/Worker, then use native events.
 If all work stalls, rely on supported native timeout/attention events or an explicitly authorized one-shot
 check; do not invent heartbeat polling or schedules, or claim event-only coordination detects every stall.

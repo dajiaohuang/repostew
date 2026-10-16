@@ -15,7 +15,9 @@ Harness supplies execution/tools/scheduling; RepoStew supplies policy and assign
   model/provider names do not select them. Apply user/aggregate limits without stacking calls to bypass caps.
 - Retain native handles; receive final results, attention/errors through events or supported waits after
   eligible dispatch/refill. Turn/parent completion is not descendant completion. No transcript/record polling,
-  duplicate relays or custom watcher/receipt service.
+  duplicate relays or custom watcher/receipt service. Use [bounded diagnosis](orchestration.md#detect-errors-through-existing-signals-not-routine-audits)
+  for concrete suspected stalls; distinguish parent wait budgets, tool deadlines and model/backend timeouts
+  using live API units and actual interruption semantics, not interchangeable timeout assumptions.
 - Map task, thread/context and model separately. Continued context is optional under
   [task boundaries](orchestration.md#task-boundaries-and-context-reuse), not permanent Worker ownership.
   Normal handoff needs stopped prior writer/queued writes and preserved work, not a failed Worker.

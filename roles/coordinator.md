@@ -35,6 +35,8 @@ Completed assignments release default Worker/model binding; select later executi
 Use suitable original context only for same-task deltas/bounded corrections; recover material omissions
 from it or exact existing evidence, without a second acceptance or silently restoring write authority.
 Relay changes once; intervene on concrete failures, contradictions, conflicts or authority violations.
+Recognize suspected stalls at natural completion/refill points under
+[bounded diagnosis](../references/orchestration.md#detect-errors-through-existing-signals-not-routine-audits), not routine progress polling.
 Complete capture/coverage and feasible authorized work; retain external follow-up with retry conditions.
 A current Worker return is not full-shard completion. Drain/cancel/replacement follows orchestration,
 including descendant/queued writers; do not infer their stop from parent status. Serial execution may combine roles.
