@@ -104,10 +104,15 @@ Advance only fully captured, handled/reliably retained source ranges. Incomplete
 
 ### Detect errors through existing signals, not routine audits
 
-Intervene only on explicit failures, contradictions, collisions or scope/security/authority violations.
+Intervene on explicit failures, contradictions, collisions, evidenced suspected inactivity or scope/security/authority violations.
 Use suitable original context for a bounded correction, or hand off under the task-boundary rules;
 inspect affected evidence only and preserve unrelated success/work.
 Reconcile ambiguous mutations before retry; never duplicate a writer/object. One timeout is not failure.
-For evidenced suspected inactivity, make one targeted status check, then use native events.
+At natural completion/refill points, use available lifecycle timestamps to flag in-flight work unusually
+old for its expected operation; inspect only flagged tasks once, distinguishing tools, model/backend waits
+and external gates. Elapsed time alone never proves failure or authorizes replacement; a sent delta does
+not unblock a running tool. Correct through the owning Coordinator/Worker, then use native events.
+If all work stalls, rely on supported native timeout/attention events or an explicitly authorized one-shot
+check; do not invent heartbeat polling or schedules, or claim event-only coordination detects every stall.
 After three failed repairs of one fault, stop that repair and retain its doubtful assumption/blocker.
 Independent contribution reassessment is a selected engineering task, not routine Worker acceptance.

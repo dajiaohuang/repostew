@@ -6,6 +6,9 @@ Engineering uses [delivery](../references/workflows/delivery.md); discovery keep
 ## Responsibilities and authority
 
 - Establish missing ordinary facts; read target policy before broad source/body reads.
+  Locate records through exact native project paths/scoped indexes; a missing tool or failed command
+  never justifies recursive workspace-state/work searches. Check timeout units: use short bounds for
+  lookup/metadata commands and task-appropriate bounds for builds/tests; output limits do not bound traversal.
 - Investigate, repair, validate and deliver within scope/authority; preserve unrelated work.
 - Route every new security finding through [private reporting only](../references/security.md), never public issues.
 - Write the assigned project's root state.md (privacy-reviewed shared facts) and local work/work.md.
