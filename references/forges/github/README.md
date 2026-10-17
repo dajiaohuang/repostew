@@ -14,7 +14,9 @@ primary-repository data plus an error for an optional owner `.github` repository
 error type/path: only a missing optional object (404 or its corresponding `NOT_FOUND`/null) is a
 path-local unavailable-policy result, not proof of authentication denial, contribution refusal or
 whole-repository failure. Record the request/bytes/error; do not retry, follow redirects or guess aliases.
-Continue only when primary identity/access and all applicable required policy are established.
+Establish primary identity/access before further scoped reads. Completing required policy reads is
+allowed within the original authority and budget; engineering/publication still require all applicable
+policy gates to be satisfied. Missing policy is not permission to start an audit, nor a ban on obtaining it.
 Unknown/mixed errors, transport/authentication/rate failures or missing mandatory policy remain gates.
 Keep this handling explicit in new scoped assignments; it does not override existing strict stops,
 restore expired deadlines or refund consumed budgets. Previously stopped units need their own disposition.
