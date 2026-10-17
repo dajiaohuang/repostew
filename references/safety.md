@@ -14,7 +14,7 @@ facts. Apply [delivery](workflows/delivery.md), affected checks and mandatory re
 passes, not stale volatile decisions. Exact restrictions do not become blanket testing bans.
 Validation follows actual actions: metadata-only work needs no repair tests; source capture needs no PR gates.
 Do not remove mandatory target checks, permission/privacy/exclusion checks, mutation reconciliation or
-pre-deletion preservation. No default second acceptance review by Coordinator.
+pre-deletion preservation or the separately explicit, bounded abandonment path in [storage](storage.md). No default second acceptance review by Coordinator.
 
 ## Feedback-derived review rules
 

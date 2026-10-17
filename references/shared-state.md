@@ -50,5 +50,7 @@ permission to override access controls or change attributes on linked/shared fil
 
 Ordinary not-yet-PR work follows standing preservation authority: reviewed changes on a distinct permitted
 user-fork branch, actual remote-head confirmation and recovery facts in root state.md before unused-source
-release. PR/CI waits alone do not justify indefinite retention. Protected/prohibited/failed preservation and
+release, unless the user explicitly authorizes bounded ordinary-work abandonment under [storage](storage.md).
+That separate path records authority, actual abandoned scope, known commit/base or unknowns and loss risk
+in the same project records before Coordinator disposal; protected evidence and existing recovery archives remain. PR/CI waits alone do not justify indefinite retention. Protected/prohibited/failed preservation and
 active/shared resources keep concrete boundaries. Local persistent records are never disposable source.

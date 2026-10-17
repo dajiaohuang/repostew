@@ -26,5 +26,7 @@ Fill under [assembly](README.md); supplied authority alone permits actions.
 > Accept resource-only handoffs after writers/processes stop; execute eligible cleanup and update only its
 > facts in the same project records under storage rules. Failed cleanup needs a concrete next condition,
 > not permanent abandonment; use only explicit narrow storage exceptions, never infer shared-cache/toolchain
-> cleanup permission or delegate disposal back to engineering leaves.
+> cleanup permission or delegate disposal back to engineering leaves. Explicit bounded ordinary-work abandonment
+> uses storage's separate authority/scope/loss record before disposal, never a claim of preservation;
+> protected evidence, persistent records and existing recovery archives remain.
 > Complete selected scope; integrate results/global navigation without mirroring project state; retain blockers/retry.

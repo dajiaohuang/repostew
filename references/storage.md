@@ -29,7 +29,7 @@ The Supervisor owns capacity/shared-resource decisions and cross-domain blockers
 deletion. Existing cache/toolchain/build/privacy restrictions are not relaxed by changing the executor.
 On ENOSPC stop writes to the affected volume, including small state updates, and new work needing them; retain facts
 through native results. Existing complete recovery records remain usable; zero free space is not itself a
-ban on an otherwise authorized, fully preserved release. Missing necessary recovery facts still block deletion.
+ban on an otherwise authorized, fully preserved release. Missing necessary recovery facts still block preservation-based deletion; explicit abandonment uses its own facts below.
 
 ## Explicit narrow release permissions
 
@@ -43,13 +43,35 @@ proves nothing. Shared caches/stores, toolchains, global Go/module caches and un
 Remove only eligible subtrees; their presence does not authorize deleting a parent containing protected data.
 A whole disposable checkout is eligible only when every included category and preservation gate permits it.
 
-For an already-authorized, preserved disposable checkout, the Coordinator may clear only the read-only
+For an already-authorized disposable checkout preserved or covered by explicit abandonment, the Coordinator may clear only the read-only
 flag on ordinary Git-created object files as part of deletion, when that precise handling is authorized.
 Confirm the object is inside the resolved disposable Git object directory, not a symlink/reparse point,
 hardlinked file, alternate/shared store or canonical repository. Do not change ownership/ACLs, elevate,
 clear other attributes, unlock handles or kill processes. On a known read-only failure, apply this bounded
 correction and retry the affected authorized deletion once; other/persistent errors retain an exact blocker.
 Reconcile prior partial deletion from existing results; do not reconstruct source or infer whole-tree success.
+
+## Explicitly authorized abandonment
+
+This is a separate path, not preservation. A user may explicitly accept irreversible loss of ordinary
+unpreserved work within named, finite resources. Do not infer it from capacity pressure, cleanup authority
+or future assignments. Such authority can cover specified local commits, dirty/truncated source,
+untracked files and ordinary unique logs/fixtures; it removes their preservation/reconstruction gate,
+not ownership, privacy or safety boundaries. Do not push, sign, test or rebuild merely to permit deletion.
+
+The Coordinator, never a Worker, first confirms stopped writers/owned processes, sole disposition writer
+and the actual named boundary. Before acting, record in the same project state.md and work/work.md the
+user authority, exact abandoned scope, known local commit/base (or explicit unknowns) and irreversible-loss
+risk. Then execute and record the real outcome, never calling abandoned material preserved or recoverable.
+No further approval ceremony is required inside that explicit scope. Existing recovery patches/archives,
+persistent records, private/security/incident evidence and protected logs remain protected. Isolate an
+ordinary target without touching them or retain its precise boundary. Links or unclear shared ownership
+remain blockers: accepting loss is not proof of ownership or authority over external link targets.
+Shared/global caches, Go/module stores, toolchains, ACL/ownership changes, elevation, forced unlocks and
+shared-process kills remain excluded. Ordinary Git-object READONLY handling below applies equally to
+an explicitly abandonment-authorized disposable target, with all its narrow checks and single retry.
+Use the release procedure below with abandonment facts instead of remote-preservation facts; preserve
+records and existing recovery archives, reconcile partial failures and never perform post-delete checks.
 
 ## Release without a verification ceremony
 
@@ -62,7 +84,7 @@ repositories. CI/review/merge waits alone do not require retaining source.
    project checkout/temp is included; do not demand a new per-directory approval. Check the resolved
    target remains inside its named boundary, excluding container/shared store/unrelated paths or links.
    Without standing or exact authority, retain the concrete authority blocker; do not infer permission.
-2. For ordinary work temporarily not opening a PR, first review and commit the intended source/test/doc
+2. Unless the explicit abandonment path applies, for ordinary work temporarily not opening a PR, first review and commit the intended source/test/doc
    changes to a distinct owned branch on the user's permitted fork; confirm the actual remote branch
    head and record recovery facts before release. This is preservation, not a PR, acceptance or delivery
    claim. An upstream PR/invitation/CI wait alone does not block permitted fork preservation or release.
@@ -87,7 +109,7 @@ repositories. CI/review/merge waits alone do not require retaining source.
    narrow permissions above. Preserve records, remote refs, private material and existing recovery archives.
    No shared/global cache, Go/module-store, toolchain or unrelated-build cleanup, broad roots, forced unlocks
    or disk compaction.
-4. Before deletion, record native target, owned fork URL, branch, exact confirmed remote commit,
+4. For the preservation path, before deletion record native target, owned fork URL, branch, exact confirmed remote commit,
    upstream base and remaining work/validation limits in shared state/repositories/<host>/<namespace>/<repo>/state.md
    regardless of whether this device publishes Git. Never claim recoverability for excluded local-only
    material; record any protected/non-reproducible blocker without its sensitive evidence.

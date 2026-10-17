@@ -56,7 +56,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
   defects or necessity. Prohibit defensive programming; trust internal contracts, retain necessary boundary checks.
 - One writer per project: its Worker writes shared state.md and local work/work.md; Coordinator owns
   global membership/navigation/positions. Serialize Git publication separately; never crawl local work as state.
-  Preserve unrelated, dirty/unpushed/unknown/private work and recovery material.
+  Preserve unrelated, dirty/unpushed/unknown/private work and recovery material; only explicit bounded
+  ordinary-work abandonment under [storage](references/storage.md) substitutes for preservation, never for privacy/ownership.
 - Dispatch each assignment sufficiently once; authorized independent work uses available backend capacity
   before waiting and refills per completion, not per batch. Priority is not a barrier; explicit stage gates
   keep their named scope. Finite batches/turns are not full-scope completion. Follow [orchestration](references/orchestration.md)
