@@ -1,24 +1,17 @@
 # Prompt assembly and templates
 
-Use [assembly](../references/worker-assembly.md); templates are ordinary-text skeletons,
-not copied policy, executable protocol or authority.
+Use [assembly](../references/worker-assembly.md) for context selection and ordering. Templates carry task
+variables, not copied policy, executable protocol or authority; fill/remove fields and omit unrelated facts.
 
-- [Supervisor start/heartbeat](supervisor-start.md): governance handoff and authorized action-oriented wakeups.
-- [Coordinator start](coordinator-start.md): selected scope and Worker construction.
-- [Worker start](worker-start.md): one complete bounded assignment.
-- [Continue](continue.md): same-task delta or bounded correction with suitable original context.
-- [Handoff](handoff.md): normal task-boundary transfer or replacement after prior writer ends and mutations reconcile.
-  Completed tasks release default Worker/model binding; evidence reuse does not require thread reuse.
+- [Supervisor](supervisor-start.md): optional governance handoff and explicitly authorized heartbeat.
+- [Coordinator](coordinator-start.md): whole-domain outcome and complete-unit assignment.
+- [Worker](worker-start.md): one bounded outcome with feasible authorized stages.
+- [Continue](continue.md): same-task delta/correction with suitable context.
+- [Handoff](handoff.md): unit-boundary transfer after stop and mutation reconciliation.
 
 ## Canonical context and ordering
 
-Common constraints/role -> applicable form/methods -> scoped target rules -> assignment variables.
-Keep unchanged shared text stable; do not load unrelated methods.
-Every new security finding requires [private reporting only](../references/security.md), never a public issue.
-Separate supplied current text, missing startup reads and action-triggered rules under [assembly](../references/worker-assembly.md).
-Use accessible canonical paths or complete current applicable text, never inaccessible paths/summaries alone.
-Batch independent missing reads; complete usable text needs no duplicate reading. Leaves receive their
-boundaries, not entire Coordinator briefs. Links do not require unrelated or recursive loading.
-Fill/remove `{fields}`; clarify indispensable missing facts, let Workers establish ordinary unknowns.
-No credentials/private bodies/unrelated transcripts. Use native [harness](../references/harness.md)
-transport; templates do not launch tasks or schedules.
+Supply current accessible instructions or complete applicable text, not inaccessible paths/summaries.
+Leaves receive their boundaries, not global briefs. Clarify indispensable scope/authority; Workers establish
+ordinary unknowns. No credentials/private bodies/unrelated transcripts. Use [harness](../references/harness.md)
+transport; templates neither launch tasks nor activate schedules.

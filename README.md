@@ -12,27 +12,26 @@ An agent harness supplies execution, tools, permissions, native delegation and s
 
 Installing the Skill does not start a daemon, create jobs, enable parallel agents, grant maintainer rights or authorize public actions. One-off work and recurring maintenance use the same rules; actual capabilities must be verified in the selected harness.
 
-- **Coordinator:** selects scope, assembles assignments, deduplicates incoming work, coordinates repository writers, and updates shared membership and read positions.
-- **Worker:** completes an assigned repository investigation or maintenance batch, runs necessary checks, performs authorized actions, and records outcomes and blockers.
-- **Maintainer:** a Worker with explicit management authority for a managed or self-owned repository; it may triage issues and review, amend or merge PRs within that authority and live repository settings.
+- **Supervisor, when assigned:** governs cross-domain policy, capacity and concrete execution anomalies through domain owners.
+- **Coordinator:** owns the whole selection, complete-unit assignments, coverage/refill, shared positions and stopped-writer resource disposition.
+- **Worker:** completes a bounded unit's feasible authorized engineering, checks and delivery; records outcomes and resource-handoff facts.
+- **Maintainer:** adds explicit repository-management rights to a Worker, not another mandatory agent or stage.
 
-Execution is serial by default. Authorized parallel Workers handle distinct repositories, with one writer per repository and serialized shared-state edits. See [roles](roles/coordinator.md), [Worker assembly](references/worker-assembly.md), [orchestration](references/orchestration.md), [harness capabilities](references/harness.md) and [Maintainer authority](roles/maintainer.md).
+Execution is serial by default and may combine role responsibilities. Authorized parallel Workers handle distinct repositories, with one writer per repository and serialized shared-state edits. See [roles](roles/coordinator.md), [Worker assembly](references/worker-assembly.md), [orchestration](references/orchestration.md), [harness capabilities](references/harness.md) and [Maintainer authority](roles/maintainer.md).
 
 ## What RepoStew does
 
 ### 1. Prepare and assemble the assignment
 
-Establish the selected workspace, native repository identity, desired outcome, objects or time window, base revision, prior work, permissions and resource limits. Read target access/privacy/security restrictions before broad content, contribution requirements before engineering, and templates before the corresponding publication.
+Establish workspace/identity, full outcome and scope/base, prior work, permissions and resources. Read access rules before content and action gates before engineering/publication.
 
-The Coordinator selects one of five work forms and the applicable methods, then uses the centralized [prompts](prompts/README.md). Dispatch each assignment sufficiently once; continue by changed facts, hand off only after affected writers and queued writes stop, and recover concrete failures. Templates and role names grant no authority.
+Choose a form and applicable methods, then fill [templates](prompts/README.md) with task facts. Assign a complete bounded unit once, not one tool/test step at a time. Workers advance its feasible authorized stages; genuine permission/dependency gates remain explicit. Roles and templates grant no authority.
 
-Load rules by task and action: distinguish complete current text already supplied, missing startup reads and conditional methods. Batch independent missing reads; links are navigation, not recursive reading orders. Leaves receive their applicable boundaries, not entire Coordinator briefs. New stages, changed rules or missing context trigger affected reads; completion events and continuation do not trigger a full reload.
+Reuse current instructions/evidence, batch missing reads and load methods on action triggers. Leaves need their boundaries, not global briefs; links and new turns do not require full reloads. Metadata/capture alone does not trigger engineering. Keep affected/mandatory checks and privacy, mutation, publication and storage gates; no second engineering acceptance.
 
-Validate the work actually assigned. Discovery batches identity/exclusion/membership checks; capture validates source completeness without engineering pre-audits. Metadata-only updates need no clone/tests. Reassessment dispositions every assigned object but reuses applicable evidence; repairs run affected and target-required checks. Coordinator checks assignment sufficiency and coverage, not a second engineering acceptance. Permission/privacy, ambiguity reconciliation, confirmed publication and the applicable storage release gates remain.
+Every wake follows [orchestration](references/orchestration.md): act on eligible work, wait for actual in-flight work, retain exact blockers, or establish full-scope completion. Refill independent units as results arrive; named stage gates do not freeze unrelated work. A turn, report or batch is not whole-scope completion or descendant-stop proof.
 
-Scheduling follows [orchestration](references/orchestration.md): batch-select independent eligible work, use authorized capacity of the actual delegation backend before waiting, and refill per completion rather than per batch. Unfinished-work priority is not a global barrier; required stage gates name their repository/group/pass boundary. Finite Worker batches and ended Coordinator turns do not complete the whole selection. Continue feasible remaining work without another user prompt; if capacity is unused, explain concrete blockers rather than invent work. Native parent status alone does not prove descendant termination. Drain lets accepted work finish without refill; cancellation requires confirmed affected-writer stop before replacement.
-
-Completed finite assignments release default Worker/model binding. Reuse valid evidence; use original context only for suitable same-task deltas or bounded corrections. Select subsequent execution by authorized capability, capacity and relevant context, with one writer and safe handoff—not cache targets. [T3](references/harnesses/t3.md) distinguishes tasks, conversation threads and models; [Pi](references/harnesses/pi.md) uses host delegation, not subagent plugins or their capacity rules.
+Reuse suitable context for same-task deltas; select later units by capability/capacity, not permanent Worker/model binding. Transfer only after affected writers stop and uncertain effects reconcile; preserve evidence, budgets and paused schedules. Host-specific lifecycle details stay in [adapters](references/harness.md).
 
 ### 2. Discover and admit repositories
 
@@ -193,11 +192,11 @@ Preserve exact native identities, aliases, revisions and boundaries. Cross-forge
 
 ## Start using RepoStew
 
-1. Load [SKILL.md](SKILL.md) from this checkout or build/load the [Codex, Claude Code, Pi or OMP package](integrations/README.md). Keep state and repository records in the selected workspace, outside the package.
+1. Load [SKILL.md](SKILL.md) from this checkout or build/load the [harness package](integrations/README.md). Keep state and repository records in the selected workspace, outside the package.
 2. Assign the workspace, repositories/objects/window, outcome and allowed actions. For recurring work, explicitly authorize sources, cadence and activation. For managed work, specify permitted issue/PR/merge actions.
 3. Let the Coordinator select applicable roles, forms and methods; run necessary validation and complete feasible authorized actions. Continue from unresolved records and live sources.
 
-Pi users can explicitly load [optional extras](references/harnesses/pi-extras.md): bounded same-task completion checks, structured factual results, streaming deltas, path/shell safety aids and bounded native reads. The default binding remains lightweight; T3 retains task ownership, and hosted compatibility must be verified before activation.
+Use the [selected harness adapter](references/harness.md) for setup, optional helpers and verified capability limits; installation never implies activation or authority.
 
 Example assignment:
 

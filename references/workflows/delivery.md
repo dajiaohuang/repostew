@@ -2,8 +2,9 @@
 
 ## Complete the assigned work
 
-Execute only stages involved in the assignment: capture/metadata-only work does not trigger repair tests,
-PR publication or source provisioning/release. Load methods before their actions under [assembly](../worker-assembly.md).
+Complete feasible authorized stages within the same unit; real gates still bind. Capture/metadata alone
+creates no repair/test/publication or provisioning/release obligation. Load methods before their actions
+under [assembly](../worker-assembly.md).
 
 1. Establish assignment/scope/base and actual checkout when needed. Read target access/privacy/security
    restrictions before broad README/source/body reads; contribution requirements before engineering,

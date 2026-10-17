@@ -1,13 +1,11 @@
 # Recurring patrol work form
 
-Input: authorized sources/positions, unfinished pass, existing cadence/activation and permitted concurrency.
-Load [patrols](../patrols.md), selected source workflow and orchestration. Coordinator owns successive passes;
-Workers receive finite [incremental batches](incremental-feedback.md), never unbounded watching.
-A wakeup does not reload all rules or rerun unchanged engineering. Capture owners validate source coverage;
-Workers handle assigned object deltas. Reuse completed capture and evidence, refresh volatile head/CI as needed.
-Finish the same source/scope's unfinished pass before stacking a new one; independent complete batches
-can run while other capture continues. Advance positions only under their own full capture/handling-or-retention
-gates. Finite batches do not end a larger authorized selection; dispatch/refill before native waiting.
-Preserve private/read/subscription boundaries and paused/retired jobs; cadence is not coverage evidence.
-Apply [drain/pause/cancel semantics](../orchestration.md#drain-pause-cancel-and-replacement) when directed;
-retain exact unfinished scope/blockers/retry. Missing capture is a targeted recovery task, not a blanket stop.
+Input: authorized sources/positions, unfinished pass, cadence/activation and permitted concurrency.
+Coordinator loads [patrols](../patrols.md), the selected source workflow and orchestration for successive passes;
+Workers receive complete finite [incremental batches](incremental-feedback.md), not scheduler briefs or unbounded watching.
+Capture owners establish source coverage; Workers reuse capture and inspect assigned head/feedback deltas.
+Finish the same source/scope's unfinished pass before stacking another; independent complete inputs may proceed.
+Advance positions only after their full capture and handling/reliable retention gates. A finite batch does
+not finish the whole selection; refill before waiting. Missing capture needs targeted recovery, not a global stop.
+Preserve private/read/subscription boundaries and paused/retired jobs; cadence is not coverage or authority.
+Apply [stop semantics](../orchestration.md#drain-pause-cancel-and-replacement); retain unfinished scope and exact retry conditions.

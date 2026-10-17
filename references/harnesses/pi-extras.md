@@ -1,112 +1,75 @@
 # Pi optional extras
 
-RepoStew implements eight selected Pi example patterns as a small opt-in extension, not eight copied
-plugins. Base binding stays in `extensions/pi.js`; enhancements live in `extensions/pi-extras.js`.
-Only the base is in the package's Pi autoload manifest. Installation alone does not enable extras.
-These are original RepoStew adaptations of the [official examples](https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions), inspected with Pi 1.3.0.
+Eight [official example](https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions)
+patterns, adapted into RepoStew's `extensions/pi-extras.js`, not eight copied plugins or another backend.
+The manifest autoloads only `extensions/pi.js`; extras require explicit loading alongside it.
 
 ## Load and use
-
-From a built bundle, try one invocation without changing settings:
 
 ```sh
 rtk pi -e ./dist/repostew -e ./dist/repostew/extensions/pi-extras.js
 ```
 
-Bind `/repostew-workspace <directory>` first. The base `/repostew <task>` remains available without
-extras. Tools and commands below require the extra entry; loading it starts no task or background work.
-Do not copy the entire upstream examples directory into an auto-loaded extension directory.
-The package's resource filters cannot expose an undeclared optional entry; load its exact file with `-e`.
+Bind `/repostew-workspace <directory>` first. Loading starts no work or background service. Package resource
+filters cannot expose this undeclared optional entry: load its exact file, not the whole examples directory.
 
-- `/repostew-goal <authorized finite task>` starts one task with an end-of-run completion check.
-- `/repostew-goal-stop` disarms that check only. Use the host Stop/cancel mechanism to interrupt tools
-  or stop descendants; this command neither cancels work nor grants a replacement writer.
-- `/repostew-steer <same-task delta>` and `/repostew-followup <same-task delta>` use native message
-  delivery. They do not prepend the skill or reset continuation budgets. New ordinary external input
-  disarms an old goal; explicitly queued steering/follow-up preserves its budget.
-- `repostew_result` reports schema-declared structured output (`structuredContent`) as `complete`,
-  `blocked` or `continue`, with summary, evidence references,
-  remaining work, exact blocker and resource-handoff facts. It does not write state.md or terminate a
-  model turn. A complete claim needs evidence and no remaining work/blocker; blocked needs a blocker;
-  continue needs remaining work and no blocker. These are shape/consistency checks, not independent
-  verification that evidence is true or acceptance criteria are satisfied. Keep protected bodies out.
-- `repostew_read` delegates one explicit file/range to native `read` through `ctx.executeTool`, retaining
-  native tool validation/hooks/permissions and cancellation. It requests at most 200 lines and shows at
-  most 16 KiB/200 lines of text, plus a truncation notice. Images remain intact, not byte-capped. It
-  returns a final result rather than forwarding partial text, drops unbounded native details/structured
-  copies, and retains the native error outcome. Use native read or another explicit offset for more.
-  There is no recursive search, bundled rg, shell interpolation, spill file or full-output archive.
+- `/repostew-goal <authorized finite task>` starts one task with a bounded completion reminder.
+- `/repostew-goal-stop` disarms that helper only; use host Stop/cancel for tools and descendants.
+- `/repostew-steer <delta>` and `/repostew-followup <delta>` use native same-task delivery, without repeated
+  rule prefixes or reset budgets. Fresh ordinary external input disarms an old goal; queued deltas preserve it.
+- `repostew_result`: schema-declared structuredContent with outcome, summary, evidence, remaining, blocker
+  and resourceHandoff. Complete requires evidence and no remaining work/blocker; blocked needs a blocker;
+  continue needs remaining work and no blocker. Use minimal references/not-applicable, never protected bodies.
+  Shape/consistency is not evidence verification. No state.md write, independent acceptance or terminate:true.
+- `repostew_read`: one explicit native read through ctx.executeTool, preserving validation/hooks/permissions,
+  cancellation and error outcome. At most 200 requested lines and 16 KiB/200 text lines plus a notice;
+  images stay intact, not byte-capped. Final output only; unbounded native details/structured copies are dropped.
+  Choose another offset/native read for more. No recursive search, rg, shell interpolation, spill or archive.
 
 ## Explicit safety controls
 
-- `/repostew-protect <path>` adds a write/edit-protected path. Relative paths resolve from the bound
-  policy/state workspace, not an arbitrary current checkout; no argument lists the current roots.
-  Matching uses canonical paths, existing ancestors and path boundaries, including a new file under
-  a symlink. Merely sharing a string prefix does not match. Read is not blocked.
-- `/repostew-confirm-shell on|off` toggles a heuristic confirmation for selected risky bash commands
-  and native user-bash escapes. It starts **off**. When on, missing UI or rejection blocks; supported
-  RPC confirmation is required for an RPC client. A positive UI answer does not expand task authority.
+`/repostew-protect <path>` adds a canonical write/edit-protected root; no argument lists roots. Relative paths
+use the bound workspace. Matching includes existing ancestors/symlinks and new children, not string prefixes.
+Reads remain allowed. `/repostew-confirm-shell on|off` toggles heuristic bash/user-bash confirmation; default off.
+When on, denial or unavailable UI blocks. RPC requires working dialog forwarding; confirmation grants no authority.
 
-These are accident-prevention aids, **not a sandbox**: alternate tools, shell programs, hard links,
-filesystem races and unrecognized commands are not confined. No new ACL, elevation or OS isolation is
-provided. There is no default blanket `.git`/`node_modules` ban and no automatic deletion approval.
-[Storage authority](../storage.md), [security/privacy](../security.md), role ownership and native permissions
-still apply. User input cannot waive another project's writer, preservation, or private-channel gate.
-
-Controls and the active goal are local to the current native session in memory. Session start/resume,
-branch navigation and shutdown clear them; they are not restored from old branches or rearmed after a
-restart. Re-enable explicit safety controls as needed. Base workspace binding alone remains durable.
-Compaction does not reset the active goal's budget. No separate queue, goal file, task ledger or log is created.
+Alternate tools, shell programs, hard links, races and unrecognized commands are not confined. No OS sandbox,
+ACL/elevation, blanket .git/node_modules ban or automatic cleanup permission. [Storage](../storage.md) and
+[security](../security.md) remain binding. Controls/goals are in-memory: session start/resume, branch navigation
+and shutdown clear them; re-enable explicit controls as needed. Only base workspace binding is durable.
+Compaction retains the current goal budget. No parallel state file, task ledger, queue or access log.
 
 ## Completion and lifecycle
 
-The check uses **agent_before_settle**, never agent_end. It appends a visibly labeled custom message,
-not a fabricated user instruction, and preserves other extensions' proposed boundary entries.
-At most **two** additional model requests can be requested for that explicitly started goal. An unchanged
-report/missing report stops earlier. Other queued/native continuations are not overwritten or double-counted.
-The limit bounds only RepoStew's extra requests, not the host's whole task or other extensions.
-
-Do not continue after abort, error, failed tool activity, unavailable native continuation, or a reported
-real blocker. Stop/settlement clears the goal. Exhausting the check records that completion is unestablished;
-it never marks the task complete or automatically redispatches. Later tool activity invalidates an earlier
-final report. Normal native repair already underway is not interrupted by this helper.
-
-The helper cannot fix an incomplete assignment, missing capture, genuine external gate or a Supervisor's
-micro-stage authorization. Original task/failure budgets and whole-mandate decisions remain authoritative.
-A model can still omit or misreport facts; normal Worker engineering and Coordinator coverage duties remain.
+Use agent_before_settle, not agent_end. Append a visible custom message, never fabricated user authority;
+preserve other extensions' entries/continuations. Request at most **two** extra model calls per explicit goal,
+stopping earlier for unchanged/missing reports. This caps this helper, not the host/other extensions' work.
+No continuation after abort/error, failed tool activity, unavailable continuation or a reported real blocker.
+Settlement clears the goal; later tool activity invalidates an earlier final report. At the limit record
+unestablished completion, not success or redispatch. Normal native repair already underway is not interrupted.
+A helper cannot repair missing authority/input, override real gates or compensate for micro-stage assignments;
+original budgets, Worker engineering and Coordinator coverage obligations remain authoritative.
 
 ## Eight patterns and deliberate adaptations
 
-- `prompt-customizer.ts`: structured, small prompt sections; keep native sections and existing base binding.
-- `input-transform-streaming.ts`: distinguish streaming deltas from fresh input; no Git prefetch, rule reload,
-  input rewrite or budget restart during steering/follow-up.
-- `send-user-message.ts`: explicit user delta commands use native delivery; automatic checks use custom entries.
-- `structured-output.ts`: constrained factual results, without the example's `terminate:true` shortcut.
-- `protected-paths.ts`: explicit canonical protected roots instead of broad hard-coded substring bans.
-- `permission-gate.ts`: optional heuristic confirmation, no-UI denial, no inference of new authority.
-- `tool-override.ts`: a separately named native-tool wrapper rather than replacing builtin read or copying
-  a simplified reader that loses image/error/permission behavior; no access log.
-- `truncated-tool.ts`: bounded native-read text instead of interpolated rg shell commands, synchronous scans,
-  large output buffers and unrequested temporary copies.
+- prompt-customizer: small structured sections, preserving native/base instructions.
+- input-transform-streaming: distinguish deltas from fresh input; no prefetch/rewrite/rule reload.
+- send-user-message: explicit user commands use native delivery; automatic reminders use custom entries.
+- structured-output: constrained factual results without a terminating shortcut.
+- protected-paths: explicit canonical roots rather than broad hard-coded substring bans.
+- permission-gate: opt-in heuristics, no-UI denial, no implied permission.
+- tool-override: separately named native wrapper, not a simplified replacement reader or access logger.
+- truncated-tool: bounded native text rather than synchronous/interpolated shell scans and extra raw copies.
 
 ## Compatibility and validation
 
-Requires the Pi 1.3.0 API contracts used here: structured prompt sections, streamingBehavior, nested
-`executeTool` returning `{ result, isError }`, boundary entries/canContinue/outcome and agent_settled.
-The loader supplies `typebox`; it is an optional host peer, not a bundled runtime dependency.
-Other Pi versions need explicit verification. OMP uses its separate entry and does not load these extras.
+Uses Pi **1.3.0** contracts: structured prompt sections, streamingBehavior, executeTool's `{ result, isError }`,
+boundary entries/canContinue/outcome and agent_settled. Host-supplied typebox is an optional peer, not bundled.
+Verify other versions explicitly. OMP uses its separate entry. For T3, apply its
+[Pi lifecycle mapping](t3.md#when-the-provider-is-pi); offline Pi tests are not hosted acceptance.
 
-In [T3](t3.md), T3 still owns tasks, cancellation, queues and schedules. Verify its actual Pi runtime,
-exact extension loading, command routing, RPC UI support and final settlement handling before enabling.
-The local npm installation's version and offline tests do not prove the live T3 provider's compatibility.
-Do not hot-reload running C/W, reinterpret agent_end as completion, create a Pi subagent backend, or
-change model routing/permissions to make this helper work. Unsupported hosts keep the base integration.
-
-Maintainers run `scripts/build-package.py`, `scripts/validate-package.py` and
+Run build-package.py, validate-package.py and
 `node scripts/validate-pi.mjs <installed-pi-package-root> <bundle> <existing-test-output-directory>`.
-The Pi suite includes the extra-entry tests: base opt-in isolation, native loading/prompt preservation,
-bounded continuation, stable reports/real blockers, abort/error/compaction/branch/reset behavior,
-other-extension boundary entries, deltas, canonical protected paths/links, no-UI/RPC confirmation,
-and nested read limits/Unicode/images/errors/cancellation. Tests make no model/provider calls;
-RPC dialogs and nested error/limit responses are controlled fixtures; an actual native read is also
-exercised. Neither constitutes a live T3 acceptance claim.
+Tests cover opt-in isolation, native loading/schema/prompt, loop bounds/blockers, abort/errors, branch/reset/
+compaction, other boundary entries, deltas, canonical paths/links, no-UI/RPC confirmation and bounded reads.
+An actual native read is exercised; RPC/error/limit responses use fixtures. No live model/provider tests.

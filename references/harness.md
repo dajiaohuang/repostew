@@ -1,45 +1,38 @@
 # Harness integration
 
-Native adapters: [Pi](harnesses/pi.md), [Codex](harnesses/codex.md); host orchestration: [T3](harnesses/t3.md).
-[Pi extras](harnesses/pi-extras.md) require explicit loading and runtime verification; they do not replace host lifecycle.
-
-Map native capabilities to the selected task; no fixed vendor, model, OS, tool or thread API.
-Harness supplies execution/tools/scheduling; RepoStew supplies policy and assignments.
+Adapters: [Pi](harnesses/pi.md) with [optional extras](harnesses/pi-extras.md),
+[Codex](harnesses/codex.md); hosted orchestration: [T3](harnesses/t3.md).
+Other skill-capable hosts use the same contract. RepoStew supplies policy/assignments, not a fixed vendor,
+agent hierarchy or replacement execution backend. Keep API names, events, flags and version limits here
+or in adapters, not generic roles, methods or templates.
 
 ## Capabilities depend on the selected work
 
-- Access live target policy/objects and authoritative Markdown/source through supported interfaces.
-  Executions share one authoritative state, not divergent copies. Missing write access is a blocker.
-- Delegate only when authorized, with sufficient context/action limits; child work does not
-  authorize top-level conversations or persistent jobs.
-- Identify the actual delegation backend, its occupied/queued capacity, release and descendant-stop semantics;
-  model/provider names do not select them. Apply user/aggregate limits without stacking calls to bypass caps.
-- Retain native handles; receive final results, attention/errors through events or supported waits after
-  eligible dispatch/refill. Turn/parent completion is not descendant completion. No transcript/record polling,
-  duplicate relays or custom watcher/receipt service. Use [bounded diagnosis](orchestration.md#detect-errors-through-existing-signals-not-routine-audits)
-  for concrete suspected stalls; distinguish parent wait budgets, tool deadlines and model/backend timeouts
-  using live API units and actual interruption semantics, not interchangeable timeout assumptions.
-- Map task, thread/context and model separately. Continued context is optional under
-  [task boundaries](orchestration.md#task-boundaries-and-context-reuse), not permanent Worker ownership.
-  Normal handoff needs stopped prior writer/queued writes and preserved work, not a failed Worker.
-  Coordinator replacement includes descendant writers and old refill; native stop requests
-  alone are not confirmed termination. Do not close idle threads unless backend lifecycle/capacity needs it.
-- Schedule only when requested; preserve existing activation. Manual passes do not resume jobs.
-  Explicitly authorized Supervisor heartbeats use the native scheduler and the
-  [next-action contract](orchestration.md#decide-the-next-action-on-every-wake), not a custom polling service.
+- **Instructions/data:** accessible current rules and the actual policy/state workspace; bind the assigned
+  project home, not merely cwd. Shared state.md is authoritative; local work/ is not inherited/published context.
+- **Execution/permissions:** actual tools, modes, tool availability and required settings. Missing access or
+  explicitly requested capability is a blocker; do not silently substitute or interpret approval mode as isolation.
+- **Delegation/capacity:** actual backend, accepted/queued/occupied limits, release and descendant semantics.
+  Model/provider identity does not select a backend. Parallelism, top-level conversations and jobs need authority.
+- **Results/continuation:** map activity end, final settlement, owned task result and live descendants separately.
+  Use events or supported waits; batch-only backends refill at batch return. Preserve original task scope/budgets
+  through helpers, compaction and context transfer. Adapter-required result fields never create new work.
+- **Stop/handoff:** map cancellation requests to actual writer/queued/process stop proof before replacement.
+  A parent final is not descendant termination; a wait timeout is not a tool deadline. Check each API's units
+  and interruption behavior. Close completed contexts only when the backend's lifecycle/capacity requires it.
+- **Schedules:** use the native authorized scheduler, preserving activation/paused state. Manual work does not
+  resume jobs. No watcher, receipt service or plugin pool to emulate unsupported orchestration.
 
 ## Context and workspace mapping
 
-Use [assembly](worker-assembly.md): readable canonical files or complete applicable inline text.
-Establish needed context inheritance, shared access, result relay and continuation once when unknown.
-Bind the actual workspace and assigned native project home, not cwd/target checkout. Share only project
-state.md and necessary task facts; work/ is device-local, not automatically inherited or published context.
-Keep APIs, credentials/accounts/private IDs, models, concurrency, cadence and schedule IDs
-in workspace/harness configuration. Native permissions remain binding; no silent setting substitution.
+Apply [assembly](worker-assembly.md) and [orchestration](orchestration.md); do not restate their scheduling
+policy in each adapter. Establish inheritance, shared access, result relay and continuation only when unknown
+or changed. Keep credentials, models, quotas, cadence and identifiers in authorized workspace/host configuration.
 
 ## Limits and compatibility claims
 
-Without delegation, serial execution may combine roles; unavailable explicitly requested behavior
-remains a blocker. Source failure is unknown coverage; publication failure does not change destination.
-Portability is not certification: verify actual instructions, permissions, results, continuation/handoff,
-state and source operations before claiming integration. Add adapters only for real validated needs.
+Without delegation, combine responsibilities and execute serially where permitted; explicitly required
+unsupported behavior remains blocked. No emulated backend or inferred permission. Source failure remains
+unknown coverage; failed publication does not change destination. Portability is not certification:
+verify the actual loading, instructions, tools/permissions, result/stop behavior and state/source operations
+needed by the assignment. Optional helpers need explicit enablement; do not hot-reload active writers.

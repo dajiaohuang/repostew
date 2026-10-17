@@ -6,7 +6,8 @@ description: Assemble scoped Workers for repository discovery, audits, contribut
 # RepoStew
 
 RepoStew supplies policy, work methods and Worker construction; harness supplies execution,
-tools, permissions and lifecycle. Coordinator assembles/coordinates; Workers complete assigned work.
+tools, permissions and lifecycle. Coordinator owns whole-scope coordination; Worker owns a complete
+bounded unit. Supervisor adds cross-domain governance only when assigned; serial work may combine roles.
 Load rules by role, task form and actual action: reuse complete current text, batch missing startup reads,
 and load conditional methods before their action. Links are navigation, not recursive reading orders.
 Continue by delta; unchanged usable rules need no reread. See [assembly](references/worker-assembly.md).
@@ -17,7 +18,6 @@ work.md, notes, checkouts and temporary material, all ignored by Git. No root wo
 Roles: [Supervisor](roles/supervisor.md) for whole-system governance; [Coordinator](roles/coordinator.md),
 [Worker](roles/worker.md), [Maintainer](roles/maintainer.md) for assigned execution.
 Wording: [prompts](prompts/README.md); native access: [harness](references/harness.md), [forges](references/forges/README.md).
-[Pi extras](references/harnesses/pi-extras.md) are explicitly opt-in helpers, not another execution backend.
 
 ## All flows
 
@@ -62,16 +62,12 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
   recovery material. Local retention follows [storage's three paths](references/storage.md#choose-the-release-path):
   delivered/preserved, explicitly abandoned, or retained with concrete blockers. Confidentiality is not
   permanent local retention; abandonment never substitutes for ownership or reporting authority.
-- Dispatch each assignment sufficiently once; authorized independent work uses available backend capacity
-  before waiting and refills per completion, not per batch. Priority is not a barrier; explicit stage gates
-  keep their named scope. Finite batches/turns are not full-scope completion. Follow [orchestration](references/orchestration.md)
-  for each wake's action decision, capacity, descendant lifecycle and drain/pause/cancel. Summaries do not
-  replace feasible dispatch; explicitly authorized heartbeats belong to the Supervisor. Completed tasks release default Worker/model
-  binding; reuse valid evidence, with short same-task continuation only where context remains suitable.
-  Continue by delta, trust usable finals;
-  no routine receipts/progress/readback loops.
-  Coordinator checks assignment/coverage, Worker checks engineering. Capture-only and metadata-only work
-  do not trigger audit/tests/publication. Reuse applicable evidence; deepen changes, unknowns or concrete risks.
-  Preserve target-required checks, permission/privacy gates, ambiguous-effect reconciliation and safe preservation.
+- Assign complete bounded units once, not one tool/test step at a time. Workers advance feasible authorized
+  stages; Coordinators check scope/coverage, not engineering again. Follow [orchestration](references/orchestration.md)
+  for act/wait/block/finish on every wake, independent refill, stage gates and stopped-writer handoff.
+  A turn, structured reply or finite batch does not prove whole-scope completion. Reuse evidence/context
+  where suitable without binding future units or resetting budgets. No receipts, routine readback or polling.
+- Select checks by actual action: capture/metadata alone does not trigger audits/tests/publication.
+  Preserve target-required checks, privacy/permission gates, mutation reconciliation and resource protection.
 - Use direct Markdown, no custom runtime/queue/claims/database. Report coverage, outcomes, unfinished work and
   resource release accurately; execution status alone never proves completion.

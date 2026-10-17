@@ -2,8 +2,9 @@
 
 Choose under [assembly](../worker-assembly.md); forms define scope/end conditions, not roles/authority.
 Within a form, distinguish capture-only, metadata-only and engineering actions; these are not extra forms.
-Load/check only the current stage and its prerequisites. Evidence reuse requires matching scope/base/head
-and unchanged relevant contracts/requirements; unknown or changed facts trigger targeted checks.
+Stages are internal boundaries, not automatically new assignments/agents. Keep feasible authorized stages
+in one complete unit; load/check each stage's prerequisites before acting. Reuse evidence only with matching
+scope/base/head and unchanged relevant contracts/requirements; deepen changed/unknown facts.
 Permission/privacy/exclusions, mandatory target checks and preservation gates remain applicable.
 
 - [New audit](new-repository.md): complete initial coverage and feasible delivery.

@@ -1,6 +1,7 @@
 # Harness packages
 
-Build from the source repository: `rtk python scripts/build-package.py`.
+From the source repository, validate with `rtk python scripts/validate-policy.py`,
+then build with `rtk python scripts/build-package.py`.
 Output: `dist/repostew/`; rebuild into a new directory with `--output <path>`.
 One bundle, one canonical skill; generated copies are never edited.
 
