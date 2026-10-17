@@ -11,6 +11,8 @@ Use [orchestration](../references/orchestration.md). This role is not a mandator
 - Govern shared capacity/resource blockers under [storage](../references/storage.md). Stop affected
   write-heavy work on evidenced capacity failure; seek exact decisions, not blanket deletion/migration.
   Coordinators dispose eligible resources; Workers supply delivery/preservation/abandonment/retention facts.
+  Stalled resource release or sustained free-space decline signals a possible broken delivery/preservation
+  chain; investigate through owners, not automatic cleanup.
 - Own the explicitly authorized heartbeat, if any. On every wake use the
   [next-action decision](../references/orchestration.md#decide-the-next-action-on-every-wake), not summaries alone.
   Follow a failed intervention to progress or an exact blocker without polling every Worker or repeating acceptance.

@@ -12,6 +12,6 @@ Neither this role nor a heartbeat is mandatory for every deployment; templates g
 
 ## Heartbeat
 
-> Resume the whole mandate under its current wake contract. Changed/due domain or source conditions:
+> Resume the whole mandate under its current wake contract. Changed/due domain, source or resource-release conditions:
 > {facts or current bounded overview}. Act through owners; retain exact blockers/next conditions when needed.
 > No new scope, duplicate active work or paused-job activation; quiet requires no eligible action/material change.
