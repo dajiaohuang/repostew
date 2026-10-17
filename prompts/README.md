@@ -13,6 +13,7 @@ and exactly one form below; fill explicit actions, directories and TODOs. Do not
 - Recurring patrol: [C](recurring-patrol/coordinator.md) / [W](recurring-patrol/worker.md).
 - [Continue](continue.md): same-task delta/correction with suitable context.
 - [Handoff](handoff.md): unit-boundary transfer after stop and mutation reconciliation.
+- [Temporary reinforcement](reinforcement.md): scoped supplement to an existing form for stalled delivery/resource chains; not a new standing domain.
 
 ## Canonical context and ordering
 
