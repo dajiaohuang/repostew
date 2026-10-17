@@ -197,6 +197,8 @@ Preserve exact native identities, aliases, revisions and boundaries. Cross-forge
 2. Assign the workspace, repositories/objects/window, outcome and allowed actions. For recurring work, explicitly authorize sources, cadence and activation. For managed work, specify permitted issue/PR/merge actions.
 3. Let the Coordinator select applicable roles, forms and methods; run necessary validation and complete feasible authorized actions. Continue from unresolved records and live sources.
 
+Pi users can explicitly load [optional extras](references/harnesses/pi-extras.md): bounded same-task completion checks, structured factual results, streaming deltas, path/shell safety aids and bounded native reads. The default binding remains lightweight; T3 retains task ownership, and hosted compatibility must be verified before activation.
+
 Example assignment:
 
 ```text

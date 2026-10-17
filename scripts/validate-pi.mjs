@@ -1,4 +1,4 @@
-// Validate only RepoStew's native Pi loader/session/prompt integration; no subagent plugins or model calls.
+// Validate RepoStew's base and optional Pi integrations; no subagent plugins or model calls.
 import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, realpathSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -17,6 +17,7 @@ runtime.appendEntry = (type, data) => session.appendCustomEntry(type, data);
 runtime.sendUserMessage = (text) => messages.push(text);
 const loaded = await loadExtensions([join(bundle, "extensions/pi.js")], workspace, undefined, runtime);
 assert.deepEqual(loaded.errors, []);
+assert.equal(loaded.extensions[0].tools.size, 0, "base entry must not silently load extras");
 const runner = new ExtensionRunner(loaded.extensions, runtime, workspace, session, undefined);
 const errors = [];
 runner.onError((error) => errors.push(error));
@@ -25,15 +26,20 @@ await runner.emit({ type: "session_start", reason: "startup" });
 await runner.getCommand("repostew-workspace").handler(workspace, commandContext);
 assert.equal(messages.length, 0, "binding must not start a turn");
 const boundEntry = session.getLeafId();
-const prompt = () => runner.emitBeforeAgentStart(
+const prompt = (sections = { native: "preserved" }) => runner.emitBeforeAgentStart(
   { messageType: "user", prompt: "task", images: undefined },
-  { cwd: workspace, sections: { native: "preserved" } },
+  { cwd: workspace, sections },
 );
 const result = await prompt();
 assert.equal(result.systemPromptOptions.sections.native, "preserved");
 assert.ok(result.systemPromptOptions.sections.repostew.includes(JSON.stringify(realpathSync(workspace))));
 const otherWorkspace = join(workspace, "other");
 mkdirSync(otherWorkspace);
+const busyContext = Object.create(commandContext, { isIdle: { value: () => false } });
+await runner.getCommand("repostew-workspace").handler(otherWorkspace, busyContext);
+assert.ok((await prompt()).systemPromptOptions.sections.repostew.includes(JSON.stringify(realpathSync(workspace))));
+await runner.getCommand("repostew").handler("must not dispatch while busy", busyContext);
+assert.equal(messages.length, 0);
 runtime.appendEntry = () => { throw new Error("session write failed"); };
 await assert.rejects(runner.getCommand("repostew-workspace").handler(otherWorkspace, commandContext), /session write failed/);
 assert.ok((await prompt()).systemPromptOptions.sections.repostew.includes(JSON.stringify(realpathSync(workspace))));
@@ -43,7 +49,7 @@ assert.equal(messages.length, 1);
 assert.ok(messages[0].endsWith("finite task"));
 session.resetLeaf();
 await runner.emit({ type: "session_tree" });
-assert.equal((await prompt()).systemPromptOptions.sections.repostew, undefined);
+assert.equal((await prompt({ repostew: "stale" })).systemPromptOptions.sections.repostew, undefined);
 session.branch(boundEntry);
 await runner.emit({ type: "session_tree" });
 assert.ok((await prompt()).systemPromptOptions.sections.repostew);
@@ -55,3 +61,4 @@ assert.equal((await prompt()).systemPromptOptions.sections.repostew, undefined);
 assert.deepEqual(errors, []);
 
 console.log("Pi native loader/session/prompt passed (no subagent plugin, delegation or live model test).");
+await import("./validate-pi-extras.mjs");

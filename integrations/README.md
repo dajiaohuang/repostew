@@ -11,8 +11,13 @@ One bundle, one canonical skill; generated copies are never edited.
 | Pi | `rtk pi install ./dist/repostew` | `/repostew-workspace <directory>`, then `/repostew <task>` |
 | OMP (oh-my-pi) | `rtk omp --no-extensions -e ./dist/repostew` | `/repostew <task and workspace>` |
 
-Pi preserves explicit workspace binding in native session branches and adds one prompt section.
-OMP retains its existing command. Neither creates an execution service.
+Pi's default entry preserves workspace binding in native branches and adds one prompt section.
+Optional Pi 1.3.0 enhancements ship separately: try
+`rtk pi -e ./dist/repostew -e ./dist/repostew/extensions/pi-extras.js`, bind the workspace, then
+`/repostew-goal <authorized finite task>`. See [Pi extras](skills/repostew/references/harnesses/pi-extras.md)
+for all eight adapted patterns, commands, safety limits and native validation. They are not autoloaded;
+installation does not change global settings or enable safety gates/continuation in running agents.
+OMP retains its existing command. These integrations create no execution service.
 Roles/forms/methods remain assembled by the Coordinator. Native delegation and permissions
 come from the harness; installation grants no public, maintainer or schedule authority.
 Workspace instructions/state stay outside the package: each native project uses

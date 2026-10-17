@@ -1,6 +1,7 @@
 # Harness integration
 
 Native adapters: [Pi](harnesses/pi.md), [Codex](harnesses/codex.md); host orchestration: [T3](harnesses/t3.md).
+[Pi extras](harnesses/pi-extras.md) require explicit loading and runtime verification; they do not replace host lifecycle.
 
 Map native capabilities to the selected task; no fixed vendor, model, OS, tool or thread API.
 Harness supplies execution/tools/scheduling; RepoStew supplies policy and assignments.

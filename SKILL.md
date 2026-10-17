@@ -17,6 +17,7 @@ work.md, notes, checkouts and temporary material, all ignored by Git. No root wo
 Roles: [Supervisor](roles/supervisor.md) for whole-system governance; [Coordinator](roles/coordinator.md),
 [Worker](roles/worker.md), [Maintainer](roles/maintainer.md) for assigned execution.
 Wording: [prompts](prompts/README.md); native access: [harness](references/harness.md), [forges](references/forges/README.md).
+[Pi extras](references/harnesses/pi-extras.md) are explicitly opt-in helpers, not another execution backend.
 
 ## All flows
 
