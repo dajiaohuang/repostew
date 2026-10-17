@@ -50,14 +50,17 @@ Apply only to affected contracts; load [scoped forge/repository evidence](forges
 New security findings follow [private reporting](security.md), not the ordinary Open PR route.
 Claim ordinary work through the permitted route; submit/update regular Open PR when:
 
-1. Target invitation/assignment/design/security/submission gates permit it.
+1. Ordinary PR submission is allowed by default. Require an invitation only when the target explicitly
+   prohibits unsolicited PRs; do not infer advance approval from suggestions to discuss first.
 2. No competing claim/PR, equivalent base fix or applicable rejection; check all relevant states.
 3. Error and correction are established under [ordinary](contribution-value.md) evidence.
 4. Smallest complete compatible change respects interfaces/defaults and dependency/service/authority boundaries.
 5. Required evidence/checks pass; unrun environment checks are disclosed, never claimed as acceptance.
 6. Permitted fork/branch/base, style/templates, public identity and truthful caveats are satisfied.
 
-No extra approval/Draft/companion-issue gate. Upstream read-only is not fork prohibition; identify actual route
+No extra approval/Draft/companion-issue gate. Acceptance/merge-time CI requirements do not imply
+pre-submission local CI; preserve explicitly mandatory pre-submission checks and disclose unrun checks.
+Upstream read-only is not fork prohibition; identify actual route
 blockers separately from tooling. Re-evaluate eligible Drafts. Missing native tools alone need not force Draft.
 Use Draft only after necessity/correction proof for allowed early unresolved implementation/validation, or
 service open-PR limits; state remaining uncertainty/limit without closing keywords/approval claims.
