@@ -16,10 +16,14 @@ LIMITS = {
     "references/harness.md": 40,
     "roles/supervisor.md": 23, "roles/coordinator.md": 32, "roles/worker.md": 38,
     "roles/maintainer.md": 15,
-    "prompts/README.md": 18, "prompts/supervisor-start.md": 24,
+    "prompts/README.md": 24, "prompts/supervisor-start.md": 24,
     "prompts/coordinator-start.md": 20, "prompts/worker-start.md": 20,
     "prompts/continue.md": 18, "prompts/handoff.md": 22,
 }
+FORMS = ("new-repository", "contribution-reassessment", "incremental-feedback", "discovery", "recurring-patrol")
+for form in FORMS:
+    for role in ("coordinator", "worker"):
+        LIMITS[f"prompts/{form}/{role}.md"] = 18
 FLOW_LINKS = {
     "references/worker-assembly.md", "references/orchestration.md",
     "references/work-forms/discovery.md", "references/work-forms/new-repository.md",
@@ -37,6 +41,7 @@ def validate():
     generic = [ROOT / name for name in ("SKILL.md", "AGENTS.md", "README.md", "README.en.md", "README.zh.md")]
     for directory in ("roles", "prompts", "references", "references/work-forms", "references/workflows"):
         generic.extend((ROOT / directory).glob("*.md"))
+    generic.extend(path for path in (ROOT / "prompts").rglob("*.md") if path.parent != ROOT / "prompts")
     generic = [path for path in generic if path != ROOT / "references/harness.md"]
     for path in generic:
         match = NATIVE.search(path.read_text(encoding="utf-8"))
@@ -44,6 +49,14 @@ def validate():
     for name, limit in LIMITS.items():
         count = len((ROOT / name).read_text(encoding="utf-8").splitlines())
         assert count <= limit, f"Review compact entry budget without dropping authority gates: {name}: {count}>{limit}"
+    index = (ROOT / "prompts/README.md").read_text(encoding="utf-8")
+    for form in FORMS:
+        for role in ("coordinator", "worker"):
+            name = f"{form}/{role}.md"
+            text = (ROOT / "prompts" / name).read_text(encoding="utf-8")
+            assert f"]({name})" in index, f"Unindexed task template: {name}"
+            assert f"](../{role}-start.md)" in text, f"Missing shared header: {name}"
+            assert "> TODO 1:" in text and "> Completion:" in text, f"Missing task contract: {name}"
     skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
     links = set(re.findall(r"\[[^\]]*\]\(([^\s)#]+)(?:#[^)]*)?\)", skill))
     assert FLOW_LINKS <= links, f"Missing flow links: {sorted(FLOW_LINKS - links)}"

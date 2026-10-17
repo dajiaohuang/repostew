@@ -1,11 +1,16 @@
 # Prompt assembly and templates
 
 Use [assembly](../references/worker-assembly.md) for context selection and ordering. Templates carry task
-variables, not copied policy, executable protocol or authority; fill/remove fields and omit unrelated facts.
+variables, not copied policy, executable protocol or authority. Compose one brief from the shared C/W header
+and exactly one form below; fill explicit actions, directories and TODOs. Do not send all templates to a leaf.
 
 - [Supervisor](supervisor-start.md): optional governance handoff and explicitly authorized heartbeat.
-- [Coordinator](coordinator-start.md): whole-domain outcome and complete-unit assignment.
-- [Worker](worker-start.md): one bounded outcome with feasible authorized stages.
+- Shared headers: [Coordinator](coordinator-start.md), [Worker](worker-start.md).
+- New repository: [C](new-repository/coordinator.md) / [W](new-repository/worker.md).
+- Contribution reassessment: [C](contribution-reassessment/coordinator.md) / [W](contribution-reassessment/worker.md).
+- Incremental feedback: [C](incremental-feedback/coordinator.md) / [W](incremental-feedback/worker.md).
+- Discovery/admission: [C](discovery/coordinator.md) / [W](discovery/worker.md).
+- Recurring patrol: [C](recurring-patrol/coordinator.md) / [W](recurring-patrol/worker.md).
 - [Continue](continue.md): same-task delta/correction with suitable context.
 - [Handoff](handoff.md): unit-boundary transfer after stop and mutation reconciliation.
 

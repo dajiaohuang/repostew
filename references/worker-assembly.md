@@ -1,13 +1,13 @@
 # Construct a Worker assignment
 
-Role defines responsibility; form defines coverage/completion; methods define investigation/delivery.
-Use ordinary text [templates](../prompts/README.md), not a compiler, parallel task protocol or copied global brief.
+Assemble role, form and methods with [text templates](../prompts/README.md), not a parallel task protocol.
 
 ## Establish intent before choosing a template
 
 1. Establish outcome, full selection, prior work, authority/resources and current writers. Add
    [Maintainer](../roles/maintainer.md)/[maintain](workflows/maintain.md) only for authorized management.
-2. Choose [form](work-forms/README.md) from assignment/native authored history; comments are not authorship.
+2. Choose [form](work-forms/README.md) and its [C/W template pair](../prompts/README.md) from assignment/native
+   authored history; comments are not authorship. Compose one shared header plus the selected form's TODO.
 3. Capture/deduplicate; normally assign one complete repository engineering unit or bounded source batch.
    Include its feasible authorized stages, not separate dispatches for each tool/test. Resolve writer conflicts.
 4. Specify real dependencies, action limits and end conditions; Workers establish ordinary unknowns.
@@ -31,8 +31,9 @@ stable and variables last. Select rules by actual action: records/workspace for 
 for engineering, safety/submission for external writes, storage for resources actually used or assigned.
 Every task keeps privacy/private-reporting boundaries; load [security](security.md) before handling a
 suspected finding. Coordinators load orchestration; leaves receive their applicable boundaries, not it.
-Task facts: workspace and native project home, root state.md/local work/, objects/window/base, existing
-work/evidence, dependencies, authority, end condition and result/attention route. Omit inapplicable fields.
+Task facts: absolute workspace/project/record paths, execution cwd and writable/read-only boundaries,
+objects/window/base, existing evidence, explicit actions/destinations/limits, numbered outcome TODO, dependencies,
+end condition and result route. Resolve indispensable permission/path gaps before dispatch; omit inapplicable fields.
 
 ## Deliver authoritative instructions
 
