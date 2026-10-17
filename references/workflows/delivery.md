@@ -8,7 +8,8 @@ under [assembly](../worker-assembly.md).
 
 1. Establish assignment/scope/base and actual checkout when needed. Read target access/privacy/security
    restrictions before broad README/source/body reads; contribution requirements before engineering,
-   publication templates before the corresponding write. Preserve prior edits and reuse current rules.
+   publication templates before the corresponding write. Apply [contribution-term consent](../safety.md#contribution-terms),
+   distinguishing required personal signatures from ordinary assent. Preserve prior edits and reuse current rules.
    New audits use [new workflow](new-repository.md); other forms keep assigned objects.
 2. Reconcile current issues/discussions/all-state PRs/claims/base fixes; refresh only relevant changes before
    publication. Apply [necessity/implementation/grouping](../contribution-value.md), [audit](../audit.md),

@@ -18,6 +18,13 @@ Validation follows actual actions: metadata-only work needs no repair tests; sou
 Do not remove mandatory target checks, permission/privacy/exclusion checks, mutation reconciliation or
 the applicable pre-deletion delivery/preservation or explicit bounded abandonment facts in [storage](storage.md). No default second acceptance review by Coordinator.
 
+## Contribution terms
+
+For otherwise authorized contributions, the user permits automatic acceptance of contribution terms,
+including submission-implied CONTRIBUTING/LICENSE assent and ordinary click-through consent. Ask only
+when the user must personally sign; CLA/DCO labels alone are not a gate. Never fabricate signatures or
+personal/employer/authorship facts. NoAI, privacy/security, mandatory checks and strict stops still apply.
+
 ## Feedback-derived review rules
 
 Apply only to affected contracts; load [scoped forge/repository evidence](forges/README.md).
