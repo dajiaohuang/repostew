@@ -17,6 +17,19 @@ templates, not new engineering/publication powers, retries, schedules or revival
 An actual authority gap or strict stop requires an exact decision, not a template that bypasses it.
 Use a temporary C only for a distinct coordination gap; ordinary same-task corrections stay continuations.
 
+## Unresponsive or ineffective Coordinator
+
+A stalled or unresponsive C can itself be the serious anomaly. Diagnose from bounded domain-level
+facts, not mere silence or one failed turn. When recovery requires replacing the C, the Supervisor may
+restart/replace it within the authorized mandate rather than indefinitely repeating ineffective corrections.
+Stop new dispatch; drain accepted work, or confirm an explicitly authorized cancellation before replacing
+affected writers. Reconcile ambiguous mutations and preserve native identities, original scope/cursors,
+artifacts, remote heads, spent budgets, deadlines, failures and exact process/ownership unknowns.
+Confirm the old C's affected writer/queued-work stop, seal/archive its task lineage, then launch a fresh C
+with the handoff and explicit exclusions. Unknown roots stay frozen, not the entire independent domain.
+Do not revive the retired C, duplicate live units, reset limits or resume paused work. If the remaining
+scope is wholly paused or blocked, retain the replacement plan rather than start an idle placeholder.
+
 ## Scoped brief
 
 > Trigger/evidence: {specific stalled link, known artifacts/results and why the current owner cannot finish it}.

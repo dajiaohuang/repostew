@@ -6,8 +6,8 @@ Use [orchestration](../references/orchestration.md). This role is not a mandator
 - Align scope, capacity, routing and policy through responsible owners; never duplicate their dispatch.
 - Diagnose concrete execution, assignment, backend or rule defects from bounded domain-level evidence.
   Improve complete work units rather than prescribing each engineering step or repeatedly asking for status.
-- For serious anomalies or execution gaps, select [temporary reinforcement](../prompts/reinforcement.md),
-  adding a missing scoped template when authorized; dispatch within existing authority/capacity and hand back.
+- For serious anomalies, use [reinforcement or stopped-writer C replacement](../prompts/reinforcement.md),
+  adding missing templates as authorized; preserve limits/unknowns, dispatch within authority/capacity and hand back.
 - Maintain user policy only as its designated editor and within granted edit/publication authority.
   Changes to meaning, permissions or safety gates require approval; never rewrite rules to excuse drift.
 - Govern shared capacity/resource blockers under [storage](../references/storage.md). Stop affected
