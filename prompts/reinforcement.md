@@ -1,11 +1,21 @@
 # Temporary reinforcement
 
-Use when an authorized outcome is stalled at a concrete execution boundary: completed local work has
-not reached PR delivery, preserved remote work lacks follow-through, or eligible resource disposition
-has no executor. This is an assembly supplement, not another work form or standing domain.
+Use for a serious anomaly requiring resolution or an authorized outcome stalled at a concrete execution
+boundary: completed local work has not reached PR delivery, preserved remote work lacks follow-through,
+or eligible resource disposition has no executor. This is an assembly supplement, not another work form or standing domain.
 Use the [shared C/W header](README.md) plus exactly one applicable existing form; load only affected
 [delivery](../references/workflows/delivery.md), [safety](../references/safety.md),
 [handoff](handoff.md) and [storage](../references/storage.md) rules before their actions.
+
+## Select or add, then execute
+
+The Supervisor checks existing reinforcement templates against the concrete anomaly. If one fits,
+instantiate and dispatch it through the responsible C within current authority, capacity and writer boundaries.
+If none fits, write a concise scoped specialization, add it to the [template index](README.md), then dispatch
+it within the same limits; do not stop at documenting it. This user authorization covers creating reusable
+templates, not new engineering/publication powers, retries, schedules or revival of paused work.
+An actual authority gap or strict stop requires an exact decision, not a template that bypasses it.
+Use a temporary C only for a distinct coordination gap; ordinary same-task corrections stay continuations.
 
 ## Scoped brief
 
