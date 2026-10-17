@@ -16,7 +16,8 @@ separately authorized next source window once earlier input is captured and reli
 Complete independent repository inputs may dispatch
 while other capture continues; position advancement retains its own full-coverage gate.
 Capture/group through [orchestration](orchestration.md); [Workers](../roles/worker.md) receive finite
-[incremental tasks](work-forms/incremental-feedback.md). A batch is not the whole Coordinator selection.
+[incremental tasks](work-forms/incremental-feedback.md). The capture Coordinator directly owns dispatch and handling
+outcomes; saving/routing a window is not completion. A batch is not the whole Coordinator selection.
 Separate source positions; retain unresolved work before advancement. One source's failure/external wait
 blocks its dependent work, not independent sources or captured engineering. No new audit/mail rescan in fallback.
 Requested concurrency only, one writer per project's shared state.md/local work/; serialize global positions

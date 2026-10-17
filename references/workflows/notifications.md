@@ -7,16 +7,23 @@
    notifications. Authentication/scope/ordering uncertainty is failure/unknown, not empty capture.
    Never mark read, alter subscriptions or send/reply by mail.
 3. Merge duplicate native repository/objects across sources; mail links point to live engineering objects.
-   Handle once under [incremental form](../work-forms/incremental-feedback.md); substantive replies on those
-   objects when needed, no receipt replies, duplicate publications or tests. No automatic admission.
+   The notification Coordinator directly dispatches complete [incremental W units](../../prompts/incremental-feedback/worker.md):
+   inspect current feedback, finish necessary repair/checks and substantive replies/submission updates on the live objects.
+   Do not stop at archiving/routing or use governance as a routine per-notification approval relay. No receipt replies,
+   duplicate publications/tests or automatic admission. Escalate only real ownership, resource or authority gaps.
    Capture owners validate full source boundaries; engineering Workers inspect assigned current objects,
    not the same whole source window again. Complete deduplicated repository batches may dispatch while
    independent capture continues; route in-scope deltas to the active writer, not indefinitely to a completed
-   task's Worker. Select subsequent execution under orchestration. Recover missing capture locally,
+   task's Worker. For cross-domain work, coordinate directly with its current owner and integrate the actual handling
+   outcome; do not launch a second writer or count a forwarding receipt as resolution. Historical domain ownership
+   alone is not a permanent routing gate: without a current writer, agree this batch's writing scope once and let
+   the notification Coordinator dispatch its W directly. Select subsequent execution under orchestration. Recover missing capture locally,
    then fill failed/unrecoverable gaps within original authority, not repeat complete windows.
    No clone/tests/repair gates for capture-only or metadata-only work. Once captured input is reliably
    routed/retained, unfinished engineering alone does not block a separately authorized next capture window;
    incomplete source capture/retention still requires recovery first. Do not infer new-window authority.
 4. Retain unresolved links/reasons in repository state, private links in protected unsynced material;
    advance each source only to its completely captured and handled/retained boundary. Failure preserves
-   that source's position; independent capture/handling may proceed. Reading is not resolution.
+   that source's position; independent capture/handling may proceed. Reading, saving and forwarding are not resolution.
+   A retained source window may advance independently, but the Coordinator still owns completing feasible handling;
+   report object outcomes and remaining external blockers separately from captured/retained boundaries.
