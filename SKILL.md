@@ -41,23 +41,26 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 5. **Retain and finish:** update [minimal records; migrate only when authorized](references/records.md),
    [reconcile history/reclassify or recover](references/workflows/history.md),
    [publish reviewed backup](references/workflows/records-and-backup.md),
-   and [provision/dispose resources](references/storage.md): Workers preserve, Coordinators execute
-   bounded cleanup after handoff, Supervisor governs capacity. No expanded deletion authority.
+   and [provision/dispose resources](references/storage.md): Workers establish delivery/preservation or
+   abandonment facts, Coordinators release after handoff, Supervisor governs capacity. No inferred authority.
 
 ## Common contract
 
 - All new [security findings](references/security.md) use private reporting only, never public issues;
-  retain protected evidence/blockers when a private channel or disclosure authority is unavailable.
+  retain protected evidence/blockers without a private channel or disclosure authority unless explicit
+  category/scope-specific abandonment applies; delivered local material follows [storage](references/storage.md).
 - Apply user-selected exclusions in the applicable [forge reference](references/forges/README.md)
   before selecting or continuing work; preserve existing objects/history and action authority.
 - Establish scope/authority; no permission or task follows from roles, membership, history or installation.
   Serial by default; delegation, parallelism, schedules and external actions require authorization.
 - Act from actual use/contracts and [quality standards](references/contribution-value.md), without invented
   defects or necessity. Prohibit defensive programming; trust internal contracts, retain necessary boundary checks.
-- One writer per project: its Worker writes shared state.md and local work/work.md; Coordinator owns
-  global membership/navigation/positions. Serialize Git publication separately; never crawl local work as state.
-  Preserve unrelated, dirty/unpushed/unknown/private work and recovery material; only explicit bounded
-  ordinary-work abandonment under [storage](references/storage.md) substitutes for preservation, never for privacy/ownership.
+- One writer per project: its assigned writer writes shared state.md and local work/work.md; Coordinator owns
+  global membership/navigation/positions and only resource facts after a stopped-writer disposition handoff.
+  Serialize Git publication separately; never crawl local work as state. Preserve unrelated work and existing
+  recovery material. Local retention follows [storage's three paths](references/storage.md#choose-the-release-path):
+  delivered/preserved, explicitly abandoned, or retained with concrete blockers. Confidentiality is not
+  permanent local retention; abandonment never substitutes for ownership or reporting authority.
 - Dispatch each assignment sufficiently once; authorized independent work uses available backend capacity
   before waiting and refills per completion, not per batch. Priority is not a barrier; explicit stage gates
   keep their named scope. Finite batches/turns are not full-scope completion. Follow [orchestration](references/orchestration.md)

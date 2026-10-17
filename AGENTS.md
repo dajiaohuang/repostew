@@ -17,8 +17,10 @@
   service, unrequested schedule activation or artificial slot filling.
   Use applicable files or complete current inline text; unchanged context stays stable, variables last.
   No all-methods prefix, prompt compiler, runtime/queue/claims/receipts/database or vendor/OS binding.
-- Resource ownership: Workers preserve and hand off, never delete checkout/tmp; Coordinators execute
-  authorized disposal after writer/process stop and update only resource facts; Supervisor governs capacity.
+- Resource ownership: Workers hand off delivery/preservation, explicit abandonment or retention facts,
+  never delete checkout/tmp; Coordinators execute after writer/process stop; Supervisor governs capacity.
+  Storage owns the three release paths. Privacy restricts disclosure, not permanent local retention;
+  successful authorized private delivery permits corresponding local release without human/triage waits.
   Keep protection gates; only explicit workspace authority permits the narrow dependency/build and ordinary
   Git-object read-only handling in storage.md. Shared caches/toolchains and ACLs remain protected.
   ENOSPC stops affected-volume writes, not retention of native outcomes.

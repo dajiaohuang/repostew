@@ -39,7 +39,8 @@ runtime binding; do not overwrite runtime state or silently choose between confl
 
 Follow [records](records.md) and [storage](storage.md). Remove only proved redundant navigation, expired
 scratch or empty obsolete namespaces after preserving necessary facts/positions and fixing current links.
-Retain unfinished/unknown/private work; historical scope or a recovery archive is not a new task queue.
+Local material follows storage's delivered/preserved, explicitly abandoned or retained paths; keep unfinished
+facts and concrete unknowns. Historical scope or a recovery archive is not a new task queue.
 
 Layout changes require explicit authority: preserve original bytes and dirty refs, never overwrite local
 material, repair supported Git worktree links and actual local references, remove old roots only when empty.
@@ -48,9 +49,10 @@ No ACL takeover, elevation, protection bypass or reconstruction of deleted sourc
 Explicitly authorized ordinary Git-object read-only handling follows [storage](storage.md), not a general
 permission to override access controls or change attributes on linked/shared files.
 
-Ordinary not-yet-PR work follows standing preservation authority: reviewed changes on a distinct permitted
-user-fork branch, actual remote-head confirmation and recovery facts in root state.md before unused-source
-release, unless the user explicitly authorizes bounded ordinary-work abandonment under [storage](storage.md).
-That separate path records authority, actual abandoned scope, known commit/base or unknowns and loss risk
-in the same project records before Coordinator disposal; protected evidence and existing recovery archives remain. PR/CI waits alone do not justify indefinite retention. Protected/prohibited/failed preservation and
-active/shared resources keep concrete boundaries. Local persistent records are never disposable source.
+Use [storage's three release paths](storage.md#choose-the-release-path), not an unconditional local retention
+rule. Ordinary not-yet-PR preservation uses a permitted owned fork, confirmed head and minimal recovery facts;
+successful authorized private delivery permits release of corresponding local evidence. Explicit bounded
+abandonment records scope/authority/loss instead, with category-specific authority for private/security material.
+No extra human receipt, CI/triage wait or new archive solely for cleanup. Keep sensitive references protected;
+shared state has no sensitive bodies. Active/shared/ownership-unclear resources retain exact boundaries.
+Persistent records and existing recovery archives are not made disposable by a source/evidence release.

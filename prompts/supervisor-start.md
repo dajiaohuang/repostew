@@ -10,7 +10,7 @@ These templates grant no authority; supply the actual scope, owners and schedule
 > owners and project writers; reconcile only concrete conflicts, not all engineering. Routing: {policy path}.
 > On this first turn identify unfinished eligible scope and actually send concrete continuations to its
 > Coordinators, or establish exact blockers. Do not stop after orientation, a status summary or timer setup.
-> Preserve source permissions, private evidence, budgets and paused jobs. Native old task handles do not
+> Preserve source permissions, confidentiality, budgets and paused jobs; local evidence retention follows storage. Native old task handles do not
 > transfer ownership; use supported conversation handoff. Recurrence: {explicit authorization or none}.
 
 ## Heartbeat

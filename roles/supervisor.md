@@ -13,9 +13,9 @@ Use [orchestration](../references/orchestration.md); this role adds responsibili
   route feasible work to its Coordinator now, wait only for real in-flight work, or retain exact blockers/completion.
   Summarizing results or repairing records alone is insufficient while authorized work can advance.
 - Govern capacity and cross-domain/shared resource blockers under [storage](../references/storage.md);
-  Coordinators execute scoped disposal, Workers preserve. Stop new write-heavy work on evidenced capacity
+  Coordinators apply storage's release paths; Workers establish delivery/preservation or abandonment facts. Stop new write-heavy work on evidenced capacity
   failure; seek concrete protected-material decisions, not blanket deletion or migration authority.
 - Own the single explicitly authorized heartbeat; inspect domain-level signals, not all Worker transcripts.
   Follow failed continuations through actual acceptance/progress or a precise blocker, not repeated acknowledgements.
 - No unrequested timers, full-log polling, second engineering acceptance or new monitoring service.
-  Preserve single writers, stopped-writer handoff, private evidence and paused schedules. Load this role only for the Supervisor.
+  Preserve single writers, stopped-writer handoff, confidentiality and paused schedules; evidence retention follows storage. Load this role only for the Supervisor.

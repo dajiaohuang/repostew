@@ -1,132 +1,122 @@
 # Repository containers and storage disposition
 
 Use state/repositories/<host>/<namespace>/<repo>/: shared state.md stays at project root;
-local history is work/work.md; notes/evidence and disposable source/material live under work/,
-with multiple checkout[-<purpose>]/ and tmp/ directories (existing names such as temp/ may remain).
-Project work/ itself is not disposable: preserve persistent records and private/imported notes.
-Use the actual workspace root.
+local history is work/work.md; notes/evidence and disposable source/material live under work/.
+Use actual checkout[-<purpose>]/ and tmp/ paths; existing names such as temp/ may remain.
+Project work/ itself is not disposable. Persistent records and existing recovery archives retain their
+separate protection; private/imported notes are not implicitly included in a source cleanup.
 
 ## Provision and reuse
 
 Inspect remotely when sufficient; provision source only for investigation/editing/validation.
-Establish native identity/existing paths, preserve unknown data, never clone into container root.
+Establish native identity/existing paths, preserve unrelated data, never clone into container root.
 Use Git-aware operations for linked/shared worktrees. Record actual relative/legacy paths;
-unknown/unavailable resources remain retained with reasons. No client-specific storage API is required.
+unknown ownership or unavailable resources retain exact blockers, not an invented release result.
 
 ## Ownership: Worker preserves, Coordinator disposes, Supervisor governs capacity
 
-Workers preserve reviewed changes remotely where authorized, retain unique fixtures/logs outside disposable
-source, stop their unused task-owned services and identify exact resource boundaries/blockers. They do not
-delete checkout/tmp. Use the normal final and project records, not a separate disposal queue or receipt.
-The domain Coordinator accepts a resource-only handoff after the project writer and relevant processes
-stop; it becomes the sole writer for that bounded disposition, not for engineering. Reuse reliable existing
-preservation facts; do not wake finished leaves or repeat engineering checks just to obtain a cleanup receipt.
-Actually release eligible material under the gates below. Retain failed/protected cases with exact reason
-and next condition; a recorded blocker is not permanent closure. Diagnose changed conditions only, never
-blind retries, ACL takeover, shared-service kills or reconstruction solely to delete. The narrowly authorized
-Git-object read-only handling below is not permission to change other attributes or access controls.
-The Supervisor owns capacity/shared-resource decisions and cross-domain blockers, not routine per-project
-deletion. Existing cache/toolchain/build/privacy restrictions are not relaxed by changing the executor.
-On ENOSPC stop writes to the affected volume, including small state updates, and new work needing them; retain facts
-through native results. Existing complete recovery records remain usable; zero free space is not itself a
-ban on an otherwise authorized, fully preserved release. Missing necessary recovery facts still block preservation-based deletion; explicit abandonment uses its own facts below.
+Workers establish delivery/preservation or explicit abandonment facts, stop unused task-owned services
+and hand exact resource boundaries to the Coordinator. Preserve material pending an applicable release
+path; do not require permanent local copies of everything already delivered. Workers do not delete
+checkout/tmp. Use normal finals/project records, not a disposal queue, receipt or parallel inventory.
+The Coordinator accepts a resource-only handoff after the writer and relevant processes stop; it is the
+sole bounded disposition writer, not an engineering replacement. Reuse reliable existing facts, without
+waking finished leaves or repeating engineering checks for cleanup. Execute eligible release; retain
+specific failed/protected targets with a next condition, not permanent summary-only abandonment.
+The Supervisor governs capacity/shared blockers, not routine per-project deletion. On ENOSPC stop
+writes to the affected volume, including small records; retain native outcomes without truncation.
+Already complete release facts remain usable. Missing necessary facts block that target, not every
+independent authorized release. Capacity pressure never grants deletion or publication authority.
+
+## Choose the release path
+
+All paths require existing cleanup authority, a named boundary, stopped writers/owned processes and
+no active/shared dependency. File labels such as dirty, private or evidence are not perpetual-retention rules.
+
+- **Delivered or preserved:** release corresponding unused local source/material after reliable delivery
+  to the authorized destination. Ordinary changes use an eligible delivery or confirmed permitted-fork head;
+  private/security material uses only an authorized private channel under [security](security.md).
+  A successful server result identifying the submitted report/material suffices; no extra human receipt,
+  review, CI, merge, triage, remediation or disclosure wait. An attempted/failed/ambiguous send is not delivery.
+  A submitted summary does not prove omitted attachments/raw material were delivered: retain those parts
+  or use explicit abandonment. Do not create another local copy/archive solely to allow release.
+- **Explicitly abandoned:** use the bounded user authority below instead of preservation/reconstruction.
+  Accept irreversible loss honestly; do not push, sign, test, rebuild or report merely to permit deletion.
+- **Retained:** keep active/shared, ownership-unclear, out-of-scope or otherwise restricted material and
+  undelivered material not covered by abandonment. Give the actual blocker and next condition. A waiting
+  public object, private label or old blanket rule alone does not establish a local retention need.
+
+Release is not engineering completion, acceptance, withdrawal of a report, remediation or public disclosure.
+Never upload protected material to a public fork/shared Git or an unauthorized destination to enable cleanup.
+Mailbox contents, credentials/keys, shared environments, persistent records and existing recovery archives
+are not made disposable by these paths; any separate disposition requires its own applicable authority.
 
 ## Explicit narrow release permissions
 
-These exceptions require explicit workspace/user authorization; task assignment or a full disk alone is not
-permission. With it, the Coordinator may release task-exclusive, reproducible installed dependencies and
-build outputs inside a named disposable boundary. Establish known source/pins/lock/configuration sufficient
-for reconstruction from existing evidence; no reinstall/rebuild or fresh audit just to prove disposability.
-Preserve source, manifests/locks, fixtures, complete logs and unique evidence outside the deletion target;
-unknown, modified or non-reproducible contents stay protected. A dependency/build directory name alone
-proves nothing. Shared caches/stores, toolchains, global Go/module caches and unrelated outputs remain excluded.
-Remove only eligible subtrees; their presence does not authorize deleting a parent containing protected data.
-A whole disposable checkout is eligible only when every included category and preservation gate permits it.
+With explicit workspace/user authority, the Coordinator may release task-exclusive reproducible installed
+dependencies/build outputs inside a named boundary. Reuse known source/pins/lock/configuration evidence;
+no reinstall/rebuild or fresh audit to prove disposability. Retain reconstruction inputs and unique logs/
+fixtures unless their own delivery or explicit abandonment path applies. Directory names prove nothing.
+Shared/global caches, Go/module stores, toolchains and unrelated outputs remain excluded. Eligible subtrees
+do not authorize deleting a parent containing excluded material; whole-checkout release needs every
+included category to satisfy its own path and boundary.
 
-For an already-authorized disposable checkout preserved or covered by explicit abandonment, the Coordinator may clear only the read-only
-flag on ordinary Git-created object files as part of deletion, when that precise handling is authorized.
-Confirm the object is inside the resolved disposable Git object directory, not a symlink/reparse point,
-hardlinked file, alternate/shared store or canonical repository. Do not change ownership/ACLs, elevate,
-clear other attributes, unlock handles or kill processes. On a known read-only failure, apply this bounded
-correction and retry the affected authorized deletion once; other/persistent errors retain an exact blocker.
-Reconcile prior partial deletion from existing results; do not reconstruct source or infer whole-tree success.
+For an authorized disposable checkout covered by delivery/preservation or explicit abandonment, the
+Coordinator may clear only ordinary Git-created object files' read-only flag when that handling is authorized.
+Confirm the resolved Git object boundary and ordinary, non-symlink/reparse, non-hardlinked files, not
+alternate/shared stores or canonical repositories. No ACL/ownership changes, elevation, other attribute
+changes, forced unlocks or process kills. Correct a known read-only failure and retry the affected deletion
+once; persistent/other errors retain an exact blocker. Reconcile prior partial results, never reconstruct
+source or infer whole-tree success merely to force cleanup.
 
 ## Explicitly authorized abandonment
 
-This is a separate path, not preservation. A user may explicitly accept irreversible loss of ordinary
-unpreserved work within named, finite resources. Do not infer it from capacity pressure, cleanup authority
-or future assignments. Such authority can cover specified local commits, dirty/truncated source,
-untracked files and ordinary unique logs/fixtures; it removes their preservation/reconstruction gate,
-not ownership, privacy or safety boundaries. Do not push, sign, test or rebuild merely to permit deletion.
+A user may accept irreversible loss within named finite resources; do not infer this from cleanup authority,
+capacity pressure or future assignments. Specified local commits, dirty/truncated source, untracked files
+and unique logs/fixtures may be covered. Private/security/incident material requires authority explicitly
+covering that category and scope, not an ordinary-work waiver. Confidentiality and external-reporting rules
+still apply; disposal is not permission to publish or withdraw reports. User acceptance of loss does not
+prove ownership of shared resources or external link targets.
 
-The Coordinator, never a Worker, first confirms stopped writers/owned processes, sole disposition writer
-and the actual named boundary. Before acting, record in the same project state.md and work/work.md the
-user authority, exact abandoned scope, known local commit/base (or explicit unknowns) and irreversible-loss
-risk. Then execute and record the real outcome, never calling abandoned material preserved or recoverable.
-No further approval ceremony is required inside that explicit scope. Existing recovery patches/archives,
-persistent records, private/security/incident evidence and protected logs remain protected. Isolate an
-ordinary target without touching them or retain its precise boundary. Links or unclear shared ownership
-remain blockers: accepting loss is not proof of ownership or authority over external link targets.
-Shared/global caches, Go/module stores, toolchains, ACL/ownership changes, elevation, forced unlocks and
-shared-process kills remain excluded. Ordinary Git-object READONLY handling below applies equally to
-an explicitly abandonment-authorized disposable target, with all its narrow checks and single retry.
-Use the release procedure below with abandonment facts instead of remote-preservation facts; preserve
-records and existing recovery archives, reconcile partial failures and never perform post-delete checks.
+Before acting, the Coordinator records the user authority, actual abandoned scope, known commit/base
+or explicit unknowns and irreversible-loss risk in the same project records. No further approval ceremony
+inside that scope; no new backup, remote preservation or validation prerequisite. Never call abandoned
+material preserved/recoverable. Persistent records, existing recovery patches/archives and material outside
+the explicit waiver remain protected. Apply the common procedure and narrow filesystem limits below.
 
 ## Release without a verification ceremony
 
-Apply disposition to resources created, used or explicitly assigned, including no-change/blocked passes.
-If none are involved, omit resource checks/report fields; do not inventory unrelated resources to prove none.
-Known assigned unused resources still need disposition. Disposable-source release excludes self-owned/canonical
-repositories. CI/review/merge waits alone do not require retaining source.
+Apply disposition to resources created, used or explicitly assigned, including blocked/no-change passes.
+Omit empty resource checks when none are involved; do not inventory unrelated resources. Self-owned/
+canonical repositories are not disposable clones. Known unused assigned resources need actual disposition.
 
-1. Under an explicit workspace standing release authorization, end-of-pass removal of unused disposable
-   project checkout/temp is included; do not demand a new per-directory approval. Check the resolved
-   target remains inside its named boundary, excluding container/shared store/unrelated paths or links.
-   Without standing or exact authority, retain the concrete authority blocker; do not infer permission.
-2. Unless the explicit abandonment path applies, for ordinary work temporarily not opening a PR, first review and commit the intended source/test/doc
-   changes to a distinct owned branch on the user's permitted fork; confirm the actual remote branch
-   head and record recovery facts before release. This is preservation, not a PR, acceptance or delivery
-   claim. An upstream PR/invitation/CI wait alone does not block permitted fork preservation or release.
-   Include unpublished combined commits and valuable ordinary untracked changes only after review;
-   do not blindly add everything, force-push, overwrite unrelated refs or publish rejected/prohibited work.
-   Dirty/unpushed/undelivered is a preservation action, not an indefinite retention reason. If no valuable
-   change exists, an unused disposable clean checkout needs no empty preservation commit or branch.
-   Retain active/shared resources, private/security material and concrete failed/forbidden/unknown
-   preservation cases with exact blocker and next action. Never push secrets, private evidence or
-   undisclosed security work to a public fork (or assume private Git authorizes protected uploads).
-   For security work, confirmed delivery to the authorized private reporting channel can also close
-   the local-source retention boundary: record the report's protected reference/acceptance and remaining
-   follow-up locally, then release unused disposable source under standing authority. Report submission
-   is not remediation or disclosure completion. Do not keep a reproducible clone solely to await triage.
-   Preserve unique evidence/reproduction material not retained in that private channel in protected local
-   storage outside the disposable checkout before release; never publish it to a fork or shared Git.
-   Failed/ambiguous reporting, active investigation or evidence available only inside the checkout is a
-   concrete retention blocker until reporting/evidence preservation is resolved. No broad unique/unknown-data
-   inventory, recovery archive, restore/hash gate or process survey.
-3. Delete only authorized disposable checkout/temp; linked/shared worktrees need supported Git removal.
-   Include task-local dependency/build subtrees or Git-object read-only handling only under the explicit
-   narrow permissions above. Preserve records, remote refs, private material and existing recovery archives.
-   No shared/global cache, Go/module-store, toolchain or unrelated-build cleanup, broad roots, forced unlocks
-   or disk compaction.
-4. For the preservation path, before deletion record native target, owned fork URL, branch, exact confirmed remote commit,
-   upstream base and remaining work/validation limits in shared state/repositories/<host>/<namespace>/<repo>/state.md
-   regardless of whether this device publishes Git. Never claim recoverability for excluded local-only
-   material; record any protected/non-reproducible blocker without its sensitive evidence.
-   Record operation result: released, retained/reason, or failed/error. Ambiguity is not success;
-   recover the concrete fault, never blindly retry. No post-delete path/Git/archive checks or size/free-space
-   measurements; never claim measured reclaimed bytes. This does not prohibit a Supervisor's bounded
-   volume-capacity check needed to decide whether writes may resume; it is not per-target deletion verification.
-5. After the resource handoff, the Coordinator writes only changed disposition facts to the same project
-   records under [records](records.md), preserving engineering facts and single-writer ownership; no mirror.
-   If the result cannot be recorded, retain the native outcome and exact write failure without truncating
-   existing files. No unchanged paragraphs/history or repeated publication checks. Archives stay recovery-only.
+1. Under standing workspace release authority, eligible end-of-pass cleanup needs no per-directory
+   reapproval. Resolve the named target; exclude container roots, shared stores, unrelated paths and
+   external link targets. Linked/shared worktrees need supported Git removal; loss acceptance grants
+   no link/ACL/ownership override. Retain exact authority/ownership blockers where needed.
+2. For ordinary not-yet-PR work needing preservation, review and commit intended changes to a distinct
+   owned branch on a permitted fork, confirm the actual remote head once and record recovery facts.
+   Include valuable untracked/combined changes after review, never blind add, force-push or forbidden
+   publication. No empty preservation commit for an unchanged clean clone. Use existing reliable results;
+   eligible delivery or explicit abandonment substitutes for this preservation path, not for ownership.
+3. Before release record the native target, selected path and minimal supporting facts: delivery reference/
+   confirmed fork branch/head/base and remaining limits, or abandonment authority/scope/loss facts.
+   Keep sensitive references only in existing protected local records; shared state contains no private
+   evidence/body. Do not copy raw payloads or create a recovery archive as a cleanup prerequisite.
+4. Delete only the eligible named source/temp/material or subtrees. Keep excluded resources, persistent
+   records, existing recovery archives and remote refs untouched. Report released, retained/reason or
+   failed/error; partial/ambiguous effects are not whole-target success. No blind retries, broad-root
+   deletion, forced unlocks, shared-service kills or disk compaction.
+5. The Coordinator updates only disposition facts in the same state.md/work/work.md, preserving engineering
+   facts and single-writer ownership. If recording fails, retain the native result and exact failure, never
+   truncate originals. No unchanged paragraphs, repeated remote checks or post-delete path/Git/archive/
+   size checks. Do not claim reclaimed bytes. A necessary Supervisor volume-capacity check for resuming
+   writes is not per-target deletion verification. Archives remain recovery-only, not new current state.
 
 ## Temporary services and shared runtimes
 
-- Within existing authority, Workers normally stop their unused temporary processes/services/containers
-  after a task, preserving data.
-- Coordinators stop a WSL distribution only after confirming no active Worker, user task or shared
-  service still depends on it, within existing authority.
-- High memory use alone does not prove idleness. Do not force-kill `vmmem` or shared Docker/WSL;
-  `wsl --shutdown` terminates all running distributions and the WSL VM.
+- Workers normally stop their unused task-owned temporary processes/services/containers within authority;
+  data follows its own disposition path, not an automatic container-delete rule.
+- Coordinators stop WSL only after confirming no active Worker, user task or shared service depends on it,
+  within existing authority. High memory use alone proves neither idleness nor disposal authority.
+- Do not force-kill shared Docker/WSL or vmmem; wsl --shutdown terminates all distributions and the VM.

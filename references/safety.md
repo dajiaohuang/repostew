@@ -4,7 +4,9 @@ Read target access/privacy/security restrictions before broad content; contribut
 and action-specific templates before the corresponding write. Reuse complete current rules, not stale gates.
 Carry exact existing
 user authority; no inferred merge/close/delete/release/upstream push or maintainer rights. Preserve unrelated
-unsafe-to-discard work, credentials/mail/security/recovery material. No shared/global cache, Go/module-store,
+unsafe-to-discard work, credentials/mail and existing recovery material. Private/security evidence stays
+confidential; its local retention follows [storage's delivery/abandonment/retention paths](storage.md#choose-the-release-path),
+not a permanent-copy requirement. No shared/global cache, Go/module-store,
 toolchain or unrelated-build cleanup. Task-exclusive reproducible dependencies/build outputs and ordinary
 Git-object read-only deletion handling require the explicit narrow authority in [storage](storage.md).
 Use owned branches; reconcile ambiguous effects before retry. No fabricated defects/quotas/identity,
@@ -14,7 +16,7 @@ facts. Apply [delivery](workflows/delivery.md), affected checks and mandatory re
 passes, not stale volatile decisions. Exact restrictions do not become blanket testing bans.
 Validation follows actual actions: metadata-only work needs no repair tests; source capture needs no PR gates.
 Do not remove mandatory target checks, permission/privacy/exclusion checks, mutation reconciliation or
-pre-deletion preservation or the separately explicit, bounded abandonment path in [storage](storage.md). No default second acceptance review by Coordinator.
+the applicable pre-deletion delivery/preservation or explicit bounded abandonment facts in [storage](storage.md). No default second acceptance review by Coordinator.
 
 ## Feedback-derived review rules
 

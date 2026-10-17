@@ -15,7 +15,8 @@
 
 All forms/roles use these homes. Membership holds identities, unfinished.md links project state only;
 authority lives in state/maintained-repositories.md or explicit assignment, never history/following.
-Preserve native IDs/aliases, exact positions and private/unpublished evidence. Record the actual assigned
+Preserve native IDs/aliases and exact positions; evidence retention follows [storage](storage.md), not
+an unconditional local-copy requirement. Record the actual assigned
 scope/base/coverage unit; counts, timestamps, compactness or moved links never prove audit/delivery/completion.
 Classification does not adopt the upstream backlog; wishes/refactors/questions are not automatically repairs.
 
@@ -36,7 +37,11 @@ Details stay native. [Scoped lessons](forges/README.md) include their source; ge
 Separate revision/rejection/non-defect/takeover and human/bot feedback; stop equivalent rejected directions.
 Withdraw authored rejected objects/false defect claims only within authority, otherwise retain action/reason.
 Raw evidence only when requested/private/irrecoverable: one canonical local copy, optional reference, no
-transcript duplication. Preserve unique material; drafts are not upload-ready. New [security findings](security.md)
+transcript duplication. Delivered material or explicitly abandoned material may be released under storage;
+record the target, authority/path, delivery reference or loss risk, actual outcome and remaining action only.
+Keep private references local/protected, never sensitive bodies in shared state. No new raw copy or recovery
+archive solely to enable cleanup; existing recovery archives retain separate protection. Drafts are not
+upload-ready. New [security findings](security.md)
 use private reporting only; mail/security references never enter shared Git. Reading never resolves work.
 
 ## Requested migration, cleanup and recovery

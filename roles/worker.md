@@ -16,7 +16,8 @@ Engineering uses [delivery](../references/workflows/delivery.md); discovery keep
   Do not edit global membership/navigation/positions without separate authority or an explicit discovery
   window. Git publication needs its designated writer; local work/ never enters Git. Defer conflicts.
   Under [storage ownership](../references/storage.md#ownership-worker-preserves-coordinator-disposes-supervisor-governs-capacity),
-  preserve changes/evidence, stop unused task-owned services and hand exact resource facts to the Coordinator;
+  establish delivery/preservation, explicit abandonment or exact retention facts; preserve pending material,
+  stop unused task-owned services and hand resource boundaries to the Coordinator;
   do not delete checkout/tmp, including no-change/blocked passes. Omit resource fields when none are involved.
 - Complete all feasible work; slices, local patches, timeouts and compaction are not completion.
 - Load the assigned form and action-triggered methods via [assembly](../references/worker-assembly.md),
@@ -34,5 +35,5 @@ Use [continuation/handoff](../prompts/README.md); preserve work and prevent dupl
 
 Return once via native delivery or one authorized relay: scope/base/window and completion;
 native deliveries/state/head or none/reason; remaining actions/blockers/retry; validation limits;
-resource preservation/handoff facts (not a claim of deletion); changed records/write failures. Omit empty fields, logs, private bodies and receipts.
+resource delivery/preservation, abandonment or retention/handoff facts (not a claim of deletion); changed records/write failures. Omit empty fields, logs, private bodies and receipts.
 Distinguish coverage, public outcomes and resources. An interrupted checkpoint remains unfinished.

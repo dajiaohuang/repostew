@@ -20,8 +20,9 @@ Construct sufficient Workers; complete the full selected scope. Read
   No routine source recapture, retest, remote readback or independent acceptance review.
 - Own domain resource disposition after a stopped-writer handoff under [storage](../references/storage.md).
   Actually release eligible resources or retain exact blockers/next conditions; do not delegate deletion back
-  to engineering Workers or treat a failed-delete note as final closure. Explicit bounded abandonment follows
-  storage's separate pre-recorded authority/loss path, not preservation; protected evidence/archives remain.
+  to engineering Workers or treat a failed-delete note as final closure. Apply storage's delivered/preserved,
+  explicitly abandoned or retained paths; privacy is not permanent local retention. Abandonment requires
+  its own scope/loss record; private/security categories need explicit coverage, not an ordinary-work waiver.
 
 ## State responsibilities
 
