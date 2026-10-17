@@ -1,8 +1,9 @@
 # New repository
 
-1. Use the assigned repository; unassigned serial work takes the first new-list bullet. Read target policy
-   before broad content, apply [suitability](../suitability.md); evidenced skip records reason/source and removes
-   membership through its writer, without claiming audit. Establish activity/base and UTC issue window:
+1. Use the assigned repository; unassigned serial work takes the first new-list bullet. C screens identity,
+   exclusions, prior work/writers and [suitability](../suitability.md) before dispatch; serial execution combines roles.
+   W reuses current screening, refreshes changed facts and reads target policy before broad content. Evidenced
+   skip records reason/source and removes membership through its writer, without claiming audit. Establish activity/base and UTC issue window:
    explicit assignment wins; otherwise 90 days -> 30 -> 7 when each exceeds 100 issues. Seven is minimum;
    process its entire window even above 100. Record boundaries/count; clarify indispensable missing time.
 2. Fully paginate issues, exclude PRs, deduplicate/classify newest-created first; preserve native timestamps.

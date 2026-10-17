@@ -56,7 +56,10 @@ def validate():
             text = (ROOT / "prompts" / name).read_text(encoding="utf-8")
             assert f"]({name})" in index, f"Unindexed task template: {name}"
             assert f"](../{role}-start.md)" in text, f"Missing shared header: {name}"
-            assert "> TODO 1:" in text and "> Completion:" in text, f"Missing task contract: {name}"
+            if form == "discovery" and role == "worker":
+                assert "](../new-repository/worker.md)" in text, "Discovery W must alias the complete new-repository template"
+            else:
+                assert "> TODO 1:" in text and "> Completion:" in text, f"Missing task contract: {name}"
     skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
     links = set(re.findall(r"\[[^\]]*\]\(([^\s)#]+)(?:#[^)]*)?\)", skill))
     assert FLOW_LINKS <= links, f"Missing flow links: {sorted(FLOW_LINKS - links)}"

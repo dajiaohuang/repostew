@@ -1,12 +1,14 @@
-# Discovery and admission — Coordinator
+# Discovery plus new-repository work — Coordinator
 
 Use the [C header](../coordinator-start.md) and [discovery form](../../references/work-forms/discovery.md).
 
-> Input: {source URLs/selection, filters, existing identities/aliases and list-writer or bounded append window}.
-> TODO 1: Set a finite intake boundary and provide current identity/exclusion/membership evidence.
-> TODO 2: Dispatch extraction/screening batches without engineering pre-audits.
-> TODO 3: Integrate additions/skips/unknowns and append genuinely new identities through the designated writer.
-> Completion: {selected source boundary covered and membership updates or exact write blockers recorded}.
+> Input: {source URLs/finite selection, filters, existing identities/records/writers, new-repository actions and capacity}.
+> TODO 1: Discover native identities yourself; resolve aliases, exclusions, duplicates and existing work.
+> TODO 2: Perform the [new-repository C screening](../new-repository/coordinator.md); record evidenced skips and retain unknowns.
+> TODO 3: Record eligible new identities through the list writer and directly dispatch one [new-repository W](../new-repository/worker.md) per selected repository.
+> TODO 4: Continue discovery/refill as capacity permits; integrate full initial-work outcomes and stopped-writer resource facts.
+> Completion: the source selection is covered AND every eligible repository's initial work is complete or precisely blocked.
 
-Admission grants no audit, following or publication task. Keep inaccessible source portions unknown;
-do not create empty project records, new sources or recurring jobs to finish a batch.
+Do not assign discovery-only Workers or stop after adding names. Do not wait for the whole source batch
+before dispatching ready repositories. The new list retains pending work, not a second approval stage.
+Explicit capture-only assignments remain capture-only; do not invent new sources, timers or management rights.

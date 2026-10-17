@@ -33,11 +33,11 @@ Every wake follows [orchestration](references/orchestration.md): act on eligible
 
 Reuse suitable context for same-task deltas; select later units by capability/capacity, not permanent Worker/model binding. Transfer only after affected writers stop and uncertain effects reconcile; preserve evidence, budgets and paused schedules. Host-specific lifecycle details stay in [adapters](references/harness.md).
 
-### 2. Discover and admit repositories
+### 2. Discover and process new repositories
 
-Read authorized discovery sources, extract native repository identities, lightly screen suitability and deduplicate existing names and aliases. Append genuinely new candidates to the new-repository list through its shared writer.
+The Coordinator reads specified sources, extracts identities, checks exclusions/suitability and existing work/writers, and records eligible new candidates through the list writer. It directly assigns each ready repository to one new-audit Worker for complete initial coverage, repair, checks and stated delivery. There is no discovery-only Worker or whole-source admission gate; refill within capacity as candidates become ready.
 
-Trending and awesome-list discovery can use workspace-approved windows, seeds and linked lists/search/topics. List expansion is bounded and detects cycles; it does not recursively traverse ordinary projects' dependencies. Discovery does not clone, build or audit a project to decide admission. Admission grants no permission to follow, publish or administer that project.
+Trending and awesome-list discovery can use workspace-approved windows, seeds and linked lists/search/topics. List expansion is bounded and detects cycles; it does not recursively traverse ordinary projects' dependencies. C does not clone, build or audit to screen candidates. The combined task includes new-repository work with explicit delivery actions; membership alone grants no following or management rights. Source coverage and repository outcomes are both required; an explicitly intake-only task remains limited.
 
 See [discovery form](references/work-forms/discovery.md) and [discovery procedure](references/workflows/discovery.md).
 

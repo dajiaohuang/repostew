@@ -11,7 +11,7 @@ Permission/privacy/exclusions, mandatory target checks and preservation gates re
 - [New audit](new-repository.md): complete initial coverage and feasible delivery.
 - [Contribution reassessment](contribution-reassessment.md): all assigned authored objects.
 - [Incremental feedback](incremental-feedback.md): captured batch/affected paths.
-- [Discovery/admission](discovery.md): bounded authorized source intake.
+- [Discovery + new repositories](discovery.md): C discovers/screens and directly assigns complete new-audit W units.
 - [Recurring patrol](recurring-patrol.md): successive bounded passes/finite Workers.
 
 Combine only with explicit stage entry/completion and repository/group/pass dependency boundaries.

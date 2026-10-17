@@ -9,7 +9,7 @@ and exactly one form below; fill explicit actions, directories and TODOs. Do not
 - New repository: [C](new-repository/coordinator.md) / [W](new-repository/worker.md).
 - Contribution reassessment: [C](contribution-reassessment/coordinator.md) / [W](contribution-reassessment/worker.md).
 - Incremental feedback: [C](incremental-feedback/coordinator.md) / [W](incremental-feedback/worker.md).
-- Discovery/admission: [C](discovery/coordinator.md) / [W](discovery/worker.md).
+- Discovery + new repositories: [C](discovery/coordinator.md) / [new-repository W alias](discovery/worker.md).
 - Recurring patrol: [C](recurring-patrol/coordinator.md) / [W](recurring-patrol/worker.md).
 - [Continue](continue.md): same-task delta/correction with suitable context.
 - [Handoff](handoff.md): unit-boundary transfer after stop and mutation reconciliation.

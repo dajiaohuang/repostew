@@ -24,7 +24,7 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 1. **Prepare and assemble:** establish outcome, scope, prior work, authority/resources;
    [assemble](references/worker-assembly.md) role/form/methods; [orchestrate](references/orchestration.md)
    dispatch, wait, integrate, continue, hand off and recover.
-2. **Select work:** [discover/admit](references/work-forms/discovery.md),
+2. **Select work:** [discover and process new repositories](references/work-forms/discovery.md),
    [audit new repositories](references/work-forms/new-repository.md),
    [reassess authored contributions](references/work-forms/contribution-reassessment.md),
    [handle incremental feedback](references/work-forms/incremental-feedback.md), or

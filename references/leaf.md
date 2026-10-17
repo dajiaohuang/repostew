@@ -9,7 +9,7 @@ Compatibility links only; canonical [Worker](../roles/worker.md), [assembly](wor
 
 ## Complete the assigned work
 
-[Delivery](workflows/delivery.md); discovery keeps its admission scope.
+[Delivery](workflows/delivery.md); discovery's repository Workers use the [new-audit form](work-forms/new-repository.md).
 
 ## Dispatch with a stable common prefix
 
