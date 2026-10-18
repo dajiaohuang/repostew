@@ -33,7 +33,7 @@
       <div class="section-heading"><h2>名单选范围。<br />每库记录存事实。</h2></div>
       <div class="capability-grid">
         <article class="capability-card"><h3>三个成员名单</h3><p>新库待处理、旧库历史全表、分组关注名单。名单只保存成员；关注组允许重合，扫描去重并集。</p></article>
-        <article class="capability-card"><h3>共享事实，本地过程</h3><p>每库写入者维护根 state.md 与本机 work/work.md；Coordinator 负责全局记录，指定发布者串行操作 Git。unfinished.md 仅导航，不是完整范围或授权。</p></article>
+        <article class="capability-card"><h3>共享事实，本地过程</h3><p>每库写入者维护根 state.md 与本机 work/work.md；Coordinator 负责全局记录；仅政策／共享状态 Git 由指定发布者串行操作，各库 W 直接发布，同项目单写入者。unfinished.md 仅导航，不是完整范围或授权。</p></article>
         <article class="capability-card"><h3>每库一个目录</h3><p>统一位于 state/repositories/&lt;host&gt;/&lt;namespace&gt;/&lt;repo&gt;/。只共享审阅后的 state.md；work/ 存笔记、多个 checkout 和 tmp，全部忽略。不递归上传或把执行材料当作状态。</p></article>
         <article class="capability-card"><h3>来源独立，隐私隔离</h3><p>通知与关注扫描位置在 read-positions.md，邮箱位置在 private/。保留原生边界，正文实时读，不复制交互数据库。</p></article>
       </div>
@@ -42,14 +42,15 @@
       <div>
         <h2>全部流程。<br />精要指派。</h2>
         <p>W交接交付／保全、放弃或保留事实，C确认writer及进程停止后执行，S统筹容量。已交付可释放，含成功提交到授权私密渠道的对应材料，不等额外人工回执／triage；明确放弃须记录范围与损失。活跃／共享或归属不清则保留；不为清理另做备份，持久记录、既有恢复档案、共享缓存、工具链及访问控制仍守各自边界。</p>
-        <p>每次唤醒接续整个职责：整合后实际派发可行工作、等待真实在途，或保留确切阻碍／完成依据。摘要不等于补位。显式授权的心跳仅归<a href="https://github.com/dajiaohuang/repostew/blob/main/roles/supervisor.md">Supervisor</a>；暂停日程和项目单写入者边界不变。</p>
+        <p>主动任务及真实完成／故障事件接续职责。只读心跳仅检查进展、阻碍、交付差额、写入／资源风险并报告；不派工、不修复、不写入、不自建后续轮绕过限制。心跳仅归<a href="https://github.com/dajiaohuang/repostew/blob/main/roles/supervisor.md">Supervisor</a>；暂停日程和项目单写入者边界不变。</p>
         <p>准备目标、范围、权限和资源；Coordinator 选择形态与方法，用集中模板组装 Worker。每个任务一次派发、整合，续办只传变化；必要时交接或局部恢复。</p>
-        <p>一次指派完整有界单元，不逐个工具／测试派任务。W推进可行授权阶段，C负责覆盖与独立补位，S按需承担跨域治理；串行时可兼任职责。保留真实阶段门、停止写入后的交接与原预算；turn／报告不是全范围完成。宿主生命周期与可选辅助能力仅放在<a href="https://github.com/dajiaohuang/repostew/blob/main/references/harness.md">harness适配层</a>，不混入通用工作规则。</p>
+        <p>一次指派完整有界单元，不逐个工具／测试派任务。W完成供给、工程验证并直接发布，C负责覆盖与独立补位，S即时有界修执行故障、不能修则报告用户；串行时可兼任职责。保留真实阶段门、停止写入后的交接与原预算；turn／报告不是全范围完成。宿主生命周期与可选辅助能力仅放在<a href="https://github.com/dajiaohuang/repostew/blob/main/references/harness.md">harness适配层</a>，不混入通用工作规则。</p>
         <p>按任务和动作加载规则：复用完整当前文本，同轮批量补读启动缺失项，在动作前加载条件方法；链接不要求递归阅读。叶 Worker 接收适用边界，不通读协调员简报。捕获验证来源，纯元数据工作不 clone／测试，修复保留受影响和强制检查。Coordinator 检查范围与覆盖，不二次验收工程；权限、隐私、歧义对账和保存门槛不减。</p>
         <p>五类形态：<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/discovery.md">发现＋新库处理</a>、<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/new-repository.md">新库审计</a>、<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/contribution-reassessment.md">既有投稿复审</a>、<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/incremental-feedback.md">增量反馈</a>、<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/recurring-patrol.md">持续巡查</a>。增量来源：关注新 issue、通知与选定邮件、开放与未完成对象。抓取去重，按库指派，分别维护位置。发现由 C 自行筛选，直接交给新库 W 完整处理，不另设发现 W，也不等整批入库。</p>
         <p>沿实际使用与文档事实查错；普通契约未定时据证讨论。所有新安全发现只走私有报告，不发公开 issue；无可用授权私有渠道时保留证据与阻塞，除非有具体类别／范围的明确放弃授权。普通修复在完成指定审计后集中验证、投稿，再处理反馈、合并同根因或授权撤回。</p>
         <p>记录只写实质变化；按请求迁移、核对历史、恢复或重分类、审阅后备份。处置使用或分配的资源，包括阻塞／无变化情况；无资源时省略空检查。区分覆盖、交付、解决和释放。</p>
         <p><a href="https://github.com/dajiaohuang/repostew/blob/main/roles/maintainer.md">Maintainer</a> 在授权管理／自有库中处理 issue、审查 PR、按当前权限与设置追加 commit 和合并；从实际使用与文档审计出发修订代码，精简冗余 CI/测试，只保留真实使用覆盖与基本检查。</p>
+        <p>存量交付角色只查漏闲置未发布工作，不是 W 的发布网关。CLA/DCO 先投稿，实际收到签署提示再报用户，不代签。仅拒外部 PR 而允许讨论时，可一次 issue/comment 请求；不绕过全面拒绝联系。供给与验证是完整工程单元，不因普通工具首次失败永久冻结。</p>
         <p>范围与权限明确，默认串行；同资源单写入者。选择或继续 GitHub 工作前应用<a href="https://github.com/dajiaohuang/repostew/blob/main/references/forges/github/exclusions/agentscan.md">用户指定排除规则</a>，保留已有对象与历史。依据实际使用与契约行动，禁止防御性编程，信任内部契约并保留必要边界校验。每个任务一次充分派发、增量续办、信任可用结果；保持私密材料机密性、按资源处置路径决定本地留存，如实报告成果和未完成工作。</p>
         <p>roles/ 定义职责，prompts/ 集中启动、续办和交接。可读文件按需加载，否则传完整适用正文。Harness 按原生能力接入；无隐式权限、任务、计划或额外编排服务。</p>
       </div>

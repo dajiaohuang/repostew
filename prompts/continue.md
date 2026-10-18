@@ -8,4 +8,6 @@ of later units, re-audit for a receipt or restored authority from relocated data
 > Continue {existing assignment}; remaining actions/gates: {scope, dependencies, end condition or blocker}.
 > Coordination scope when applicable: {whole selection and next eligible action under the current stop mode}.
 
+Use [bounded recovery](../references/execution-recovery.md) for ordinary faults; no blanket first-failure ban.
+State any new prospective recovery phase and cumulative consumption; never retroactively extend deadlines.
 Clarify material omitted outcomes from suitable context/exact evidence once; otherwise retain unknowns.

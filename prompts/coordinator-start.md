@@ -11,5 +11,6 @@ forms. Rules precede variables; do not duplicate them below. Own the full domain
 > Stages: {input/output, priority, true dependencies and repository/group/pass gates}.
 > Actions/resources: {explicit allowed operations/destinations, exclusions, budgets consumed/remaining and exact stop conditions}.
 > Execution: {authorized capabilities/capacity, routing-policy reference, result/attention route}.
-> Shared editors/publisher: {owners}; recurrence/stop mode: {explicit authority and affected scope or none}.
+> Publication: {each repository W; actual same-project conflicts}; workspace Git/global editors: {owners}.
+> Recurrence/stop mode: {explicit authority; heartbeats read-only; frozen input windows do not freeze in-window engineering}.
 > First action: {complete-unit selection/dispatch, real in-flight wait or exact blocker—not orientation alone}.

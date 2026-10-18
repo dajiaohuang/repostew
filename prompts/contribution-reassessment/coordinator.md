@@ -9,4 +9,5 @@ Use the [C header](../coordinator-start.md) and [reassessment form](../../refere
 > Completion: {whole selection disposition and feasible work}; no automatic new-audit, membership or source-position changes.
 
 Do not pre-audit or demand new environments/tests for every object. Preserve merged/others' work and
-existing evidence; a repository-level result must not silently close the larger selection.
+existing evidence; assign missing setup/validation/delivery as one unit, not another all-repository record review.
+A backlog-delivery role takes only overlooked idle units, never all Workers' publications; the full selection remains.

@@ -45,7 +45,8 @@ areas. A native namespace/repository named work remains valid. Missing state.md 
 
 The assigned repository writer owns its state.md and work/work.md. A Coordinator may become the sole
 bounded disposal writer under [storage handoff](storage.md), not a parallel engineer. Coordinator owns global membership,
-navigation and positions; serialize these and the Git index/publication through designated editors.
+navigation and positions; serialize these and workspace policy/state Git through designated editors.
+Independent target-repository Workers publish directly; only same-project/checkout/index writes serialize.
 See [records](records.md), [orchestration](orchestration.md) and [shared state](shared-state.md).
 
 Whitelist reviewed project state.md and eligible global records. Never publish work.md/work/, private or

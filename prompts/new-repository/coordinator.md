@@ -6,7 +6,7 @@ Use the [C header](../coordinator-start.md) and [new-audit form](../../reference
 > TODO 1: Check identity, duplicates, prior completion and current writers; reuse existing facts.
 > TODO 2: Apply [suitability](../../references/suitability.md) using bounded remote metadata/policy, not clone/tests/audit.
 > TODO 3: Record evidenced skips and remove only those entries; retain access/identity uncertainty as pending.
-> TODO 4: Give each eligible repository one W with exact directories, inputs, explicit actions and full initial-work TODO.
+> TODO 4: Give each eligible repository one W with exact paths and complete setup/validation/direct-publication actions.
 > TODO 5: Integrate coverage/delivery/blockers, handle stopped-writer resources and refill the remaining selection.
 > Completion: {whole selection accounted for}; remove new membership only under the new-repository workflow gates.
 

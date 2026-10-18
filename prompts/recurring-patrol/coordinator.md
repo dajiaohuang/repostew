@@ -9,4 +9,5 @@ Use the [C header](../coordinator-start.md) and [patrol form](../../references/w
 > TODO 4: Refill within the current pass, then wait for the already-authorized next trigger or exact unblock condition.
 > Completion: {this pass's coverage/handling}; the continuing mandate ends only under its explicit stop condition.
 
-Do not turn the patrol into per-W timers, change activation, rescan unrelated mail or treat cadence as coverage.
+Frozen source windows do not freeze captured-object repair/validation/publication; source and engineering budgets differ.
+Do not create per-W timers, change activation, rescan unrelated mail or treat cadence as coverage.

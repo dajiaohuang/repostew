@@ -20,10 +20,15 @@ the applicable pre-deletion delivery/preservation or explicit bounded abandonmen
 
 ## Contribution terms
 
-For otherwise authorized contributions, the user permits automatic acceptance of contribution terms,
-including submission-implied CONTRIBUTING/LICENSE assent and ordinary click-through consent. Ask only
-when the user must personally sign; CLA/DCO labels alone are not a gate. Never fabricate signatures or
-personal/employer/authorship facts. NoAI, privacy/security, mandatory checks and strict stops still apply.
+For otherwise authorized contributions, automatic CONTRIBUTING/LICENSE submission-implied and ordinary
+click-through assent is permitted. Submit ordinary PRs/MRs first: do not precheck CLA/DCO/signature status
+or block creation because a file exists, certification is unknown or a previous signature gate was recorded.
+If a bot/check/maintainer actually requests signing or certification, report its exact link and required
+personal action to the user; stop at that action, not ordinary submission. A platform's actual creation-time
+personal-signature barrier is a real blocker: report it, never bypass it. Never sign for the user, invent
+Signed-off-by, public email, identity/employer/authorship/rights facts, or perform personal certification.
+Use confirmed safe public/no-reply identity only. NoAI, privacy/private reporting and actual affected-behavior
+and mandatory pre-submit checks remain. Ordinary mechanical failures follow bounded recovery, not permanent bans.
 
 ## Feedback-derived review rules
 
@@ -64,5 +69,7 @@ Upstream read-only is not fork prohibition; identify actual route
 blockers separately from tooling. Re-evaluate eligible Drafts. Missing native tools alone need not force Draft.
 Use Draft only after necessity/correction proof for allowed early unresolved implementation/validation, or
 service open-PR limits; state remaining uncertainty/limit without closing keywords/approval claims.
-Prior invitation gates also prohibit upstream Drafts; use permitted fork-only work or retain it. Archived
+A target's PR-only refusal also covers Drafts, but does not itself prohibit discussion: where discussion is
+allowed, make one evidenced issue or relevant existing comment asking for an acceptable route. Do not
+switch channels around explicit refusal of all external contributions, AI interaction or further contact. Archived
 endpoints do not authorize alternate products/destinations. Private prototypes/disclosures stay private.

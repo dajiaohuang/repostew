@@ -18,5 +18,18 @@ Establish primary identity/access before further scoped reads. Completing requir
 allowed within the original authority and budget; engineering/publication still require all applicable
 policy gates to be satisfied. Missing policy is not permission to start an audit, nor a ban on obtaining it.
 Unknown/mixed errors, transport/authentication/rate failures or missing mandatory policy remain gates.
-Keep this handling explicit in new scoped assignments; it does not override existing strict stops,
-restore expired deadlines or refund consumed budgets. Previously stopped units need their own disposition.
+Keep this handling explicit in assignments. Distinguish a missing optional policy from a tool fault;
+ordinary stopped helpers follow [bounded recovery](../../execution-recovery.md), not permanent blanket bans.
+Preserve actual user/target prohibitions, cumulative attempts and expired-phase facts.
+
+## Publication and client faults
+
+Each repository W completes its own fork/branch/push/PR; absent fork/head is a step, not a refusal.
+Apply [contribution terms](../../safety.md#contribution-terms): submit before CLA/DCO prechecks, then report
+actual signing requests without signing. Ordinary automatic checks are not a manual-CI or deployment grant.
+A PR-only refusal permits one evidenced issue or relevant comment where discussion is allowed; explicit
+no-contact/no-external-contribution/AI-interaction refusals must not be bypassed through another channel.
+Report `gh` faults promptly to S for immediate safe diagnosis and bounded repair on the failure-event turn.
+Correct arguments, GraphQL/request format, encoding and native timeouts; preserve failed attempts and reconcile
+uncertain mutations before retry. No credential dumps, account/endpoint shopping, blind retries or silent
+login/token/proxy changes. If unable to repair, S immediately tells the user the exact blocker and needed action.

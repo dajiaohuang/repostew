@@ -5,7 +5,8 @@ C loads [discovery](../workflows/discovery.md), [suitability](../suitability.md)
 C extracts identities and lightly screens/deduplicates itself; no separate discovery-only W. No pre-dispatch
 clone/audit/tests, proof-of-bug gate or empty project records. Unknown remains pending, not an evidenced skip.
 Record eligible new identities through the list writer, then directly dispatch the [new-audit form](new-repository.md)
-with its [W template](../../prompts/new-repository/worker.md). W owns complete initial coverage/repair/check/delivery.
+with its [W template](../../prompts/new-repository/worker.md). W owns coverage/setup/repair/check/direct publication.
+Source-screen budgets do not consume independent target-engineering budgets; no fresh source expansion is implied.
 Refill as ready repositories and capacity permit; do not wait for complete source capture before dispatch.
 Completion covers both source selection and resulting repository outcomes; names appended alone are not completion.
 Membership alone grants no following/management rights; concrete engineering/delivery actions come from this task,

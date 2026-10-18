@@ -3,7 +3,9 @@
 Scope: contributor revisions against `develop`; recheck current PR feedback and build
 configuration before applying these lessons.
 
-- Contributions target `develop` and require DCO sign-off. Edit the canonical
+- Contributions target `develop`; the target records a DCO requirement. Apply the current
+  [contribution-terms timing](../../../../safety.md#contribution-terms): no signature precheck or agent sign-off;
+  submit normally and report actual signing requests or a platform hard barrier. Edit the canonical
   `include/nlohmann` source and regenerate `single_include/nlohmann/json.hpp` with the
   repository's amalgamation and pinned AStyle formatter; do not hand-edit generated
   output. See [contribution guidelines](https://github.com/nlohmann/json/blob/develop/.github/CONTRIBUTING.md)

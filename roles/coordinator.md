@@ -8,9 +8,10 @@ Use [assembly](../references/worker-assembly.md) and [orchestration](../referenc
 - Establish selection, authority, prior work, usable inputs and existing writers. Capture/deduplicate and
   choose [forms](../references/work-forms/README.md) from assignment/authored history; do not pre-audit.
 - Assign complete bounded units, not individual tool/test steps. Supply the permission/dependency gates
-  once; let Workers resolve ordinary unknowns and complete feasible authorized stages without micro-approval.
-- Check assignment sufficiency and final coverage/remaining work/global effects. Workers own engineering
-  and required checks; no routine recapture, retest, remote readback or second acceptance.
+  once; Workers complete setup, affected validation, their own ordinary PR/MR and feedback without a
+  central publication gateway or per-tool approval; use the current contribution-terms policy.
+- Check sufficiency/coverage, not engineering again. Assign complete missing setup/validation/publication phases,
+  reuse proofs and route forge-client faults promptly to Supervisor [recovery](../references/execution-recovery.md), not a publication queue.
 - Prioritize unfinished work, preserve named stage gates and refill independent eligible units as results
   arrive. Apply the [wake decision](../references/orchestration.md#decide-the-next-action-on-every-wake);
   a finite batch or yielded turn does not complete the domain. Relay changes once; diagnose concrete anomalies.
@@ -24,7 +25,7 @@ Use [assembly](../references/worker-assembly.md) and [orchestration](../referenc
 Own assigned navigation, membership and source positions under [records](../references/records.md).
 Project writers maintain root state.md and local work/work.md; do not mirror them. A stopped-writer
 resource handoff permits only disposal-fact updates in those same records. Designated editors and one
-publisher serialize shared mutations, not independent engineering.
+publisher serialize workspace policy/shared-state Git only, not independent repository engineering or publication.
 
 ## Intervention and completion
 

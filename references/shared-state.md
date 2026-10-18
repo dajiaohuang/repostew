@@ -19,7 +19,7 @@ mistaken for execution directories. Ignore alone neither untracks files nor make
 The assigned project writer updates both root state.md and local work/work.md. Under a stopped-writer
 [resource handoff](storage.md), the Coordinator updates only disposal facts there, without parallel engineering
 writes or a second record. Otherwise the Coordinator edits globals;
-one designated publisher serializes Git index/commits. Repository state is shared, not a Coordinator-only
+one designated publisher serializes this workspace state Git index/commits, not target-repository publication. Repository state is shared, not a Coordinator-only
 mirror of Worker notes. Neither a record, Git commit, physical move nor device availability grants ownership.
 
 Existing backfills remain snapshots until reconciled; do not turn old status or absent records into present

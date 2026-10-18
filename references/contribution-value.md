@@ -47,11 +47,11 @@ Code written/modified by RepoStew must eliminate defensive programming:
 6. Every CI/test change retains only actual supported call/use coverage and essential checks;
    authorized maintenance also removes excess. Never drop necessary checks to mask failures.
 
-## Assigned audit before grouped delivery
+## Assigned audit and grouped delivery
 
-Finish assigned issue classification and [usage/documentation audit](audit.md) before repair publication;
-explicit whole-source scope remains. Group same-root repairs and minor document errata; separate independent
-errors, reuse matching issues/open errata PRs, discard duplicates/non-defects. No slice publication or early
-scope narrowing. A necessary evidenced maintainer question may precede completion as discussion only;
-it does not unlock repair PRs. New security findings use private reports only. Incremental work retains its scope; this timing
-rule alone does not withdraw existing submissions.
+Complete the assigned issue classification and [usage/documentation audit](audit.md); publishing a repair
+never narrows that remaining scope. A complete, independently proven and appropriately validated repair may
+ship before unrelated audit work finishes. Group same-root fixes/errata; separate independent errors, reuse
+matching objects and discard duplicates. Do not split an incomplete repair or claim whole coverage from a PR.
+Evidenced unresolved problems may be issues/discussions; unsupported suspicions are not deliverables.
+New security findings use private reports only. Incremental work retains its original scope.

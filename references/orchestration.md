@@ -20,7 +20,8 @@ Use only the roles needed: serial work may combine responsibilities without crea
 
 ### Decide the next action on every wake
 
-Resume the whole mandate after results, continuation, compaction or an authorized heartbeat:
+Resume the whole mandate on active assignment, result, continuation or compaction turns.
+A read-only heartbeat follows its inspection-only contract below, not the action branches:
 - **Act:** feasible authorized work remains—continue it or dispatch/route a concrete complete unit now.
 - **Wait:** relevant work is actually in flight or capacity is occupied—yield to its supported result path.
 - **Block:** retain affected scope, evidence/unknowns, responsible owner and next condition for reevaluation.
@@ -32,13 +33,14 @@ No fresh user prompt or next heartbeat is needed for already authorized feasible
 
 ### Supervisor intervention and authorized heartbeat
 
-The designated Supervisor owns the explicitly authorized supervisory heartbeat, if any. Review bounded domain overviews,
-due source/blocker conditions and existing lifecycle facts; drill into concrete anomalies, not every log.
-Route remedies through domain owners. An ineffective status-only correction needs a specific next action;
-accepted delivery is not execution or success. Retain the unresolved condition until progress or a precise
-blocker appears, without repeatedly prompting an active owner or repeating engineering acceptance.
-Quiet requires no eligible action or material change. Heartbeats grant no new source/window or permission
-to resume paused work; a paused scheduler alone does not revoke separate standing/manual authority.
+The designated Supervisor owns the explicitly authorized heartbeat. It is read-only: inspect bounded existing
+domain summaries and necessary lifecycle/failure signals; report progress/stalls, blockers, delivery gaps and
+known writer/resource risks with owner and next condition. No dispatch, messages to agents, repair, file/state
+writes, source/forge refresh, tests, Git, cleanup or schedule changes; no queued follow-up to evade this boundary.
+No material change needs only a brief no-change result. Do not crawl logs or repeat engineering acceptance.
+Active assignments and genuine completion/failure events separately require timely action through owners.
+Fix execution-method faults on those turns, not at the next heartbeat; if unable, notify the user promptly.
+A heartbeat grants no new source/window or paused-job activation; inspection is not execution.
 
 ### Dependencies, capacity and completion
 
@@ -97,7 +99,8 @@ fully captured, handled/reliably retained ranges. Navigation/review does not est
 reclassification preserves prior coverage/private evidence/history without claiming unperformed work.
 Project writers own root state.md and local work/work.md. Coordinators own navigation/positions and only
 resource facts after a stopped-writer handoff, not a second project mirror. Designated editors/append windows
-serialize globals; one publisher serializes Git staging, not independent engineering. No locks/claims/hidden queues.
+serialize globals and workspace policy/shared-state Git. Repository Workers publish their own units;
+serialize only same-project/checkout/shared-index writes, not independent repositories. No hidden queues.
 
 ### Detect errors through existing signals, not routine audits
 
@@ -105,8 +108,8 @@ Intervene on failures, contradictions, writer collisions, concrete suspected sta
 violations. At natural completion/refill points use available lifecycle timestamps to flag unusually old
 work; inspect only the flagged operation once. Distinguish running tools, model/backend waits, external
 gates and missing inputs. Time alone proves no failure; a sent delta cannot interrupt a running tool.
-Correct through its owner, preserve unrelated success and use native events thereafter. If everything
-stalls, use supported attention/timeouts, an authorized one-shot check or the authorized Supervisor heartbeat;
-no custom watcher or claim that events detect every stall. After three failed repairs of one fault, stop
-that repair and retain its doubtful assumption/blocker. Reconcile ambiguous mutations before retry;
-independent reassessment is selected engineering work, not routine acceptance.
+Correct through its owner, preserve unrelated success and use native events thereafter. Ordinary tool,
+path, encoding or invocation failures are recoverable, not permanent prohibitions. Follow [bounded recovery](execution-recovery.md):
+keep cumulative attempts, diagnose before retry, reconcile uncertain mutations first; after three failed repairs
+of one fault stop and notify the user. No custom watcher, blind retries or permission laundering.
+Independent reassessment is selected engineering work, not routine acceptance.

@@ -9,13 +9,15 @@ under [assembly](../worker-assembly.md).
 1. Establish assignment/scope/base and actual checkout when needed. Read target access/privacy/security
    restrictions before broad README/source/body reads; contribution requirements before engineering,
    publication templates before the corresponding write. Apply [contribution-term consent](../safety.md#contribution-terms),
-   distinguishing required personal signatures from ordinary assent. Preserve prior edits and reuse current rules.
+   submitting before CLA/DCO prechecks; report actual later signing requests without signing for the user.
+   Preserve prior edits and reuse current rules.
    New audits use [new workflow](new-repository.md); other forms keep assigned objects.
 2. Reconcile current issues/discussions/all-state PRs/claims/base fixes; refresh only relevant changes before
    publication. Apply [necessity/implementation/grouping](../contribution-value.md), [audit](../audit.md),
    [reassessment](../reassessment.md) or [security](../security.md) as appropriate. Fix completely/minimally;
    correct inherited ineffective patches instead of pushing to satisfy counts.
-3. Run affected behavior/configuration/document checks plus mandatory prerequisites; broaden for concrete
+3. Provision necessary dependencies within task-isolated, enforceable resource limits; no blind full install,
+   shared cache/toolchain mutation or production access. Run affected behavior/configuration/document checks plus mandatory prerequisites; broaden for concrete
    uncertainty/target requirements only. Reuse unchanged passes; rerun affected checks after edits.
    Combine diff/range, whitespace/style, public text/security/identity into one final pass; review later deltas.
    Metadata-only dispositions need no tests. Share unchanged setup/checks across related repairs, not
@@ -29,6 +31,10 @@ under [assembly](../worker-assembly.md).
    For PR writes only, establish owned fork/branch/permitted remote/base; publish and confirm URL/state/exact
    head once via reliable result or lookup; a complete reliable result needs no duplicate lookup.
    Reconcile ambiguity before retry; disclose unrun checks.
+   The assigned Worker completes its own fork/branch/commit/push and ordinary Open PR/MR; no global
+   publication gateway. Missing fork/remote head is a step, not a prohibition. Independent projects may
+   publish concurrently; one writer per project/checkout/shared index. Small proved repairs may ship before
+   the whole audit ends; evidenced unresolved problems may be issues, never invented output.
    No stopping at a local patch when eligible delivery remains; upstream read-only is not fork prohibition.
 5. Classify unused resources under [storage's release paths](../storage.md#choose-the-release-path):
    delivered/preserved, explicitly abandoned, or retained with a concrete use/ownership/authority blocker.

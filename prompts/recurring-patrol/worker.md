@@ -6,7 +6,7 @@ not ownership of a timer or the entire recurring mandate; capture-only work must
 > Input: {pass/source marker, finite repository objects/window, prior handling and complete capture evidence}.
 > Actions: {explicit capture-only duties, or engineering/reply/delivery actions and destinations}.
 > TODO 1: For capture-only, establish the specified source/window and deduplication without engineering.
-> TODO 2: Otherwise handle assigned current deltas, finish repairs/checks/stated delivery using existing evidence.
+> TODO 2: Handle captured deltas through setup/repair/checks and direct publication; a frozen window does not ban engineering.
 > TODO 3: Record handling and unresolved links/conditions, then return once to C; no unbounded watching.
 > Completion: the assigned finite batch is accounted for; identify incomplete capture separately from engineering blockers.
 

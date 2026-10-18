@@ -6,7 +6,7 @@ Use the [W header](../worker-start.md) and [reassessment form](../../references/
 > Actions: {explicit repair/update/submission/withdrawal list, destinations and restrictions}.
 > TODO 1: Reconcile current metadata/head/feedback with existing proof; inspect changed, disputed or missing evidence.
 > TODO 2: Disposition every assigned object: retain, repair, consolidate, withdraw where explicitly included, or block.
-> TODO 3: Complete resulting fixes, affected checks and stated external actions; preserve merged/others' work.
+> TODO 3: Complete missing setup, fixes, affected checks and direct PR/MR updates; preserve merged/others' work.
 > TODO 4: Update records with dispositions, delivery evidence and remaining conditions; hand off relevant resources.
 > Completion: every assigned object accounted for and feasible listed work finished, not merely a review summary.
 

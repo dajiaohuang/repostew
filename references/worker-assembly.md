@@ -10,7 +10,7 @@ Assemble role, form and methods with [text templates](../prompts/README.md), not
    authored history; comments are not authorship. Compose one shared header plus the selected form's TODO.
 3. Capture/deduplicate; normally assign one complete repository engineering unit or bounded source batch.
    Include its feasible authorized stages, not separate dispatches for each tool/test. Resolve writer conflicts.
-4. Specify real dependencies, action limits and end conditions; Workers establish ordinary unknowns.
+4. Include bounded dependency setup, affected validation and direct publication; real gates, not per-tool approvals.
 5. Map required [harness capabilities](harness.md) and [forge operations](forges/README.md). Missing explicitly
    required execution/settings remain blockers; do not silently substitute or infer permission.
 
@@ -33,7 +33,7 @@ Every task keeps privacy/private-reporting boundaries; load [security](security.
 suspected finding. Coordinators load orchestration; leaves receive their applicable boundaries, not it.
 Task facts: absolute workspace/project/record paths, execution cwd and writable/read-only boundaries,
 objects/window/base, existing evidence, explicit actions/destinations/limits, numbered outcome TODO, dependencies,
-end condition and result route. Resolve indispensable permission/path gaps before dispatch; omit inapplicable fields.
+end condition and result route. Missing fork/head is a step, not a gate; resolve indispensable permission/path gaps.
 
 ## Deliver authoritative instructions
 
@@ -62,4 +62,4 @@ with Coordinators/Supervisors. Leaves supply resource facts; Coordinators dispos
 Reuse suitable context for [same-task deltas](../prompts/continue.md); new units select execution afresh.
 For [handoff](../prompts/handoff.md), stop affected writers/queued writes and reconcile mutations; replacing
 an owner includes its descendants and old refill. Keep budgets, evidence limits and project records;
-transport handles are not authority or another queue. No executor change silently resets an attempt limit.
+Apply [bounded recovery](execution-recovery.md); transport/executor changes never reset attempts or authority.

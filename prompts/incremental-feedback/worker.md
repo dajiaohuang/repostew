@@ -6,7 +6,7 @@ Use the [W header](../worker-start.md) and [feedback form](../../references/work
 > Actions: {explicit reply/repair/validation/PR-update actions and destinations}.
 > TODO 1: Reuse capture; inspect current head and the assigned changed/unresolved facts only.
 > TODO 2: Resolve feedback, update existing repairs and run affected/required checks; do not create duplicate submissions.
-> TODO 3: Complete stated replies/delivery, update project records and identify unresolved objects/next conditions.
+> TODO 3: Reply and publish/update directly, not via a central publisher; record outcomes and exact remaining conditions.
 > Completion: all captured objects handled or precisely blocked; unchanged resolved feedback needs no new edits.
 
 No whole-source recapture, new full audit or tests for metadata-only work. Report batch handling, not a

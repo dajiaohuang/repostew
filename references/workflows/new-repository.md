@@ -8,10 +8,11 @@
    process its entire window even above 100. Record boundaries/count; clarify indispensable missing time.
 2. Fully paginate issues, exclude PRs, deduplicate/classify newest-created first; preserve native timestamps.
    Investigate actual-use/contract/maintainer questions and duplicates/fixes/claims, not the whole backlog.
-3. Complete assigned [usage/document audit](../audit.md) and [grouped delivery](../contribution-value.md#assigned-audit-before-grouped-delivery).
+3. Complete assigned [usage/document audit](../audit.md) and [grouped delivery](../contribution-value.md#assigned-audit-and-grouped-delivery).
    Explicit whole-source scope remains; document collections need no invented software surface.
    Every new [security finding](../security.md) uses private reporting only, never public issues.
-   Before ordinary publication, reconcile relevant base deltas.
+   Before ordinary publication, reconcile relevant base deltas. W publishes independently proved repairs
+   directly without waiting for unrelated audit work; whole assigned coverage remains due.
 4. Remove new membership only for evidenced skip, explicit reclassification, or completed classification/
    coverage plus handled feasible initial work. Deliver/dismiss candidates or reliably retain external
    blockers/retry/private evidence. Missing coverage or feasible investigation/fix/check/publication stays listed.

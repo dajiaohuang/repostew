@@ -6,10 +6,10 @@
 - Roles own responsibility, prompts own task variables, assembly owns context selection, orchestration
   owns scheduling/lifecycle. Forms define coverage; methods define engineering; forge references map access.
   Keep five forms; Maintainer extends Worker authority, not another mandatory stage or agent.
-- Assign complete bounded units, not individual tool/test steps. Worker owns authorized engineering,
-  Coordinator owns full-scope coverage/refill/disposition, Supervisor owns assigned cross-domain governance.
-  Serial work may combine roles. On every wake act, wait for actual work, or establish blockers/completion;
-  preserve named dependencies, one writer, budgets and stopped-writer handoff. No routine second acceptance.
+- Assign complete units: Worker owns setup, engineering, validation and direct repository publication;
+  Coordinator owns coverage/refill/disposition, Supervisor owns governance and prompt bounded fault recovery.
+  Serialize same-project/shared-index writes, not independent repository publication; shared-state Git has its publisher.
+  Active turns act/wait/block/finish; read-only heartbeats inspect/report only. Preserve real gates and cumulative budgets.
 - Reuse supplied rules/evidence; batch missing startup reads, load conditional methods before action.
   Leaves receive applicable boundaries, not global briefs. Links are navigation, not recursive reading.
   Templates add no authority. No prompt compiler, custom runtime/queue/claims/receipts/database or polling service.

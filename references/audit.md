@@ -23,7 +23,8 @@ or unavailable-evidence blocker/retry; consolidate common roots during investiga
 
 ## Completion and continuation
 
-Finish assigned classification/coverage before [grouped delivery](contribution-value.md#assigned-audit-before-grouped-delivery).
+Complete assigned classification/coverage while [independently ready repairs ship](contribution-value.md#assigned-audit-and-grouped-delivery).
+A partial delivery does not narrow the remaining audit or establish whole-scope completion.
 Report base, meaningful covered/remaining paths, dispositions and blockers; file/read counts are not coverage.
 Zero qualifying errors is valid. Fill actual gaps without restarting unchanged work. Apply
 [new-list completion](workflows/new-repository.md); follow-up does not reopen completed coverage.

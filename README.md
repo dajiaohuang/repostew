@@ -29,7 +29,7 @@ Choose a form and applicable methods, then fill [templates](prompts/README.md) w
 
 Reuse current instructions/evidence, batch missing reads and load methods on action triggers. Leaves need their boundaries, not global briefs; links and new turns do not require full reloads. Metadata/capture alone does not trigger engineering. Keep affected/mandatory checks and privacy, mutation, publication and storage gates; no second engineering acceptance.
 
-Every wake follows [orchestration](references/orchestration.md): act on eligible work, wait for actual in-flight work, retain exact blockers, or establish full-scope completion. Refill independent units as results arrive; named stage gates do not freeze unrelated work. A turn, report or batch is not whole-scope completion or descendant-stop proof.
+Active task/event turns follow [orchestration](references/orchestration.md); read-only heartbeats only inspect/report. For active work, act on eligible work, wait for actual in-flight work, retain exact blockers, or establish full-scope completion. Refill independent units as results arrive; named stage gates do not freeze unrelated work. A turn, report or batch is not whole-scope completion or descendant-stop proof.
 
 Reuse suitable context for same-task deltas; select later units by capability/capacity, not permanent Worker/model binding. Transfer only after affected writers stop and uncertain effects reconcile; preserve evidence, budgets and paused schedules. Host-specific lifecycle details stay in [adapters](references/harness.md).
 
@@ -47,7 +47,7 @@ Inspect target policy, suitability, current base and the assigned issue window. 
 
 An explicit window wins. Otherwise the default window narrows from 90 to 30 to 7 days when each exceeds 100 issues; seven days is the minimum, and its entire window is processed even above 100 issues. An explicit whole-source audit remains whole-source scope.
 
-Complete the assigned classification and actual-use/documentation audit before grouped repair publication. Group common-root errors, separate independent errors, reuse matching objects and discard non-defects. Zero qualifying findings is a valid result. Keep incomplete feasible work listed; completed audit coverage with pending review or CI becomes unresolved follow-up.
+Complete assigned classification and actual-use/documentation coverage; independently proved and validated repairs may publish before unrelated audit work finishes. Group common-root errors, separate independent errors, reuse matching objects and discard non-defects. Zero qualifying findings is a valid result. Keep incomplete feasible work listed; completed audit coverage with pending review or CI becomes unresolved follow-up.
 
 See [new-audit form](references/work-forms/new-repository.md), [new-repository procedure](references/workflows/new-repository.md) and [audit method](references/audit.md).
 
@@ -81,6 +81,8 @@ Maintenance uses the existing five forms; it is a role and method, not a sixth f
 For an ordinary repair, establish the supported trigger, observed error, violated contract, intended correction and smallest complete compatible change. Run affected behavioral checks and target-required validation. Confirm current target rules, competing work, base/head and the permitted publication route before writing publicly.
 
 Prefer a regular Open PR when the gates pass. Drafts retain the same necessity gate; they do not bypass invitation or submission restrictions. No compulsory companion issue or additional routine approval stage is added. Keep the existing object's feedback, CI, revisions and final disposition connected through native links.
+
+Each repository Worker completes bounded dependency setup, affected checks and direct PR/MR publication; a delivery-backlog role only recovers overlooked idle work, not every Worker's output. Submit before CLA/DCO prechecks and report actual signing requests without signing for the user. A PR-only refusal permits one evidenced issue/comment request where discussion remains allowed, never around an all-contact or AI prohibition.
 
 See [delivery](references/workflows/delivery.md), [contribution standards](references/contribution-value.md) and [publication gates](references/safety.md).
 
@@ -164,10 +166,9 @@ Backups are requested, reviewed and narrowly staged into the private state repos
 
 ## Execution continuity
 
-Every completion, continuation or authorized heartbeat resumes the whole mandate: integrate results,
-then dispatch feasible work, wait for actual in-flight work, or retain exact blockers/full-scope completion.
-A summary is not refill. Only the [Supervisor](roles/supervisor.md) owns an explicitly enabled heartbeat;
-[orchestration](references/orchestration.md) defines its bounded action and stopped-writer handoff rules.
+Active tasks and genuine completion/failure events resume the mandate: act, wait for real work, or retain exact blockers/completion. The [Supervisor](roles/supervisor.md) repairs execution-method faults promptly under [bounded recovery](references/execution-recovery.md); inability to proceed is reported to the user, not deferred to a timer or made a permanent first-failure ban.
+
+The authorized Supervisor heartbeat is **read-only**: inspect existing progress/stalls, blockers, delivery gaps and known writer/resource risks; report owner/next condition. No dispatch, repair, agent messages, files/state/position writes, source/forge refresh, tests, Git, cleanup or schedule changes, and no self-created follow-up to bypass that boundary. [Orchestration](references/orchestration.md) separates these inspection turns from active work. Frozen source windows do not freeze captured-object engineering; source-screen and repository-engineering budgets remain distinct.
 
 ## State and workspace layout
 
@@ -186,7 +187,7 @@ The selected workspace is the canonical policy/state root. The Skill checkout or
 | Project `work/checkout[-<purpose>]/`, `work/tmp/` | Multiple source checkouts and temporary material; legacy `temp/` names may remain. |
 | `state/unfinished.md` | Navigation only; repository state remains authoritative, including nonmembers. |
 
-One project directory unifies shared state and ignored local work. Its assigned writer updates root state.md and local work/work.md; Coordinator owns globals, and one designated publisher serializes Git. Never crawl project work/ for shared records or infer ownership from missing files. Unknown identities/resources stay local-only; physical relocation transfers no authority.
+One project directory unifies shared state and ignored local work. Its assigned writer updates root state.md and local work/work.md; Coordinator owns globals; a designated publisher serializes workspace policy/shared-state Git only. Independent repository Workers publish directly, with one writer per project/checkout/shared index. Never crawl project work/ for shared records or infer ownership from missing files. Unknown identities/resources stay local-only; physical relocation transfers no authority.
 
 Preserve exact native identities, aliases, revisions and boundaries. Cross-forge/renamed identity needs native proof. Source failure is unknown, not absence; archives are recovery-only. See [workspace](references/workspace.md) and [records](references/records.md).
 

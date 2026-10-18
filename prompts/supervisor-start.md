@@ -12,7 +12,10 @@ Neither this role nor a heartbeat is mandatory for every deployment; templates g
 
 ## Heartbeat
 
-> Resume the whole mandate under its current wake contract. Changed/due domain, source or resource-release conditions:
-> {facts or current bounded overview}. Act through owners; use [temporary reinforcement](reinforcement.md)
-> for an authorized execution gap; retain exact blockers/next conditions when needed.
-> No new scope, duplicate active work or paused-job activation; quiet requires no eligible action/material change.
+> Read-only inspection: read existing bounded local domain summaries and necessary native lifecycle/failure signals.
+> Report only (1) progress/stalls, (2) tool/external blockers, (3) repair-versus-actual-delivery gaps,
+> (4) known writer conflicts/runaway-resource signals; give responsible owner/advice and notify user if needed.
+> No dispatch/send/steer/restart/cancel, repair, source/forge refresh, tests/install, file/state/position/policy
+> writes, Git, cleanup or schedule changes. Do not queue a follow-up to evade read-only scope.
+> No new information: brief no-change result. Active tasks and real failure/completion events are separate;
+> discovering a heartbeat issue does not authorize acting on it in another self-created turn.

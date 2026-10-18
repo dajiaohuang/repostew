@@ -6,6 +6,6 @@ Load [workflow](../workflows/new-repository.md), [suitability](../suitability.md
 before their actions, records for material state changes. Do not defer access/privacy restrictions.
 Reuse repository setup/rules and unchanged evidence across candidates; affected tests and target-required
 checks remain. No risk-free claim, blanket test expansion or independent acceptance review is required.
-Complete classification/coverage before grouped delivery; explicit whole-source scope remains.
+Publish independently proved/validated repairs directly while completing classification/coverage; whole scope remains.
 Coordinator removes membership only under workflow gates; missing coverage/feasible work stays listed.
 Retained external follow-up remains unresolved; zero findings is valid. Report coverage/outcomes/resources separately.

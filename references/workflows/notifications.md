@@ -8,7 +8,8 @@
    Never mark read, alter subscriptions or send/reply by mail.
 3. Merge duplicate native repository/objects across sources; mail links point to live engineering objects.
    The notification Coordinator directly dispatches complete [incremental W units](../../prompts/incremental-feedback/worker.md):
-   inspect current feedback, finish necessary repair/checks and substantive replies/submission updates on the live objects.
+   inspect feedback, complete necessary setup/repair/checks and directly reply/publish/update the live objects.
+   No central publisher handoff; frozen capture windows do not freeze captured-object engineering.
    Do not stop at archiving/routing or use governance as a routine per-notification approval relay. No receipt replies,
    duplicate publications/tests or automatic admission. Escalate only real ownership, resource or authority gaps.
    Capture owners validate full source boundaries; engineering Workers inspect assigned current objects,

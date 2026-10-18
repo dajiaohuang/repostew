@@ -12,6 +12,8 @@ Inspect remotely when sufficient; provision source only for investigation/editin
 Establish native identity/existing paths, preserve unrelated data, never clone into container root.
 Use Git-aware operations for linked/shared worktrees. Record actual relative/legacy paths;
 unknown ownership or unavailable resources retain exact blockers, not an invented release result.
+Necessary dependency supply uses named task-local caches/build outputs under [bounded setup](execution-recovery.md),
+not shared/global toolchain mutation. Unknown exact total cost calls for enforceable ceilings, not permanent no-supply.
 
 ## Ownership: Worker preserves, Coordinator disposes, Supervisor governs capacity
 

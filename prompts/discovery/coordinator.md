@@ -10,5 +10,6 @@ Use the [C header](../coordinator-start.md) and [discovery form](../../reference
 > Completion: the source selection is covered AND every eligible repository's initial work is complete or precisely blocked.
 
 Do not assign discovery-only Workers or stop after adding names. Do not wait for the whole source batch
-before dispatching ready repositories. The new list retains pending work, not a second approval stage.
+before dispatching ready repositories. Source-screen limits do not consume independently assigned engineering limits;
+W completes setup/validation/direct publication. Historical ownership alone is not an active writer conflict.
 Explicit capture-only assignments remain capture-only; do not invent new sources, timers or management rights.

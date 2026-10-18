@@ -2,7 +2,8 @@
 
 Use [records](../records.md), [workspace](../workspace.md) and [shared state](../shared-state.md).
 Assigned repository writer updates root state.md and local work/work.md; Coordinator updates global
-membership/navigation/positions. One designated Git publisher serializes staging/commits, not project facts.
+membership/navigation/positions. A designated publisher serializes workspace policy/state Git staging/commits,
+not independent target-repository publication or project facts.
 Read affected sections once; deduplicate/preserve text, reread intervening changes and defer conflicts.
 Record-only work does not reopen engineering validation. Backup checks eligible paths/staged blobs/remote
 heads, not repository source/tests; reported project outcomes need no routine Coordinator readback.

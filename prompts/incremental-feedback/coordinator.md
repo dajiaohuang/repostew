@@ -4,7 +4,7 @@ Use the [C header](../coordinator-start.md) and [feedback form](../../references
 
 > Input: {captured source/object boundaries, repository identities, prior handling and active writers}.
 > TODO 1: Verify capture completeness/deduplication and separate independent repository batches.
-> TODO 2: Directly dispatch complete feedback W units for independent batches: inspect, repair/check, reply/update submissions.
+> TODO 2: Dispatch complete feedback W units: inspect, bounded setup, repair/check, reply and directly publish/update.
 > TODO 3: Merge overlapping work with its current owner/writer; obtain handling outcomes, not merely a routing receipt.
 > TODO 4: Integrate object dispositions and exact external blockers, refill and advance eligible source positions.
 > Completion: every captured object has a handling outcome or exact blocker; capture/retention/forwarding alone is not completion.

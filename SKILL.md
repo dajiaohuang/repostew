@@ -23,7 +23,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 
 1. **Prepare and assemble:** establish outcome, scope, prior work, authority/resources;
    [assemble](references/worker-assembly.md) role/form/methods; [orchestrate](references/orchestration.md)
-   dispatch, wait, integrate, continue, hand off and recover.
+   dispatch, wait, integrate, continue and hand off; use [bounded execution recovery](references/execution-recovery.md)
+   for ordinary tool faults and missing setup, without erasing failures or bypassing true prohibitions.
 2. **Select work:** [discover and process new repositories](references/work-forms/discovery.md),
    [audit new repositories](references/work-forms/new-repository.md),
    [reassess authored contributions](references/work-forms/contribution-reassessment.md),
@@ -58,15 +59,19 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
   defects or necessity. Prohibit defensive programming; trust internal contracts, retain necessary boundary checks.
 - One writer per project: its assigned writer writes shared state.md and local work/work.md; Coordinator owns
   global membership/navigation/positions and only resource facts after a stopped-writer disposition handoff.
-  Serialize Git publication separately; never crawl local work as state. Preserve unrelated work and existing
+  Serialize Git only within one project/checkout/shared index; independent repository Workers publish directly.
+  Workspace policy/shared-state Git alone uses its designated publisher. Never crawl local work as state. Preserve unrelated work and existing
   recovery material. Local retention follows [storage's three paths](references/storage.md#choose-the-release-path):
   delivered/preserved, explicitly abandoned, or retained with concrete blockers. Confidentiality is not
   permanent local retention; abandonment never substitutes for ownership or reporting authority.
 - Assign complete bounded units once, not one tool/test step at a time. Workers advance feasible authorized
   stages; Coordinators check scope/coverage, not engineering again. Follow [orchestration](references/orchestration.md)
-  for act/wait/block/finish on every wake, independent refill, stage gates and stopped-writer handoff.
+  for act/wait/block/finish on active task/event turns, independent refill and stopped-writer handoff.
+  A read-only heartbeat inspects and reports only; it never dispatches, repairs or writes.
   A turn, structured reply or finite batch does not prove whole-scope completion. Reuse evidence/context
   where suitable without binding future units or resetting budgets. No receipts, routine readback or polling.
+- Ordinary contribution units include direct Worker publication; no central publication gateway.
+  Submit before CLA/DCO prechecks and report actual signing requests without signing for the user.
 - Select checks by actual action: capture/metadata alone does not trigger audits/tests/publication.
   Preserve target-required checks, privacy/permission gates, mutation reconciliation and resource protection.
 - Use direct Markdown, no custom runtime/queue/claims/database. Report coverage, outcomes, unfinished work and
