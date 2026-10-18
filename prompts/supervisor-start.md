@@ -12,10 +12,11 @@ Neither this role nor a heartbeat is mandatory for every deployment; templates g
 
 ## Heartbeat
 
-> Read-only inspection: read existing bounded local domain summaries and necessary native lifecycle/failure signals.
-> Report only (1) progress/stalls, (2) tool/external blockers, (3) repair-versus-actual-delivery gaps,
-> (4) known writer conflicts/runaway-resource signals; give responsible owner/advice and notify user if needed.
-> No dispatch/send/steer/restart/cancel, repair, source/forge refresh, tests/install, file/state/position/policy
-> writes, Git, cleanup or schedule changes. Do not queue a follow-up to evade read-only scope.
-> No new information: brief no-change result. Active tasks and real failure/completion events are separate;
-> discovering a heartbeat issue does not authorize acting on it in another self-created turn.
+> Bounded refill fallback under [refill](../references/refill.md): read existing domain summaries, necessary
+> lifecycle/queued-message facts and volume capacity. Report progress, blockers, delivery and resource gaps.
+> For authorized remaining work with spare capacity and no sufficient domain-wide blocker, send at most one
+> specific continuation per affected C; combine any already-authorized stopped-writer disposition gap.
+> Deduplicate queued/in-flight corrections; no unchanged blocker/status nudges. Failed prior correction needs
+> bounded diagnosis/report, not repeated prompts. No direct W delegation, restart/cancel, engineering, tests,
+> Git, source/forge refresh, file/state/policy writes, cleanup or schedule changes; no self-queued bypass.
+> Preserve scope, pauses, deadlines, quotas and storage authority. No gap: brief no-change result.

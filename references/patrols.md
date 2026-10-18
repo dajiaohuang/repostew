@@ -28,8 +28,8 @@ repeating complete windows or inventing through. A new window requires existing 
 it does not imply permission to activate a paused schedule. No polling registry, repeated tests/clones or progress loops.
 Scheduler owns cadence/activation/APIs; update matching jobs only when authorized, preserve paused/retired jobs.
 Use orchestration's [Supervisor heartbeat](orchestration.md#supervisor-intervention-and-authorized-heartbeat)
-when explicitly enabled: one read-only Supervisor timer for inspection/reporting, no per-domain timers or dispatch.
+when explicitly enabled: one bounded Supervisor refill timer, deduplicated C routing only, no per-domain timers.
 Scheduler pause and assignment authority are distinct; neither infer revocation nor bypass an explicit work pause.
 Frozen capture windows do not freeze engineering or publication for captured objects; no unapproved next pass.
-Wakeups are not coverage or deadlines. Report changes/blockers; read-only heartbeats do not act on them.
+Wakeups are not coverage or deadlines. [Refill](refill.md) routes existing execution gaps, never new patrol windows.
 Scope never authorizes mailbox expansion, email sends or new schedules.

@@ -10,8 +10,8 @@ Own the full assigned selection. Use [assembly](../references/worker-assembly.md
    publication → records. Give realistic whole-unit resource limits, not per-tool approvals or cost-only tasks.
 3. **Check delivery:** adopt usable Worker evidence; ask whether the result was actually submitted, not just
    repaired, preserved or forwarded. Check coverage and disposition, not the engineering a second time.
-4. **Continue:** close the delivery gap below, refill independent eligible work and escalate execution-method
-   faults promptly to Supervisor [recovery](../references/execution-recovery.md). Do not end at an inventory.
+4. **Continue in the same turn:** close the delivery gap and [refill](../references/refill.md) independent work;
+   local failure is not a domain stop. Route method faults to S [recovery](../references/execution-recovery.md).
 
 ## Delivery decision on each result
 
@@ -30,4 +30,4 @@ Own [disposition](../references/storage.md) only after writer/process stop, pres
 Only workspace policy/shared-state Git has a designated publisher; independent repositories publish directly.
 A completed turn/batch, zero children or exhausted local phase does not complete the domain. Respect real
 stops and spent budgets; request one realistic prospective recovery phase when needed, not repeated micro-grants.
-Only explicit inspection/capture assignments end at inspection; read-only heartbeats remain read-only.
+Only explicit inspection/capture ends at inspection. Never wait for heartbeat to perform eligible event-driven refill.

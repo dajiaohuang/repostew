@@ -16,7 +16,7 @@ require writer/process stop. A finite unit never shrinks the whole selection.
 ### Decide the next action on every wake
 
 Resume the whole mandate on active assignment, result, continuation or compaction turns.
-A read-only heartbeat follows its inspection-only contract below, not the action branches:
+An authorized heartbeat follows the bounded C-routing contract below, not unrestricted action branches:
 - **Act:** feasible authorized work remains—continue it or dispatch/route a concrete complete unit now.
 - **Wait:** relevant work is actually in flight or capacity is occupied—yield to its supported result path.
 - **Block:** retain affected scope, evidence/unknowns, responsible owner and next condition for reevaluation.
@@ -28,14 +28,14 @@ No fresh user prompt or next heartbeat is needed for already authorized feasible
 
 ### Supervisor intervention and authorized heartbeat
 
-The designated Supervisor owns the explicitly authorized heartbeat. It is read-only: inspect bounded existing
-domain summaries and necessary lifecycle/failure signals; report progress/stalls, blockers, delivery gaps and
-known writer/resource risks with owner and next condition. No dispatch, messages to agents, repair, file/state
-writes, source/forge refresh, tests, Git, cleanup or schedule changes; no queued follow-up to evade this boundary.
-No material change needs only a brief no-change result. Do not crawl logs or repeat engineering acceptance.
-Active assignments and genuine completion/failure events separately require timely action through owners.
-Fix execution-method faults on those turns, not at the next heartbeat; if unable, notify the user promptly.
-A heartbeat grants no new source/window or paused-job activation; inspection is not execution.
+Use [event-driven refill and heartbeat fallback](refill.md). C closes the loop in the same result turn;
+a local failure is not a whole-domain stop. The single authorized S heartbeat catches missed refill using
+existing summaries, necessary lifecycle/queued-message facts and volume capacity. It may send one specific,
+deduplicated continuation to the current C for a refill or already-authorized disposition gap, never directly W.
+No new source/forge reads, engineering, restart/cancel, files/state writes, tests, Git, cleanup or schedule
+changes; no self-queued bypass. Unchanged sufficient blockers or an equivalent in-flight message mean no send.
+An ineffective prior correction requires bounded diagnosis/report, not repeated prompts or inferred restart rights.
+Active failure/completion events retain normal recovery; no phase extension, quota waiver or new authority.
 
 ### Dependencies, capacity and completion
 

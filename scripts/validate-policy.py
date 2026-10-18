@@ -25,7 +25,7 @@ for form in FORMS:
     for role in ("coordinator", "worker"):
         LIMITS[f"prompts/{form}/{role}.md"] = 10
 FLOW_LINKS = {
-    "references/worker-assembly.md", "references/orchestration.md", "references/execution-recovery.md",
+    "references/worker-assembly.md", "references/orchestration.md", "references/execution-recovery.md", "references/refill.md",
     "references/work-forms/discovery.md", "references/work-forms/new-repository.md",
     "references/work-forms/contribution-reassessment.md", "references/work-forms/incremental-feedback.md",
     "references/work-forms/recurring-patrol.md", "references/workflows/followed-issues.md",
@@ -43,12 +43,18 @@ BOUNDARIES = {
                         "Preparation is internal", "No delivery needed", "Externally blocked", "Execution failed",
                         "Continue feasible work", "whole-unit resource envelope"),
     "roles/coordinator.md": ("Check delivery", "No routine remote readback", "Not delivered, feasible",
-                             "owning Worker continues", "No delivery needed", "Blocked/failed"),
+                             "owning Worker continues", "No delivery needed", "Blocked/failed", "Continue in the same turn",
+                             "local failure is not a domain stop"),
     "prompts/task.md": ("1. Object and outcome", "2. Location and prior work", "3. Complete TODO",
                         "4. Authority and resources", "5. Finish and return"),
-    "roles/supervisor.md": ("bounded recovery", "notify the user if unable", "read-only heartbeat"),
-    "prompts/supervisor-start.md": ("Read-only inspection", "No dispatch/send/steer/restart/cancel", "Do not queue a follow-up"),
-    "references/orchestration.md": ("read-only heartbeat", "workspace policy/shared-state Git", "three failed repairs"),
+    "roles/supervisor.md": ("bounded recovery", "notify the user if unable", "bounded refill heartbeat"),
+    "prompts/supervisor-start.md": ("Bounded refill fallback", "at most one", "Deduplicate queued/in-flight",
+                                    "No direct W delegation", "no self-queued bypass"),
+    "references/orchestration.md": ("bounded C-routing", "workspace policy/shared-state Git", "three failed repairs"),
+    "references/refill.md": ("in the same turn", "No gap", "Refill gap", "Disposition gap", "Already routed",
+                             "Ineffective prior correction", "At most one combined continuation",
+                             "No direct W delegation", "only mutation is the bounded C message",
+                             "hard-quota waiver", "expiry never renews itself"),
     "references/safety.md": ("do not precheck CLA/DCO", "actually requests signing", "PR-only refusal", "Never sign for the user"),
     "references/execution-recovery.md": ("three failed repairs", "notify", "prospective deadline", "cumulative accounting"),
     "references/workflows/delivery.md": ("assigned Worker completes its own", "no global", "Missing fork/remote head is a step"),
@@ -66,6 +72,9 @@ FORBIDDEN = (
     "Compose one shared header plus the selected form's TODO",
     "Compose one brief from the shared C/W header",
     "Wait for C7 before publication", "End engineering after read-only inspection",
+    "read-only heartbeats only inspect/report", "The authorized Supervisor heartbeat is **read-only**",
+    "A read-only heartbeat inspects and reports only", "No dispatch/send/steer/restart/cancel",
+    "Heartbeat may directly dispatch Workers", "Heartbeat may change quotas", "Heartbeat may delete checkouts",
 )
 
 

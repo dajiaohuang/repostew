@@ -69,7 +69,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
   stages through direct submission; Coordinators check actual delivery and scope/coverage, not engineering again.
   Local patches or read-only inventories do not finish engineering. Follow [orchestration](references/orchestration.md)
   for act/wait/block/finish on active task/event turns, independent refill and stopped-writer handoff.
-  A read-only heartbeat inspects and reports only; it never dispatches, repairs or writes.
+  [Event-driven refill](references/refill.md) is primary; the single authorized S heartbeat may route a deduplicated
+  concrete gap to C only, never direct W, engineering, cleanup, file writes or new scope.
   A turn, structured reply or finite batch does not prove whole-scope completion. Reuse evidence/context
   where suitable without binding future units or resetting budgets. No receipts, routine readback or polling.
 - Ordinary contribution units include direct Worker publication; no central publication gateway.

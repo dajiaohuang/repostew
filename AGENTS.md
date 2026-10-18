@@ -11,7 +11,8 @@
   Coordinator checks actual submission, coverage/refill/disposition; Supervisor owns bounded fault recovery.
   No inspection-only finish for ordinary engineering; local patches/forwarding require a delivery decision.
   Serialize same-project/shared-index writes, not independent repository publication; shared-state Git has its publisher.
-  Active turns act/wait/block/finish; read-only heartbeats inspect/report only. Preserve real gates and cumulative budgets.
+  C refills in the same result turn; a single bounded S heartbeat may send deduplicated gap instructions to C,
+  never direct W/engineering/cleanup/file writes. Preserve real gates, cumulative budgets and unchanged quotas.
 - Reuse supplied rules/evidence; batch missing startup reads, load conditional methods before action.
   Leaves receive applicable boundaries, not global briefs. Links are navigation, not recursive reading.
   Templates add no authority. No prompt compiler, custom runtime/queue/claims/receipts/database or polling service.
