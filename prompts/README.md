@@ -1,11 +1,11 @@
 # Prompt assembly and templates
 
 Use [assembly](../references/worker-assembly.md) for context selection and ordering. Templates carry task
-variables, not copied policy, executable protocol or authority. Compose one brief from the shared C/W header
-and exactly one form below; fill explicit actions, directories and TODOs. Do not send all templates to a leaf.
+variables, not copied policy, executable protocol or authority. Use one C/W role contract and the single
+[five-field task](task.md); one form below adds only input/coverage differences. Never stack task sheets.
 
 - [Supervisor](supervisor-start.md): optional governance handoff and explicitly authorized heartbeat.
-- Shared headers: [Coordinator](coordinator-start.md), [Worker](worker-start.md).
+- Role entries: [Coordinator](coordinator-start.md), [Worker](worker-start.md); both use the same task sheet.
 - New repository: [C](new-repository/coordinator.md) / [W](new-repository/worker.md).
 - Contribution reassessment: [C](contribution-reassessment/coordinator.md) / [W](contribution-reassessment/worker.md).
 - Incremental feedback: [C](incremental-feedback/coordinator.md) / [W](incremental-feedback/worker.md).

@@ -1,33 +1,33 @@
 # Coordinator
 
-Own the full assigned-domain outcome; the [Supervisor](supervisor.md) handles cross-domain governance.
-Use [assembly](../references/worker-assembly.md) and [orchestration](../references/orchestration.md).
+Own the full assigned selection. Use [assembly](../references/worker-assembly.md) and
+[orchestration](../references/orchestration.md); the [Supervisor](supervisor.md) resolves cross-domain faults.
 
-## Responsibilities and authority
+## Four duties
+1. **Select:** capture/deduplicate within scope, apply exclusions, reuse prior outcomes and resolve actual
+   same-project writers. Screen suitability, not source code; no proven bug is required before dispatch.
+2. **Assign:** issue one [five-field task](../prompts/task.md) for setup → engineering → validation → direct
+   publication → records. Give realistic whole-unit resource limits, not per-tool approvals or cost-only tasks.
+3. **Check delivery:** adopt usable Worker evidence; ask whether the result was actually submitted, not just
+   repaired, preserved or forwarded. Check coverage and disposition, not the engineering a second time.
+4. **Continue:** close the delivery gap below, refill independent eligible work and escalate execution-method
+   faults promptly to Supervisor [recovery](../references/execution-recovery.md). Do not end at an inventory.
 
-- Establish selection, authority, prior work, usable inputs and existing writers. Capture/deduplicate and
-  choose [forms](../references/work-forms/README.md) from assignment/authored history; do not pre-audit.
-- Assign complete bounded units, not individual tool/test steps. Supply the permission/dependency gates
-  once; Workers complete setup, affected validation, their own ordinary PR/MR and feedback without a
-  central publication gateway or per-tool approval; use the current contribution-terms policy.
-- Check sufficiency/coverage, not engineering again. Assign complete missing setup/validation/publication phases,
-  reuse proofs and route forge-client faults promptly to Supervisor [recovery](../references/execution-recovery.md), not a publication queue.
-- Prioritize unfinished work, preserve named stage gates and refill independent eligible units as results
-  arrive. Apply the [wake decision](../references/orchestration.md#decide-the-next-action-on-every-wake);
-  a finite batch or yielded turn does not complete the domain. Relay changes once; diagnose concrete anomalies.
-- Own [resource disposition](../references/storage.md) after the writer/process stops: execute eligible
-  release or retain exact blockers/next conditions. Do not send disposal back to engineering Workers.
-  Delivery/preservation, explicitly scoped abandonment and retention remain distinct; private categories
-  need their own applicable authority. A failed deletion is not final closure or proof of preservation.
+## Delivery decision on each result
 
-## State responsibilities
+- **Delivered:** retain the actual object URL/report reference and head or reliable success result. No routine
+  remote readback, retest or second acceptance; investigate only missing, contradictory or ambiguous evidence.
+- **No delivery needed:** accept evidenced no finding, duplicate, already fixed or unchanged resolved feedback;
+  no manufactured patch/PR to meet a quota. This disposition does not prove untouched scope complete.
+- **Not delivered, feasible:** the owning Worker continues the complete remainder, including submission.
+  A local patch or fork push alone is not upstream delivery. No central publisher or backlog gateway.
+- **Blocked/failed:** retain exact scope, cause, effects/unknowns, responsible owner and next condition.
+  Escalate recoverable execution faults, do not archive them as success or demand another read-only review.
+  If replacement is needed, stop affected writers/descendants and reconcile mutations before assigning it.
 
-Own assigned navigation, membership and source positions under [records](../references/records.md).
-Project writers maintain root state.md and local work/work.md; do not mirror them. A stopped-writer
-resource handoff permits only disposal-fact updates in those same records. Designated editors and one
-publisher serialize workspace policy/shared-state Git only, not independent repository engineering or publication.
-
-## Intervention and completion
-
-Apply orchestration's wake and stop/reconciliation rules; retain whole scope, evidence, budgets and retry
-conditions. Before replacement establish affected writer/descendant stop, not merely a finished parent turn.
+Own global navigation/positions, not a duplicate project ledger; project writers own state.md/work.md.
+Own [disposition](../references/storage.md) only after writer/process stop, preserving its release gates.
+Only workspace policy/shared-state Git has a designated publisher; independent repositories publish directly.
+A completed turn/batch, zero children or exhausted local phase does not complete the domain. Respect real
+stops and spent budgets; request one realistic prospective recovery phase when needed, not repeated micro-grants.
+Only explicit inspection/capture assignments end at inspection; read-only heartbeats remain read-only.

@@ -13,8 +13,8 @@ An agent harness supplies execution, tools, permissions, native delegation and s
 Installing the Skill does not start a daemon, create jobs, enable parallel agents, grant maintainer rights or authorize public actions. One-off work and recurring maintenance use the same rules; actual capabilities must be verified in the selected harness.
 
 - **Supervisor, when assigned:** governs cross-domain policy, capacity and concrete execution anomalies through domain owners.
-- **Coordinator:** owns the whole selection, complete-unit assignments, coverage/refill, shared positions and stopped-writer resource disposition.
-- **Worker:** completes a bounded unit's feasible authorized engineering, checks and delivery; records outcomes and resource-handoff facts.
+- **Coordinator:** selects, assigns complete units, checks actual submission and refills; owns shared positions and stopped-writer disposition, not a second engineering review.
+- **Worker:** starts and completes setup, engineering, checks and direct submission; returns actual delivery or an evidenced no-delivery disposition, not a read-only inventory.
 - **Maintainer:** adds explicit repository-management rights to a Worker, not another mandatory agent or stage.
 
 Execution is serial by default and may combine role responsibilities. Authorized parallel Workers handle distinct repositories, with one writer per repository and serialized shared-state edits. See [roles](roles/coordinator.md), [Worker assembly](references/worker-assembly.md), [orchestration](references/orchestration.md), [harness capabilities](references/harness.md) and [Maintainer authority](roles/maintainer.md).
@@ -25,7 +25,9 @@ Execution is serial by default and may combine role responsibilities. Authorized
 
 Establish workspace/identity, full outcome and scope/base, prior work, permissions and resources. Read access rules before content and action gates before engineering/publication.
 
-Choose a form and applicable methods, then fill [templates](prompts/README.md) with task facts. Assign a complete bounded unit once, not one tool/test step at a time. Workers advance its feasible authorized stages; genuine permission/dependency gates remain explicit. Roles and templates grant no authority.
+Use one [C contract](roles/coordinator.md) or [W contract](roles/worker.md) and one [five-field task](prompts/task.md): object/outcome, location/prior work, complete TODO, authority/resources, finish/return. Five forms supply only input/coverage differences. Give realistic whole-unit limits, not tool-by-tool approvals or cost-only preparation. Roles/templates grant no authority.
+
+C checks actual delivery evidence without routine readback/retests. A feasible unpublished repair returns to its W for submission; execution faults go to recovery, not a central publisher. Valid no-finding/duplicate/already-fixed outcomes need no invented PR. Only explicit inspection/capture work ends at inspection; unresolved engineering retains its owner and next condition.
 
 Reuse current instructions/evidence, batch missing reads and load methods on action triggers. Leaves need their boundaries, not global briefs; links and new turns do not require full reloads. Metadata/capture alone does not trigger engineering. Keep affected/mandatory checks and privacy, mutation, publication and storage gates; no second engineering acceptance.
 

@@ -6,11 +6,12 @@ Assemble role, form and methods with [text templates](../prompts/README.md), not
 
 1. Establish outcome, full selection, prior work, authority/resources and current writers. Add
    [Maintainer](../roles/maintainer.md)/[maintain](workflows/maintain.md) only for authorized management.
-2. Choose [form](work-forms/README.md) and its [C/W template pair](../prompts/README.md) from assignment/native
-   authored history; comments are not authorship. Compose one shared header plus the selected form's TODO.
+2. Choose [form](work-forms/README.md) from assignment/native authored history; comments are not authorship.
+   Use the C or W role contract plus [one five-field task](../prompts/task.md); forms add input/coverage only.
 3. Capture/deduplicate; normally assign one complete repository engineering unit or bounded source batch.
    Include its feasible authorized stages, not separate dispatches for each tool/test. Resolve writer conflicts.
-4. Include bounded dependency setup, affected validation and direct publication; real gates, not per-tool approvals.
+4. Include necessary isolated setup, affected checks and direct publication with a realistic whole-unit envelope.
+   No cost-only/permission-only preparatory task by default; keep real gates, not per-tool approvals.
 5. Map required [harness capabilities](harness.md) and [forge operations](forges/README.md). Missing explicitly
    required execution/settings remain blockers; do not silently substitute or infer permission.
 
@@ -31,9 +32,9 @@ stable and variables last. Select rules by actual action: records/workspace for 
 for engineering, safety/submission for external writes, storage for resources actually used or assigned.
 Every task keeps privacy/private-reporting boundaries; load [security](security.md) before handling a
 suspected finding. Coordinators load orchestration; leaves receive their applicable boundaries, not it.
-Task facts: absolute workspace/project/record paths, execution cwd and writable/read-only boundaries,
-objects/window/base, existing evidence, explicit actions/destinations/limits, numbered outcome TODO, dependencies,
-end condition and result route. Missing fork/head is a step, not a gate; resolve indispensable permission/path gaps.
+Fill the five task fields once: object/outcome, location/prior work, complete TODO, authority/resources,
+finish/return. Include exact paths, real dependencies and consumed limits where relevant; omit unrelated
+incidents/global history. Missing fork/head is a step; resolve indispensable permission/path gaps before dispatch.
 
 ## Deliver authoritative instructions
 
@@ -54,9 +55,8 @@ work. Finite Worker units leave the Coordinator's whole selection intact. Apply
 [dependency rules](orchestration.md#dependencies-capacity-and-completion); recurrence needs separate authority.
 
 ## Dispatch, continuation and handoff
-
-Check scope, inputs, authority, dependencies, resources and completion once; this is sufficiency, not
-engineering acceptance. Dispatch once and use authorized independent capacity. Do not invent approval
+Check the five fields once for sufficiency, not engineering acceptance. On return apply the C contract's
+delivery decision: URL/head or reliable success, evidenced no need, or a concrete unresolved recovery route. Dispatch once and use authorized independent capacity. Do not invent approval
 stages between already permitted steps. Keep the [whole-mandate wake decision](orchestration.md#decide-the-next-action-on-every-wake)
 with Coordinators/Supervisors. Leaves supply resource facts; Coordinators dispose after writer/process stop.
 Reuse suitable context for [same-task deltas](../prompts/continue.md); new units select execution afresh.

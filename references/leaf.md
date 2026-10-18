@@ -5,7 +5,7 @@ Compatibility links only; canonical [Worker](../roles/worker.md), [assembly](wor
 
 ## Coordinator updates
 
-[Communication](../roles/worker.md#communication-and-continuation).
+[Communication](../roles/worker.md#result-and-continuation).
 
 ## Complete the assigned work
 

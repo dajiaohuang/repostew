@@ -17,13 +17,13 @@ LIMITS = {
     "roles/supervisor.md": 26, "roles/coordinator.md": 33, "roles/worker.md": 38,
     "roles/maintainer.md": 15,
     "prompts/README.md": 24, "prompts/supervisor-start.md": 24,
-    "prompts/coordinator-start.md": 20, "prompts/worker-start.md": 20,
+    "prompts/coordinator-start.md": 10, "prompts/worker-start.md": 10, "prompts/task.md": 18,
     "prompts/continue.md": 18, "prompts/handoff.md": 22,
 }
 FORMS = ("new-repository", "contribution-reassessment", "incremental-feedback", "discovery", "recurring-patrol")
 for form in FORMS:
     for role in ("coordinator", "worker"):
-        LIMITS[f"prompts/{form}/{role}.md"] = 18
+        LIMITS[f"prompts/{form}/{role}.md"] = 10
 FLOW_LINKS = {
     "references/worker-assembly.md", "references/orchestration.md", "references/execution-recovery.md",
     "references/work-forms/discovery.md", "references/work-forms/new-repository.md",
@@ -39,7 +39,13 @@ FLOW_LINKS = {
 
 # Editorial regression assertions, not proof of runtime compliance or complete semantic review.
 BOUNDARIES = {
-    "roles/worker.md": ("direct", "fork/branch/commit/push/Open PR", "CLA/DCO prechecks"),
+    "roles/worker.md": ("direct", "fork/branch/commit/push/Open PR", "CLA/DCO prechecks",
+                        "Preparation is internal", "No delivery needed", "Externally blocked", "Execution failed",
+                        "Continue feasible work", "whole-unit resource envelope"),
+    "roles/coordinator.md": ("Check delivery", "No routine remote readback", "Not delivered, feasible",
+                             "owning Worker continues", "No delivery needed", "Blocked/failed"),
+    "prompts/task.md": ("1. Object and outcome", "2. Location and prior work", "3. Complete TODO",
+                        "4. Authority and resources", "5. Finish and return"),
     "roles/supervisor.md": ("bounded recovery", "notify the user if unable", "read-only heartbeat"),
     "prompts/supervisor-start.md": ("Read-only inspection", "No dispatch/send/steer/restart/cancel", "Do not queue a follow-up"),
     "references/orchestration.md": ("read-only heartbeat", "workspace policy/shared-state Git", "three failed repairs"),
@@ -57,6 +63,9 @@ FORBIDDEN = (
     "Every wake follows", "Every completion, continuation or authorized heartbeat resumes",
     "Finish assigned issue classification and [usage/documentation audit](audit.md) before repair publication",
     "Complete classification/coverage before grouped delivery",
+    "Compose one shared header plus the selected form's TODO",
+    "Compose one brief from the shared C/W header",
+    "Wait for C7 before publication", "End engineering after read-only inspection",
 )
 
 
@@ -75,6 +84,25 @@ def validate_boundaries(root=ROOT):
             assert phrase not in text, f"Retired boundary: {path}: {phrase}"
 
 
+def validate_task_shape(root=ROOT):
+    index = (root / "prompts/README.md").read_text(encoding="utf-8")
+    task = (root / "prompts/task.md").read_text(encoding="utf-8")
+    assert len(re.findall(r"^> \*\*[1-5]\.", task, re.M)) == 5, "Task must have exactly five fields"
+    assert len(re.findall(r"^>", task, re.M)) == 5, "Task must not grow extra fields"
+    for role in ("coordinator", "worker"):
+        header = (root / f"prompts/{role}-start.md").read_text(encoding="utf-8")
+        assert "](task.md)" in header and f"](../roles/{role}.md)" in header, "Role entry must use canonical contract/task"
+        assert not re.search(r"^>", header, re.M), "Role entry must not duplicate task fields"
+        for form in FORMS:
+            name = f"{form}/{role}.md"
+            text = (root / "prompts" / name).read_text(encoding="utf-8")
+            assert f"]({name})" in index, f"Unindexed task form: {name}"
+            assert f"](../{role}-start.md)" in text and "](../task.md)" in text, f"Missing canonical task: {name}"
+            assert not re.search(r"^>|TODO [0-9]:", text, re.M), f"Form duplicates task contract: {name}"
+            if form == "discovery" and role == "worker":
+                assert "](../new-repository/worker.md)" in text, "Discovery W must alias new-repository"
+
+
 def validate():
     generic = [ROOT / name for name in ("SKILL.md", "AGENTS.md", "README.md", "README.en.md", "README.zh.md")]
     for directory in ("roles", "prompts", "references", "references/work-forms", "references/workflows"):
@@ -87,17 +115,7 @@ def validate():
     for name, limit in LIMITS.items():
         count = len((ROOT / name).read_text(encoding="utf-8").splitlines())
         assert count <= limit, f"Review compact entry budget without dropping authority gates: {name}: {count}>{limit}"
-    index = (ROOT / "prompts/README.md").read_text(encoding="utf-8")
-    for form in FORMS:
-        for role in ("coordinator", "worker"):
-            name = f"{form}/{role}.md"
-            text = (ROOT / "prompts" / name).read_text(encoding="utf-8")
-            assert f"]({name})" in index, f"Unindexed task template: {name}"
-            assert f"](../{role}-start.md)" in text, f"Missing shared header: {name}"
-            if form == "discovery" and role == "worker":
-                assert "](../new-repository/worker.md)" in text, "Discovery W must alias the complete new-repository template"
-            else:
-                assert "> TODO 1:" in text and "> Completion:" in text, f"Missing task contract: {name}"
+    validate_task_shape()
     skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
     links = set(re.findall(r"\[[^\]]*\]\(([^\s)#]+)(?:#[^)]*)?\)", skill))
     assert FLOW_LINKS <= links, f"Missing flow links: {sorted(FLOW_LINKS - links)}"

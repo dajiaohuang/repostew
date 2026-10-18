@@ -45,5 +45,5 @@ under [assembly](../worker-assembly.md).
    Explicit abandonment is not delivery and never implies recoverability. Keep undelivered material not
    covered by abandonment, ongoing-use resources and other excluded categories within their exact boundaries.
    Stop unused task-owned services and hand resource facts to the Coordinator; Workers do not delete.
-   Write changed [records](../records.md) and return once under [Worker](../../roles/worker.md#final-result).
+   Write changed [records](../records.md) and return once under [Worker](../../roles/worker.md#result-and-continuation).
    Separate local/CI/actual-use acceptance, coverage, contribution outcomes and resource disposition.

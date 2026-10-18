@@ -1,20 +1,9 @@
-# Worker start template
+# Worker start
 
-Shared header: add exactly one [task-form W template](README.md), not a generic stages paragraph.
+Use the [W delivery contract](../roles/worker.md) and fill the single [five-field task](task.md).
+Choose one [input/coverage form](README.md); do not append a second task sheet or global Coordinator brief.
 
-Use [assembly](../references/worker-assembly.md), current SKILL, Worker role and assigned form; add Maintainer
-only for authorized management. Put applicable rules before variables, not a global brief. The unit includes
-setup, validation and direct publication, not step-by-step approval or a central publisher handoff.
-
-> Instructions: {supplied current text; missing startup paths; conditional methods/action triggers}.
-> Location: {absolute policy workspace, native identity, state.md/work/, execution cwd, writable paths, read-only inputs}.
-> Complete bounded outcome/form: {task}.
-> Scope/base/window and prior work: {objects, boundaries, usable evidence and target rules/overrides}.
-> Actions/limits: {concrete allowed operations and destinations, prohibited actions, resource/attempt limits and used/remaining amounts}.
-> TODO/gates: {form outcomes, true prohibitions, bounded recovery and prospective resource ceilings}; ordinary choices stay with W.
-> Result: {TODO outcomes/evidence, unfinished items and exact blockers, record paths, resource handoff when applicable}.
-> Completion: {this unit's measurable condition}; distinguish it from project/whole-selection completion.
-
-C resolves indispensable permission/path ambiguity before dispatch; do not substitute “when authorized” for
-an action list. Unknown ordinary engineering facts belong in TODO, not a new approval round. Inapplicable
-project fields may be omitted for intake. Submit before CLA/DCO prechecks; report actual signing requests, never sign.
+Start the complete unit after essential preparation. Necessary isolated setup, related checks and direct
+submission are part of it, not future approval requests. Keep genuine prohibitions and resource limits explicit.
+Return actual delivery or an evidenced no-delivery disposition, never just an inspection or local patch.
+Only explicit inspection/capture work has an inspection-only finish; no invented edits or repeated metadata tests.

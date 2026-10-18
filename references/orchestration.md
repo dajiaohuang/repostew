@@ -6,17 +6,12 @@ Use only the roles needed: serial work may combine responsibilities without crea
 
 ## Coordinator execution
 
-1. Establish the whole selection, outcome, authority, prior work and current writers. Resolve identities,
-   deduplicate and choose forms from assignment/authored history; comments are not authorship. No pre-audit.
-2. [Assemble](worker-assembly.md) complete bounded units, not one task per tool, test or approval-free step.
-   Include feasible investigation, repair, validation and delivery only within granted authority; retain real
-   stage gates. The Worker resolves ordinary unknowns and advances those stages without repeated permission.
-3. Dispatch each unit once. Serial by default; authorized independent units use available backend capacity.
-   Reserve accepted/starting/queued work before refill; route in-scope deltas to the current writer.
-4. Integrate each usable final once: check coverage, remaining work and global effects, not engineering again.
-   Accept resource handoffs only after writer/process stop; complete that ownership transfer before another
-   same-project writer. Dispose eligible unused resources or retain exact blockers under [storage](storage.md).
-5. Refill independently and apply the decision below. A finite unit does not shrink the whole selection.
+Use the [four-duty C contract and delivery decision](../roles/coordinator.md): select, assign, check actual
+submission, continue. [Assemble](worker-assembly.md) one complete unit and dispatch once; reserve accepted,
+starting and queued work before refill. Serial by default; authorized independent units use available capacity.
+Route deltas to the current writer. Adopt usable results without redoing engineering; unfinished delivery
+requires continuation or a concrete recovery owner, not archival as complete. [Resource handoffs](storage.md)
+require writer/process stop. A finite unit never shrinks the whole selection.
 
 ### Decide the next action on every wake
 
@@ -83,7 +78,7 @@ scopes may restart without an inferred global drain; preserve paused schedules a
 
 ### Minimal communication during execution
 
-Use [Worker communication](../roles/worker.md#communication-and-continuation). After eligible action,
+Use [Worker communication](../roles/worker.md#result-and-continuation). After eligible action,
 wait through supported events/waits, not progress/log polling or duplicate result relays. Wait timeout alone
 is not failure or replacement authority. Send one combined applicable delta to the affected current owner;
 do not wake completed Workers indiscriminately. Recover a material omitted outcome once from suitable

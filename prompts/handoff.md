@@ -1,16 +1,12 @@
-# Task handoff template
+# Task handoff
 
-Use [harness mapping](../references/harness.md) and [stop/reconciliation](../references/orchestration.md#drain-pause-cancel-and-replacement).
-Transfer is normal at unit boundaries, not only after failure. Preserve work/budgets; it grants no authority
-or coverage. Resource-only transfer permits Coordinator disposal facts, not new engineering/disclosure/archive.
+Use [stop/reconciliation](../references/orchestration.md#drain-pause-cancel-and-replacement) and the existing
+[five-field task](task.md), updating only changed fields. No second brief or fresh audit of usable evidence.
+In field 2 retain base/head, deliveries, checks and exact current project paths. In field 4 retain consumed
+budgets and new authority if any; state prior writer/queued/process/descendant stop and mutation unknowns.
+Field 3 is the complete remainder through delivery, not an inspection-only substitute. Field 5 retains
+coverage, blockers and next conditions; mark protected references local-only.
 
-> Instructions: {supplied current text, missing startup paths and conditional methods}.
-> Resume {unfinished outcome/form}; workspace/project {root, identity, state.md and local work/}.
-> Current scope/authority: {new policy overrides, superseded old gates, limits and transfer reason}; retain historical facts.
-> Publication ownership: {repository W or idle backlog unit; no competing same-project writer/global gateway}.
-> Prior owner stop: {writer/queued/process/descendant facts; parent status alone is insufficient}.
-> Completed evidence: {coverage, deliveries, base/head and validation limits}.
-> Remaining: {whole selection, feasible actions, gates, exact blockers/owner/next condition}.
-> Mutation uncertainty: {reconciled effects or unknowns}; result/attention route: {route}.
-> Resources if used: {exact owned paths, delivery/preservation references or abandonment authority/scope/loss,
-> retained boundaries}; first action: {authorized continuation or exact constraint—not a status-only return}.
+Transfer grants no authority or completion; a parent terminal alone does not prove stopped writers.
+Resource-only transfer permits C's disposal facts under storage gates, not engineering/disclosure/archive.
+Select later units afresh; same-task context can be reused without resetting limits or changing ownership.

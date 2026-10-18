@@ -1,16 +1,8 @@
-# Incremental feedback — Coordinator
+# Incremental feedback — C input/coverage
 
-Use the [C header](../coordinator-start.md) and [feedback form](../../references/work-forms/incremental-feedback.md).
-
-> Input: {captured source/object boundaries, repository identities, prior handling and active writers}.
-> TODO 1: Verify capture completeness/deduplication and separate independent repository batches.
-> TODO 2: Dispatch complete feedback W units: inspect, bounded setup, repair/check, reply and directly publish/update.
-> TODO 3: Merge overlapping work with its current owner/writer; obtain handling outcomes, not merely a routing receipt.
-> TODO 4: Integrate object dispositions and exact external blockers, refill and advance eligible source positions.
-> Completion: every captured object has a handling outcome or exact blocker; capture/retention/forwarding alone is not completion.
-
-Historical domain ownership is not a permanent routing gate: agree this batch's writing owner once, then dispatch.
-Do not relay each routine object through governance for approval. Escalate real authority/resource/ownership gaps only.
-Keep source positions separate from resolution; retain unresolved objects without calling them handled.
-No empty W assignments, duplicate source capture or whole-repository reassessment for every notification.
-Use the [patrol C template](../recurring-patrol/coordinator.md) only when successive passes are actually assigned.
+Use the [C entry](../coordinator-start.md) and [one task](../task.md); apply the [feedback form](../../references/work-forms/incremental-feedback.md).
+- Input: captured native objects/window, deduplication, prior handling and actual writers; no empty W.
+- Coverage: every captured object has a handling outcome or exact blocker, not just capture/retention/forwarding.
+  Merge overlap with the active writer; historical domain ownership alone is no gate. Agree batch owner once.
+- Source positions have their own capture gate, separate from engineering resolution. No routine governance relay,
+  duplicate capture or whole-repository reassessment per notification; recurring passes need explicit scope.

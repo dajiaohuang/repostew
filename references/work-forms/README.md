@@ -1,7 +1,8 @@
 # Work forms
 
 Choose under [assembly](../worker-assembly.md); forms define scope/end conditions, not roles/authority.
-Use the matching [C/W template pair](../../prompts/README.md), with the shared header, to assemble one brief.
+Use one role contract and [five-field task](../../prompts/task.md). The matching [C/W form notes](../../prompts/README.md)
+add input/coverage differences only, never a second task sheet or approval workflow.
 Within a form, distinguish capture-only, metadata-only and engineering actions; these are not extra forms.
 Stages are internal boundaries, not automatically new assignments/agents. Keep feasible authorized stages
 in one complete unit; load/check each stage's prerequisites before acting. Reuse evidence only with matching

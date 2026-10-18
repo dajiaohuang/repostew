@@ -1,15 +1,15 @@
 # Offline transport-guard reinforcement
 
 Specialize [temporary reinforcement](reinforcement.md) when a capture helper has a demonstrated
-stream-counting, size-limit, timeout or reader-lifecycle defect. Use the shared C/W header plus one
-existing engineering form; this supplement neither resumes a stopped repository nor changes its limits.
+stream-counting, size-limit, timeout or reader-lifecycle defect. Use the role contract and [one task](task.md);
+this supplement neither resumes a stopped repository nor changes its limits.
 
-> Input: {exact failed helper/fixture paths and native failure; preserve originals/raw}.
-> Owner/write boundary: {responsible C; one Worker; explicitly assigned task-local shared-resource path}.
-> Outcome: {reusable capture implementation, deterministic fixtures, byte contract and residual limits}.
-> Limits: {zero network/Git/install; source/raw caps; fixture/process and continuous elapsed ceilings}.
-> Adoption: {named units and safe stopped-writer transfer; original unknown effects reconciled before replay}.
-> Follow [bounded recovery](../references/execution-recovery.md); no active shared-tool overwrite or retroactive compliance claims.
+Field 1 names the repaired helper/fixtures/byte contract as the local deliverable; field 2 supplies exact failed
+paths and native evidence, preserving originals/raw. Field 3 is the complete offline repair and fixture suite.
+Field 4 specifies one writer/task-owned path, zero network/Git/install, source/raw/process/elapsed ceilings,
+and named safe adoption after stopped-writer transfer and mutation reconciliation. Field 5 returns fixture
+results and residual limits, not a claim of target publication. Follow [bounded recovery](../references/execution-recovery.md);
+no active shared-tool overwrite or retroactive compliance claims.
 
 - Specify whether the budget covers observed bytes, saved raw and combined stdout/stderr; enforce
   the required total prospectively across readers, not by post-capture assertion or truncation.

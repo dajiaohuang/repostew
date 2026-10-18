@@ -1,13 +1,8 @@
-# Recurring patrol — Coordinator
+# Recurring patrol — C input/coverage
 
-Use the [C header](../coordinator-start.md) and [patrol form](../../references/work-forms/recurring-patrol.md).
-
-> Input: {source scope, native positions, unfinished pass, existing cadence/activation and capture owner}.
-> TODO 1: Resume the same unfinished pass; capture/deduplicate its remaining range without stacking another pass.
-> TODO 2: Directly dispatch complete handling W batches as available; merge affected deltas with active writers.
-> TODO 3: Integrate actual object outcomes/exact blockers, not forwarding receipts; source positions keep their own gate.
-> TODO 4: Refill within the current pass, then wait for the already-authorized next trigger or exact unblock condition.
-> Completion: {this pass's coverage/handling}; the continuing mandate ends only under its explicit stop condition.
-
-Frozen source windows do not freeze captured-object repair/validation/publication; source and engineering budgets differ.
-Do not create per-W timers, change activation, rescan unrelated mail or treat cadence as coverage.
+Use the [C entry](../coordinator-start.md) and [one task](../task.md); apply the [patrol form](../../references/work-forms/recurring-patrol.md).
+- Input: source scope, native positions, unfinished pass, existing cadence/activation and capture owner.
+- Coverage: finish the same pass before stacking another; dispatch ready complete handling batches, merge active
+  writers, distinguish actual outcomes from capture/forwarding and apply source-position gates independently.
+- Frozen source windows do not freeze captured-object engineering. No per-W timers, changed activation or unrelated
+  mail scans. A completed finite pass waits for its authorized trigger; it does not terminate the recurring mandate.

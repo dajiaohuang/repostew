@@ -5,9 +5,11 @@
   Portability needs capability mapping, not a fixed agent hierarchy or emulated execution service.
 - Roles own responsibility, prompts own task variables, assembly owns context selection, orchestration
   owns scheduling/lifecycle. Forms define coverage; methods define engineering; forge references map access.
-  Keep five forms; Maintainer extends Worker authority, not another mandatory stage or agent.
+  One C contract, one W contract and prompts/task.md's five fields; five forms add input/coverage only.
+  Maintainer extends Worker authority, not another mandatory stage or agent.
 - Assign complete units: Worker owns setup, engineering, validation and direct repository publication;
-  Coordinator owns coverage/refill/disposition, Supervisor owns governance and prompt bounded fault recovery.
+  Coordinator checks actual submission, coverage/refill/disposition; Supervisor owns bounded fault recovery.
+  No inspection-only finish for ordinary engineering; local patches/forwarding require a delivery decision.
   Serialize same-project/shared-index writes, not independent repository publication; shared-state Git has its publisher.
   Active turns act/wait/block/finish; read-only heartbeats inspect/report only. Preserve real gates and cumulative budgets.
 - Reuse supplied rules/evidence; batch missing startup reads, load conditional methods before action.

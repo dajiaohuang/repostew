@@ -10,7 +10,8 @@ tools, permissions and lifecycle. Coordinator owns whole-scope coordination; Wor
 bounded unit. Supervisor adds cross-domain governance only when assigned; serial work may combine roles.
 Load rules by role, task form and actual action: reuse complete current text, batch missing startup reads,
 and load conditional methods before their action. Links are navigation, not recursive reading orders.
-Continue by delta; unchanged usable rules need no reread. See [assembly](references/worker-assembly.md).
+Continue by delta; unchanged usable rules need no reread. Use one role contract and [five-field task](prompts/task.md);
+forms add only input/coverage differences. See [assembly](references/worker-assembly.md).
 Policy/state belong to the selected [workspace](references/workspace.md), not the package or checkout.
 Authorized multi-device [shared state](references/shared-state.md) uses one native project directory under
 state/repositories/<host>/<namespace>/<repo>/: root state.md is shared coordination; work/ holds local
@@ -65,7 +66,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
   delivered/preserved, explicitly abandoned, or retained with concrete blockers. Confidentiality is not
   permanent local retention; abandonment never substitutes for ownership or reporting authority.
 - Assign complete bounded units once, not one tool/test step at a time. Workers advance feasible authorized
-  stages; Coordinators check scope/coverage, not engineering again. Follow [orchestration](references/orchestration.md)
+  stages through direct submission; Coordinators check actual delivery and scope/coverage, not engineering again.
+  Local patches or read-only inventories do not finish engineering. Follow [orchestration](references/orchestration.md)
   for act/wait/block/finish on active task/event turns, independent refill and stopped-writer handoff.
   A read-only heartbeat inspects and reports only; it never dispatches, repairs or writes.
   A turn, structured reply or finite batch does not prove whole-scope completion. Reuse evidence/context

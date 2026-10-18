@@ -15,6 +15,8 @@ class PolicyBoundaries(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
         names = set(policy.BOUNDARIES) | {"SKILL.md", "AGENTS.md", "README.md", "README.en.md", "README.zh.md"}
+        names.update({"prompts/README.md", "prompts/task.md", "prompts/coordinator-start.md", "prompts/worker-start.md"})
+        names.update(f"prompts/{form}/{role}.md" for form in policy.FORMS for role in ("coordinator", "worker"))
         for name in names:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -22,6 +24,24 @@ class PolicyBoundaries(unittest.TestCase):
 
     def test_current_policy(self):
         policy.validate_boundaries(self.root)
+        policy.validate_task_shape(self.root)
+
+    def test_duplicate_form_contracts_are_rejected(self):
+        for form in policy.FORMS:
+            for role in ("coordinator", "worker"):
+                path = self.root / f"prompts/{form}/{role}.md"
+                original = path.read_text(encoding="utf-8")
+                with self.subTest(form=form, role=role):
+                    path.write_text(original + "\n> TODO 1: Inspect and return for approval.\n", encoding="utf-8")
+                    with self.assertRaisesRegex(AssertionError, "Form duplicates"):
+                        policy.validate_task_shape(self.root)
+                    path.write_text(original, encoding="utf-8")
+
+    def test_extra_task_field_is_rejected(self):
+        path = self.root / "prompts/task.md"
+        path.write_text(path.read_text(encoding="utf-8") + "\n> **6. Extra approval:** wait.\n", encoding="utf-8")
+        with self.assertRaisesRegex(AssertionError, "extra fields"):
+            policy.validate_task_shape(self.root)
 
     def test_missing_contracts_are_rejected(self):
         for name, phrases in policy.BOUNDARIES.items():

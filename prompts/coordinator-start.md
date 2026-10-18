@@ -1,16 +1,9 @@
-# Coordinator start template
+# Coordinator start
 
-Shared header: add exactly one [task-form C template](README.md); C's domain TODO is not the W brief.
+Use the [C execution contract](../roles/coordinator.md) and fill the single [five-field task](task.md).
+Choose one [input/coverage form](README.md); do not append a second task sheet.
 
-Use [assembly](../references/worker-assembly.md), current SKILL, Coordinator role, orchestration and selected
-forms. Rules precede variables; do not duplicate them below. Own the full domain, not its first batch.
-
-> Instructions: {supplied current text; missing startup paths; conditional rules/action triggers}.
-> Workspace/interfaces: {root/access}. Whole outcome/selection: {scope and completion conditions}.
-> Existing work/owners/inputs: {current facts, project homes and usable evidence}.
-> Stages: {input/output, priority, true dependencies and repository/group/pass gates}.
-> Actions/resources: {explicit allowed operations/destinations, exclusions, budgets consumed/remaining and exact stop conditions}.
-> Execution: {authorized capabilities/capacity, routing-policy reference, result/attention route}.
-> Publication: {each repository W; actual same-project conflicts}; workspace Git/global editors: {owners}.
-> Recurrence/stop mode: {explicit authority; heartbeats read-only; frozen input windows do not freeze in-window engineering}.
-> First action: {complete-unit selection/dispatch, real in-flight wait or exact blocker—not orientation alone}.
+C's object is the whole assigned selection, not its first batch. Field 4 includes existing routing/capacity,
+source/recurrence authority and named stage dependencies. No new schedule follows from this template.
+First action: select and dispatch a complete eligible unit, wait for real in-flight work, or state an exact
+blocker; orientation alone is not completion. Each result triggers the contract's delivery decision and refill.

@@ -3,7 +3,7 @@
 Use for a serious anomaly requiring resolution or an authorized outcome stalled at a concrete execution
 boundary: completed local work has not reached PR delivery, preserved remote work lacks follow-through,
 or eligible resource disposition has no executor. This is an assembly supplement, not another work form or standing domain.
-Use the [shared C/W header](README.md) plus exactly one applicable existing form; load only affected
+Use the role contract and [one five-field task](task.md), with the applicable form's input/coverage; load only affected
 [delivery](../references/workflows/delivery.md), [safety](../references/safety.md),
 [handoff](handoff.md) and [storage](../references/storage.md) rules before their actions.
 
@@ -33,20 +33,11 @@ establish it with exact blockers and exclusions; otherwise retain the replacemen
 
 ## Scoped brief
 
-> Trigger/evidence: {specific stalled link, known artifacts/results and why the current owner cannot finish it}.
-> Existing mandate/outcome: {authorized whole outcome; concrete completion or exact blocking conditions}.
-> Selection: {native identities, explicit indexes/manifests, local artifacts or confirmed remote branch/head/base;
-> known coverage gaps}. Existing PRs/merged/declined work: {reuse/no-duplicate dispositions}.
-> Owners: {responsible C; genuinely accepted units; per-project stopped-writer handoff; excluded unknowns}.
-> Reinforcement role: {existing C/W continuation, or temporary C for a distinct cross-project backlog};
-> Publication/global editors: {each repository's W; one writer per project; designated shared-state Git publisher}.
-> Actions: {complete investigation/necessary repair/check/delivery/disposition stages actually permitted;
-> public destinations, exact file/resource boundaries and out-of-scope actions}.
-> Resources: {original spent/remaining/UNKNOWN, failures, continuous deadline; explicitly authorized new
-> stage resources if any, not an old-budget reset}; routing/capacity: {current policy and actual availability}.
-> First action: {one feasible complete unit, genuine in-flight wait or exact external gate—not an inventory alone}.
-> Continuation/exit: {advance the whole selection per completion; record results in existing project roots;
-> return residual gates and release the temporary role once its finite purpose is complete}. No new schedule.
+Fill the common task once: field 1 names the existing mandate and concrete delivery gap; field 2 names
+artifacts, proof, owners and stopped-writer facts; field 3 gives the complete remainder; field 4 retains
+original consumption, any prospective authority and excluded unknowns; field 5 gives actual delivery or
+an exact blocker. No new schedule or extra preparatory reporting phase. Release the temporary role when
+its finite purpose is complete; do not treat creating this brief as resolving the anomaly.
 
 ## Delivery-backlog specialization
 
