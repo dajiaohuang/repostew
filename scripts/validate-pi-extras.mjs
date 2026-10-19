@@ -42,6 +42,14 @@ await assert.rejects(start(), /bind/);
 await cmd("repostew-workspace", workspace);
 assert.deepEqual(runner.getAllRegisteredTools().map(t => t.definition.name).sort(), ["repostew_read", "repostew_result"]);
 assert.equal((await check()).continue, false, "loading must not start a completion loop");
+assert.equal((await prompt({ repostew_goal: "stale" })).systemPromptOptions.sections.repostew_contract, undefined,
+  "ordinary unmarked input must not activate a role contract");
+await runner.emitBeforeAgentStart({ messageType: "user", prompt: "[[repostew:worker;assignment=task-1]] authorized work" }, { cwd: workspace, sections: {} });
+assert.match((await prompt({})).systemPromptOptions.sections.repostew_contract ?? "", /Worker/,
+  "explicit assignment marker arms Worker contract");
+await runner.emitInput("ordinary follow-up", undefined, "interactive");
+assert.equal((await prompt({})).systemPromptOptions.sections.repostew_contract, undefined,
+  "fresh unmarked external input clears role contract");
 await start();
 assert.equal(messages.length, 1);
 assert.ok(messages[0].text.includes("finite fixture task"));

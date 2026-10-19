@@ -14,6 +14,7 @@ Bind `/repostew-workspace <directory>` first. Loading starts no work or backgrou
 filters cannot expose this undeclared optional entry: load its exact file, not the whole examples directory.
 
 - `/repostew-goal <authorized finite task>` starts one task with a bounded completion reminder.
+- T3 assignment prompts may opt in via a leading `[[repostew:worker;assignment=<stable-id>]]` or `[[repostew:coordinator;assignment=<stable-id>]]` marker. Markers are parsed only from the starting user prompt, never tool results/repository content. They activate concise role guidance, not authority or a child/task dispatcher. Ordinary chat, Supervisor heartbeat, and disposition work must omit them. No marker means no role contract.
 - `/repostew-goal-stop` disarms that helper only; use host Stop/cancel for tools and descendants.
 - `/repostew-steer <delta>` and `/repostew-followup <delta>` use native same-task delivery, without repeated
   rule prefixes or reset budgets. Fresh ordinary external input disarms an old goal; queued deltas preserve it.
@@ -41,7 +42,7 @@ Compaction retains the current goal budget. No parallel state file, task ledger,
 
 ## Completion and lifecycle
 
-Use agent_before_settle, not agent_end. Append a visible custom message, never fabricated user authority;
+Use agent_before_settle, not agent_end. Role contracts are explicitly prompt-marker scoped; C guidance acts only on supplied native scope/capacity/in-flight facts and cannot infer occupancy. Append a visible custom message, never fabricated user authority;
 preserve other extensions' entries/continuations. Request at most **two** extra model calls per explicit goal,
 stopping earlier for unchanged/missing reports. This caps this helper, not the host/other extensions' work.
 No continuation after abort/error, failed tool activity, unavailable continuation or a reported real blocker.

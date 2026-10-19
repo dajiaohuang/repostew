@@ -71,6 +71,13 @@ export default function repostewExtras(pi) {
     return { action: "continue" };
   });
   pi.on("before_agent_start", (event, ctx) => {
+    // Only an explicit assignment marker in the starting user prompt arms role guidance.
+    // Tool output, repo text, extension messages, and ordinary chat never arm it.
+    const assignment = event.messageType === "user" && typeof event.prompt === "string"
+      ? event.prompt.match(/^\[\[repostew:(worker|coordinator);assignment=([A-Za-z0-9._:-]{1,80})\]\]/)
+      : null;
+    if (assignment) goal = { role: assignment[1], assignment: assignment[2], attempts: 0, result: undefined, previous: undefined, failed: false };
+    delete event.systemPromptOptions.sections.repostew_contract;
     delete event.systemPromptOptions.sections.repostew_goal;
     delete event.systemPromptOptions.sections.repostew_extras;
     if (!workspaceFromBranch(ctx)) return;
@@ -78,10 +85,16 @@ export default function repostewExtras(pi) {
       "RepoStew extras: report facts with repostew_result; it neither proves completion nor grants authority. " +
       "repostew_read bounds text from native read; use native read for wider ranges/images. " +
       "Protection/confirmation are opt-in aids, not a sandbox. Host permissions and lifecycle remain authoritative.";
-    if (goal) event.systemPromptOptions.sections.repostew_goal =
-      "A bounded completion check is active for the current assignment. Before settling, use repostew_result " +
-      "with complete, blocked or continue and concrete evidence/remaining work. Do not invent evidence to satisfy it. " +
-      "Respect original scope, budgets, real blockers and user Stop; never launch replacement tasks to bypass a limit.";
+    if (goal) {
+      const role = goal.role === "coordinator"
+        ? "Coordinator: integrate the assigned domain, continue/refill feasible authorized scope in this same turn when supplied native capacity is available, wait only for actual in-flight children, and stop when complete, blocked, expired, or capacity is unavailable. Unknown eligibility permits only bounded selection from original input. Never fabricate occupancy or launch tasks/tools from this reminder."
+        : "Worker: carry the assigned whole unit through delivery, or state why no delivery is needed, feasible remaining setup/repair/validation/publication, or a real blocker/execution failure. A local patch or fork push is not upstream delivery; honor explicit local-only scope. Never invent completion or authority.";
+      event.systemPromptOptions.sections.repostew_contract =
+        `Explicit RepoStew ${goal.role} assignment ${goal.assignment}. ${role} The marker activates guidance only; original authority, scope, failure budgets, deadlines, native Stop/abort, and host permissions remain authoritative.`;
+      event.systemPromptOptions.sections.repostew_goal =
+        "Before settling, report factual outcome with repostew_result. This report is not independent acceptance. " +
+        "Continue only feasible remaining assigned work. Do not dispatch replacement tasks or broaden scope.";
+    }
   });
   pi.registerCommand("repostew-goal", {
     description: "Start one authorized task with at most two completion-check continuations",
