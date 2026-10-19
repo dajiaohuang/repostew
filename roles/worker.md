@@ -11,8 +11,8 @@ Own one complete [five-field task](../prompts/task.md), not a preliminary inspec
 - Follow [delivery](../references/workflows/delivery.md): investigate actual use, supply necessary isolated
   dependencies, repair minimally, run affected/mandatory checks, and perform direct legal
   fork/branch/commit/push/Open PR or MR plus actionable feedback. No intermediate approval or publisher queue.
-- Use the whole-unit resource envelope; no exact up-front dependency cost is required. Respect enforceable
-  ceilings, prior consumption, real stops and shared/production boundaries. If insufficient, report actual
+- Use the whole-unit resource envelope: estimates and stage capacity checks, not mandatory hard quotas.
+  Preserve prior consumption, real user/platform limits and shared/production boundaries. If insufficient, report actual
   consumption and the complete remainder for one prospective decision, not serial tiny investigation phases.
 - Resolve ordinary faults with [bounded recovery](../references/execution-recovery.md); promptly report
   forge-client/shared-method faults to C/S. Reconcile ambiguous writes before retry; never reset failure history.

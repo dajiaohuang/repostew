@@ -13,7 +13,7 @@ Establish native identity/existing paths, preserve unrelated data, never clone i
 Use Git-aware operations for linked/shared worktrees. Record actual relative/legacy paths;
 unknown ownership or unavailable resources retain exact blockers, not an invented release result.
 Necessary dependency supply uses named task-local caches/build outputs under [bounded setup](execution-recovery.md),
-not shared/global toolchain mutation. Unknown exact total cost calls for enforceable ceilings, not permanent no-supply.
+not shared/global toolchain mutation. Use estimates and stage capacity checks, not mandatory hard quotas.
 
 ## Ownership: Worker preserves, Coordinator disposes, Supervisor governs capacity
 
@@ -85,6 +85,22 @@ or explicit unknowns and irreversible-loss risk in the same project records. No 
 inside that scope; no new backup, remote preservation or validation prerequisite. Never call abandoned
 material preserved/recoverable. Persistent records, existing recovery patches/archives and material outside
 the explicit waiver remain protected. Apply the common procedure and narrow filesystem limits below.
+
+## Minimal-retention campaign
+
+Only explicit user acceptance of ordinary-work loss enables this mode; a cleanup request alone does not.
+Assign a temporary disposition-only Coordinator using the [single task](../prompts/disposition.md), not
+an engineering Worker or timer. Freeze a finite set of native projects/resource paths from existing records;
+transfer disposition ownership after writers, queued writes and owned processes stop and mutations reconcile.
+For eligible ordinary task materials retain only root state.md and work/work.md: discard named checkouts,
+.git, unpublished commits/patches, untracked source, dependencies, builds, downloads and ordinary logs/fixtures.
+Record abandonment and known base/commit or unknowns before deleting; no publish/test/backup prerequisite.
+Exclude live/shared/user-owned canonical material, mailbox/credentials/keys, private security/incident evidence,
+existing recovery patches/archives, unknown ownership and external link targets. Protected children prevent
+whole-parent deletion; release eligible siblings instead. No privilege escalation, forced unlocking or shared kills.
+Execute eligible deletion in the same unit, not an inventory-only return; local failures do not freeze the rest.
+Write only concise disposition deltas to the two existing records; no new ledger, reports or recovery copies.
+This does not authorize future/all resources, engineering completion or removal of separately protected data.
 
 ## Release without a verification ceremony
 

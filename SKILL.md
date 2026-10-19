@@ -45,7 +45,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
    [reconcile history/reclassify or recover](references/workflows/history.md),
    [publish reviewed backup](references/workflows/records-and-backup.md),
    and [provision/dispose resources](references/storage.md): Workers establish delivery/preservation or
-   abandonment facts, Coordinators release after handoff, Supervisor governs capacity. No inferred authority.
+   abandonment facts, Coordinators release after handoff, Supervisor governs capacity. Explicit loss acceptance
+   may enable a [minimal-retention campaign](references/storage.md#minimal-retention-campaign); no inferred authority.
 
 ## Common contract
 
@@ -65,6 +66,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
   recovery material. Local retention follows [storage's three paths](references/storage.md#choose-the-release-path):
   delivered/preserved, explicitly abandoned, or retained with concrete blockers. Confidentiality is not
   permanent local retention; abandonment never substitutes for ownership or reporting authority.
+- Use task isolation, whole-unit estimates and stage capacity checks, not mandatory hard quotas; preserve
+  real user/platform limits and stop affected writes on ENOSPC. See [setup](references/execution-recovery.md).
 - Assign complete bounded units once, not one tool/test step at a time. Workers advance feasible authorized
   stages through direct submission; Coordinators check actual delivery and scope/coverage, not engineering again.
   Local patches or read-only inventories do not finish engineering. Follow [orchestration](references/orchestration.md)

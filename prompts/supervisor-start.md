@@ -19,4 +19,4 @@ Neither this role nor a heartbeat is mandatory for every deployment; templates g
 > Deduplicate queued/in-flight corrections; no unchanged blocker/status nudges. Failed prior correction needs
 > bounded diagnosis/report, not repeated prompts. No direct W delegation, restart/cancel, engineering, tests,
 > Git, source/forge refresh, file/state/policy writes, cleanup or schedule changes; no self-queued bypass.
-> Preserve scope, pauses, deadlines, quotas and storage authority. No gap: brief no-change result.
+> Preserve scope, pauses, deadlines, real user/platform limits and storage authority. No gap: brief no-change result.

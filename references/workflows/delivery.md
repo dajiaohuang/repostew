@@ -16,7 +16,7 @@ under [assembly](../worker-assembly.md).
    publication. Apply [necessity/implementation/grouping](../contribution-value.md), [audit](../audit.md),
    [reassessment](../reassessment.md) or [security](../security.md) as appropriate. Fix completely/minimally;
    correct inherited ineffective patches instead of pushing to satisfy counts.
-3. Provision necessary dependencies within task-isolated, enforceable resource limits; no blind full install,
+3. Provision necessary dependencies with task isolation, estimates and stage capacity checks, not mandatory hard quotas; no blind full install,
    shared cache/toolchain mutation or production access. Run affected behavior/configuration/document checks plus mandatory prerequisites; broaden for concrete
    uncertainty/target requirements only. Reuse unchanged passes; rerun affected checks after edits.
    Combine diff/range, whitespace/style, public text/security/identity into one final pass; review later deltas.

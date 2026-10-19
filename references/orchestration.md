@@ -35,7 +35,7 @@ deduplicated continuation to the current C for a refill or already-authorized di
 No new source/forge reads, engineering, restart/cancel, files/state writes, tests, Git, cleanup or schedule
 changes; no self-queued bypass. Unchanged sufficient blockers or an equivalent in-flight message mean no send.
 An ineffective prior correction requires bounded diagnosis/report, not repeated prompts or inferred restart rights.
-Active failure/completion events retain normal recovery; no phase extension, quota waiver or new authority.
+Active failure/completion events retain normal recovery; no phase extension, user/platform-limit waiver or new authority.
 
 ### Dependencies, capacity and completion
 

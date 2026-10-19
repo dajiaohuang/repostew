@@ -16,7 +16,7 @@ LIMITS = {
     "references/harness.md": 40,
     "roles/supervisor.md": 26, "roles/coordinator.md": 33, "roles/worker.md": 38,
     "roles/maintainer.md": 15,
-    "prompts/README.md": 24, "prompts/supervisor-start.md": 24,
+    "prompts/README.md": 25, "prompts/disposition.md": 8, "prompts/supervisor-start.md": 24,
     "prompts/coordinator-start.md": 10, "prompts/worker-start.md": 10, "prompts/task.md": 18,
     "prompts/continue.md": 18, "prompts/handoff.md": 22,
 }
@@ -54,9 +54,14 @@ BOUNDARIES = {
     "references/refill.md": ("in the same turn", "No gap", "Refill gap", "Disposition gap", "Already routed",
                              "Ineffective prior correction", "At most one combined continuation",
                              "No direct W delegation", "only mutation is the bounded C message",
-                             "hard-quota waiver", "expiry never renews itself"),
+                             "user/platform-limit waiver", "expiry never renews itself"),
     "references/safety.md": ("do not precheck CLA/DCO", "actually requests signing", "PR-only refusal", "Never sign for the user"),
-    "references/execution-recovery.md": ("three failed repairs", "notify", "prospective deadline", "cumulative accounting"),
+    "references/execution-recovery.md": ("three failed repairs", "notify", "prospective deadline", "cumulative accounting",
+                                         "are not prerequisites", "Estimates guide planning, not automatic stop gates",
+                                         "ENOSPC", "Monitoring is not hard enforcement"),
+    "references/storage.md": ("Minimal-retention campaign", "finite set", "queued writes", "private security/incident evidence",
+                               "existing recovery patches/archives", "no publish/test/backup prerequisite",
+                               "Execute eligible deletion in the same unit", "No privilege escalation"),
     "references/workflows/delivery.md": ("assigned Worker completes its own", "no global", "Missing fork/remote head is a step"),
     "references/forges/github/README.md": ("submit before CLA/DCO prechecks", "Report `gh` faults promptly", "If unable to repair"),
     "references/forges/gitlab/README.md": ("Decide per project and action", "submit before CLA/DCO prechecks", "Report `glab` faults promptly"),
@@ -75,6 +80,8 @@ FORBIDDEN = (
     "read-only heartbeats only inspect/report", "The authorized Supervisor heartbeat is **read-only**",
     "A read-only heartbeat inspects and reports only", "No dispatch/send/steer/restart/cancel",
     "Heartbeat may directly dispatch Workers", "Heartbeat may change quotas", "Heartbeat may delete checkouts",
+    "with enforceable time, transfer and disk ceilings", "establish enforceable bounds and stop safely at them",
+    "Hard filesystem quotas are required before builds", "Delete existing recovery archives during ordinary cleanup",
 )
 
 

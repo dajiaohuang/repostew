@@ -24,11 +24,15 @@ it does not waive user/target prohibitions, privacy, real account rights or mand
 
 Give one complete setup + affected validation + necessary repair + publication unit, not a chain of
 metadata-only investigations. Reuse established successes and source provenance. Necessary dependencies
-may be supplied inside named task-owned directories/caches/build outputs with enforceable time, transfer
-and disk ceilings; no blind full install, shared/global toolchain changes or production access.
-Unknown exact total download size is not itself a permanent blocker: establish enforceable bounds and
-stop safely at them. If the method cannot enforce the necessary bound, fix that method or report the precise
-gap; paper quotas and pipe-byte observations do not prove network or filesystem limits.
+may be supplied inside named task-owned directories/caches/build outputs using whole-unit estimates,
+ordinary command timeouts and capacity checks before large supply/build steps. Hard filesystem quotas,
+exact transfer/disk accounting and precomputed dependency totals are not prerequisites for installation,
+builds or tests; do not provision quota infrastructure or block work solely because it is unavailable.
+Estimates guide planning, not automatic stop gates. Check capacity at natural stage boundaries; if growth
+materially exceeds the estimate, reduce concurrency/scope or adjust the plan within authority. Stop affected
+writes on ENOSPC or actual capacity danger; retain original records. Monitoring is not hard enforcement.
+Keep real platform limits, explicit user-imposed ceilings, prior consumption and shared/production boundaries;
+no blind full install, shared/global toolchain mutation or unbounded retries.
 
 Preserve spent budgets, failures and original deadlines. Never extend an expired phase retrospectively.
 The authorized Supervisor may allocate a realistic explicit missing-work/recovery phase for the existing

@@ -11,6 +11,7 @@ variables, not copied policy, executable protocol or authority. Use one C/W role
 - Incremental feedback: [C](incremental-feedback/coordinator.md) / [W](incremental-feedback/worker.md).
 - Discovery + new repositories: [C](discovery/coordinator.md) / [new-repository W alias](discovery/worker.md).
 - Recurring patrol: [C](recurring-patrol/coordinator.md) / [W](recurring-patrol/worker.md).
+- [Disposition](disposition.md): temporary C for an explicitly authorized finite minimal-retention campaign.
 - [Continue](continue.md): same-task delta/correction with suitable context.
 - [Handoff](handoff.md): unit-boundary transfer after stop and mutation reconciliation.
 - [Temporary reinforcement](reinforcement.md): scoped supplement for anomalies/delivery gaps, not a standing domain;

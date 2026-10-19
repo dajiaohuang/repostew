@@ -12,7 +12,7 @@
   No inspection-only finish for ordinary engineering; local patches/forwarding require a delivery decision.
   Serialize same-project/shared-index writes, not independent repository publication; shared-state Git has its publisher.
   C refills in the same result turn; a single bounded S heartbeat may send deduplicated gap instructions to C,
-  never direct W/engineering/cleanup/file writes. Preserve real gates, cumulative budgets and unchanged quotas.
+  never direct W/engineering/cleanup/file writes. Preserve real gates and cumulative consumption; resource estimates are not mandatory hard quotas.
 - Reuse supplied rules/evidence; batch missing startup reads, load conditional methods before action.
   Leaves receive applicable boundaries, not global briefs. Links are navigation, not recursive reading.
   Templates add no authority. No prompt compiler, custom runtime/queue/claims/receipts/database or polling service.

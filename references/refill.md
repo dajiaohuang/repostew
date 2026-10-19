@@ -37,6 +37,6 @@ At most one combined continuation per affected C per tick. Do not message health
 for status. A send is not W dispatch or delivery: report which occurred, or what remains unproved.
 No direct W delegation, restart/cancel, repair, tests/install, Git, file/state/position/policy writes, cleanup,
 schedule changes or self-queued follow-up during a heartbeat. Its only mutation is the bounded C message.
-It grants no new scope, hard-quota waiver, resource/abandonment authority or paused-job activation.
+It grants no new scope, user/platform-limit waiver, resource/abandonment authority or paused-job activation.
 If a due boundary is observed in existing evidence, reevaluate only that condition within standing authority;
 expiry never renews itself. No need to wait for the next tick when an active result event already permits work.
