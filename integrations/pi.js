@@ -2,7 +2,8 @@ import { realpathSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const core = fileURLToPath(new URL("../skills/repostew/", import.meta.url));
+export const repoStewCorePath = fileURLToPath(new URL("../skills/repostew/", import.meta.url));
+const core = repoStewCorePath;
 const entryType = "repostew.workspace";
 
 function resolveWorkspace(path, cwd) {

@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, symlinkSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
-const [piRoot, bundle, output] = process.argv.slice(2).map(path => resolve(path));
+const [piRoot, bundle, output, deploymentBinding] = process.argv.slice(2).map(path => path ? resolve(path) : undefined);
 const api = async path => import(pathToFileURL(join(piRoot, path)).href);
 const { validateToolArguments } = await api("node_modules/@earendil-works/pi-ai/dist/utils/validation.js");
 const { loadExtensions, createExtensionRuntime } = await api("dist/core/extensions/loader.js");
@@ -42,8 +42,14 @@ await assert.rejects(start(), /bind/);
 await runner.emitBeforeAgentStart({ messageType: "user", prompt: "[[repostew:worker;assignment=unbound]] no authority" }, { cwd: workspace, sections: {} });
 assert.equal((await prompt({})).systemPromptOptions.sections.repostew_contract, undefined,
   "an assignment marker cannot arm role guidance without durable workspace binding");
+const unboundStatus = await call("repostew_runtime_status", {});
+assert.equal(unboundStatus.structuredContent.workspace, "");
+assert.equal(unboundStatus.structuredContent.skillPresent, true);
 await cmd("repostew-workspace", workspace);
-assert.deepEqual(runner.getAllRegisteredTools().map(t => t.definition.name).sort(), ["repostew_read", "repostew_result"]);
+const boundStatus = await call("repostew_runtime_status", {});
+assert.equal(boundStatus.structuredContent.workspace, workspace);
+assert.equal(boundStatus.structuredContent.role, "inactive");
+assert.deepEqual(runner.getAllRegisteredTools().map(t => t.definition.name).sort(), ["repostew_read", "repostew_result", "repostew_runtime_status"]);
 assert.equal((await check()).continue, false, "loading must not start a completion loop");
 assert.equal((await prompt({ repostew_goal: "stale" })).systemPromptOptions.sections.repostew_contract, undefined,
   "ordinary unmarked input must not activate a role contract");
@@ -241,4 +247,29 @@ await assert.rejects(start(), /bind/);
 assert.equal((await prompt({ repostew_extras: "stale" })).systemPromptOptions.sections.repostew_extras, undefined);
 assert.notEqual((await gate("write", { path: join(protectedDir, "existing.txt") }))?.block, true, "controls are intentionally session-local, not durable authorization");
 assert.deepEqual(errors, []);
-console.log("Pi extras: native load, scope/prompt, bounded settle, reports, deltas, guard paths/links, RPC/no-UI confirmation, nested read bounds/error/abort passed (offline; no live T3/model test).");
+if (deploymentBinding) {
+  const deploymentCwd = resolve(process.cwd());
+  const bindingSession = SessionManager.inMemory(deploymentCwd);
+  const bindingRuntime = createExtensionRuntime();
+  bindingRuntime.appendEntry = (type, data) => bindingSession.appendCustomEntry(type, data);
+  const bindingLoaded = await loadExtensions([
+    deploymentBinding, join(bundle, "extensions/pi.js"), join(bundle, "extensions/pi-extras.js"),
+  ], deploymentCwd, undefined, bindingRuntime);
+  assert.deepEqual(bindingLoaded.errors, []);
+  const bindingRunner = new ExtensionRunner(bindingLoaded.extensions, bindingRuntime, deploymentCwd, bindingSession, undefined);
+  await bindingRunner.emit({ type: "session_start", reason: "startup" });
+  assert.ok(bindingSession.getBranch().some(entry => entry.type === "custom" && entry.customType === "repostew.workspace" && entry.data.workspace === deploymentCwd),
+    "deployment shim binds the explicitly authorized matching cwd before base pi.js startup restores branch state");
+  const boundPrompt = await bindingRunner.emitBeforeAgentStart({
+    messageType: "user", prompt: "[[repostew:worker;assignment=deploy-smoke]] local only",
+  }, { cwd: deploymentCwd, sections: {} });
+  assert.match(boundPrompt.systemPromptOptions.sections.repostew_contract, /Worker/);
+  const statusTool = bindingRunner.getToolDefinition("repostew_runtime_status");
+  const status = await statusTool.execute("status-test", {}, undefined, undefined, bindingRunner.createToolContext("status-test"));
+  assert.equal(status.structuredContent.workspace, deploymentCwd);
+  assert.equal(status.structuredContent.skillPresent, true);
+  assert.equal(status.structuredContent.assignment, "deploy-smoke");
+  await bindingRunner.emit({ type: "session_shutdown" });
+}
+console.log("Pi extras: native load, scope/prompt, bounded settle, reports, deltas, guard paths/links, RPC/no-UI confirmation, nested read bounds/error/abort" +
+  (deploymentBinding ? ", deployment binding/status" : "") + " passed (offline; no live T3/model test).");

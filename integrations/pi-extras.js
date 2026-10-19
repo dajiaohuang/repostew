@@ -1,9 +1,9 @@
 // RepoStew adaptations of Pi 1.3.0 example patterns, not a second execution backend.
 // Explicitly load alongside pi.js; never auto-discovered through the package manifest.
-import { realpathSync } from "node:fs";
+import { existsSync, realpathSync } from "node:fs";
 import { basename, dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { Type } from "typebox";
-import { taskPrompt, workspaceFromBranch } from "./pi.js";
+import { repoStewCorePath, taskPrompt, workspaceFromBranch } from "./pi.js";
 
 const MAX_CONTINUATIONS = 2;
 const MAX_TEXT_BYTES = 16 * 1024;
@@ -183,6 +183,26 @@ export default function repostewExtras(pi) {
     evidence: strings, remaining: strings,
     blocker: Type.String({ maxLength: 2000 }),
     resourceHandoff: Type.String({ minLength: 1, maxLength: 2000, description: "Release/preservation/retention facts only, or not applicable; no deletion authorization" }),
+  });
+  const runtimeStatusSchema = Type.Object({
+    adapterVersion: Type.String(), skillPath: Type.String(), skillPresent: Type.Boolean(),
+    workspace: Type.String(), role: Type.String(), assignment: Type.String(), attempts: Type.Integer(),
+  });
+  pi.registerTool({
+    name: "repostew_runtime_status", label: "RepoStew runtime status",
+    description: "Report only adapter version, skill path/presence, durable bound workspace, role, assignment ID and continuation count. No task text, tool results, credentials, or permission changes. Does not activate a role or grant authority.",
+    executionMode: "sequential", parameters: Type.Object({}), outputSchema: runtimeStatusSchema,
+    async execute(_id, _params, signal, _onUpdate, ctx) {
+      signal?.throwIfAborted();
+      const workspace = workspaceFromBranch(ctx);
+      const details = {
+        adapterVersion: "0.2.0", skillPath: repoStewCorePath,
+        skillPresent: existsSync(join(repoStewCorePath, "SKILL.md")),
+        workspace: workspace || "", role: goal?.role || "inactive",
+        assignment: goal?.assignment || "", attempts: goal?.attempts || 0,
+      };
+      return { ...textResult(JSON.stringify(details), details), structuredContent: details };
+    },
   });
   pi.registerTool({
     name: "repostew_result", label: "RepoStew result",

@@ -18,6 +18,7 @@ filters cannot expose this undeclared optional entry: load its exact file, not t
 - `/repostew-goal-stop` disarms that helper only; use host Stop/cancel for tools and descendants.
 - `/repostew-steer <delta>` and `/repostew-followup <delta>` use native same-task delivery, without repeated
   rule prefixes or reset budgets. Fresh ordinary external input disarms an old goal; queued deltas preserve it.
+- `repostew_runtime_status`: metadata-only adapter version, resolved skill path/presence, durable workspace, active role/assignment ID, and continuation count. It neither includes task content nor activates a role/grants authority.
 - `repostew_result`: schema-declared structuredContent with outcome, summary, evidence, remaining, blocker
   and resourceHandoff. Complete requires evidence and no remaining work/blocker; blocked needs an exact factual blocker (including a specific native in-flight wait when no capacity remains); continue needs remaining feasible authorized work and no blocker. A Coordinator may use native delegation within existing authority/capacity; this extension never auto-delegates or grants capacity. Use minimal references/not-applicable, never protected bodies.
   Shape/consistency is not evidence verification. No state.md write, independent acceptance or terminate:true.
