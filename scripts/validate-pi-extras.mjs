@@ -39,6 +39,9 @@ const prompt = sections => runner.emitBeforeAgentStart({ messageType: "user", pr
 
 await runner.emit({ type: "session_start", reason: "startup" });
 await assert.rejects(start(), /bind/);
+await runner.emitBeforeAgentStart({ messageType: "user", prompt: "[[repostew:worker;assignment=unbound]] no authority" }, { cwd: workspace, sections: {} });
+assert.equal((await prompt({})).systemPromptOptions.sections.repostew_contract, undefined,
+  "an assignment marker cannot arm role guidance without durable workspace binding");
 await cmd("repostew-workspace", workspace);
 assert.deepEqual(runner.getAllRegisteredTools().map(t => t.definition.name).sort(), ["repostew_read", "repostew_result"]);
 assert.equal((await check()).continue, false, "loading must not start a completion loop");
@@ -71,6 +74,17 @@ await report("continue", { remaining: ["step two"] });
 assert.equal((await check()).continue, true);
 await report("continue", { remaining: ["step three"] });
 assert.equal((await check()).continue, false, "changing reports cannot exceed the two-continuation budget");
+// Re-delivering an existing assignment identity must not refund its two-call budget.
+await runner.emitBeforeAgentStart({ messageType: "user", prompt: "[[repostew:worker;assignment=spent-assignment]] same" }, { cwd: workspace, sections: {} });
+await report("continue", { remaining: ["one"] });
+assert.equal((await check()).continue, true);
+await runner.emitBeforeAgentStart({ messageType: "user", prompt: "[[repostew:worker;assignment=spent-assignment]] same" }, { cwd: workspace, sections: {} });
+await report("continue", { remaining: ["two"] });
+assert.equal((await check()).continue, true);
+await report("continue", { remaining: ["three"] });
+assert.equal((await check()).continue, false);
+await runner.emitBeforeAgentStart({ messageType: "user", prompt: "[[repostew:worker;assignment=spent-assignment]] same" }, { cwd: workspace, sections: {} });
+assert.equal((await check()).continue, false, "repeated same-id assignment cannot rearm after exhaustion");
 await cmd("repostew-goal-stop");
 assert.equal((await check()).continue, false);
 await start();

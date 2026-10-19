@@ -10,17 +10,16 @@ The manifest autoloads only `extensions/pi.js`; extras require explicit loading 
 rtk pi -e ./dist/repostew -e ./dist/repostew/extensions/pi-extras.js
 ```
 
-Bind `/repostew-workspace <directory>` first. Loading starts no work or background service. Package resource
+Bind `/repostew-workspace <directory>` in the target Pi session before the assignment marker; the durable branch binding is required and a prompt marker alone cannot bind policy. For T3, start a fresh task/session with the intended project workspace, invoke the native `/repostew-workspace <directory>` command while idle, then submit the marked assignment. If the T3 integration cannot deliver that native command before the task, role guards remain inactive; do not imitate a binding with role text or a path in the prompt. Loading starts no work or background service. Package resource
 filters cannot expose this undeclared optional entry: load its exact file, not the whole examples directory.
 
 - `/repostew-goal <authorized finite task>` starts one task with a bounded completion reminder.
-- T3 assignment prompts may opt in via a leading `[[repostew:worker;assignment=<stable-id>]]` or `[[repostew:coordinator;assignment=<stable-id>]]` marker. Markers are parsed only from the starting user prompt, never tool results/repository content. They activate concise role guidance, not authority or a child/task dispatcher. Ordinary chat, Supervisor heartbeat, and disposition work must omit them. No marker means no role contract.
+- After binding, T3 assignment prompts may opt in via a leading `[[repostew:worker;assignment=<stable-id>]]` or `[[repostew:coordinator;assignment=<stable-id>]]` marker. Markers are parsed only from the starting user prompt, never tool results/repository content. An unbound marker is ignored. Reusing an assignment ID never resets its in-memory continuation budget; use a new ID only for a genuinely new authorized assignment. They activate concise role guidance, not authority or an automatic dispatcher. Ordinary chat, Supervisor heartbeat, and disposition work must omit them. No marker means no role contract.
 - `/repostew-goal-stop` disarms that helper only; use host Stop/cancel for tools and descendants.
 - `/repostew-steer <delta>` and `/repostew-followup <delta>` use native same-task delivery, without repeated
   rule prefixes or reset budgets. Fresh ordinary external input disarms an old goal; queued deltas preserve it.
 - `repostew_result`: schema-declared structuredContent with outcome, summary, evidence, remaining, blocker
-  and resourceHandoff. Complete requires evidence and no remaining work/blocker; blocked needs a blocker;
-  continue needs remaining work and no blocker. Use minimal references/not-applicable, never protected bodies.
+  and resourceHandoff. Complete requires evidence and no remaining work/blocker; blocked needs an exact factual blocker (including a specific native in-flight wait when no capacity remains); continue needs remaining feasible authorized work and no blocker. A Coordinator may use native delegation within existing authority/capacity; this extension never auto-delegates or grants capacity. Use minimal references/not-applicable, never protected bodies.
   Shape/consistency is not evidence verification. No state.md write, independent acceptance or terminate:true.
 - `repostew_read`: one explicit native read through ctx.executeTool, preserving validation/hooks/permissions,
   cancellation and error outcome. At most 200 requested lines and 16 KiB/200 text lines plus a notice;
@@ -48,7 +47,7 @@ stopping earlier for unchanged/missing reports. This caps this helper, not the h
 No continuation after abort/error, failed tool activity, unavailable continuation or a reported real blocker.
 Settlement clears the goal; later tool activity invalidates an earlier final report. At the limit record
 unestablished completion, not success or redispatch. Normal native repair already underway is not interrupted.
-A helper cannot repair missing authority/input, override real gates or compensate for micro-stage assignments;
+A helper cannot repair missing authority/input, override real gates or compensate for micro-stage assignments. A Coordinator may dispatch authorized work using native T3 tools when supplied facts show capacity; an actual in-flight wait with no feasible capacity is a factual blocked outcome, not a reason to poll;
 original budgets, Worker engineering and Coordinator coverage obligations remain authoritative.
 
 ## Eight patterns and deliberate adaptations

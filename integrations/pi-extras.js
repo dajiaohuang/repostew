@@ -50,9 +50,10 @@ export function clipText(text, maxBytes = MAX_TEXT_BYTES, maxLines = MAX_LINES) 
 
 export default function repostewExtras(pi) {
   let goal;
+  const seenAssignments = new Set();
   let protectedRoots = [];
   let confirmShell = false;
-  function reset() { goal = undefined; protectedRoots = []; confirmShell = false; }
+  function reset() { goal = undefined; seenAssignments.clear(); protectedRoots = []; confirmShell = false; }
   function bound(ctx) {
     const workspace = workspaceFromBranch(ctx);
     if (!workspace) throw new Error("Load RepoStew pi.js and bind /repostew-workspace first");
@@ -73,21 +74,30 @@ export default function repostewExtras(pi) {
   pi.on("before_agent_start", (event, ctx) => {
     // Only an explicit assignment marker in the starting user prompt arms role guidance.
     // Tool output, repo text, extension messages, and ordinary chat never arm it.
-    const assignment = event.messageType === "user" && typeof event.prompt === "string"
+    const hasWorkspaceBinding = Boolean(workspaceFromBranch(ctx));
+    const assignment = hasWorkspaceBinding && event.messageType === "user" && typeof event.prompt === "string"
       ? event.prompt.match(/^\[\[repostew:(worker|coordinator);assignment=([A-Za-z0-9._:-]{1,80})\]\]/)
       : null;
-    if (assignment) goal = { role: assignment[1], assignment: assignment[2], attempts: 0, result: undefined, previous: undefined, failed: false };
+    if (assignment) {
+      const [, role, id] = assignment;
+      // Repeated starts/deltas carrying the same assignment identity cannot refund continuation budget.
+      const key = `${role}:${id}`;
+      if (!seenAssignments.has(key)) {
+        seenAssignments.add(key);
+        goal = { role, assignment: id, attempts: 0, result: undefined, previous: undefined, failed: false };
+      }
+    }
     delete event.systemPromptOptions.sections.repostew_contract;
     delete event.systemPromptOptions.sections.repostew_goal;
     delete event.systemPromptOptions.sections.repostew_extras;
-    if (!workspaceFromBranch(ctx)) return;
+    if (!hasWorkspaceBinding) return;
     event.systemPromptOptions.sections.repostew_extras =
       "RepoStew extras: report facts with repostew_result; it neither proves completion nor grants authority. " +
       "repostew_read bounds text from native read; use native read for wider ranges/images. " +
       "Protection/confirmation are opt-in aids, not a sandbox. Host permissions and lifecycle remain authoritative.";
     if (goal) {
       const role = goal.role === "coordinator"
-        ? "Coordinator: integrate the assigned domain, continue/refill feasible authorized scope in this same turn when supplied native capacity is available, wait only for actual in-flight children, and stop when complete, blocked, expired, or capacity is unavailable. Unknown eligibility permits only bounded selection from original input. Never fabricate occupancy or launch tasks/tools from this reminder."
+        ? "Coordinator: integrate the assigned domain and use supplied native scope/capacity/in-flight facts. When assigned work remains eligible and native capacity is available, continue it in this turn, including authorized native delegation; do not wait merely because children exist if capacity remains. Wait on actual in-flight work when no feasible capacity remains, then stop this turn with an exact factual waiting blocker rather than polling. Unknown eligibility permits bounded selection from original input. This extension never auto-delegates, adds tasks, or grants authority; the Coordinator may use native dispatch only within original authority, real capacity, scope and deadlines. Stop when complete, genuinely blocked, expired, or no feasible work/capacity remains."
         : "Worker: carry the assigned whole unit through delivery, or state why no delivery is needed, feasible remaining setup/repair/validation/publication, or a real blocker/execution failure. A local patch or fork push is not upstream delivery; honor explicit local-only scope. Never invent completion or authority.";
       event.systemPromptOptions.sections.repostew_contract =
         `Explicit RepoStew ${goal.role} assignment ${goal.assignment}. ${role} The marker activates guidance only; original authority, scope, failure budgets, deadlines, native Stop/abort, and host permissions remain authoritative.`;
@@ -176,7 +186,7 @@ export default function repostewExtras(pi) {
   });
   pi.registerTool({
     name: "repostew_result", label: "RepoStew result",
-    description: "Report current assignment facts, not independent acceptance. Supply evidence references, remaining work and real blockers; no protected bodies. Does not terminate the model turn or update state.md.",
+    description: "Report current assignment facts, not independent acceptance. Continue means feasible authorized work remains; blocked needs an exact real blocker or specific native in-flight wait when no capacity remains. Complete requires evidence. Supply references, not protected bodies. Does not terminate the model turn or update state.md.",
     executionMode: "sequential",
     parameters: resultSchema,
     outputSchema: resultSchema,
