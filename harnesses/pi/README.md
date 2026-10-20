@@ -1,7 +1,9 @@
 # RepoStew Pi harness
 
+[中文](README.zh.md) · [Repository overview](../../README.md) · [Companion Skill](../../skill/README.md)
+
 An optional execution service built around Pi's native sessions, RPC, tools and
-structured results. The [RepoStew Skill](../../SKILL.md) remains independent.
+structured results. The [RepoStew Skill](../../skill/SKILL.md) remains independent.
 Installing either component starts no work.
 
 ## Start
@@ -16,7 +18,7 @@ rtk node src/cli.mjs init
 
 Edit `config.local.json`: set `piCli` to the installed Pi CLI, `workspace` to
 your task workspace, and choose your configured providers/models. `policyDir`
-points to this repository's Skill. Credentials stay in Pi's auth store.
+points to `../../skill`, this repository's separate workflow component. Credentials stay in Pi's auth store.
 `REPOSTEW_PI_CLI` can also specify the installed CLI for development/tests.
 
 ```text
@@ -46,7 +48,7 @@ rtk npm run check
 rtk npm test
 ```
 
-Publication validation on Windows: 76 passed, 1 POSIX-native test skipped.
+Publication validation on Windows: 77 passed, 1 POSIX-native test skipped.
 This is not Linux/macOS or real multi-host acceptance. Native Pi multi-C/W
 fixtures were also exercised during development; no production task data is
 distributed. [Implementation provenance](PI-IMPLEMENTATION.md).

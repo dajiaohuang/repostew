@@ -31,7 +31,7 @@ def build(output):
         shutil.copyfile(ROOT / "integrations" / name, extension.parent / name)
     (bundle / "scripts").mkdir()
     shutil.copyfile(ROOT / "scripts" / "configure-workers.py", bundle / "scripts/configure-workers.py")
-    shutil.copyfile(ROOT / "LICENSE", bundle / "LICENSE")
+    shutil.copyfile(ROOT.parent / "LICENSE", bundle / "LICENSE")
     shutil.copyfile(ROOT / "integrations" / "README.md", bundle / "README.md")
     package = json.loads((ROOT / "integrations" / "package.json").read_text(encoding="utf-8"))
     package["files"] = ["plugin.json", ".codex-plugin", ".claude-plugin", "extensions", "skills", "scripts/configure-workers.py"]

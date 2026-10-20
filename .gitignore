@@ -32,3 +32,6 @@ contributions.json
 /private/
 /archives/
 /migration-staging/
+
+# Skill package output
+/skill/dist/

@@ -1,6 +1,6 @@
-# Harness packages
+# Skill integration packages
 
-From the source repository, validate with `rtk python scripts/validate-policy.py`,
+From the repository's `skill/` directory, validate with `rtk python scripts/validate-policy.py`,
 then build with `rtk python scripts/build-package.py`.
 Output: `dist/repostew/`; rebuild into a new directory with `--output <path>`.
 One bundle, one canonical skill; generated copies are never edited.
