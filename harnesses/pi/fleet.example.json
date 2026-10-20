@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "runtimeDir": ".fleet",
+  "machines": [
+    {"id":"windows-1","platform":"win32","sshHost":"repostew-windows","node":"node","gateway":"D:/RepoStew/repostew_pi/src/fleet-gateway.mjs","config":"D:/RepoStew/repostew_pi/config.local.json"},
+    {"id":"linux-1","platform":"linux","sshHost":"repostew-linux","node":"/usr/local/bin/node","gateway":"/home/owner/RepoStew/repostew_pi/src/fleet-gateway.mjs","config":"/home/owner/RepoStew/repostew_pi/config.local.json"},
+    {"id":"mac-1","platform":"darwin","sshHost":"repostew-mac","node":"/opt/homebrew/bin/node","gateway":"/Users/owner/RepoStew/repostew_pi/src/fleet-gateway.mjs","config":"/Users/owner/RepoStew/repostew_pi/config.local.json"}
+  ]
+}

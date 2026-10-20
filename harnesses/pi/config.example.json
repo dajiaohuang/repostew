@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "runtimeDir": ".runtime",
+  "workRoot": "work",
+  "workspace": "../../../repostew-workspace",
+  "piCli": "node_modules/@earendil-works/pi-coding-agent/dist/bundle/cli.js",
+  "python": "python",
+  "maxWorkers": 4,
+  "maxQueued": 16,
+  "heartbeatMs": 60000,
+  "rpcTimeoutMs": 30000,
+  "shutdownTimeoutMs": 20000,
+  "maxRunMs": 7200000,
+  "missingReportReminders": 1,
+  "maxContinuations": 12,
+  "coordinator": {
+    "provider": "openai-codex",
+    "model": "gpt-6-luna",
+    "thinking": "xhigh"
+  },
+  "pools": [
+    {
+      "id": "luna",
+      "provider": "openai-codex",
+      "model": "gpt-6-luna",
+      "thinking": "high",
+      "priority": 0,
+      "weight": 1,
+      "maxConcurrent": 4,
+      "enabled": true
+    },
+    {
+      "id": "flash",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "thinking": "high",
+      "priority": 0,
+      "weight": 1,
+      "maxConcurrent": 4,
+      "enabled": true
+    }
+  ],
+  "policyDir": "../.."
+}

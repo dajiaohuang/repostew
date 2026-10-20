@@ -24,7 +24,7 @@ For otherwise authorized contributions, automatic CONTRIBUTING/LICENSE submissio
 click-through assent is permitted. Submit ordinary PRs/MRs first: do not precheck CLA/DCO/signature status
 or block creation because a file exists, certification is unknown or a previous signature gate was recorded.
 If a bot/check/maintainer actually requests signing or certification, report its exact link and required
-personal action to the user; stop at that action, not ordinary submission. A platform's actual creation-time
+personal action through notification handling. Completed submissions release the Worker; later CLA/DCO is user follow-up. A platform's actual creation-time
 personal-signature barrier is a real blocker: report it, never bypass it. Never sign for the user, invent
 Signed-off-by, public email, identity/employer/authorship/rights facts, or perform personal certification.
 Use confirmed safe public/no-reply identity only. NoAI, privacy/private reporting and actual affected-behavior

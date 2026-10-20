@@ -1,0 +1,14 @@
+/.runtime/
+/work/
+/config.local.json
+/campaign.local.json
+/artifacts/
+/.cache/
+/source-baseline.json
+node_modules/
+__pycache__/
+
+/runtime/
+/.fleet/
+/fleet.local.json
+*.log

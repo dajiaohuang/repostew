@@ -4,7 +4,7 @@
 
 RepoStew 是适用于多 agent harness 的可移植 Skill，定义 agent 如何选择工作、审计代码和文档、处理 issue 与 PR、响应反馈，以及在授权范围内持续维护仓库；也明确哪些工作应跳过、保密、保留或记录为阻塞。
 
-[English](README.md) · [项目网站](https://dajiaohuang.github.io/repostew/) · [Skill 入口](SKILL.md) · [接入包](integrations/README.md)
+[English](README.md) · [项目网站](https://dajiaohuang.github.io/repostew/) · [Skill 入口](SKILL.md) · [接入包](integrations/README.md) · [可选运行时](harnesses/README.md)
 
 ## 自动维护如何运行
 
@@ -84,7 +84,7 @@ Trending 与 awesome-list 发现可使用工作区批准的窗口、种子及关
 
 门槛通过后优先普通 Open PR。Draft 仍须满足必要性门槛，不绕过邀请或投稿限制。不强制伴随 issue 或额外例行审批阶段。通过原生链接接续同一对象的反馈、CI、修订和最终处置。
 
-每库 W 完成有界依赖供给、相关验证并直接发布 PR/MR；存量交付角色只查漏闲置未发布工作，不是所有 W 的发布网关。CLA/DCO 不预查，先正常投稿，实际收到签署提示再报告用户，不代签。仅拒外部 PR 且仍允许讨论时，可一次 issue／相关 comment 请求可接受路线；不得绕过全面拒绝贡献、AI 互动或联系的禁令。
+每库 W 完成有界依赖供给、相关验证并直接发布 PR/MR；存量交付角色只查漏闲置未发布工作，不是所有 W 的发布网关。CLA/DCO 不预查；投稿完成即释放 W，后续签署由通知处理提醒用户，不代签。仅拒外部 PR 且仍允许讨论时，可一次 issue／相关 comment 请求可接受路线；不得绕过全面拒绝贡献、AI 互动或联系的禁令。
 
 详见[交付](references/workflows/delivery.md)、[贡献标准](references/contribution-value.md)与[发布门槛](references/safety.md)。
 

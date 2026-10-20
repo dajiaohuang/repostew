@@ -4,7 +4,7 @@
 
 RepoStew is a portable Skill for multi-agent harnesses. It defines how agents select work, audit code and documentation, handle issues and pull requests, respond to feedback, and maintain authorized repositories over time. It also defines what agents must skip, keep private, preserve, or leave blocked.
 
-[中文](README.zh.md) · [Website](https://dajiaohuang.github.io/repostew/) · [Skill entry](SKILL.md) · [Harness packages](integrations/README.md)
+[中文](README.zh.md) · [Website](https://dajiaohuang.github.io/repostew/) · [Skill entry](SKILL.md) · [Harness packages](integrations/README.md) · [Optional runtimes](harnesses/README.md)
 
 ## How automation works
 
@@ -84,7 +84,7 @@ For an ordinary repair, establish the supported trigger, observed error, violate
 
 Prefer a regular Open PR when the gates pass. Drafts retain the same necessity gate; they do not bypass invitation or submission restrictions. No compulsory companion issue or additional routine approval stage is added. Keep the existing object's feedback, CI, revisions and final disposition connected through native links.
 
-Each repository Worker completes bounded dependency setup, affected checks and direct PR/MR publication; a delivery-backlog role only recovers overlooked idle work, not every Worker's output. Submit before CLA/DCO prechecks and report actual signing requests without signing for the user. A PR-only refusal permits one evidenced issue/comment request where discussion remains allowed, never around an all-contact or AI prohibition.
+Each repository Worker completes bounded dependency setup, affected checks and direct PR/MR publication; a delivery-backlog role only recovers overlooked idle work, not every Worker's output. Submit before CLA/DCO prechecks. Completed submissions release the Worker; notification handling reports later signing requests to the user without signing. A PR-only refusal permits one evidenced issue/comment request where discussion remains allowed, never around an all-contact or AI prohibition.
 
 See [delivery](references/workflows/delivery.md), [contribution standards](references/contribution-value.md) and [publication gates](references/safety.md).
 

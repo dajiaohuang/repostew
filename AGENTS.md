@@ -15,7 +15,7 @@
   never direct W/engineering/cleanup/file writes. Preserve real gates and cumulative consumption; resource estimates are not mandatory hard quotas.
 - Reuse supplied rules/evidence; batch missing startup reads, load conditional methods before action.
   Leaves receive applicable boundaries, not global briefs. Links are navigation, not recursive reading.
-  Templates add no authority. No prompt compiler, custom runtime/queue/claims/receipts/database or polling service.
+  Templates add no authority. Keep runtime implementation out of generic Skill files; optional execution code belongs in harnesses/.
 - Storage owns delivery/preservation, scoped abandonment and retention. Workers establish facts and stop
   unused owned processes; Coordinators dispose after handoff; Supervisor governs shared capacity.
   Preserve confidentiality, protected recovery and unrelated/shared material; only explicit scope permits
