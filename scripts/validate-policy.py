@@ -120,7 +120,8 @@ def validate_task_shape(root=ROOT):
 
 
 def validate():
-    generic = [ROOT / name for name in ("SKILL.md", "AGENTS.md", "README.md", "README.en.md", "README.zh.md")]
+    # Product READMEs describe shipped harnesses; neutral policy starts at SKILL.md.
+    generic = [ROOT / name for name in ("SKILL.md", "AGENTS.md")]
     for directory in ("roles", "prompts", "references", "references/work-forms", "references/workflows"):
         generic.extend((ROOT / directory).glob("*.md"))
     generic.extend(path for path in (ROOT / "prompts").rglob("*.md") if path.parent != ROOT / "prompts")

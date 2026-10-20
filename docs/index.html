@@ -1,74 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="RepoStew: portable repository stewardship for multi-agent harnesses, from discovery and audits to contribution follow-up and authorized maintenance, with direct Markdown state." />
-  <title>RepoStew · From contribution to ongoing maintenance</title>
-  <link rel="alternate" hreflang="zh-CN" href="https://dajiaohuang.github.io/repostew/index.zh.html" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RepoStew · Keep repository work moving</title>
+<meta name="description" content="RepoStew is an agent execution harness for repository work, with native Pi sessions, Coordinator-owned queues, durable continuation and MCP/CLI governance.">
+<link rel="alternate" hreflang="zh-CN" href="index.zh.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="brand" href="#main">RepoStew</a>
-    <nav class="site-nav" aria-label="Navigation">
-      <a href="#state">State</a><a href="#workflow">Delivery</a><a href="#patrols">Patrols</a><a href="index.zh.html" lang="zh-CN">中文</a>
-    </nav>
-  </header>
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-copy" id="english">
-        <p class="kicker">Portable repository stewardship</p>
-        <h1>Finish the work.<br /><em>Keep it maintained.</em></h1>
-        <p class="hero-lede">A portable Skill for multi-agent harnesses: assemble Workers within scope and authority for discovery, investigation, delivery and ongoing follow-up. Keep state in Markdown.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://github.com/dajiaohuang/repostew/blob/main/README.md">Start with the README</a>
-          <a class="button button-secondary" href="https://github.com/dajiaohuang/repostew/blob/main/SKILL.md">Read the Skill</a>
-        </div>
-      </div>
-    </section>
-    <section class="capabilities section-shell" id="state">
-      <div class="section-heading"><h2>Lists select scope.<br />Records preserve facts.</h2></div>
-      <div class="capability-grid">
-        <article class="capability-card"><h3>Three membership lists</h3><p>New targets, complete historical membership and followed groups. Lists hold identities only; groups may overlap, and scans deduplicate their union.</p></article>
-        <article class="capability-card"><h3>Minimal shared facts</h3><p>Each project writer maintains root state.md and local work/work.md. Coordinator owns globals; only workspace policy/shared-state Git has a designated publisher. Repository Workers publish directly, one writer per project. unfinished.md is navigation only, not complete scope or authority.</p></article>
-        <article class="capability-card"><h3>One project, one directory</h3><p>Use state/repositories/&lt;host&gt;/&lt;namespace&gt;/&lt;repo&gt;/. Share reviewed state.md; ignore local work/ with notes, multiple checkouts and tmp. Never recursively upload or scan execution material as state.</p></article>
-        <article class="capability-card"><h3>Independent, private sources</h3><p>Public source positions live in read-positions.md; mail positions stay private. Preserve native boundaries and read source bodies live, without copying an interaction database.</p></article>
-      </div>
-    </section>
-    <section class="manifesto section-shell" id="workflow">
-      <div>
-        <h2>Complete scope.<br />Concise assignments.</h2>
-        <p>Workers hand off delivery/preservation, abandonment or retention facts; Coordinators execute after writer/process stop; the Supervisor governs capacity. Delivered material, including successful authorized private reports, may be released without extra human/triage waits; explicitly abandoned material needs recorded scope/loss. Active/shared or ownership-unclear targets remain. No new backup solely for cleanup; persistent records, existing recovery archives, shared caches, toolchains and access controls retain separate protection.</p>
-        <p>Active tasks and real completion/failure events continue the mandate. C refills in the same result turn. The single bounded heartbeat catches missed refill from existing summaries/lifecycle/capacity, sending at most one deduplicated concrete continuation to an affected C. Unchanged blockers or in-flight corrections get no send; no direct W, engineering, restart/cancel, file writes, cleanup or self-queued bypass. Heartbeat itself changes neither resource limits nor storage authority. Setup uses isolation, estimates and stage capacity checks, not mandatory hard quotas. Explicit loss acceptance permits a finite temporary-C cleanup retaining project records and protected exceptions. It belongs to the <a href="https://github.com/dajiaohuang/repostew/blob/main/roles/supervisor.md">Supervisor</a>; paused jobs and project writers remain protected.</p>
-        <p>Establish outcome, scope, authority and resources. The <a href="https://github.com/dajiaohuang/repostew/blob/main/roles/coordinator.md">Coordinator</a> uses <a href="https://github.com/dajiaohuang/repostew/blob/main/references/worker-assembly.md">assembly rules</a> and <a href="https://github.com/dajiaohuang/repostew/blob/main/prompts/README.md">templates</a> to assign <a href="https://github.com/dajiaohuang/repostew/blob/main/roles/worker.md">Workers</a>. <a href="https://github.com/dajiaohuang/repostew/blob/main/references/orchestration.md">Dispatch, wait, integrate, continue, hand off or recover</a> through native harness capabilities; continue by delta.</p>
-        <p>Use one C contract, one W contract and one <a href="https://github.com/dajiaohuang/repostew/blob/main/prompts/task.md">five-field task</a>; forms add only input/coverage. W executes setup through direct submission; C checks actual delivery and refills, without routine retests/readback. A feasible unpublished repair stays with its W; failures need an exact recovery owner. No inspection-only finish for engineering, and no invented PR for an evidenced no-finding result. Supervisor governance is assigned as needed. Serial work may combine roles. Preserve real stage gates, stopped-writer handoff and budgets; a turn/report is not full-scope completion. Keep native lifecycle details and optional helpers in <a href="https://github.com/dajiaohuang/repostew/blob/main/references/harness.md">harness adapters</a>, not generic workflow policy.</p>
-        <p>Load rules by task and action: reuse supplied current text, batch missing startup reads, load conditional methods before their actions. Links are navigation, not recursive reads. Leaves need their boundaries, not full Coordinator briefs. Capture validates sources; metadata-only work needs no clone/tests; repairs keep affected and mandatory checks. Coordinator checks scope/coverage, not a second engineering acceptance. Permission, privacy, mutation reconciliation and preservation gates remain.</p>
-        <p>Five forms: <a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/discovery.md">discovery + new-repository work</a>, <a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/new-repository.md">new audits</a>, <a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/contribution-reassessment.md">contribution reassessment</a>, <a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/incremental-feedback.md">incremental feedback</a>, <a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/recurring-patrol.md">recurring patrols</a>. Capture and deduplicate <a href="https://github.com/dajiaohuang/repostew/blob/main/references/workflows/followed-issues.md">followed issues</a>, <a href="https://github.com/dajiaohuang/repostew/blob/main/references/workflows/notifications.md">notifications/selected mail</a> and <a href="https://github.com/dajiaohuang/repostew/blob/main/references/workflows/open-objects.md">open/unfinished objects</a> under separate source positions. For discovery, C screens candidates and directly assigns complete new-repository W units without a separate intake Worker or whole-batch admission gate.</p>
-        <p><a href="https://github.com/dajiaohuang/repostew/blob/main/references/audit.md">Trace actual use and documents</a>; establish <a href="https://github.com/dajiaohuang/repostew/blob/main/references/contribution-value.md">contribution evidence</a>. Discuss ordinary unsettled contracts. Every new security finding uses <a href="https://github.com/dajiaohuang/repostew/blob/main/references/security.md">private reporting only</a>, never public issues; retain protected evidence and blockers without an authorized private channel unless explicit category/scope-specific abandonment applies. Complete assigned coverage while independently proved repairs may proceed through <a href="https://github.com/dajiaohuang/repostew/blob/main/references/workflows/delivery.md">repair, validation and publication</a> under <a href="https://github.com/dajiaohuang/repostew/blob/main/references/safety.md">target and safety gates</a>; handle feedback, consolidate roots or <a href="https://github.com/dajiaohuang/repostew/blob/main/references/reassessment.md">withdraw within authority</a>.</p>
-        <p><a href="https://github.com/dajiaohuang/repostew/blob/main/roles/maintainer.md">Maintainers</a> perform <a href="https://github.com/dajiaohuang/repostew/blob/main/references/workflows/maintain.md">authorized maintenance</a>: triage issues, review/amend/merge PRs under current rights/settings, audit actual use/documents and revise code. Keep actual-use coverage and essential CI/tests. Assigned PR review adds no universal pre-publication gate.</p>
-        <p>Write <a href="https://github.com/dajiaohuang/repostew/blob/main/references/records.md">minimal records; migrate only when authorized</a>; <a href="https://github.com/dajiaohuang/repostew/blob/main/references/workflows/history.md">reconcile, recover or reclassify history</a>; publish <a href="https://github.com/dajiaohuang/repostew/blob/main/references/workflows/records-and-backup.md">reviewed backups when requested</a>. Check <a href="https://github.com/dajiaohuang/repostew/blob/main/references/storage.md">resource disposition</a> for resources used or assigned, including blocked/no-change passes; omit empty resource ceremonies. Separate coverage, delivery, resolution and release.</p>
-        <p>Workers publish directly; backlog coordination only finds overlooked idle work. Submit before CLA/DCO prechecks. Completed submissions release the Worker; notification handling reports later signing requests to the user without signing. PR-only refusal permits one issue/comment request where discussion is allowed, not around all-contact prohibitions. The Supervisor repairs execution faults promptly with bounded attempts and notifies the user if unable.</p>
-        <p>Keep authority explicit, execution serial by default and one writer per resource. Apply <a href="https://github.com/dajiaohuang/repostew/blob/main/references/forges/github/exclusions/agentscan.md">user-selected exclusions</a> before selecting or continuing GitHub work; preserve existing objects/history. Prohibit defensive programming, trust internal contracts and retain necessary boundary checks. Trust usable finals, keep private material confidential, apply storage retention paths and report incomplete outcomes accurately.</p>
-        <p><a href="https://github.com/dajiaohuang/repostew/blob/main/references/harness.md">Harnesses</a> supply execution; <a href="https://github.com/dajiaohuang/repostew/blob/main/references/forges/README.md">forge rules</a> map native access. Roles own responsibilities, prompts own wording, and <a href="https://github.com/dajiaohuang/repostew/blob/main/references/workspace.md">workspace Markdown</a> owns state. Files grant no implicit authority, tasks or schedules.</p>
-      </div>
-    </section>
-    <section class="manifesto section-shell" id="patrols">
-      <div>
-        <h2>Bounded patrols.<br />Reliable continuation.</h2>
-        <p><a href="https://github.com/dajiaohuang/repostew/blob/main/references/patrols.md">Configurable baseline</a>: hourly notifications/selected mail, followed issues every 6 hours, open/unfinished-object fallback every 24 hours. Resume unfinished same-source passes without stacking duplicates; reuse unchanged evidence.</p>
-        <p>Complete independent repository inputs may proceed while other capture continues; recover missing evidence locally before filling failed capture gaps within original authority. Resume unfinished same-source passes without stacking duplicates. Advance positions only after complete capture and handling or reliable retention. Never send mail, change read/subscription state or expand mailbox scope. Cadence does not prove coverage. Paused jobs remain paused; private material, backups and resource disposition retain their authority boundaries.</p>
-        <p><a href="https://github.com/dajiaohuang/repostew/blob/main/integrations/README.md">Codex / Claude / Pi / OMP</a> · <a href="https://github.com/dajiaohuang/repostew/tree/main/harnesses/pi">Pi runtime</a> · <a href="index.zh.html" lang="zh-CN">中文</a></p>
-
-      </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div><strong>RepoStew</strong><span>Record facts. Keep real work moving.</span></div>
-    <nav aria-label="Footer"><a href="https://github.com/dajiaohuang/repostew">Source</a><a href="https://github.com/dajiaohuang/repostew/blob/main/LICENSE">MIT</a></nav>
-    <p>© 2026 dajiaohuang</p>
-  </footer>
-</body>
-</html>
+<a class="skip-link" href="#main">Skip to content</a>
+<header><a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">R</span>RepoStew</a>
+<nav aria-label="Navigation"><a href="#execution">Execution</a><a href="#governance">Governance</a><a href="#fleet">Fleet</a><a href="#start">Start</a></nav><a class="language" href="index.zh.html">中文</a></header>
+<main id="main">
+<section class="hero shell">
+<div><p class="eyebrow">AGENT EXECUTION / REPOSITORY WORK</p><h1>Keep the work<br>moving.</h1><p class="lede">Native Pi sessions. Queues your Coordinators control. Durable execution you can govern from your own client.</p>
+<div class="actions"><a class="button primary" href="https://github.com/dajiaohuang/repostew/tree/main/harnesses/pi">Run the harness ↗</a><a class="button" href="https://github.com/dajiaohuang/repostew">Explore source</a></div>
+<div class="hero-meta"><span>Pi native</span><span>MCP + CLI</span><span>MIT</span></div></div>
+<figure class="system"><div class="system-top"><span>REPOSTEW / ARCHITECTURE</span><span class="dot" aria-hidden="true"></span></div>
+<div class="client"><strong>Your client</strong><small>MCP / CLI · commands & receipts</small></div><div class="connector" aria-hidden="true">↓</div>
+<div class="service"><strong>RepoStew execution service</strong><small>Fair capacity · project ownership · durable state</small>
+<div class="owners"><div>Coordinator A<small>Own queue → Workers</small></div><div>Coordinator B<small>Own queue → Workers</small></div></div>
+<div class="independent">Independent Worker</div></div><div class="connector" aria-hidden="true">↓</div><div class="output">Native Pi sessions → repository delivery</div>
+<figcaption>Execution stays with the service when a client disconnects.</figcaption></figure>
+</section>
+<section class="shell section" id="execution"><div class="heading"><h2>One task is a start.<br>Continuation is the system.</h2><p>Carry repository work through investigation, repair, submission and feedback. Keep ownership and progress between turns.</p></div><div class="cards"><article class="card"><span class="eyebrow">01 / EXECUTION</span><h3>Native sessions</h3><p>Coordinators and Workers use Pi’s sessions, RPC and tools. Continue in the original session with retained scope and cumulative limits.</p></article><article class="card"><span class="eyebrow">02 / QUEUES</span><h3>C owns its queue</h3><p>List, prioritize, pause, resume or withdraw eligible pending assignments. Each Coordinator controls its own queue within shared capacity.</p></article><article class="card"><span class="eyebrow">03 / CONTINUATION</span><h3>Wait, then continue</h3><p>Child results and available capacity wake waiting work. Timed waits retain a deadline; external waits need a relevant update.</p></article><article class="card"><span class="eyebrow">04 / RECOVERY</span><h3>Recover with evidence</h3><p>A separate guardian permits one paused restart. Uncertain runs keep their ownership until their effects and process state are reconciled.</p></article></div></section>
+<section class="governance" id="governance"><div class="shell split"><div><p class="eyebrow">GOVERN FROM YOUR CLIENT</p><h2>One execution service.<br>Your choice of entry.</h2><p>Use MCP or CLI to assign work, inspect results and target a Coordinator or Worker. Configured event subscriptions deliver results back to your conversation.</p><a class="text-link" href="https://github.com/dajiaohuang/repostew/blob/main/harnesses/pi/GOVERNANCE.md">Open the governance guide ↗</a></div>
+<ol class="control-list"><li><span>01</span>Stable operation IDs and retained receipts</li><li><span>02</span>Targeted pause, drain and stop</li><li><span>03</span>Completed Workers released; later CLA requests handled through notifications</li></ol></div></section>
+<section class="shell section" id="fleet"><div class="heading"><h2>Your computers.<br>Explicit placement.</h2><p>The fleet foundation connects individually enrolled machines over SSH. Each machine retains its service, credentials and repository files.</p></div><div class="platforms"><div class="platform"><h3>Windows</h3><p>Native Job Object ownership and recovery tests exercised.</p><span class="tag">Native tested</span></div><div class="platform"><h3>Linux / macOS</h3><p>Transport and process groups implemented. Full descendant containment remains unverified.</p><span class="tag">Foundation</span></div><div class="platform"><h3>Multi-host</h3><p>Registration and receipts tested in fixtures. Real multi-host acceptance, migration and failover remain future work.</p><span class="tag">Foundation</span></div></div><a class="text-link" href="https://github.com/dajiaohuang/repostew/blob/main/harnesses/pi/FLEET.md">Read fleet setup and readiness ↗</a></section>
+<section class="shell skill"><div><span class="eyebrow">COMPANION / SKILL</span><h2>The workflow travels too.</h2></div><div><p>The portable RepoStew Skill provides roles, task forms and workflows for discovery, audits, direct contribution and follow-up. Use it with the runtime or independently in another harness.</p><a class="text-link" href="https://github.com/dajiaohuang/repostew/blob/main/SKILL.md">Read the Skill ↗</a></div></section>
+<section class="shell section split start" id="start"><div><h2>Start paused.<br>Assign with intent.</h2><p>Install Node 24, Python 3, RTK and Pi 1.3.0 with an existing provider login. Initialize the harness, then configure your paths and models before starting.</p><a class="text-link" href="https://github.com/dajiaohuang/repostew/tree/main/harnesses/pi">Full setup →</a></div>
+<div><div class="terminal"><div>01 / INITIALIZE</div><pre><code>rtk git clone https://github.com/dajiaohuang/repostew.git
+cd repostew/harnesses/pi
+rtk npm ci --ignore-scripts
+rtk node src/cli.mjs init</code></pre></div><p class="validation">Publication checks · Windows: 76 passed / 1 POSIX-native test skipped.</p></div></section>
+</main><footer class="shell"><strong>RepoStew <span>Native execution. Durable progress.</span></strong><div><a href="https://github.com/dajiaohuang/repostew">GitHub ↗</a><a href="https://github.com/dajiaohuang/repostew/blob/main/LICENSE">MIT</a><a href="index.zh.html">中文</a></div></footer>
+</body></html>

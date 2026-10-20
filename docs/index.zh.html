@@ -1,83 +1,37 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="RepoStew：面向多 agent harness 的可移植仓库维护 Skill，覆盖发现、审计、投稿跟进与授权维护，直接读写 Markdown 状态。" />
-  <title>RepoStew · 从贡献到持续维护</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="alternate" hreflang="en" href="https://dajiaohuang.github.io/repostew/" />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RepoStew · 让仓库工作持续推进</title>
+<meta name="description" content="RepoStew：面向仓库工作的智能体执行 harness，提供 Pi 原生会话、C 自主管队列、持久续跑和 MCP / CLI 治理。">
+<link rel="alternate" hreflang="en" href="index.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">跳到主要内容</a>
-  <header class="site-header">
-    <a class="brand" href="#main">RepoStew</a>
-    <nav class="site-nav" aria-label="导航">
-      <a href="#state">状态</a><a href="#workflow">交付</a><a href="#patrols">巡检</a><a href="index.html" lang="en">English</a>
-    </nav>
-  </header>
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-copy">
-        <p class="kicker">Portable repository stewardship</p>
-        <h1>把贡献做完。<br /><em>把维护接起来。</em></h1>
-        <p class="hero-lede">面向多 agent harness 的仓库维护 Skill：按范围与权限组装 Worker，完成发现、调查、交付和持续跟进；状态直接写 Markdown。</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://github.com/dajiaohuang/repostew/blob/main/README.zh.md">从 README 开始</a>
-          <a class="button button-secondary" href="https://github.com/dajiaohuang/repostew/blob/main/SKILL.md">读取 Skill</a>
-        </div>
-      </div>
-    </section>
-    <section class="capabilities section-shell" id="state">
-      <div class="section-heading"><h2>名单选范围。<br />每库记录存事实。</h2></div>
-      <div class="capability-grid">
-        <article class="capability-card"><h3>三个成员名单</h3><p>新库待处理、旧库历史全表、分组关注名单。名单只保存成员；关注组允许重合，扫描去重并集。</p></article>
-        <article class="capability-card"><h3>共享事实，本地过程</h3><p>每库写入者维护根 state.md 与本机 work/work.md；Coordinator 负责全局记录；仅政策／共享状态 Git 由指定发布者串行操作，各库 W 直接发布，同项目单写入者。unfinished.md 仅导航，不是完整范围或授权。</p></article>
-        <article class="capability-card"><h3>每库一个目录</h3><p>统一位于 state/repositories/&lt;host&gt;/&lt;namespace&gt;/&lt;repo&gt;/。只共享审阅后的 state.md；work/ 存笔记、多个 checkout 和 tmp，全部忽略。不递归上传或把执行材料当作状态。</p></article>
-        <article class="capability-card"><h3>来源独立，隐私隔离</h3><p>通知与关注扫描位置在 read-positions.md，邮箱位置在 private/。保留原生边界，正文实时读，不复制交互数据库。</p></article>
-      </div>
-    </section>
-    <section class="manifesto section-shell" id="workflow">
-      <div>
-        <h2>全部流程。<br />精要指派。</h2>
-        <p>W交接交付／保全、放弃或保留事实，C确认writer及进程停止后执行，S统筹容量。已交付可释放，含成功提交到授权私密渠道的对应材料，不等额外人工回执／triage；明确放弃须记录范围与损失。活跃／共享或归属不清则保留；不为清理另做备份，持久记录、既有恢复档案、共享缓存、工具链及访问控制仍守各自边界。</p>
-        <p>主动任务及真实完成／故障事件接续职责。C收到结果同轮续完或独立补位。单一有界心跳读取现有摘要／生命周期／容量，向漏补位的C最多发一条去重具体续办；未变真阻碍或已有纠偏在途不发送。不直接派W、工程、重启／取消、写文件、清理或自排后续绕限制；心跳本身不改资源限制或处置权限。工程采用隔离目录、估算和阶段容量检查，不强制硬配额；明确接受成果丢失后，可由临时C执行有限专项清理，保留项目记录和受保护例外。心跳仅归<a href="https://github.com/dajiaohuang/repostew/blob/main/roles/supervisor.md">Supervisor</a>；暂停日程和项目单写入者边界不变。</p>
-        <p>准备目标、范围、权限和资源；Coordinator 选择形态与方法，用集中模板组装 Worker。每个任务一次派发、整合，续办只传变化；必要时交接或局部恢复。</p>
-        <p>一份 C 合同、一份 W 合同及唯一<a href="https://github.com/dajiaohuang/repostew/blob/main/prompts/task.md">五项任务单</a>，形态只补输入与覆盖差异。W从供给做到直接投稿；C核对实际交付并补位，不例行重查／重测。可行未投稿交原W续完，故障须有恢复责任方；工程不以只读检查结束，无问题也不造PR。S即时有界修执行故障、不能修则报告用户；串行时可兼任职责。保留真实阶段门、停止写入后的交接与原预算；turn／报告不是全范围完成。宿主生命周期与可选辅助能力仅放在<a href="https://github.com/dajiaohuang/repostew/blob/main/references/harness.md">harness适配层</a>，不混入通用工作规则。</p>
-        <p>按任务和动作加载规则：复用完整当前文本，同轮批量补读启动缺失项，在动作前加载条件方法；链接不要求递归阅读。叶 Worker 接收适用边界，不通读协调员简报。捕获验证来源，纯元数据工作不 clone／测试，修复保留受影响和强制检查。Coordinator 检查范围与覆盖，不二次验收工程；权限、隐私、歧义对账和保存门槛不减。</p>
-        <p>五类形态：<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/discovery.md">发现＋新库处理</a>、<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/new-repository.md">新库审计</a>、<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/contribution-reassessment.md">既有投稿复审</a>、<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/incremental-feedback.md">增量反馈</a>、<a href="https://github.com/dajiaohuang/repostew/blob/main/references/work-forms/recurring-patrol.md">持续巡查</a>。增量来源：关注新 issue、通知与选定邮件、开放与未完成对象。抓取去重，按库指派，分别维护位置。发现由 C 自行筛选，直接交给新库 W 完整处理，不另设发现 W，也不等整批入库。</p>
-        <p>沿实际使用与文档事实查错；普通契约未定时据证讨论。所有新安全发现只走私有报告，不发公开 issue；无可用授权私有渠道时保留证据与阻塞，除非有具体类别／范围的明确放弃授权。普通修复在完成指定审计后集中验证、投稿，再处理反馈、合并同根因或授权撤回。</p>
-        <p>记录只写实质变化；按请求迁移、核对历史、恢复或重分类、审阅后备份。处置使用或分配的资源，包括阻塞／无变化情况；无资源时省略空检查。区分覆盖、交付、解决和释放。</p>
-        <p><a href="https://github.com/dajiaohuang/repostew/blob/main/roles/maintainer.md">Maintainer</a> 在授权管理／自有库中处理 issue、审查 PR、按当前权限与设置追加 commit 和合并；从实际使用与文档审计出发修订代码，精简冗余 CI/测试，只保留真实使用覆盖与基本检查。</p>
-        <p>存量交付角色只查漏闲置未发布工作，不是 W 的发布网关。CLA/DCO 不预查；投稿完成即释放 W，后续签署由通知处理提醒用户，不代签。仅拒外部 PR 而允许讨论时，可一次 issue/comment 请求；不绕过全面拒绝联系。供给与验证是完整工程单元，不因普通工具首次失败永久冻结。</p>
-        <p>范围与权限明确，默认串行；同资源单写入者。选择或继续 GitHub 工作前应用<a href="https://github.com/dajiaohuang/repostew/blob/main/references/forges/github/exclusions/agentscan.md">用户指定排除规则</a>，保留已有对象与历史。依据实际使用与契约行动，禁止防御性编程，信任内部契约并保留必要边界校验。每个任务一次充分派发、增量续办、信任可用结果；保持私密材料机密性、按资源处置路径决定本地留存，如实报告成果和未完成工作。</p>
-        <p>roles/ 定义职责，prompts/ 集中启动、续办和交接。可读文件按需加载，否则传完整适用正文。Harness 按原生能力接入；无隐式权限、任务、计划或额外编排服务。</p>
-      </div>
-    </section>
-    <section class="manifesto section-shell" id="patrols">
-      <div>
-        <h2>有界巡查。<br />可靠接续。</h2>
-        <p>可配置基线：每小时通知与选定邮件，每 6 小时关注新 issue，每 24 小时开放／未完成对象兜底。接续同来源／范围未完 pass，不叠加；独立批次可并行，无变化复用已有处理。</p>
-        <p>完整抓取并处理或可靠保留后才推进位置；不发邮件、不改已读／订阅、不扩大邮箱范围。调度不证明覆盖，暂停保持暂停；资源处置、私密材料和备份按授权边界执行。</p>
-      </div>
-    </section>
-    <section class="section-shell" id="english" lang="en">
-      <div>
-        <h2>Complete scope. Keep instructions concise.</h2>
-        <p>Prepare and assemble bounded Workers; dispatch, wait, integrate, continue, hand off or recover through native harness capabilities. Use native forge CLIs and scoped repository rules. Roles define responsibilities; templates stay together; state is direct Markdown.</p>
-        <p>Discover and directly assign new-repository work, audit assigned targets, reassess contributions, handle incremental feedback and run recurring passes. Capture followed issues, notifications/selected mail and open/unfinished objects under separate positions.</p>
-        <p>Prove actual-use/document errors and discuss ordinary unsettled contracts. Report every new security finding privately, never through public issues; retain protected evidence/blockers without an authorized private channel unless explicit category/scope-specific abandonment applies. Repair, validate, publish and follow up on ordinary work; consolidate or withdraw only within authority.</p>
-        <p>Maintainers triage issues, review/amend/merge PRs under current rights/settings, audit actual use/documents and revise code. Retain only actual-use coverage and essential CI/tests. Assigned PR review adds no universal pre-publication gate.</p>
-        <p>Write minimal records; migrate, reconcile/recover/reclassify history and publish reviewed backups when requested. Apply <a href="https://github.com/dajiaohuang/repostew/blob/main/references/forges/github/exclusions/agentscan.md">user-selected exclusions</a> before selecting or continuing GitHub work, preserving existing objects/history. Check resources every pass. Keep authority explicit, one writer, native execution and direct Markdown; trust internal contracts and usable finals, keep private material confidential and apply storage retention paths, report incomplete outcomes accurately.</p>
-        <p><a href="https://github.com/dajiaohuang/repostew/blob/main/integrations/README.md">Codex / Claude / Pi / OMP</a> · <a href="https://github.com/dajiaohuang/repostew/tree/main/harnesses/pi">Pi runtime</a> · <a href="https://github.com/dajiaohuang/repostew/blob/main/README.en.md">English README</a> · <a href="https://github.com/dajiaohuang/repostew">Full rules</a></p>
-      </div>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div><strong>RepoStew</strong><span>直接记录事实，持续处理真实工作。</span></div>
-    <nav aria-label="页脚"><a href="index.html" lang="en">English</a><a href="https://github.com/dajiaohuang/repostew">源码</a><a href="https://github.com/dajiaohuang/repostew/blob/main/LICENSE">MIT</a></nav>
-    <p>© 2026 dajiaohuang</p>
-  </footer>
-</body>
-</html>
+<a class="skip-link" href="#main">跳至正文</a>
+<header><a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">R</span>RepoStew</a>
+<nav aria-label="Navigation"><a href="#execution">执行</a><a href="#governance">治理</a><a href="#fleet">多机</a><a href="#start">开始</a></nav><a class="language" href="index.html">English</a></header>
+<main id="main">
+<section class="hero shell">
+<div><p class="eyebrow">智能体执行 / 仓库工作</p><h1>让工作<br>持续推进。</h1><p class="lede">Pi 原生会话，C 自主管队列，持久执行。通过你常用的客户端，管理持续推进的仓库工作。</p>
+<div class="actions"><a class="button primary" href="https://github.com/dajiaohuang/repostew/tree/main/harnesses/pi">运行 harness ↗</a><a class="button" href="https://github.com/dajiaohuang/repostew">查看源码</a></div>
+<div class="hero-meta"><span>Pi native</span><span>MCP + CLI</span><span>MIT</span></div></div>
+<figure class="system"><div class="system-top"><span>REPOSTEW / ARCHITECTURE</span><span class="dot" aria-hidden="true"></span></div>
+<div class="client"><strong>你的客户端</strong><small>MCP / CLI · 命令与回执</small></div><div class="connector" aria-hidden="true">↓</div>
+<div class="service"><strong>RepoStew 执行服务</strong><small>公平容量 · 项目归属 · 持久状态</small>
+<div class="owners"><div>Coordinator A<small>自己的队列 → Workers</small></div><div>Coordinator B<small>自己的队列 → Workers</small></div></div>
+<div class="independent">独立 Worker</div></div><div class="connector" aria-hidden="true">↓</div><div class="output">Pi 原生会话 → 仓库交付</div>
+<figcaption>客户端断开后，执行仍由服务持有。</figcaption></figure>
+</section>
+<section class="shell section" id="execution"><div class="heading"><h2>开始一个任务，<br>也接住后续工作。</h2><p>从调查、修复到投稿与反馈，让任务在多轮执行之间保留归属与进展。</p></div><div class="cards"><article class="card"><span class="eyebrow">01 / 执行</span><h3>原生会话</h3><p>C 与 W 使用 Pi 的会话、RPC 和工具，在原会话中继续工作，保留范围与累计限制。</p></article><article class="card"><span class="eyebrow">02 / 队列</span><h3>C 管理自己的队列</h3><p>查看、调优先级、暂停、恢复或撤回符合条件的待执行任务；各 C 在共享容量内管理自己的队列。</p></article><article class="card"><span class="eyebrow">03 / 续跑</span><h3>等到条件，再继续</h3><p>子任务结果和可用容量唤醒等待中的工作；定时等待保留期限，外部等待需要相关新信息。</p></article><article class="card"><span class="eyebrow">04 / 恢复</span><h3>按证据恢复</h3><p>独立 guardian 允许一次暂停状态的重启；不确定的运行保留归属，直到效果与进程状态核对清楚。</p></article></div></section>
+<section class="governance" id="governance"><div class="shell split"><div><p class="eyebrow">从常用客户端治理</p><h2>一个执行服务，<br>多种管理入口。</h2><p>通过 MCP 或 CLI 分配工作、查看结果，定向控制 C 或 W。配置事件订阅后，执行结果可以回到你的对话。</p><a class="text-link" href="https://github.com/dajiaohuang/repostew/blob/main/harnesses/pi/GOVERNANCE.md">查看治理指南 ↗</a></div>
+<ol class="control-list"><li><span>01</span>稳定操作 ID 与持久回执</li><li><span>02</span>定向暂停、排空和停止</li><li><span>03</span>完成后释放 W；后续 CLA 签署由通知处理</li></ol></div></section>
+<section class="shell section" id="fleet"><div class="heading"><h2>你的电脑，<br>明确的任务放置。</h2><p>Fleet 基础通过 SSH 连接逐台注册的机器，每台机器保留自己的服务、凭据与仓库文件。</p></div><div class="platforms"><div class="platform"><h3>Windows</h3><p>原生 Job Object 进程归属及恢复测试已执行。</p><span class="tag">原生已测</span></div><div class="platform"><h3>Linux / macOS</h3><p>已实现传输和进程组支持；完整后代进程约束尚未验证。</p><span class="tag">基础阶段</span></div><div class="platform"><h3>多机执行</h3><p>注册与回执测试通过；真实多机验收、迁移与故障转移仍待完成。</p><span class="tag">基础阶段</span></div></div><a class="text-link" href="https://github.com/dajiaohuang/repostew/blob/main/harnesses/pi/FLEET.md">查看多机设置与就绪状态 ↗</a></section>
+<section class="shell skill"><div><span class="eyebrow">COMPANION / SKILL</span><h2>工作方法，也能带走。</h2></div><div><p>可移植的 RepoStew Skill 提供角色、任务模板和工作流，覆盖发现、审计、直接投稿及跟进。可以搭配运行时，也可以在其他 harness 中独立使用。</p><a class="text-link" href="https://github.com/dajiaohuang/repostew/blob/main/SKILL.md">阅读 Skill ↗</a></div></section>
+<section class="shell section split start" id="start"><div><h2>从暂停开始，<br>明确分配再执行。</h2><p>安装 Node 24、Python 3、RTK 和 Pi 1.3.0，并登录模型提供方。初始化 harness，配置路径与模型，再启动服务。</p><a class="text-link" href="https://github.com/dajiaohuang/repostew/tree/main/harnesses/pi">完整设置 →</a></div>
+<div><div class="terminal"><div>01 / INITIALIZE</div><pre><code>rtk git clone https://github.com/dajiaohuang/repostew.git
+cd repostew/harnesses/pi
+rtk npm ci --ignore-scripts
+rtk node src/cli.mjs init</code></pre></div><p class="validation">发布校验 · Windows：76 项通过 / 1 项 POSIX 原生测试跳过。</p></div></section>
+</main><footer class="shell"><strong>RepoStew <span>原生执行，持续推进。</span></strong><div><a href="https://github.com/dajiaohuang/repostew">GitHub ↗</a><a href="https://github.com/dajiaohuang/repostew/blob/main/LICENSE">MIT</a><a href="index.html">English</a></div></footer>
+</body></html>
