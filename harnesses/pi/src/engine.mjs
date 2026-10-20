@@ -6,25 +6,30 @@ import { invariant, safeId, projectKey, assignmentDir, nonempty, validateCampaig
 import { choosePool, classifyProviderFailure } from './routing.mjs';
 import { PiProcess } from './rpc.mjs';
 import { instructions, workerPrompt, coordinatorPrompt } from './prompts.mjs';
-import { checkFreshEligibility } from './scope.mjs';
-import { inspectRepository } from './forge.mjs';
+import { checkFreshEligibility, checkProjectExclusion } from './scope.mjs';
+import { inspectRepository,readRepository } from './forge.mjs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadRole } from './roles.mjs';
 import { piModule } from './pi-install.mjs';
 import { todoStateFromBranch } from './pi/todo-state.mjs';
 import {Subscriptions} from './subscriptions.mjs';
+import {readPolicy} from './policy.mjs';
+import {workflowFor,workflowTools} from './workflows.mjs';
+import {validateSource,effectiveSource,captureSourcePage} from './sources.mjs';
 
 const running=new Set(['starting','running','stopping']);
 const isCoordinator=run=>run.role==='coordinator';
 const digest=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const now=()=>new Date().toISOString();
 export class Engine extends EventEmitter {
-  constructor(config,store,{processFactory=(c,o)=>new PiProcess(c,o),clock=Date.now,inspector=inspectRepository}={}) {
+  constructor(config,store,{processFactory=(c,o)=>new PiProcess(c,o),clock=Date.now,inspector=inspectRepository,repositoryReader=readRepository,sourceReader=captureSourcePage}={}) {
     super(); this.config=validateConfig({...config,...store.get('routingConfig')});this.store=store;this.processFactory=processFactory;this.clock=clock;
     this.live=new Map();this.tokens=new Map();this.pumping=false;this.pumpAgain=false;this.closing=false;
     this.endpoint=undefined;this.timer=undefined;this.subscriptions=new Subscriptions(store);
     this.inspector=inspector;
+    this.repositoryReader=repositoryReader;
+    this.sourceReader=sourceReader;this.sourcePending=new Map();
     if(!store.get('mode')) store.set('mode','paused');
     if(!store.get('routing')) store.set('routing',{});
     if(!store.coordinator('c1'))store.putCoordinator({id:'c1',mode:'running',status:'idle',session:join(config.runtimeDir,'c1-session.jsonl'),noProgress:0,nextWakeAt:0});
@@ -75,6 +80,7 @@ export class Engine extends EventEmitter {
       return {id,duplicate:true,mode:existing.mode};
     }
     validateCampaign(campaign);
+    this.validateSources(campaign);
     this.store.transaction(()=>{
       const {candidates,...metadata}=campaign;
       this.store.putCoordinator({id,mode:'paused',status:'idle',model,maxWorkers,session:join(this.config.runtimeDir,'coordinators',id,'session.jsonl'),noProgress:0,nextWakeAt:0,campaign:{...metadata,hasCandidateSnapshot:Boolean(candidates?.length),fingerprint:digest(campaign)}});
@@ -85,6 +91,7 @@ export class Engine extends EventEmitter {
   }
   loadCampaign(campaign) {
     validateCampaign(campaign);
+    this.validateSources(campaign);
     invariant(this.store.get('mode')==='paused' && this.live.size===0,'Pause/drain current work before loading a campaign');
     const old=this.store.get('campaign');invariant(!old || old.id===campaign.id,'Use a distinct runtimeDir for a different campaign');
     const fingerprint=digest(campaign);
@@ -97,6 +104,18 @@ export class Engine extends EventEmitter {
     });
     return {id:campaign.id,candidates:campaign.candidates?.length??0};
   }
+  validateSources(campaign) {
+    if(campaign.sources===undefined)return;
+    invariant(Array.isArray(campaign.sources)&&campaign.sources.length<=50,'Specify at most 50 exact sources');
+    const ids=new Set();
+    for(const source of campaign.sources) {
+      validateSource(source);invariant(!ids.has(source.id),'Duplicate source id');ids.add(source.id);
+      if(source.project) {
+        const allowed=campaign.allowedProjects.some(p=>projectKey(p)===projectKey(source.project))||campaign.allowedHosts.includes(source.project.host);
+        invariant(allowed,'Source project is outside campaign authority');
+      }
+    }
+  }
   coordinatorStatus(coordinatorId='c1') {
     // Pi's active session branch owns history and TODOs. The control UI may
     // display projections, but do not feed them back as a second agent memory.
@@ -106,6 +125,7 @@ export class Engine extends EventEmitter {
     return {...current,coordinatorId,campaign:c.campaign?.id,workflow:c.campaign?.workflow,scopeMode:c.mode,counts,
       candidatesRemaining:this.candidatesRemaining(coordinatorId),pendingEvents:this.store.events(100,coordinatorId).length,
       domainMaxWorkers:c.maxWorkers??this.config.maxWorkers,wait:c.wait??null,
+      sources:(c.campaign?.sources??[]).map(s=>({id:s.id,kind:s.kind})),
       admission:{ready: this.store.tasks().filter(t=>t.status==='queued'&&!t.paused).length,limit:this.config.maxQueued,
         deferred:owned.filter(t=>t.status==='waiting-capacity').map(t=>t.id),maxDeferredPerOwner:1}};
   }
@@ -123,6 +143,7 @@ export class Engine extends EventEmitter {
     const c=this.campaign(coordinatorId);const key=projectKey(project);
     const allowed=c.allowedProjects.some(p=>projectKey(p)===key)||c.allowedHosts.includes(project.host.toLowerCase());
     invariant(allowed,'Project is outside campaign authority');
+    const exclusion=checkProjectExclusion(this.config,project);invariant(exclusion.ok,exclusion.reason);
     if(c.hasCandidateSnapshot)invariant(this.store.candidate(key,coordinatorId)&&!this.store.candidate(key,coordinatorId).disposition,'Project not present/eligible in the finite candidate snapshot');
     return key;
   }
@@ -136,7 +157,7 @@ export class Engine extends EventEmitter {
     invariant(this.scopeRunning(coordinatorId),'Dispatch is disabled while paused/draining/stopped');
     safeId(input.id);invariant(!this.store.coordinator(input.id),'Worker id collides with a coordinator id');
     const key=coordinatorId===null?projectKey(input.project):this.allowedProject(input.project,coordinatorId);
-    if(coordinatorId===null)invariant(['read-only','engineering'].includes(input.workerMode),'Independent Worker needs explicit workerMode');
+    if(coordinatorId===null){invariant(['read-only','engineering'].includes(input.workerMode),'Independent Worker needs explicit workerMode');const exclusion=checkProjectExclusion(this.config,input.project);invariant(exclusion.ok,exclusion.reason);}
     const brief={};for(const k of ['objectOutcome','locationPrior','completeTodo','authorityResources','finishReturn'])brief[k]=nonempty(input.brief?.[k],`brief.${k}`);
     const wrongRoot=`${this.config.workspace.replaceAll('\\','/')}/repostew_pi/state/repositories`.toLowerCase();
     invariant(!Object.values(brief).some(v=>v.replaceAll('\\','/').toLowerCase().includes(wrongRoot)),'Incorrect record root in brief: use the host recordsRoot from harness_status');
@@ -150,7 +171,7 @@ export class Engine extends EventEmitter {
     }
     invariant(!tasks.some(t=>t.projectKey===key&&this.projectHeld(t)),'Project already has an unreleased assignment; use its owning task or reconcile it');
     const campaign=coordinatorId===null?{id:`direct-${input.id}`,mandate:brief.objectOutcome,workerMode:input.workerMode,workflow:input.workflow??'direct',allowedProjects:[input.project],allowedHosts:[]}:this.campaign(coordinatorId);
-    if(campaign.freshMembership){const eligible=checkFreshEligibility(this.config.workspace,input.project);invariant(eligible.ok,eligible.reason);}
+    if(campaign.freshMembership){const eligible=checkFreshEligibility(this.config.workspace,input.project,this.config);invariant(eligible.ok,eligible.reason);}
     if(campaign.requireAdmission)invariant(this.store.get(this.scopeKey('admission',key,coordinatorId))?.eligible,'Coordinator must inspect and admit this target before dispatch');
     if(campaign.requireAbsentProjectRoot)invariant(!existsSync(join(this.config.workspace,'state/repositories',key)),'Existing project root: touched/owned status is not clear; exclude from fresh campaign');
     const cwd=assignmentDir(this.config,input.project,input.id);
@@ -205,6 +226,7 @@ export class Engine extends EventEmitter {
     const run=this.store.run(runId);invariant(run&&running.has(run.status),'Run no longer active');
     run.report=undefined;run.lastActivity=now();
     if(!tool.startsWith('harness_'))run.toolStarted=true;
+    if(isCoordinator(run)&&['write','edit','bash','powershell'].includes(tool))run.mutationStarted=true;
     this.store.putRun(run);return {ok:true};
   }
   async agentAction(runId,token,action,body) {
@@ -213,12 +235,15 @@ export class Engine extends EventEmitter {
     if(action==='activity')return this.activity(runId,body.tool);
     if(action==='status')return isCoordinator(run)?this.coordinatorStatus(run.coordinatorId):{mode:this.store.get('mode'),task:this.store.task(run.owner)};
     if(action==='report')return this.report(runId,body);
+    if(action==='policy')return readPolicy(this.config,body,isCoordinator(run)?this.campaign(run.coordinatorId):this.taskCampaign(this.store.task(run.owner)));
+    if(action==='repository')return this.repositoryRead(run,body);
     if(action==='task'){invariant(!isCoordinator(run),'Task view is for W');const {plan,planRevision,todoSnapshot,...task}=this.store.task(run.owner);return {...task,todo:'Use Pi todo list; session tool-result details are authoritative'};}
     invariant(isCoordinator(run),'Worker cannot dispatch, select, or message other workers');
     const coordinatorId=run.coordinatorId;
+    if(action==='source')return this.sourceRead(coordinatorId,body,run);
     if(['dispatch','admit','skip','decide','message'].includes(action)||(action==='queue'&&body.action!=='list')){run.mutationStarted=true;this.store.putRun(run);}
     if(['decide','message'].includes(action))invariant(this.store.task(body.taskId)?.coordinatorId===coordinatorId,'Task belongs to a different owner');
-    if(action==='inspect')return this.inspect(body.project,coordinatorId);
+    if(action==='inspect')return this.inspect(body.project,coordinatorId,body);
     if(action==='admit')return this.admit(body.project,body.reason,coordinatorId);
     if(action==='decide')return this.decide(body,coordinatorId);
     if(action==='dispatch')return this.enqueue(body,coordinatorId);
@@ -279,19 +304,89 @@ export class Engine extends EventEmitter {
     else {const task=this.store.task(owner);task.todoSnapshot=snapshot;this.store.putTask(task);}
   }
   scopeKey(kind,key,coordinatorId) {return coordinatorId==='c1'?`${kind}:${key}`:`${kind}:${coordinatorId}:${key}`;}
-  async inspect(project,coordinatorId='c1') {
-    const key=this.allowedProject(project,coordinatorId);const gate=this.store.get('forgeGate');invariant(!gate,`Forge reads paused: ${gate?.category??''}; owner must reconcile the actual access/rate gate`);
-    const old=this.store.get(this.scopeKey('inspection',key,coordinatorId));if(old)return old;
-    const result=await this.inspector(project);
+  async sourceRead(coordinatorId,body,run) {
+    invariant(!this.closing&&!this.storageFailed&&['starting','running'].includes(this.store.run(run.id)?.status),'Source owner is no longer active');
+    const c=this.coordinator(coordinatorId),sources=c.campaign.sources??[];
+    if(body.action==='list')return {sources,pass:c.completedPasses??0};
+    invariant(body.action==='capture','Use list or capture');
+    const source=sources.find(s=>s.id===body.sourceId);invariant(source,'Source is not in this campaign');
+    const pass=c.completedPasses??0,key=`${pass}:${source.id}`,page=body.page??1;
+    const gateKey=`source:${coordinatorId}:${source.id}`,gates=this.store.get('forgeGates')??{};
+    const gate=this.store.get('forgeGate')??gates[source.host]??gates[gateKey];
+    invariant(!gate,'Source has an unreconciled access/rate gate');
+    c.sourceWindows??={};c.sourceWindows[key]??=this.clock();this.store.putCoordinator(c);
+    const selected=effectiveSource(source,c.sourceWindows[key]);
+    const pendingKey=`${coordinatorId}:${key}:${page}`;
+    if(this.sourcePending.has(pendingKey))return this.sourcePending.get(pendingKey);
+    run.mutationStarted=true;this.store.putRun(run);
+    const promise=(async()=>{
+      const result=await this.sourceReader(this.config,selected,{page,coordinatorId,pass},{shouldStop:()=>this.closing||this.storageFailed});
+      if(this.closing||this.storageFailed)return {...result,coverageApplied:false};
+      const active=this.store.run(run.id);
+      // A stopped/settled turn cannot advance source positions. Its retained
+      // receipt is reused on an explicitly authorized continuation.
+      if(!active||!['starting','running'].includes(active.status))return {...result,coverageApplied:false};
+      if(!result.failure) {
+        const current=this.coordinator(coordinatorId);current.sourceCoverage??={};
+        const previous=current.sourceCoverage[key];
+        if(!previous||result.page>=previous.page)current.sourceCoverage[key]={complete:result.complete,page:result.page,rawPath:result.rawPath,indexPath:result.indexPath,sha256:result.indexSha256??result.sha256};
+        this.store.putCoordinator(current);
+        if(!previous||result.page>previous.page){active.sourceProgress=true;this.store.putRun(active);}
+      }
+      if(result.failure?.scope) {
+        const current=this.store.get('forgeGates')??{};
+        current[result.failure.scope==='host'?source.host:gateKey]={...result.failure,sourceId:source.id,coordinatorId,at:now()};
+        this.store.set('forgeGates',current);
+      }
+      return result;
+    })();
+    this.sourcePending.set(pendingKey,promise);
+    try{return await promise;}finally{this.sourcePending.delete(pendingKey);}
+  }
+  forgeGate(project) {
+    const gates=this.store.get('forgeGates')??{};
+    return this.store.get('forgeGate')??gates[project.host.toLowerCase()]??gates[projectKey(project)];
+  }
+  recordForgeFailure(project,failure) {
+    if(!failure?.scope)return;
+    const gates=this.store.get('forgeGates')??{},key=failure.scope==='host'?project.host.toLowerCase():projectKey(project);
+    gates[key]={category:failure.category,status:failure.status,scope:failure.scope,at:now(),project:projectKey(project)};
+    this.store.set('forgeGates',gates);
+  }
+  assertForgeReady(project) {
+    const gate=this.forgeGate(project);
+    invariant(!gate,`Forge reads paused for this ${gate?.scope??'legacy gate'}: ${gate?.category??''}; reconcile the actual access/rate gate`);
+  }
+  async inspect(project,coordinatorId='c1',{refresh=false,reason}={}) {
+    const key=this.allowedProject(project,coordinatorId);this.assertForgeReady(project);
+    if(refresh)nonempty(reason,'Changed input/evidence requiring fresh inspection',2000);
+    const old=this.store.get(this.scopeKey('inspection',key,coordinatorId));if(old?.repository&&!old.failure&&!refresh)return old;
+    const result=await this.inspector(project,this.config);
     this.store.set(this.scopeKey('inspection',key,coordinatorId),result);
-    if(result.failure?.category==='forge-access-or-rate-gate')this.store.set('forgeGate',{category:result.failure.category,status:result.failure.status,at:now(),project:key});
+    this.recordForgeFailure(project,result.failure);
+    return result;
+  }
+  async repositoryRead(run,body) {
+    const project=body.project??(!isCoordinator(run)?this.store.task(run.owner).project:undefined);
+    invariant(project,'Exact project required');
+    const campaign=isCoordinator(run)?this.campaign(run.coordinatorId):this.taskCampaign(this.store.task(run.owner));
+    if(isCoordinator(run))this.allowedProject(project,run.coordinatorId);
+    else invariant(projectKey(project)===this.store.task(run.owner).projectKey,'Worker repository reads are limited to its own project');
+    const exclusion=checkProjectExclusion(this.config,project);invariant(exclusion.ok,exclusion.reason);
+    this.assertForgeReady(project);
+    const result=body.operation==='inspect'
+      ? await this.inspector(project,this.config)
+      : await this.repositoryReader(project,body,{...this.config,allowPrivate:campaign.allowedProjects.some(p=>projectKey(p)===projectKey(project))});
+    this.recordForgeFailure(project,result.failure);
     return result;
   }
   admit(project,reason,coordinatorId='c1') {
     const key=this.allowedProject(project,coordinatorId);nonempty(reason,'admission reason',4000);
     const inspected=this.store.get(this.scopeKey('inspection',key,coordinatorId));invariant(inspected?.repository&&!inspected.failure,'A successful native inspection is required');
     const r=inspected.repository;
-    invariant(!r.private&&!r.archived&&!r.disabled&&!inspected.nativeIdentityChanged,'Private, archived, disabled or renamed target cannot enter this fresh campaign');
+    const campaign=this.campaign(coordinatorId);
+    const explicit=campaign.allowedProjects.some(p=>projectKey(p)===key);
+    invariant((!r.private||explicit&&!campaign.freshMembership)&&!r.archived&&!r.disabled&&!inspected.nativeIdentityChanged,'Private unassigned, archived, disabled or renamed target cannot enter this campaign');
     const admission={eligible:true,reason,nativeId:r.id,at:now(),inspectionAt:inspected.at};this.store.set(this.scopeKey('admission',key,coordinatorId),admission);return admission;
   }
   decide({taskId,runId,disposition,reason,nextAction='',reconciliation=''},coordinatorId='c1') {
@@ -321,7 +416,7 @@ export class Engine extends EventEmitter {
       this.store.putTask(task);this.store.putDecision(runId,taskId,decision);this.notify('worker_judgment',taskId,{runId,disposition,reason,nextAction},coordinatorId);
       // Only captured-feedback handling asks the user. Submission-time follow-up
       // remains on the result for later notifications, without holding W open.
-      if(['delivered','no_delivery'].includes(disposition)&&run.report?.userAction&&this.taskCampaign(task).workflow==='captured-feedback'){
+      if(['delivered','no_delivery'].includes(disposition)&&run.report?.userAction&&workflowFor(this.taskCampaign(task).workflow).userFollowup){
         const receiptId=`user-action:${runId}`;
         if(!this.store.receipt(receiptId)){
           this.store.saveReceipt(receiptId,{runId,taskId,at:now()});
@@ -360,7 +455,8 @@ export class Engine extends EventEmitter {
     for(const live of this.live.values())void live.process.close(true);
   }
   coordinatorWake(c) {
-    if(!c.campaign||c.mode!=='running'||running.has(c.status)||['complete','unknown','interrupted'].includes(c.status))return undefined;
+    if(!c.campaign||c.mode!=='running'||running.has(c.status)||['unknown','interrupted'].includes(c.status))return undefined;
+    if(c.status==='complete'&&(!c.campaign.continuous||!c.nextWakeAt||c.nextWakeAt>this.clock()))return undefined;
     if(c.requiresReconciliation||(c.retryAt??0)>this.clock())return undefined;
     const events=this.store.events(100,c.id).filter(e=>!['assignment_queued','worker_judgment'].includes(e.kind));
     const actionable=events.some(e=>['worker_result','owner_delta','owner_reconciliation','admission_changed','recovery_expired'].includes(e.kind));
@@ -457,8 +553,10 @@ export class Engine extends EventEmitter {
       this.notify('recovery_expired',task.id,{runId:task.runId},task.coordinatorId);
       this.raiseIncident(this.store.run(task.runId),'recovery-required',`:phase:${task.recovery.at}`);return;
     }
+    const exclusion=checkProjectExclusion(this.config,task.project);
+    if(!exclusion.ok){task.status='blocked';task.problem=exclusion.reason;this.store.putTask(task);this.notify('admission_changed',task.id,{project:task.projectKey,reason:exclusion.reason},task.coordinatorId);return;}
     if(task.attempts===0&&campaign.freshMembership){
-      const eligible=checkFreshEligibility(this.config.workspace,task.project);
+      const eligible=checkFreshEligibility(this.config.workspace,task.project,this.config);
       if(!eligible.ok){task.status='blocked';task.problem=eligible.reason;this.store.putTask(task);this.notify('admission_changed',task.id,{project:task.projectKey,reason:eligible.reason,neverStarted:true},task.coordinatorId);return;}
     }
     const run=this.newRun(task.id,pool,task.cwd,join(task.cwd,'session.jsonl'),'worker',task.coordinatorId);
@@ -496,7 +594,7 @@ export class Engine extends EventEmitter {
     const token=randomBytes(32).toString('hex');this.tokens.set(run.id,token);
     const campaign=isCoordinator(run)?this.campaign(run.coordinatorId):this.taskCampaign(this.store.task(run.owner));
     const roleConfig=loadRole(this.config,role);
-    const toolset=(role==='worker'&&campaign.workerMode==='read-only'?roleConfig.tools.filter(t=>!['write','edit','bash','powershell'].includes(t)):roleConfig.tools).join(',');
+    const toolset=workflowTools(roleConfig.tools,role,campaign).join(',');
     const resourceEnv={};
     if(role==='worker') {
       const cache=join(run.cwd,'.cache');const temp=join(run.cwd,'.tmp');mkdirSync(temp,{recursive:true});
@@ -506,7 +604,7 @@ export class Engine extends EventEmitter {
       resourceEnv.RUSTUP_AUTO_INSTALL='0';
     }
     const proc=this.processFactory({...this.config,maxRunMs:run.maxRunMs??this.config.maxRunMs},{owner:run.owner,cwd:run.cwd,session:run.session,model:run.model,receipt:run.receipt,
-      tools:toolset,instructions:instructions(this.config,role,roleConfig),env:{...resourceEnv,REPOSTEW_HARNESS_URL:this.endpoint,REPOSTEW_RUN_TOKEN:token,REPOSTEW_RUN_ID:run.id,REPOSTEW_ROLE:role}});
+      tools:toolset,instructions:instructions(this.config,role,roleConfig,campaign),env:{...resourceEnv,REPOSTEW_HARNESS_URL:this.endpoint,REPOSTEW_RUN_TOKEN:token,REPOSTEW_RUN_ID:run.id,REPOSTEW_ROLE:role}});
     const live={process:proc,finishing:false,settled:false,error:undefined};
     live.finished=new Promise(resolve=>{live.resolveFinished=resolve;});this.live.set(run.id,live);
     proc.on('record',record=>{
@@ -626,13 +724,22 @@ export class Engine extends EventEmitter {
       // queued assignment metadata does not need another C wake.
       this.store.consumeKind('assignment_queued',c.id);this.store.consumeKind('worker_judgment',c.id);
       this.store.consumeKind('queue_changed',c.id);
-      const progress=this.store.tasks(c.id).length>run.beforeTasks||this.store.skippedCandidates(c.id)>run.beforeSkips||this.store.runs().some(r=>!isCoordinator(r)&&r.coordinatorId===c.id&&this.store.decision(r.id)?.at>=run.createdAt);
+      const evidenceDelta=report.evidence.length>0&&digest(report.evidence)!==digest(c.result?.evidence??[]);
+      const progress=run.sourceProgress||evidenceDelta||this.store.tasks(c.id).length>run.beforeTasks||this.store.skippedCandidates(c.id)>run.beforeSkips||this.store.runs().some(r=>!isCoordinator(r)&&r.coordinatorId===c.id&&this.store.decision(r.id)?.at>=run.createdAt);
       c.noProgress=progress?0:report.outcome==='wait'?(c.noProgress??0):(c.noProgress??0)+1;c.result=report;c.problem=undefined;
       const active=this.store.tasks(c.id).some(t=>running.has(t.status)||['queued','continuing','waiting-capacity'].includes(t.status));
       if(report.outcome==='complete') {
         const unresolved=this.store.tasks(c.id).some(t=>['unknown','interrupted','failed','blocked'].includes(t.status));
-        if(active||this.candidatesRemaining(c.id)>0||unresolved){c.status='idle';c.noProgress++;c.problem='Complete rejected: selected scope still remains';}
-        else c.status='complete';
+        const uncaptured=(c.campaign.sources??[]).some(source=>!c.sourceCoverage?.[`${c.completedPasses??0}:${source.id}`]?.complete);
+        if(active||this.candidatesRemaining(c.id)>0||unresolved||uncaptured){c.status='idle';c.noProgress++;c.problem='Complete rejected: selected scope or registered source capture still remains';c.continuePending=true;}
+        else {
+          c.noProgress=0;
+          c.passCompletedAt=now();c.completedPasses=(c.completedPasses??0)+1;
+          if(c.campaign.continuous) {
+            c.status='waiting';
+            c.wait={kind:'time',until:new Date(this.clock()+c.campaign.revisitMs).toISOString(),since:now()};
+          } else c.status='complete';
+        }
       } else if(report.outcome==='blocked'){c.status='blocked';c.problem=report.blocker;c.wait={kind:'external',since:now()};}
       else if(report.outcome==='wait'){c.status='waiting';c.wait={...(report.waitFor??{kind:active?'children':'external'}),since:now()};}
       else {c.status='idle';c.continuePending=report.outcome==='continue';}
@@ -708,9 +815,17 @@ export class Engine extends EventEmitter {
     }
     if(action==='clear-forge') {
       nonempty(body.evidence,'actual rate/access gate reconciliation');
-      this.store.set('forgeGate',null);
+      const gates=this.store.get('forgeGates')??{};
+      const key=body.project?projectKey(body.project):body.source?`source:${body.source.coordinatorId}:${body.source.id}`:body.host?.toLowerCase();
+      if(key){invariant(gates[key],'No scoped forge gate matches this target');delete gates[key];}
+      else {
+        invariant(Object.keys(gates).length<=1,'Name the affected project or host; unrelated forge gates remain held');
+        for(const name of Object.keys(gates))delete gates[name];
+        this.store.set('forgeGate',null);
+      }
+      this.store.set('forgeGates',gates);
       for(const c of this.store.coordinators())if(c.campaign)this.notify('owner_delta',c.id,{message:`Forge access gate reconciled: ${body.evidence}`},c.id);
-      this.kick();return {cleared:true};
+      this.kick();return {cleared:key??'single-or-legacy-gate'};
     }
     if(action==='reconcile')return this.reconcile(body);
     if(action==='incident-resolve') {
@@ -737,7 +852,8 @@ export class Engine extends EventEmitter {
     const s=this.status();
     return {mode:s.mode,maxWorkers:s.maxWorkers,maxCoordinators:s.maxCoordinators,maxQueued:s.maxQueued,counts:s.counts,occupied:s.occupied,pools:s.pools,
       coordinators:s.coordinators,independentWorkers:this.store.tasks(null).map(t=>({id:t.id,project:t.projectKey,status:t.status,paused:!!t.paused,runId:t.runId,attempts:t.attempts,failures:t.failures??0})),
-      incidents:this.store.incidents(),subscriptions:this.subscriptions.list(),lastHeartbeat:this.store.get('lastHeartbeat'),liveProcesses:s.liveProcesses};
+      incidents:this.store.incidents(),forgeGates:this.store.get('forgeGates')??{},legacyForgeGate:this.store.get('forgeGate'),
+      subscriptions:this.subscriptions.list(),lastHeartbeat:this.store.get('lastHeartbeat'),liveProcesses:s.liveProcesses};
   }
   async govern({requestId,action,...body}) {
     nonempty(requestId,'stable governance requestId',200);nonempty(action,'action',80);
@@ -761,7 +877,7 @@ export class Engine extends EventEmitter {
       if(runId!==undefined)invariant(c.runId===runId,'Coordinator run changed; reconcile the current exact run');
       const run=c.runId&&this.store.run(c.runId);let receipt;
       try{receipt=JSON.parse(readFileSync(run.receipt,'utf8'));}catch{}
-      if(process.platform==='win32'&&run&&!run.treeStopped&&!receipt?.treeStopped&&this.store.tasks(c.id).length===0) {
+      if(process.platform==='win32'&&run&&!run.treeStopped&&!receipt?.treeStopped&&!run.mutationStarted&&this.store.tasks(c.id).length===0) {
         // A first C with no dispatched tasks has only read/forge GET capability.
         // Exact owner+target absence, together with the private kill-on-close
         // Job, reconciles terminal-host death without fabricating its receipt.
@@ -802,7 +918,8 @@ export class Engine extends EventEmitter {
   }
   async shutdown() {
     this.closing=true;clearInterval(this.timer);
-    if(this.storageFailed){await Promise.all([...this.live.values()].map(live=>live.process.close(true)));return;}
+    if(this.storageFailed){await Promise.all([...this.live.values()].map(live=>live.process.close(true)));await Promise.allSettled([...this.sourcePending.values()]);return;}
     await this.control('stop');
+    await Promise.allSettled([...this.sourcePending.values()]);
   }
 }

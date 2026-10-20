@@ -10,6 +10,7 @@ import {call} from './server.mjs';
 import {ensureService} from './service-start.mjs';
 import {governanceRequestSchema,inspectTargetSchema} from './governance-schema.mjs';
 import {subscribe} from './event-client.mjs';
+import {readPolicy} from './policy.mjs';
 
 const index=process.argv.indexOf('--config');
 const config=loadConfig(index>=0?resolve(process.argv[index+1]):fileURLToPath(new URL('../config.local.json',import.meta.url)));
@@ -22,11 +23,12 @@ const output=value=>({content:[{type:'text',text:JSON.stringify(value)}],structu
 const guarded=fn=>async args=>{try{return output(await fn(args));}catch(e){return {isError:true,content:[{type:'text',text:e.message}]};}};
 
 serveStdio(()=>{
-  const server=new McpServer({name:'repostew-governance',version:'2.0.0'}, {
+  const server=new McpServer({name:'repostew-governance',version:'2.2.0'}, {
     ...(channelId?{capabilities:{experimental:{'claude/channel':{}}},supportedProtocolVersions:['2025-11-25','2025-06-18']}:{}),
     instructions:'Manage the existing local RepoStew service from any harness. Start/reuse the service explicitly; connecting does not launch agents. Use stable request IDs and inspect receipts after uncertainty. Pause/Stop and unknown-write gates remain binding. C/W sessions are executed by Pi, independently of this governance client. Never create overlapping project writers or infer authority from installation.'
   });
   server.registerTool('repostew_status',{description:'Read bounded governance facts, C domains, independent W, capacity and unresolved incidents. No polling loop.',inputSchema:z.object({}).strict(),annotations:{readOnlyHint:true,openWorldHint:false}},guarded(()=>call(config,'governance')));
+  server.registerTool('repostew_workflows',{description:'List the full Skill workflow catalog or read complete canonical policy documents. Uses local Skill files; does not start execution or grant authority.',inputSchema:z.object({action:z.enum(['list','read']),paths:z.array(z.string().min(1).max(300)).min(1).max(8).optional()}).strict(),annotations:{readOnlyHint:true,openWorldHint:false}},guarded(args=>readPolicy(config,args)));
   server.registerTool('repostew_inspect',{description:'Read one exact owner and current run for diagnosis/reconciliation. May contain private local task results; do not publish.',inputSchema:inspectTargetSchema,annotations:{readOnlyHint:true,openWorldHint:false}},guarded(args=>call(config,'inspect-owner',args)));
   server.registerTool('repostew_command',{description:'Apply an explicitly authorized governance action: add a paused C, dispatch independent W, scoped pause/drain/stop/resume, steer, reconcile, or adjust capacity. A repeated requestId retrieves its original receipt; it never repeats a mutation. Resume never clears interrupted/unknown gates. Closing an incident does not resume its task.',inputSchema:governanceRequestSchema,annotations:{readOnlyHint:false,destructiveHint:true,idempotentHint:true,openWorldHint:false}},guarded(args=>call(config,'governance-command',args)));
   server.registerTool('repostew_receipt',{description:'Reconcile an uncertain governance operation by its original requestId. not-found is not evidence of external-write failure.',inputSchema:z.object({requestId:z.string().min(1).max(200)}).strict(),annotations:{readOnlyHint:true,openWorldHint:false}},guarded(args=>call(config,'governance-receipt',args)));

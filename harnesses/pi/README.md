@@ -36,6 +36,11 @@ The service starts paused. Assign scoped C or independent W through the
 - Completed submissions release W; personal CLA follow-up is reported by notification handling.
 - Independent guardian, one paused recovery attempt, separate lifecycle diagnostics.
 - [Governance event subscriptions](EVENT-SUBSCRIPTIONS.md) and [personal-computer fleet foundation](FLEET.md).
+- [All 19 workflow selectors](WORKFLOWS.md): full canonical Skill/forms, action-method reads, source capture, GitHub/GitLab access, maintenance, records, backup and authorized disposition.
+- Verified source pagination and processing indexes, continuous pass recurrence, and project/host-specific access gates.
+
+See [operational blockers and recovery](OPERATIONS.md) for the improvements derived
+from real task failures and the remaining external capability requirements.
 
 Windows uses native Job Object ownership. Linux/macOS include SSH transport and
 a process-group owner, but full descendant containment remains unverified:
@@ -48,7 +53,7 @@ rtk npm run check
 rtk npm test
 ```
 
-Publication validation on Windows: 77 passed, 1 POSIX-native test skipped.
+Publication validation on Windows: 88 passed, 1 POSIX-native test skipped.
 This is not Linux/macOS or real multi-host acceptance. Native Pi multi-C/W
 fixtures were also exercised during development; no production task data is
 distributed. [Implementation provenance](PI-IMPLEMENTATION.md).

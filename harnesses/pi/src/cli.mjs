@@ -9,6 +9,8 @@ import {ensureService} from './service-start.mjs';
 import {governanceRequestSchema} from './governance-schema.mjs';
 import {diagnostic,safeError} from './diagnostics.mjs';
 import {supervise} from './guardian.mjs';
+import {workflows} from './workflows.mjs';
+import {readPolicy} from './policy.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const args=process.argv.slice(2);const configIndex=args.indexOf('--config');
@@ -17,17 +19,24 @@ const [command,...rest]=args;
 const jsonFile=path=>JSON.parse(readFileSync(resolve(path),'utf8').replace(/^\uFEFF/,''));
 const target=parts=>parts.length?{kind:parts[0],id:parts[1]}:{kind:'all'};
 try {
-  if(command==='init') {
+  if(command==='workflows') {
+    console.log(JSON.stringify({workflows},null,2));
+  } else if(command==='init') {
     if(existsSync(configPath))throw new Error('Configuration exists; edit it explicitly');
     writeFileSync(configPath,readFileSync(resolve(root,'config.example.json')),{flag:'wx'});
     console.log(JSON.stringify({created:configPath,mode:'paused',next:'Edit configuration, then serve'}));
   } else if(command==='mcp') {
     await import('./governance-mcp.mjs');
   } else if(command==='help'||!command) {
+    console.log('Workflow tools:\nworkflows               List all Skill workflow selectors without starting execution\npolicy list             List configured canonical workflow methods\npolicy PATH [PATH...]   Read 1..8 complete canonical Skill documents\n');
     console.log(`RepoStew Pi harness\nnode src/cli.mjs <command> [--config path]\n\ninit                    Create config.local.json, never overwrite\nserve                   Start local control service; preserves pause/stop\nstatus                  Show tasks, provider distribution and blockers\nload campaign.json      Load one finite campaign while idle/paused\nresume                  Enable dispatch and refill in the loaded campaign\npause                   Disable dispatch/refill; accepted turns may finish\ndrain                   Finish active turns then enter paused\nstop                    Clear queues, abort and stop all owned process trees\nwake message.txt        Deliver a C1 delta, without restarting active C1\nmessage ID message.txt  Steer one active Worker, no implicit restart\nrouting routing.json    Apply pools/maxWorkers to new dispatches only\nclear-provider ID       Clear a repaired provider's circuit/cooldown\nreconcile decision.json Record stop/effect evidence before task continuation\ndispatch task.json      Submit one complete task within loaded authority\n\nNo credentials belong in configuration or command arguments. Secrets stay in Pi's existing auth store.`);
     console.log(`\nCross-harness governance (one shared service/database):\nstart                         Start/reuse service; never implicitly resume\nmcp                           Standard MCP stdio entry for any MCP host\ngovernance                    Bounded domain/capacity/incident view\nadd-c spec.json                Add an explicitly scoped, initially paused C\ndirect task.json               Dispatch a standalone W (explicit workerMode)\ncommand operation.json        Execute {requestId,command}; idempotent receipt\nreceipt REQUEST_ID            Read original operation outcome\ninspect coordinator|worker ID Read exact owner and current run\npause|drain|stop|resume [coordinator|worker ID]  Scoped control\nwake [C_ID] message.txt        Queue one C delta without replacement\nclear-provider ID evidence.txt Reopen a diagnosed provider circuit\n\nConnecting MCP never creates agents or another service. Work requires explicit assignment.\n`);
   } else {
     const config=loadConfig(configPath);
+    if(command==='policy') {
+      console.log(JSON.stringify(readPolicy(config,rest[0]==='list'?{action:'list'}:{action:'read',paths:rest}),null,2));
+      process.exit(0);
+    }
     const govern=async(command,requestId=randomUUID())=>{
       const request=governanceRequestSchema.parse({requestId,command});
       process.stderr.write(JSON.stringify({requestId})+'\n');

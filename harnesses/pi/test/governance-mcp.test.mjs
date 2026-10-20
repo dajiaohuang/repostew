@@ -20,8 +20,11 @@ test('two independent MCP hosts share one service and deduplicated governance op
     clients.push(client);await client.connect(transport);
   }
   const [a,b]=clients;
-  const tools=await a.listTools();assert.equal(tools.tools.length,7);
+  const tools=await a.listTools();assert.ok(tools.tools.some(tool=>tool.name==='repostew_workflows'));
   const decode=result=>{assert.ok(!result.isError,result.content?.[0]?.text);return result.structuredContent??JSON.parse(result.content[0].text);};
+  const catalog=decode(await a.callTool({name:'repostew_workflows',arguments:{action:'list'}}));
+  assert.ok(catalog.workflows.some(flow=>flow.id==='disposition'));
+  assert.ok(catalog.workflows.some(flow=>flow.id==='notifications'));
   const status=decode(await a.callTool({name:'repostew_start',arguments:{}}));assert.equal(status.reused,true);assert.equal(status.liveProcesses,0);
   const request={requestId:'fixture-add-alpha',command:{action:'coordinator-add',spec:{id:'alpha',campaign:{id:'alpha-scope',mandate:'No repository work; fixture only',allowedProjects:[],allowedHosts:['fixture.local'],workerMode:'read-only',continuous:false,revisitMs:60000}}}};
   const first=decode(await a.callTool({name:'repostew_command',arguments:request}));

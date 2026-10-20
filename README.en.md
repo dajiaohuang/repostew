@@ -21,6 +21,11 @@ Use the Skill independently in a compatible agent environment, or pair it with t
 Harness. The Harness loads this Skill through `policyDir`; it currently retains
 repository-oriented task and project concepts.
 
+All [19 workflow selectors](harnesses/pi/WORKFLOWS.md) are integrated: canonical
+forms and methods, source capture, GitHub/GitLab reads, recurring passes, delivery,
+maintenance, records, backup and authorized disposition. [Operational recovery](harnesses/pi/OPERATIONS.md)
+documents the fixes derived from real task failures and remaining capability limits.
+
 ## Repository layout
 
 ```text

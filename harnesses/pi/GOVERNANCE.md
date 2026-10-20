@@ -1,5 +1,10 @@
 # Start from any harness
 
+For all Skill workflow selectors, registered sources and native repository reads,
+see [Workflow execution](WORKFLOWS.md). `repostew_workflows` lists the catalog and
+reads complete canonical methods without starting an agent. Operational failure
+classes and recovery limits are documented in [Operations](OPERATIONS.md).
+
 For incoming notifications and native conversation wake-up, see
 [Event subscriptions](EVENT-SUBSCRIPTIONS.md). An ordinary MCP connection alone
 does not subscribe or wake its host.
@@ -22,7 +27,8 @@ Post-submission personal actions are separate from Worker execution state.
 Completed results may include `userAction: {kind: "cla" | "dco" | "other",
 reference, action}` with empty `remaining` and `blocker`. Engineering completes
 as `delivered`; a notification assessment with no public update can complete as
-`no_delivery`. Only C acceptance in the `captured-feedback` workflow emits the
+`no_delivery`. C acceptance in incremental-feedback, notifications or recurring-patrol
+(including their legacy aliases) emits the
 deduplicated `user_action_required` metadata event. The user reads the exact
 result to decide; it does not retain a Worker slot or project reservation after
 acceptance. No signature/consent is executed automatically. Actual barriers

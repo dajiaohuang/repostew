@@ -19,6 +19,10 @@ Skill 管**工作流**：调查、修复、投稿、反馈和授权维护。
 Skill 可在兼容智能体环境中独立使用，也可搭配 Harness。
 Harness 通过 `policyDir` 加载 Skill，目前仍保留面向仓库的任务与项目概念。
 
+已接入[全部 19 类工作流](harnesses/pi/WORKFLOWS.md)：完整规范与表单、来源捕获、
+GitHub/GitLab 读取、持续巡检、交付、维护、记录、备份和授权清理。
+[运行问题与恢复](harnesses/pi/OPERATIONS.md)说明实际阻塞带来的改进，以及仍需外部工具和平台支持的部分。
+
 ## 目录
 
 ```text
