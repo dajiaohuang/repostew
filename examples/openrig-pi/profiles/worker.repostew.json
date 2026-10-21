@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "workspace": "<ABSOLUTE_REPOSTEW_WORKSPACE>",
+  "role": "worker",
+  "gh": {
+    "configDir": "<EXISTING_GH_CONFIG_DIRECTORY>"
+  },
+  "seatGuidance": "<ABSOLUTE_REVIEWED_CONTRACT_DIRECTORY>/worker.md"
+}

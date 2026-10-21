@@ -1,0 +1,18 @@
+{
+  "extensions": [
+    "<ABSOLUTE_TEMPLATE_DIRECTORY>/extensions/pi-native.js"
+  ],
+  "defaultTools": [
+    "read",
+    "bash",
+    "powershell",
+    "edit",
+    "write",
+    "grep",
+    "find",
+    "ls",
+    "codemode",
+    "tool_search"
+  ],
+  "shellCommandPrefix": "# BEGIN REPOSTEW GH\nexport GH_CONFIG_DIR=\"${GH_CONFIG_DIR:-<EXISTING_GH_CONFIG_DIRECTORY>}\"\nexport GH_PROMPT_DISABLED=1\n# END REPOSTEW GH"
+}

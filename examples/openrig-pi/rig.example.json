@@ -1,0 +1,35 @@
+{
+  "version": "0.2",
+  "name": "repostew-example",
+  "summary": "One coordinator and one worker; configuration template only",
+  "pods": [
+    {
+      "id": "team",
+      "label": "RepoStew example",
+      "members": [
+        {
+          "id": "c",
+          "label": "Coordinator",
+          "agent_ref": "local:<COORDINATOR_AGENT_SPEC>",
+          "profile": "default",
+          "runtime": "pi",
+          "model": "openai-codex/gpt-6-luna",
+          "effort": "xhigh",
+          "cwd": "<ABSOLUTE_SEAT_WORKSPACE>/c",
+          "restore_policy": "checkpoint_only"
+        },
+        {
+          "id": "w1",
+          "label": "Worker",
+          "agent_ref": "local:<WORKER_AGENT_SPEC>",
+          "profile": "default",
+          "runtime": "pi",
+          "model": "openai-codex/gpt-6-luna",
+          "effort": "xhigh",
+          "cwd": "<ABSOLUTE_SEAT_WORKSPACE>/w1",
+          "restore_policy": "checkpoint_only"
+        }
+      ]
+    }
+  ]
+}

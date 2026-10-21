@@ -23,6 +23,14 @@ Harness 通过 `policyDir` 加载 Skill，目前仍保留面向仓库的任务�
 GitHub/GitLab 读取、持续巡检、交付、维护、记录、备份和授权清理。
 [运行问题与恢复](harnesses/pi/OPERATIONS.md)说明实际阻塞带来的改进，以及仍需外部工具和平台支持的部分。
 
+## 推荐运行形态
+
+- **OpenRig + Pi：**OpenRig 管原生席位、队列和恢复，搭配 RepoStew 集成 C/W 契约与 Pi 扩展。参见从实际独立组部署提炼的[配置模板与激活指南](examples/openrig-pi/README.zh.md)。
+- **独立 RepoStew Pi Harness：**使用下文的内置执行服务。
+- **仅 Skill：**在其他兼容宿主中使用可移植工作流。
+
+每个任务只选一个执行所有者。OpenRig 模板不会启动集群或修改现有 Harness 配置；原生 Windows OpenRig 仍为实验形态。
+
 ## 目录
 
 ```text

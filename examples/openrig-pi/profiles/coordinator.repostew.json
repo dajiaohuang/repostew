@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "workspace": "<ABSOLUTE_REPOSTEW_WORKSPACE>",
+  "role": "coordinator",
+  "gh": {
+    "configDir": "<EXISTING_GH_CONFIG_DIRECTORY>"
+  },
+  "seatGuidance": "<ABSOLUTE_REVIEWED_CONTRACT_DIRECTORY>/coordinator.md",
+  "openrig": {
+    "url": "http://127.0.0.1:17433",
+    "rig": "repostew-example",
+    "coordinator": "team-c@repostew-example",
+    "workers": [
+      "team-w1@repostew-example"
+    ]
+  }
+}

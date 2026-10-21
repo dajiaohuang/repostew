@@ -26,6 +26,14 @@ forms and methods, source capture, GitHub/GitLab reads, recurring passes, delive
 maintenance, records, backup and authorized disposition. [Operational recovery](harnesses/pi/OPERATIONS.md)
 documents the fixes derived from real task failures and remaining capability limits.
 
+## Recommended deployment options
+
+- **OpenRig + Pi:** use OpenRig's native seats, queue and recovery with RepoStew's assembled C/W contracts and Pi extension. Start with the [configuration templates and activation guide](examples/openrig-pi/README.md), distilled from an actual independent-group deployment.
+- **Standalone RepoStew Pi harness:** use the bundled execution service described below.
+- **Skill only:** bring the portable workflows to another compatible host.
+
+Choose one execution owner per task. The OpenRig examples do not start a fleet or change existing harness configuration; native Windows OpenRig remains experimental.
+
 ## Repository layout
 
 ```text

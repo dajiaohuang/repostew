@@ -1,0 +1,52 @@
+{
+  "kind": "repostew-deployment-plan-not-openrig-input",
+  "authorization": "none; choose and authorize capacity before materializing",
+  "groups": [
+    {
+      "name": "new-repositories",
+      "coordinators": 1,
+      "workers": 16,
+      "scope": "New repository discovery and complete initial work"
+    },
+    {
+      "name": "github-feedback",
+      "coordinators": 1,
+      "workers": 8,
+      "scope": "Exact captured GitHub feedback batches"
+    },
+    {
+      "name": "gitlab-repositories",
+      "coordinators": 1,
+      "workers": 8,
+      "scope": "Untouched repositories in the authorized GitLab list"
+    },
+    {
+      "name": "gitlab-feedback",
+      "coordinators": 1,
+      "workers": 8,
+      "scope": "Exact captured GitLab feedback batches"
+    },
+    {
+      "name": "existing-publication",
+      "coordinators": 1,
+      "workers": 8,
+      "scope": "Previously completed eligible candidates only; no new audit"
+    },
+    {
+      "name": "followed-issues",
+      "coordinators": 1,
+      "workers": 6,
+      "scope": "Newly created issues in the captured followed-list window"
+    }
+  ],
+  "modelExample": {
+    "provider": "openai-codex",
+    "model": "gpt-6-luna",
+    "effort": "xhigh"
+  },
+  "notes": [
+    "Historical 60-seat allocation shape, not a throughput recommendation. Start with one C and one W.",
+    "Each group owns its W; one writer per repository across groups.",
+    "Model availability and effort support must be checked in the selected Pi installation."
+  ]
+}

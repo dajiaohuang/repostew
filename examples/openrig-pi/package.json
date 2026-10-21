@@ -1,0 +1,9 @@
+{
+  "name": "repostew-openrig-pi-example",
+  "version": "0.4.1",
+  "private": true,
+  "type": "module",
+  "description": "Explicit opt-in OpenRig and Pi deployment templates",
+  "license": "MIT",
+  "peerDependencies": { "typebox": "*" }
+}
