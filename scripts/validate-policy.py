@@ -11,13 +11,13 @@ NATIVE = re.compile(
     r"max_concurrent_threads_per_session)\b|ctx\.executeTool|/repostew-goal"
 )
 LIMITS = {
-    "SKILL.md": 85, "AGENTS.md": 28,
-    "references/orchestration.md": 115, "references/worker-assembly.md": 65,
+    "SKILL.md": 95, "AGENTS.md": 28,
+    "references/orchestration.md": 115, "references/worker-assembly.md": 85,
     "references/harness.md": 40,
-    "roles/supervisor.md": 26, "roles/coordinator.md": 33, "roles/worker.md": 38,
+    "roles/supervisor.md": 28, "roles/coordinator.md": 40, "roles/worker.md": 40,
     "roles/maintainer.md": 15,
-    "prompts/README.md": 25, "prompts/disposition.md": 8, "prompts/supervisor-start.md": 24,
-    "prompts/coordinator-start.md": 10, "prompts/worker-start.md": 10, "prompts/task.md": 18,
+    "prompts/README.md": 26, "prompts/disposition.md": 9, "prompts/supervisor-start.md": 24,
+    "prompts/coordinator-start.md": 10, "prompts/worker-start.md": 10, "prompts/task.md": 23,
     "prompts/continue.md": 18, "prompts/handoff.md": 22,
 }
 FORMS = ("new-repository", "contribution-reassessment", "incremental-feedback", "discovery", "recurring-patrol")
@@ -39,10 +39,9 @@ FLOW_LINKS = {
 
 # Editorial regression assertions, not proof of runtime compliance or complete semantic review.
 BOUNDARIES = {
-    "roles/worker.md": ("direct", "fork/branch/commit/push/Open PR", "CLA/DCO prechecks",
-                        "Preparation is internal", "No delivery needed", "Externally blocked", "Execution failed",
-                        "Continue feasible work", "whole-unit resource envelope"),
-    "roles/coordinator.md": ("Check delivery", "No routine remote readback", "Not delivered, feasible",
+    "roles/worker.md": ("Six steps", "Target-required tests", "Submit directly", "Finish cleanup",
+                        "No CI lookup, record or wait", "Reconcile unknown writes", "Stopped/unassigned"),
+    "roles/coordinator.md": ("Record outcomes", "No routine remote readback", "Not delivered, feasible",
                              "owning Worker continues", "No delivery needed", "Blocked/failed", "Continue in the same turn",
                              "local failure is not a domain stop"),
     "prompts/task.md": ("1. Object and outcome", "2. Location and prior work", "3. Complete TODO",
@@ -55,16 +54,16 @@ BOUNDARIES = {
                              "Ineffective prior correction", "At most one combined continuation",
                              "No direct W delegation", "only mutation is the bounded C message",
                              "user/platform-limit waiver", "expiry never renews itself"),
-    "references/safety.md": ("do not precheck CLA/DCO", "actually requests signing", "PR-only refusal", "Never sign for the user"),
+    "references/safety.md": ("W autonomously agrees", "true facts", "PR-only refusal", "Reconcile an unknown signing result"),
     "references/execution-recovery.md": ("three failed repairs", "notify", "prospective deadline", "cumulative accounting",
                                          "are not prerequisites", "Estimates guide planning, not automatic stop gates",
                                          "ENOSPC", "Monitoring is not hard enforcement"),
     "references/storage.md": ("Minimal-retention campaign", "finite set", "queued writes", "private security/incident evidence",
                                "existing recovery patches/archives", "no publish/test/backup prerequisite",
                                "Execute eligible deletion in the same unit", "No privilege escalation"),
-    "references/workflows/delivery.md": ("assigned Worker completes its own", "no global", "Missing fork/remote head is a step"),
-    "references/forges/github/README.md": ("submit before CLA/DCO prechecks", "Report `gh` faults promptly", "If unable to repair"),
-    "references/forges/gitlab/README.md": ("Decide per project and action", "submit before CLA/DCO prechecks", "Report `glab` faults promptly"),
+    "references/workflows/delivery.md": ("Submit PR/MR directly", "Complete fork/branch/commit/push", "Complete feasible authorized task-owned cleanup"),
+    "references/forges/github/README.md": ("W autonomously completes", "Report `gh` faults promptly", "If unable to repair"),
+    "references/forges/gitlab/README.md": ("Decide per project and action", "W completes required terms/CLA/DCO", "Report `glab` faults promptly"),
     "prompts/recurring-patrol/coordinator.md": ("Frozen source windows do not freeze",),
     "prompts/discovery/coordinator.md": ("Source-screen limits do not consume",),
     "prompts/reinforcement.md": ("overlooked idle units", "not via a backlog gateway"),

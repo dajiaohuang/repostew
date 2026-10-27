@@ -27,14 +27,15 @@ def build(output):
     extension = bundle / "extensions" / "repostew.js"
     extension.parent.mkdir()
     shutil.copyfile(ROOT / "integrations" / "repostew.js", extension)
-    for name in ("pi.js", "pi-extras.js"):
+    for name in ("pi.js", "pi-extras.js", "pi-native.js"):
         shutil.copyfile(ROOT / "integrations" / name, extension.parent / name)
     (bundle / "scripts").mkdir()
     shutil.copyfile(ROOT / "scripts" / "configure-workers.py", bundle / "scripts/configure-workers.py")
+    shutil.copyfile(ROOT / "scripts" / "configure-pi.mjs", bundle / "scripts/configure-pi.mjs")
     shutil.copyfile(ROOT / "LICENSE", bundle / "LICENSE")
     shutil.copyfile(ROOT / "integrations" / "README.md", bundle / "README.md")
     package = json.loads((ROOT / "integrations" / "package.json").read_text(encoding="utf-8"))
-    package["files"] = ["plugin.json", ".codex-plugin", ".claude-plugin", "extensions", "skills", "scripts/configure-workers.py"]
+    package["files"] = ["plugin.json", ".codex-plugin", ".claude-plugin", "extensions", "skills", "scripts"]
     write_json(bundle / "package.json", package)
     identity = {key: package[key] for key in ("name", "version", "description", "license", "repository", "author")}
     write_json(bundle / "plugin.json", {

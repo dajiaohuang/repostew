@@ -11,24 +11,20 @@ toolchain or unrelated-build cleanup. Task-exclusive reproducible dependencies/b
 Git-object read-only deletion handling require the explicit narrow authority in [storage](storage.md).
 Use owned branches; reconcile ambiguous effects before retry. No fabricated defects/quotas/identity,
 unnecessary public tool/model/agent attribution or evasion of truthful disclosure rules.
-Validate actual changes; separate source/local/CI/deployed, submitted/merged and coverage/resolution/resource
-facts. Apply [delivery](workflows/delivery.md), affected checks and mandatory requirements; reuse unchanged
-passes, not stale volatile decisions. Exact restrictions do not become blanket testing bans.
+Follow [delivery](workflows/delivery.md): prepare the test environment and run tests only when the target
+requires testing. Otherwise proceed directly to submission. Report facts truthfully; submitted does not mean merged.
 Validation follows actual actions: metadata-only work needs no repair tests; source capture needs no PR gates.
 Do not remove mandatory target checks, permission/privacy/exclusion checks, mutation reconciliation or
 the applicable pre-deletion delivery/preservation or explicit bounded abandonment facts in [storage](storage.md). No default second acceptance review by Coordinator.
 
 ## Contribution terms
 
-For otherwise authorized contributions, automatic CONTRIBUTING/LICENSE submission-implied and ordinary
-click-through assent is permitted. Submit ordinary PRs/MRs first: do not precheck CLA/DCO/signature status
-or block creation because a file exists, certification is unknown or a previous signature gate was recorded.
-If a bot/check/maintainer actually requests signing or certification, report its exact link and required
-personal action to the user; stop at that action, not ordinary submission. A platform's actual creation-time
-personal-signature barrier is a real blocker: report it, never bypass it. Never sign for the user, invent
-Signed-off-by, public email, identity/employer/authorship/rights facts, or perform personal certification.
-Use confirmed safe public/no-reply identity only. NoAI, privacy/private reporting and actual affected-behavior
-and mandatory pre-submit checks remain. Ordinary mechanical failures follow bounded recovery, not permanent bans.
+W autonomously agrees to and completes the terms, CLA and DCO needed for authorized work through the
+official flow, using the established platform identity and true facts. No C/S or repeated user consent step.
+Read the actual declarations; do not invent identity, employer authorization, authorship or rights facts.
+Missing required facts or an unavailable personal-verification interaction are concrete limitations, not a
+new consent gate. Reconcile an unknown signing result before retrying. Existing scope, fees, target refusal,
+privacy and published-history boundaries remain.
 
 ## Feedback-derived review rules
 
@@ -60,7 +56,7 @@ Claim ordinary work through the permitted route; submit/update regular Open PR w
 2. No competing claim/PR, equivalent base fix or applicable rejection; check all relevant states.
 3. Error and correction are established under [ordinary](contribution-value.md) evidence.
 4. Smallest complete compatible change respects interfaces/defaults and dependency/service/authority boundaries.
-5. Required evidence/checks pass; unrun environment checks are disclosed, never claimed as acceptance.
+5. Run the target-required tests; if the target requires no testing, proceed without an added validation gate.
 6. Permitted fork/branch/base, style/templates, public identity and truthful caveats are satisfied.
 
 No extra approval/Draft/companion-issue gate. Acceptance/merge-time CI requirements do not imply

@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def validate(bundle):
     core = bundle / "skills" / "repostew"
     for source, target in ((ROOT / "integrations/pi.js", bundle / "extensions/pi.js"),
+                           (ROOT / "integrations/pi-native.js", bundle / "extensions/pi-native.js"),
+                           (ROOT / "scripts/configure-pi.mjs", bundle / "scripts/configure-pi.mjs"),
                            (ROOT / "integrations/pi-extras.js", bundle / "extensions/pi-extras.js"),
                            (ROOT / "integrations/repostew.js", bundle / "extensions/repostew.js"),
                            (ROOT / "scripts/configure-workers.py", bundle / "scripts/configure-workers.py"),
@@ -41,7 +43,7 @@ def validate(bundle):
         data = json.loads((bundle / manifest).read_text(encoding="utf-8"))
         for key in ("name", "version", "description"):
             assert data[key] == package[key], f"Manifest identity mismatch: {manifest}"
-    assert package["pi"]["extensions"] == ["./extensions/pi.js"], "Extras must remain explicitly opt-in"
+    assert package["pi"]["extensions"] == ["./extensions/pi-native.js"], "Only the native extension loads by default"
     for host in ("pi", "omp"):
         for kind in ("extensions", "skills"):
             for path in package[host][kind]:
@@ -52,7 +54,7 @@ def validate(bundle):
     expected = {"package/skills/repostew/" + source.relative_to(ROOT).as_posix() for source in sources}
     expected.update("package/" + path for path in (
         "package.json", "plugin.json", ".codex-plugin/plugin.json", ".claude-plugin/plugin.json",
-        "LICENSE", "README.md", "extensions/pi.js", "extensions/pi-extras.js", "extensions/repostew.js", "scripts/configure-workers.py"))
+        "LICENSE", "README.md", "extensions/pi.js", "extensions/pi-extras.js", "extensions/pi-native.js", "extensions/repostew.js", "scripts/configure-workers.py", "scripts/configure-pi.mjs"))
     with tarfile.open(archive) as tar:
         assert {entry.name for entry in tar if entry.isfile()} == expected, "Unexpected archive membership"
         for name in expected:

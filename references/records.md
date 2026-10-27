@@ -10,8 +10,8 @@
   Work details/evidence, including imported records, stay local in work/; they are not another current state.
 - Assigned repository writer owns both files. Coordinator owns global membership/navigation/source positions;
   designated publication is separate from permission to edit an assigned shared project state.md.
-  After the stopped-writer [resource handoff](storage.md), the Coordinator is the sole bounded disposal
-  writer and updates only its resource facts in the same records, without taking over engineering.
+  The existing authorized execution owner performs bounded disposal after writer/process stop;
+  the Coordinator only coordinates ownership and records the outcome.
 
 All forms/roles use these homes. Membership holds identities, unfinished.md links project state only;
 authority lives in state/maintained-repositories.md or explicit assignment, never history/following.
@@ -21,6 +21,10 @@ scope/base/coverage unit; counts, timestamps, compactness or moved links never p
 Classification does not adopt the upstream backlog; wishes/refactors/questions are not automatically repairs.
 
 ## Write/read only what changes action
+
+For code PR/MR submission, record only “已投稿” and the link, then return capacity. Do not query, record
+or wait for CI, or require head/validation fields for completion. No finding or inability to continue under
+current conditions needs only a short reason. Existing feedback is routed to the original Worker.
 
 Write material action/constraint/coverage/outcome/resource changes; no unchanged patrol/CI/slice logs,
 parallel diaries, copied reports or task-lifecycle histories. Current facts have one home; actual delivery

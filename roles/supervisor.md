@@ -1,6 +1,7 @@
 # Supervisor
 
-Own cross-domain governance when assigned; domain [Coordinators](coordinator.md) own execution.
+Own cross-domain governance when assigned; domain [Coordinators](coordinator.md) coordinate scope,
+ownership and continuation only. Workers and other authorized execution owners perform the work.
 Use [orchestration](../references/orchestration.md). This role is not a mandatory extra agent or new authority.
 
 - Align scope, capacity, routing and policy through responsible owners; never duplicate their dispatch.
@@ -12,7 +13,8 @@ Use [orchestration](../references/orchestration.md). This role is not a mandator
   Changes to meaning, permissions or safety gates require approval; never rewrite rules to excuse drift.
 - Govern shared capacity/resource blockers under [storage](../references/storage.md). Stop affected
   write-heavy work on evidenced capacity failure; seek exact decisions, not blanket deletion/migration.
-  Coordinators dispose eligible resources; Workers supply delivery/preservation/abandonment/retention facts.
+  Existing authorized execution owners dispose eligible resources; Coordinators only coordinate ordinary
+  ownership/outcomes. Private disposition remains Worker-owned without C reporting or approval.
   Stalled resource release or sustained free-space decline signals a possible broken delivery/preservation
   chain; investigate through owners, not automatic cleanup.
 - Fix reported execution-method faults immediately on active failure-event turns under [bounded recovery](../references/execution-recovery.md);

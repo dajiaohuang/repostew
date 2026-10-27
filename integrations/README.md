@@ -9,15 +9,21 @@ One bundle, one canonical skill; generated copies are never edited.
 | --- | --- | --- |
 | Codex | `rtk codex plugin marketplace add ./dist`, then `rtk codex plugin add repostew@repostew-local` | `$repostew` |
 | Claude Code | `rtk claude --plugin-dir ./dist/repostew` | `/repostew:repostew` |
-| Pi | `rtk pi install ./dist/repostew` | `/repostew-workspace <directory>`, then `/repostew <task>` |
+| Pi | `rtk pi install ./dist/repostew` | Configure an explicit agent profile, then use native prompts and `/repostew-status` |
 | OMP (oh-my-pi) | `rtk omp --no-extensions -e ./dist/repostew` | `/repostew <task and workspace>` |
 
-Pi's default entry preserves workspace binding in native branches and adds one prompt section.
-Optional Pi 1.3.0 enhancements ship separately: try
-`rtk pi -e ./dist/repostew -e ./dist/repostew/extensions/pi-extras.js`, bind the workspace, then
-`/repostew-goal <authorized finite task>`. See [Pi extras](skills/repostew/references/harnesses/pi-extras.md)
-for all eight adapted patterns, commands, safety limits and native validation. They are not autoloaded;
-installation does not change global settings or enable safety gates/continuation in running agents.
+The Pi integration uses the single `pi-native.js` extension, following official prompt, tool
+and reload patterns. Configure each agent with
+`rtk node <bundle>/scripts/configure-pi.mjs --agent-dir <dir> --workspace <workspace> --role coordinator|worker`.
+Add `--seat-guidance <absolute-contract>` for an assembled C/W contract and
+`--openrig-home <selected-instance>` for installed official skills. See the bundled
+[seat context guide](skills/repostew/references/harnesses/openrig-context.md).
+Add `--trust-projects` when that native trust policy is explicitly wanted.
+This enables native editing/search/shell tools and existing host gh authentication
+through non-secret configuration paths. No separate runtime, token store, approval
+gate or automatic completion loop is installed. See [Pi](skills/repostew/references/harnesses/pi.md).
+The former `pi.js`/`pi-extras.js` implementation is deprecated; remove its exact
+settings entries before enabling the new extension. Old files remain for rollback.
 OMP retains its existing command. These integrations create no execution service.
 Roles/forms/methods remain assembled by the Coordinator. Native delegation and permissions
 come from the harness; installation grants no public, maintainer or schedule authority.

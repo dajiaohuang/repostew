@@ -25,8 +25,8 @@ Preserve actual user/target prohibitions, cumulative attempts and expired-phase 
 ## Publication and client faults
 
 Each repository W completes its own fork/branch/push/PR; absent fork/head is a step, not a refusal.
-Apply [contribution terms](../../safety.md#contribution-terms): submit before CLA/DCO prechecks, then report
-actual signing requests without signing. Ordinary automatic checks are not a manual-CI or deployment grant.
+Apply [contribution terms](../../safety.md#contribution-terms): W autonomously completes required
+terms/CLA/DCO using true established identity and rights facts; missing real facts remain concrete limitations. Ordinary automatic checks are not a manual-CI or deployment grant.
 A PR-only refusal permits one evidenced issue or relevant comment where discussion is allowed; explicit
 no-contact/no-external-contribution/AI-interaction refusals must not be bypassed through another channel.
 Report `gh` faults promptly to S for immediate safe diagnosis and bounded repair on the failure-event turn.

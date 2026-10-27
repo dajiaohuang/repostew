@@ -15,16 +15,20 @@ unknown ownership or unavailable resources retain exact blockers, not an invente
 Necessary dependency supply uses named task-local caches/build outputs under [bounded setup](execution-recovery.md),
 not shared/global toolchain mutation. Use estimates and stage capacity checks, not mandatory hard quotas.
 
-## Ownership: Worker preserves, Coordinator disposes, Supervisor governs capacity
+## Ownership: authorized execution owner disposes, Coordinator coordinates, Supervisor governs capacity
 
-Workers establish delivery/preservation or explicit abandonment facts, stop unused task-owned services
-and hand exact resource boundaries to the Coordinator. Preserve material pending an applicable release
-path; do not require permanent local copies of everything already delivered. Workers do not delete
-checkout/tmp. Use normal finals/project records, not a disposal queue, receipt or parallel inventory.
-The Coordinator accepts a resource-only handoff after the writer and relevant processes stop; it is the
-sole bounded disposition writer, not an engineering replacement. Reuse reliable existing facts, without
-waking finished leaves or repeating engineering checks for cleanup. Execute eligible release; retain
-specific failed/protected targets with a next condition, not permanent summary-only abandonment.
+Workers establish delivery/preservation or explicit abandonment facts, stop unused task-owned services,
+and complete feasible authorized task-owned cleanup before capacity return, including no-finding/blocked units.
+Retention of one protected or still-useful target does not block independent work or require a new cleanup queue.
+Preserve material pending an applicable release path; do not require permanent copies of delivered work.
+An existing authorized execution owner performs eligible disposition after writer/process stop; C only
+coordinates ownership and records ordinary outcomes, and never approves or executes deletion. The user's
+Worker-owned [private-disposition rule](security.md#worker-owned-private-disposition-under-explicit-authority)
+applies directly within its explicit user scope, without a C handoff/report. Ordinary checkout/tmp
+deletion still needs its existing exact authority and execution owner; changing C's role grants no new
+deletion scope. Use normal project records, not an extra approval/disposal queue or parallel inventory.
+Reuse reliable existing facts without waking finished leaves or repeating engineering checks for cleanup.
+Execute eligible release; retain concrete failed/protected targets and next conditions.
 The Supervisor governs capacity/shared blockers, not routine per-project deletion. On ENOSPC stop
 writes to the affected volume, including small records; retain native outcomes without truncation.
 Already complete release facts remain usable. Missing necessary facts block that target, not every
@@ -55,7 +59,7 @@ are not made disposable by these paths; any separate disposition requires its ow
 
 ## Explicit narrow release permissions
 
-With explicit workspace/user authority, the Coordinator may release task-exclusive reproducible installed
+With explicit workspace/user authority, the designated execution owner may release task-exclusive reproducible installed
 dependencies/build outputs inside a named boundary. Reuse known source/pins/lock/configuration evidence;
 no reinstall/rebuild or fresh audit to prove disposability. Retain reconstruction inputs and unique logs/
 fixtures unless their own delivery or explicit abandonment path applies. Directory names prove nothing.
@@ -64,7 +68,7 @@ do not authorize deleting a parent containing excluded material; whole-checkout 
 included category to satisfy its own path and boundary.
 
 For an authorized disposable checkout covered by delivery/preservation or explicit abandonment, the
-Coordinator may clear only ordinary Git-created object files' read-only flag when that handling is authorized.
+authorized execution owner may clear only ordinary Git-created object files' read-only flag when that handling is authorized.
 Confirm the resolved Git object boundary and ordinary, non-symlink/reparse, non-hardlinked files, not
 alternate/shared stores or canonical repositories. No ACL/ownership changes, elevation, other attribute
 changes, forced unlocks or process kills. Correct a known read-only failure and retry the affected deletion
@@ -80,7 +84,7 @@ covering that category and scope, not an ordinary-work waiver. Confidentiality a
 still apply; disposal is not permission to publish or withdraw reports. User acceptance of loss does not
 prove ownership of shared resources or external link targets.
 
-Before acting, the Coordinator records the user authority, actual abandoned scope, known commit/base
+Before acting, the execution owner records the user authority, actual abandoned scope, known commit/base
 or explicit unknowns and irreversible-loss risk in the same project records. No further approval ceremony
 inside that scope; no new backup, remote preservation or validation prerequisite. Never call abandoned
 material preserved/recoverable. Persistent records, existing recovery patches/archives and material outside
@@ -89,8 +93,9 @@ the explicit waiver remain protected. Apply the common procedure and narrow file
 ## Minimal-retention campaign
 
 Only explicit user acceptance of ordinary-work loss enables this mode; a cleanup request alone does not.
-Assign a temporary disposition-only Coordinator using the [single task](../prompts/disposition.md), not
-an engineering Worker or timer. Freeze a finite set of native projects/resource paths from existing records;
+Use the existing authorized disposition execution owner and the [single task](../prompts/disposition.md);
+C only coordinates scope and records outcomes, without approving or deleting. Do not infer a new seat or
+timer. Freeze a finite set of native projects/resource paths from existing records;
 transfer disposition ownership after writers, queued writes and owned processes stop and mutations reconcile.
 For eligible ordinary task materials retain only root state.md and work/work.md: discard named checkouts,
 .git, unpublished commits/patches, untracked source, dependencies, builds, downloads and ordinary logs/fixtures.
@@ -125,7 +130,7 @@ canonical repositories are not disposable clones. Known unused assigned resource
    records, existing recovery archives and remote refs untouched. Report released, retained/reason or
    failed/error; partial/ambiguous effects are not whole-target success. No blind retries, broad-root
    deletion, forced unlocks, shared-service kills or disk compaction.
-5. The Coordinator updates only disposition facts in the same state.md/work/work.md, preserving engineering
+5. The execution owner updates only disposition facts in the same state.md/work/work.md, preserving engineering
    facts and single-writer ownership. If recording fails, retain the native result and exact failure, never
    truncate originals. No unchanged paragraphs, repeated remote checks or post-delete path/Git/archive/
    size checks. Do not claim reclaimed bytes. A necessary Supervisor volume-capacity check for resuming
@@ -135,6 +140,6 @@ canonical repositories are not disposable clones. Known unused assigned resource
 
 - Workers normally stop their unused task-owned temporary processes/services/containers within authority;
   data follows its own disposition path, not an automatic container-delete rule.
-- Coordinators stop WSL only after confirming no active Worker, user task or shared service depends on it,
+- The authorized environment owner stops WSL only after confirming no active Worker, user task or shared service depends on it,
   within existing authority. High memory use alone proves neither idleness nor disposal authority.
 - Do not force-kill shared Docker/WSL or vmmem; wsl --shutdown terminates all distributions and the VM.

@@ -6,8 +6,9 @@ Use only the roles needed: serial work may combine responsibilities without crea
 
 ## Coordinator execution
 
-Use the [four-duty C contract and delivery decision](../roles/coordinator.md): select, assign, check actual
-submission, continue. [Assemble](worker-assembly.md) one complete unit and dispatch once; reserve accepted,
+Use the [four-duty C contract and result recording](../roles/coordinator.md): select, assign, record reported
+outcomes, continue. C has no approval or engineering-acceptance authority. [Assemble](worker-assembly.md)
+one complete unit and dispatch once; reserve accepted,
 starting and queued work before refill. Serial by default; authorized independent units use available capacity.
 Route deltas to the current writer. Adopt usable results without redoing engineering; unfinished delivery
 requires continuation or a concrete recovery owner, not archival as complete. [Resource handoffs](storage.md)
@@ -50,7 +51,8 @@ Active failure/completion events retain normal recovery; no phase extension, use
   A yielded owner may retain live descendants; parent status/empty queues never prove their termination.
   Final/structured reports do not independently verify their claims. Do not retest usable engineering finals.
 - Separate coverage, engineering/public outcomes, resource release and source-position advancement.
-  Waiting for one repository's review/CI/merge does not block unrelated eligible work.
+  Code Workers release capacity after submission; record only “已投稿” and the link, with no CI query,
+  record or wait. Later feedback follows the existing route to the original Worker.
 - Obey evidenced source/account/endpoint limits and Retry-After; never evade them. A passed retry boundary
   permits one authorized reevaluation, not assumed recovery, blind retries, a new timer or resumed paused job.
 
@@ -92,8 +94,8 @@ Batch finite identity/membership/exclusion checks, reuse valid results and retai
 Capture owners establish source completeness; Workers do not recapture complete windows. Advance only
 fully captured, handled/reliably retained ranges. Navigation/review does not establish audit completion;
 reclassification preserves prior coverage/private evidence/history without claiming unperformed work.
-Project writers own root state.md and local work/work.md. Coordinators own navigation/positions and only
-resource facts after a stopped-writer handoff, not a second project mirror. Designated editors/append windows
+Project writers own root state.md and local work/work.md. Coordinators own navigation/positions and record
+execution owners' resource outcomes, not a second project mirror or approval stage. Designated editors/append windows
 serialize globals and workspace policy/shared-state Git. Repository Workers publish their own units;
 serialize only same-project/checkout/shared-index writes, not independent repositories. No hidden queues.
 

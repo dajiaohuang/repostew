@@ -12,10 +12,10 @@ Scoped rules: `repositories/<host>/<namespace>/<repo>.md`; organization rules us
 2. Use the current account's legal existing fork, create an ordinary fork, or use an available community route.
    A missing fork/branch/remote head is a delivery step, not proof of missing rights. Actual onboarding/access
    denial is scoped to that project/action; report required human action, not a blanket GitLab prohibition.
-3. Apply [contribution terms](../../safety.md#contribution-terms): submit before CLA/DCO prechecks. Report actual
-   signing requests after submission; do not sign, invent certification or bypass a creation-time hard barrier.
+3. Apply [contribution terms](../../safety.md#contribution-terms): W completes required terms/CLA/DCO
+   autonomously using true facts; never invent certification or bypass a creation-time hard barrier.
    Use a confirmed safe public/no-reply commit identity; never disclose a private email or invent an address.
-4. The assigned W publishes its MR and confirms the actual result/head. Separate true pre-submit checks from
+4. The assigned W publishes its MR; submitted code records only “已投稿” and its URL. Separate true pre-submit checks from
    pipeline/reviewer/merge acceptance. Missing original capture blocks its dependent coverage, not a complete
    independent candidate. Do not repeat merged, declined or already submitted work.
 

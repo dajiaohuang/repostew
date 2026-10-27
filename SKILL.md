@@ -6,7 +6,8 @@ description: Assemble scoped Workers for repository discovery, audits, contribut
 # RepoStew
 
 RepoStew supplies policy, work methods and Worker construction; harness supplies execution,
-tools, permissions and lifecycle. Coordinator owns whole-scope coordination; Worker owns a complete
+tools, permissions and lifecycle. Coordinator owns whole-scope coordination only, with no approval or
+engineering-acceptance authority; Worker owns a complete
 bounded unit. Supervisor adds cross-domain governance only when assigned; serial work may combine roles.
 Load rules by role, task form and actual action: reuse complete current text, batch missing startup reads,
 and load conditional methods before their action. Links are navigation, not recursive reading orders.
@@ -45,7 +46,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
    [reconcile history/reclassify or recover](references/workflows/history.md),
    [publish reviewed backup](references/workflows/records-and-backup.md),
    and [provision/dispose resources](references/storage.md): Workers establish delivery/preservation or
-   abandonment facts, Coordinators release after handoff, Supervisor governs capacity. Explicit loss acceptance
+   abandonment facts, authorized execution owners release within their existing scope, Coordinators only
+   coordinate ownership and record outcomes, and Supervisor governs capacity. Explicit loss acceptance
    may enable a [minimal-retention campaign](references/storage.md#minimal-retention-campaign); no inferred authority.
 
 ## Common contract
@@ -60,7 +62,7 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 - Act from actual use/contracts and [quality standards](references/contribution-value.md), without invented
   defects or necessity. Prohibit defensive programming; trust internal contracts, retain necessary boundary checks.
 - One writer per project: its assigned writer writes shared state.md and local work/work.md; Coordinator owns
-  global membership/navigation/positions and only resource facts after a stopped-writer disposition handoff.
+  global membership/navigation/positions and records resource outcomes from the authorized execution owner.
   Serialize Git only within one project/checkout/shared index; independent repository Workers publish directly.
   Workspace policy/shared-state Git alone uses its designated publisher. Never crawl local work as state. Preserve unrelated work and existing
   recovery material. Local retention follows [storage's three paths](references/storage.md#choose-the-release-path):
@@ -69,7 +71,8 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 - Use task isolation, whole-unit estimates and stage capacity checks, not mandatory hard quotas; preserve
   real user/platform limits and stop affected writes on ENOSPC. See [setup](references/execution-recovery.md).
 - Assign complete bounded units once, not one tool/test step at a time. Workers advance feasible authorized
-  stages through direct submission; Coordinators check actual delivery and scope/coverage, not engineering again.
+  stages through direct submission; Coordinators record reported delivery and scope/coverage, with no approval
+  or engineering acceptance. Missing or contradictory facts return to the original Worker for explanation.
   Local patches or read-only inventories do not finish engineering. Follow [orchestration](references/orchestration.md)
   for act/wait/block/finish on active task/event turns, independent refill and stopped-writer handoff.
   [Event-driven refill](references/refill.md) is primary; the single authorized S heartbeat may route a deduplicated
@@ -77,8 +80,12 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
   A turn, structured reply or finite batch does not prove whole-scope completion. Reuse evidence/context
   where suitable without binding future units or resetting budgets. No receipts, routine readback or polling.
 - Ordinary contribution units include direct Worker publication; no central publication gateway.
-  Submit before CLA/DCO prechecks and report actual signing requests without signing for the user.
-- Select checks by actual action: capture/metadata alone does not trigger audits/tests/publication.
+  Apply explicit user terms/signing authorization through the official process using true identity and facts;
+  do not add Coordinator approval or fabricate required declarations.
+- Code Workers prepare the test environment and run tests only when the target requires testing;
+  otherwise proceed to submission. Autonomously agree to required terms/CLA/DCO using true facts.
+  Submission completion records only “已投稿” and the link and releases capacity; no CI query, record or wait.
+  Select checks by actual action: capture/metadata alone does not trigger audits/tests/publication.
   Preserve target-required checks, privacy/permission gates, mutation reconciliation and resource protection.
 - Use direct Markdown, no custom runtime/queue/claims/database. Report coverage, outcomes, unfinished work and
   resource release accurately; execution status alone never proves completion.

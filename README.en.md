@@ -13,7 +13,7 @@ An agent harness supplies execution, tools, permissions, native delegation and s
 Installing the Skill does not start a daemon, create jobs, enable parallel agents, grant maintainer rights or authorize public actions. One-off work and recurring maintenance use the same rules; actual capabilities must be verified in the selected harness.
 
 - **Supervisor, when assigned:** governs cross-domain policy, capacity and concrete execution anomalies through domain owners.
-- **Coordinator:** selects, assigns complete units, checks actual submission and refills; owns shared positions and stopped-writer disposition, not a second engineering review.
+- **Coordinator:** selects, assigns complete units, registers results and refills; owns shared positions and coordinates the execution owner, without approval or engineering acceptance.
 - **Worker:** starts and completes setup, engineering, checks and direct submission; returns actual delivery or an evidenced no-delivery disposition, not a read-only inventory.
 - **Maintainer:** adds explicit repository-management rights to a Worker, not another mandatory agent or stage.
 
@@ -27,7 +27,7 @@ Establish workspace/identity, full outcome and scope/base, prior work, permissio
 
 Use one [C contract](roles/coordinator.md) or [W contract](roles/worker.md) and one [five-field task](prompts/task.md): object/outcome, location/prior work, complete TODO, authority/resources, finish/return. Five forms supply only input/coverage differences. Give realistic whole-unit limits, not tool-by-tool approvals or cost-only preparation. Roles/templates grant no authority.
 
-C checks actual delivery evidence without routine readback/retests. A feasible unpublished repair returns to its W for submission; execution faults go to recovery, not a central publisher. Valid no-finding/duplicate/already-fixed outcomes need no invented PR. Only explicit inspection/capture work ends at inspection; unresolved engineering retains its owner and next condition.
+C records W-reported outcomes without routine readback/retests or engineering acceptance. A feasible unpublished repair returns to its W for submission; execution faults go to recovery, not a central publisher. Valid no-finding/duplicate/already-fixed outcomes need no invented PR. Only explicit inspection/capture work ends at inspection; unresolved engineering retains its owner and next condition.
 
 Reuse current instructions/evidence, batch missing reads and load methods on action triggers. Leaves need their boundaries, not global briefs; links and new turns do not require full reloads. Metadata/capture alone does not trigger engineering. Keep affected/mandatory checks and privacy, mutation, publication and storage gates; no second engineering acceptance.
 
@@ -84,7 +84,7 @@ For an ordinary repair, establish the supported trigger, observed error, violate
 
 Prefer a regular Open PR when the gates pass. Drafts retain the same necessity gate; they do not bypass invitation or submission restrictions. No compulsory companion issue or additional routine approval stage is added. Keep the existing object's feedback, CI, revisions and final disposition connected through native links.
 
-Each repository Worker completes bounded dependency setup, affected checks and direct PR/MR publication; a delivery-backlog role only recovers overlooked idle work, not every Worker's output. Submit before CLA/DCO prechecks and report actual signing requests without signing for the user. A PR-only refusal permits one evidenced issue/comment request where discussion remains allowed, never around an all-contact or AI prohibition.
+Each repository Worker completes bounded dependency setup, affected checks and direct PR/MR publication; a delivery-backlog role only recovers overlooked idle work, not every Worker's output. W autonomously completes required terms/CLA/DCO through the official flow using true facts. Submitted code records only “已投稿” and its URL, without CI lookup or wait. A PR-only refusal permits one evidenced issue/comment request where discussion remains allowed, never around an all-contact or AI prohibition.
 
 See [delivery](references/workflows/delivery.md), [contribution standards](references/contribution-value.md) and [publication gates](references/safety.md).
 
@@ -93,6 +93,8 @@ See [delivery](references/workflows/delivery.md), [contribution standards](refer
 Write material changes to current repository state and short actual-delivery history. Retain unresolved links, reasons and retry conditions. Reconcile history, recover or reclassify only within assigned scope; migrate or back up records only when requested. Apply resource disposition to resources used or explicitly assigned, including blocked or unchanged work; omit empty checks when no resources are involved.
 
 See [records and migration](references/records.md), [history/reclassification/recovery](references/workflows/history.md), [reviewed backup](references/workflows/records-and-backup.md) and [resource disposition](references/storage.md).
+
+Persistent seats use [fixed contracts and short current facts](prompts/fixed-context.md), assembled by the designated policy editor and continued by delta. See [native seat context](references/harnesses/openrig-context.md) for configuration and activation boundaries.
 
 ## Recurring maintenance
 
@@ -156,9 +158,9 @@ Confirm the exact selected account and native folder before reading. Never expan
 
 ### Resources and backups
 
-Use isolated task paths, whole-unit estimates and stage capacity checks; hard filesystem/transfer quotas and exact dependency totals are not setup prerequisites. Keep real user/platform limits and stop writes on ENOSPC. Explicit ordinary-work loss acceptance can authorize a temporary C's [finite minimal-retention campaign](references/storage.md#minimal-retention-campaign): keep `state.md`/`work/work.md` and protected exceptions, delete eligible materials rather than merely inventory them.
+Use isolated task paths, whole-unit estimates and stage capacity checks; hard filesystem/transfer quotas and exact dependency totals are not setup prerequisites. Keep real user/platform limits and stop writes on ENOSPC. Explicit ordinary-work loss acceptance can authorize the execution owner's [finite minimal-retention campaign](references/storage.md#minimal-retention-campaign): keep `state.md`/`work/work.md` and protected exceptions, delete eligible materials rather than merely inventory them.
 
-Workers hand off delivery/preservation, explicit abandonment or retention facts and stop unused owned services; Coordinators execute bounded cleanup after writer stop; the Supervisor governs capacity/shared blockers. Workers do not delete checkout/tmp.
+Workers establish delivery/preservation, explicit abandonment or retention facts, stop unused owned services and complete authorized task-owned cleanup before capacity return. C coordinates ownership and records outcomes; S handles shared/cross-task faults.
 
 [Storage](references/storage.md#choose-the-release-path) has three paths: delivered/preserved material may be released; explicitly abandoned material may be discarded with recorded loss risk; active/shared, ownership-unclear or unauthorized targets stay retained. Successful authorized private-channel submission permits release of corresponding private/security material without extra human receipt, triage or remediation waits. Failed sends or omitted attachments need retention or explicit category/scope-specific abandonment, not an extra raw backup merely to enable deletion.
 

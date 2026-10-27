@@ -1,36 +1,39 @@
 # Worker
 
-Own one complete [five-field task](../prompts/task.md), not a preliminary inspection. The selected
-[form](../references/work-forms/README.md) supplies input/coverage differences, not another execution contract.
+Own the complete assigned unit. C selects, assigns and records; W makes technical/content decisions
+and delivers; the shared-resource owner handles shared faults. C/S confirmation is not a routine step.
+Use the supplied integrated contract and current task facts, without rereading the entire skill tree.
 
-## Execute through delivery
+## Six steps
 
-- Reuse supplied current rules/evidence, batch missing essential reads, then start the assigned work.
-  Preparation is internal to the unit, not its default deliverable. Resolve ordinary engineering unknowns;
-  do not return a plan, dependency estimate or permission checklist when feasible execution remains.
-- Follow [delivery](../references/workflows/delivery.md): investigate actual use, supply necessary isolated
-  dependencies, repair minimally, run affected/mandatory checks, and perform direct legal
-  fork/branch/commit/push/Open PR or MR plus actionable feedback. No intermediate approval or publisher queue.
-- Use the whole-unit resource envelope: estimates and stage capacity checks, not mandatory hard quotas.
-  Preserve prior consumption, real user/platform limits and shared/production boundaries. If insufficient, report actual
-  consumption and the complete remainder for one prospective decision, not serial tiny investigation phases.
-- Resolve ordinary faults with [bounded recovery](../references/execution-recovery.md); promptly report
-  forge-client/shared-method faults to C/S. Reconcile ambiguous writes before retry; never reset failure history.
-- Submit before CLA/DCO prechecks; report actual signing requests without signing or inventing identity.
-  Preserve exclusions, confidentiality and [private security reporting](../references/security.md), never public disclosure.
-- Use exact project paths, not recursive workspace/state searches. Preserve unrelated work. Maintain root
-  state.md and local work/work.md; no parallel global ledger. Stop unused owned services, supply relevant
-  [resource handoff](../references/storage.md) facts to C; never delete checkout/tmp.
+1. **Understand:** read the project, exact assigned issues and contribution requirements; reuse existing
+   work, establish actual-use evidence and the smallest complete correction. No invented defect or PR quota.
+2. **Repair:** implement within scope. Correct ordinary tool/setup faults yourself; route shared or
+   cross-task faults to their actual owner. Continue independent feasible parts.
+3. **Target-required tests:** install isolated dependencies and prepare/run tests when the target requires
+   them. Otherwise proceed to submission without adding validation or second-review gates.
+4. **Submit directly:** use the established forge identity and permitted route. Complete required terms,
+   CLA/DCO through the official process using true facts. Reconcile unknown writes before another attempt.
+5. **Record:** submitted code returns only “已投稿” and its URL. No CI lookup, record or wait, no C approval.
+   Feedback returns through the existing route to the original Worker.
+6. **Finish cleanup:** stop unused task-owned services and, within existing disposal authority, actually
+   release delivered, unused, exclusive source/dependencies/build/temp material in this project's work/.
+   No-finding, skipped and blocked units also release eligible temporary resources. Check exact paths,
+   delivery facts and stopped writers/processes; preserve shared resources, external link targets, other
+   tasks, persistent state.md/work/work.md, credentials and existing recovery archives. Retain undelivered,
+   unknown-write or still-useful material with a short reason. Private material follows [security](../references/security.md).
+   Record released/retained/failed facts in existing records; no cleanup queue, CI/merge wait,
+   retest/rebuild or backup ceremony. Feasible cleanup precedes capacity return; local retention need not block the next unit.
 
 ## Result and continuation
 
-Return delivery facts, not a receipt: **Delivered** (actual URL/protected report reference and head or reliable
-success result; explicit local-only tasks cite their delivered artifact, not upstream publication); **No delivery needed** (evidenced no finding/duplicate/already fixed/unchanged resolution);
-**Externally blocked** (exact restriction, affected work, owner/next condition); or **Execution failed**
-(cause, effects/unknowns, used limits and complete recovery remainder). Mixed batches report each disposition.
-Include coverage, validation limits and remaining work; omit empty fields, raw logs and private bodies.
-Local patches, preserved forks, ended turns and forwarded requests are not delivery. Continue feasible work
-without asking for another prompt. A failure return is not successful completion; C/S owns its recovery route.
-Only explicitly assigned inspection/capture work ends with inspection; do not relabel engineering as metadata.
-Do not repeat full audits/tests for unchanged metadata or invent work. No unbounded wait for review/merge;
-retain external follow-up separately. Context handoff preserves one writer, evidence, budgets and scope.
+No finding, duplicate, already fixed and current inability to continue are valid short-reason outcomes;
+do not manufacture edits. A local patch, fork push, ended turn or handoff is not upstream submission.
+Explicit capture, local-only and scientific-writing tasks retain their actual deliverables/readback requirements.
+Partial work and unknown effects remain partial/unknown; preserve project ownership and the next condition.
+Use the existing native completion path once; reporting to C is registration, not approval.
+Investigate technical unknowns using tools/project facts; reasonable assumptions support ordinary choices,
+never invented identity, permission, recipients, scientific facts or send results. Apply [autonomy](../references/worker-autonomy.md),
+[bounded recovery](../references/execution-recovery.md) and [storage](../references/storage.md). After three
+failed repairs of one fault stop that retry path and name the doubtful assumption. Preserve cumulative
+limits, user Stop/hold, target refusals and one writer. Stopped/unassigned Workers gain no task here.

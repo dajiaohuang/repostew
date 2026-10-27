@@ -21,8 +21,8 @@ assigned scope; it does not require inventing a defect or waive evidence for pub
 2. Follow project design, compatibility and maintainer direction; fix the complete affected path minimally.
    Establish intended correction before a repair PR. Evidenced unsettled behavior goes to a discussion
    stating trigger, observation, evidence and exact question, without an unconfirmed defect verdict.
-3. Validate affected behavior and target-required checks; reuse unchanged evidence, test concrete uncertainty.
-   Separate source proof, local, CI and actual-use acceptance; no invented checks or contribution quotas.
+3. Run tests only when the target requires them; prepare the isolated test environment at that point.
+   With no target testing requirement, proceed directly to submission. Reuse unchanged evidence; do not invent checks.
 4. Revise useful work/incorrect claims. After bounded review, withdraw authored unnecessary/incorrect
    objects only within authority; say "necessity not established", not "no defect"/"fixed" without proof.
    Retain real discussions, unavailable-evidence blockers, merged/others' work and private evidence.
@@ -50,7 +50,7 @@ Code written/modified by RepoStew must eliminate defensive programming:
 ## Assigned audit and grouped delivery
 
 Complete the assigned issue classification and [usage/documentation audit](audit.md); publishing a repair
-never narrows that remaining scope. A complete, independently proven and appropriately validated repair may
+never narrows that remaining scope. A complete, independently proven repair meeting target requirements may
 ship before unrelated audit work finishes. Group same-root fixes/errata; separate independent errors, reuse
 matching objects and discard duplicates. Do not split an incomplete repair or claim whole coverage from a PR.
 Evidenced unresolved problems may be issues/discussions; unsupported suspicions are not deliverables.

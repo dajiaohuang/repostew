@@ -1,7 +1,8 @@
 # Harness integration
 
 Adapters: [Pi](harnesses/pi.md) with [optional extras](harnesses/pi-extras.md),
-[Codex](harnesses/codex.md); hosted orchestration: [T3](harnesses/t3.md).
+[Codex](harnesses/codex.md); hosted orchestration: [T3](harnesses/t3.md)
+and [OpenRig native queue orchestration](harnesses/openrig.md).
 Other skill-capable hosts use the same contract. RepoStew supplies policy/assignments, not a fixed vendor,
 agent hierarchy or replacement execution backend. Keep API names, events, flags and version limits here
 or in adapters, not generic roles, methods or templates.
