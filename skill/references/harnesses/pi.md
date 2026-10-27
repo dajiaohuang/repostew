@@ -69,3 +69,30 @@ The native gh CLI reads its own keyring. No token is read/copied; `repostew_gh_s
 account check. Use body files for multiline text. On Windows use task-specific PowerShell variables,
 set `ErrorActionPreference = Stop` in the actual child script and inspect native exit codes separately.
 Pi shell timeouts use seconds; `pi.exec` uses milliseconds.
+
+## Observe and restore the current tool intention
+
+Status now separates `toolSelection.configured` (Pi's effective merged `defaultTools` declaration),
+`registered`, `active`, and `intended: null`. Patterns/modifiers are reported as declarations, not expanded
+into a claimed effective active set. Saved configuration does not establish the current operator intention.
+Use a loaded helper command only at an appropriate idle boundary:
+
+```text
+/openrig-status
+/openrig-restore-tools read
+```
+
+The RepoStew application has the equivalent `/repostew-*` commands. An explicit list is required;
+an empty command changes nothing. Only the named tools are added to the existing active set. Thus a
+configured but deliberately disabled `bash` stays disabled unless explicitly requested now. Unregistered
+or hidden requested tools are rejected before mutation. The receipt names configured declaration,
+current intended list, registered names, before/after and missing names; incomplete readback is an error.
+The command changes no settings, permission policy or session identity, and does not persist a new
+branch selection. Verify one harmless actual call too: listed-active is not proof of usable access.
+
+Pi 1.4.0's opt-in `examples/extensions/tools.ts` selector persists selection per branch and requires
+Pi's own TUI. Do not send `/tools` to an OpenRig-managed RPC seat. Reloading unchanged settings may
+intentionally retain session-disabled tools; failure to restore them is not by itself an accidental-loss bug.
+This helper uses Pi's `getSettings`, `getAllTools`, `getActiveTools` and `setActiveTools` APIs, tested with
+the installed Pi 1.4.0 loader. It does not claim a stock OpenRig/Pi tool-loss reproduction or support parity
+for other harnesses. See the maintainer's [scope decision](https://github.com/mvschwarz/openrig/issues/2045#issuecomment-6429892459).

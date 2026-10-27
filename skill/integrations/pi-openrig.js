@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { isAbsolute, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Type } from "typebox";
-import { VERSION, agentDirectory, readOptionalJson, registerContext, registerRuntimeCommands } from "./pi-runtime.js";
+import { VERSION, agentDirectory, readOptionalJson, registerContext, registerRuntimeCommands, toolSelection } from "./pi-runtime.js";
 export { VERSION } from "./pi-runtime.js";
 
 // A projection of native ownership, never a reservation or a second queue.
@@ -100,6 +100,7 @@ export function registerOpenRig(pi, { profileProvider, slotTool = "openrig_slots
     return { extension: "openrig-pi", version: VERSION, entrypoint: fileURLToPath(import.meta.url),
       binding: profile?.binding || null, seatGuidance: profile?.seatGuidance || null,
       activeTools: pi.getActiveTools(), registeredTools: pi.getAllTools().map(tool => tool.name),
+      toolSelection: toolSelection(pi),
       automaticContinuation: false, reservation: false };
   };
   registerRuntimeCommands(pi, "openrig", agentDir, status);

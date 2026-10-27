@@ -39,7 +39,7 @@ Pending, starting, active, unknown and unconsumed-result work occupy capacity. G
 | [profiles/](profiles/) | Per-agent coordinator/worker `repostew.json` and native Pi settings example |
 | [contracts/](contracts/) | Assembled C/W fixed contracts; customize domain and explicit seat binding before activation |
 | [task-facts.example.md](task-facts.example.md) | Separate five-field task, exact capture reference, cursor, custody, limits and unknown effects |
-| [settings example](profiles/settings.example.json) | Explicitly loads the two independent v0.5.0 modules from `skill/integrations/`; the old example extension entry remains for compatibility only |
+| [settings example](profiles/settings.example.json) | Explicitly loads the two independent v0.5.1 modules from `skill/integrations/`; the old example extension entry remains for compatibility only |
 
 The six example domains are new repositories, GitHub feedback, existing GitLab-list work, GitLab feedback, eligible previously completed candidates, and followed-list new issues. Candidate publication is an explicit historical-work domain, not a mandatory gateway for other workers. Models and capacity are operator choices; the recorded Luna/xhigh selection is not a provider availability or throughput guarantee.
 
@@ -59,7 +59,7 @@ For an authorized fresh seat, use the installed OpenRig lifecycle. For an existi
 
 Check in the **target session**:
 
-- `repostew_runtime_status`: expected v0.5.0, role, native tools and reviewed guidance path. This reports configuration; a path alone is not proof that the intended text was used.
+- `repostew_runtime_status`: expected v0.5.1, role, native tools and reviewed guidance path. This reports configuration; a path alone is not proof that the intended text was used.
 - Inspect the actual prompt/behavior for fixed contract and initial variable facts. For model/thinking changes, inspect persisted Pi session events; an accepted command or saved setting is insufficient.
 - `repostew_gh_status`: read-only existing-account verification. Do not log in again merely because an inherited path was absent.
 - `openrig_slots` on C: exact roster, active tasks and pending results. It reads a loopback daemon, refuses incomplete queue input, and never reserves, dispatches or certifies stopped processes.
@@ -97,7 +97,7 @@ submitted/link record, and feasible authorized task-owned cleanup before capacit
 W completes required terms/CLA/DCO using true established identity and rights facts. No routine CI
 lookup/wait or second review follows submission. Private reporting/disposal retains its exact user scope.
 OpenRig examples and standalone prompts use this contract; choose one execution owner per task.
-The package is 0.5.0; its native Pi extension is 0.5.0. The package and extension now share this release version.
+The package is 0.5.1; its native Pi extension is 0.5.1. The package and extension now share this release version.
 
 
 Pi integration now has independent `pi-repostew.js` (application) and `pi-openrig.js` (neutral bridge) modules. Shared `pi-runtime.js` contains mechanisms only. The default loads the application; the bridge is explicit and works independently. Profiles are `repostew.json` and `openrig-pi.json`; `pi-native.js` is the legacy combined entrypoint.

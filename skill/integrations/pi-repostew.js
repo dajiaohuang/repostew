@@ -5,7 +5,7 @@ import { isAbsolute, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Type } from "typebox";
 
-import { VERSION, agentDirectory, readOptionalJson, registerContext, registerRuntimeCommands } from "./pi-runtime.js";
+import { VERSION, agentDirectory, readOptionalJson, registerContext, registerRuntimeCommands, toolSelection } from "./pi-runtime.js";
 export { VERSION } from "./pi-runtime.js";
 
 export const COORDINATOR_REFILL = `## Coordinator capacity and continuation
@@ -84,6 +84,7 @@ export default function repostewPi(pi) {
       seatGuidance: profile?.seatGuidance || null,
       activeTools: pi.getActiveTools(),
       registeredTools: pi.getAllTools().map(tool => tool.name),
+      toolSelection: toolSelection(pi),
       ghConfigDir: process.env.GH_CONFIG_DIR || "",
       ghPromptDisabled: process.env.GH_PROMPT_DISABLED === "1",
       approvalGate: false, automaticContinuation: false,

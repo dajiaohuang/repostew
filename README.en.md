@@ -44,7 +44,7 @@ submitted/link record, and feasible authorized task-owned cleanup before capacit
 W completes required terms/CLA/DCO using true established identity and rights facts. No routine CI
 lookup/wait or second review follows submission. Private reporting/disposal retains its exact user scope.
 OpenRig examples and standalone prompts use this contract; choose one execution owner per task.
-The package is 0.5.0; its native Pi extension is 0.5.0. The package and extension now share this release version.
+The package is 0.5.1; its native Pi extension is 0.5.1. The package and extension now share this release version.
 
 ## Repository layout
 

@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 
-export const VERSION = "0.5.0";
+export const VERSION = "0.5.1";
 export const agentDirectory = () => process.env.PI_CODING_AGENT_DIR || join(homedir(), ".pi", "agent");
 
 export function readOptionalJson(path) {
@@ -21,6 +21,19 @@ export function registerContext(pi, section, refresh, guidance) {
   });
 }
 
+export function toolSelection(pi) {
+  return {
+    configured: {
+      source: "Pi.getSettings().defaultTools (effective merged settings)",
+      entries: pi.getSettings().defaultTools ?? null,
+      representation: "Settings declaration; patterns/modifiers are not expanded here. Null means no explicit defaultTools.",
+    },
+    intended: null, // Current human intent is not inferred from saved configuration.
+    registered: pi.getAllTools().map(tool => tool.name),
+    active: pi.getActiveTools(),
+  };
+}
+
 export function registerRuntimeCommands(pi, prefix, agentDir, status) {
   pi.registerCommand(`${prefix}-status`, {
     description: "Show this extension's loaded version, paths and native tool state",
@@ -31,19 +44,23 @@ export function registerRuntimeCommands(pi, prefix, agentDir, status) {
     handler: async (_args, ctx) => { await ctx.reload(); },
   });
   pi.registerCommand(`${prefix}-restore-tools`, {
-    description: "Restore explicitly configured native tools on operator request",
-    handler: async (_args, ctx) => {
-      const { defaultTools: configured } = JSON.parse(readFileSync(join(agentDir, "settings.json"), "utf8"));
-      if (!Array.isArray(configured) || configured.some(name => typeof name !== "string" || /^[+-]/.test(name)))
-        throw new Error("Expected an explicit defaultTools list in this seat's settings");
-      const registered = new Set(pi.getAllTools().map(tool => tool.name));
-      const missing = configured.filter(name => !registered.has(name));
-      if (missing.length) throw new Error(`Configured tools are not registered: ${missing.join(", ")}`);
+    description: "Add only explicitly named current intended tools, preserving active extras; usage: /" + prefix + "-restore-tools read bash",
+    handler: async (args, ctx) => {
+      const intended = [...new Set(args.trim().split(/\s+/).filter(Boolean))];
+      if (!intended.length) throw new Error(`Name the tools intended now: /${prefix}-restore-tools read bash. No selection changed.`);
+      const tools = pi.getAllTools();
+      const unavailable = intended.filter(name => !tools.some(tool => tool.name === name && tool.exposure !== "hidden"));
+      if (unavailable.length) throw new Error(`Intended tools are unregistered or hidden: ${unavailable.join(", ")}. No selection changed.`);
+      const selection = toolSelection(pi);
       const before = pi.getActiveTools();
-      pi.setActiveTools([...new Set([...before, ...configured])]);
+      const target = [...new Set([...before, ...intended])];
+      pi.setActiveTools(target);
       const after = pi.getActiveTools();
-      if (configured.some(name => !after.includes(name))) throw new Error("Native tool activation incomplete");
-      ctx.ui.notify(JSON.stringify({ restored: true, before, after }), "info");
+      const missing = target.filter(name => !after.includes(name));
+      const receipt = { at: new Date().toISOString(), restored: missing.length === 0,
+        configured: selection.configured, intended, registered: selection.registered, before, after, missing };
+      ctx.ui.notify(JSON.stringify(receipt), missing.length ? "error" : "info");
+      if (missing.length) throw new Error(`Native tool activation incomplete: ${missing.join(", ")}. Inspect the before/after receipt before retrying.`);
     },
   });
 }

@@ -39,7 +39,7 @@ flowchart LR
 | [profiles/](profiles/) | C/W 的 `repostew.json` 与 Pi 原生 settings 示例 |
 | [contracts/](contracts/) | 已集成的 C/W 固定契约；启用前补领域和精确席位绑定 |
 | [task-facts.example.md](task-facts.example.md) | 分离的五字段任务、捕获引用、游标、归属、限制与未知效果 |
-| [settings示例](profiles/settings.example.json) | 从 `skill/integrations/` 显式加载两个独立v0.5.0模块；旧示例入口仅为兼容 |
+| [settings示例](profiles/settings.example.json) | 从 `skill/integrations/` 显式加载两个独立v0.5.1模块；旧示例入口仅为兼容 |
 
 六个示例领域分别是新仓库、GitHub 反馈、既有 GitLab 列表未处理仓库、GitLab 反馈、此前已完成合格候选发布、关注列表新增 issue。候选发布组只是明确的历史任务领域，不是所有 W 的中央发布网关。容量和模型由使用者选择；Luna/xhigh 是记录中的配置，不保证当前 provider 可用或吞吐。
 
@@ -59,7 +59,7 @@ flowchart LR
 
 必须在**目标会话**检查：
 
-- `repostew_runtime_status`：v0.5.0、角色、原生工具、契约路径符合预期；路径显示只证明配置，不证明该文本已被使用。
+- `repostew_runtime_status`：v0.5.1、角色、原生工具、契约路径符合预期；路径显示只证明配置，不证明该文本已被使用。
 - 实际 prompt/行为包含固定契约和初始可变事实；改模型/thinking 后检查持久会话事件，不能只看保存配置或命令接受。
 - `repostew_gh_status`：只读验证既有登录；不能因继承路径缺失就重新登录。
 - C 的 `openrig_slots`：精确 roster、活动任务、待收结果；只读 loopback daemon，拒绝不完整队列输入，不预留、派发或证明进程停止。
@@ -92,7 +92,7 @@ rtk node examples/openrig-pi/validate.mjs <installed-pi-package-root>
 以[Skill](../../skill/SKILL.md)、[C/W职责](../../skill/roles/coordinator.md)和[固定合同＋短事实](../../skill/prompts/fixed-context.md)为当前规则。
 C只筛选、分派、登记和续派，无审批或工程验收权。W独立完成理解、修复、目标要求的测试、直接投稿、投稿链接登记、可行任务内清理六步后交回容量。
 W依据真实身份和权利事实自主完成所需条款、CLA/DCO；投稿后不例行查等CI、不加二次验收。私密发送／处置仅按用户明确范围执行。
-OpenRig示例与独立执行器提示词采用同一合同；每项任务只选一个执行owner。包版本0.5.0，原生Pi扩展版本0.5.0，本次统一为同一发布版本。
+OpenRig示例与独立执行器提示词采用同一合同；每项任务只选一个执行owner。包版本0.5.1，原生Pi扩展版本0.5.1，本次统一为同一发布版本。
 
 
 Pi扩展现分为 `pi-repostew.js`（RepoStew业务）和 `pi-openrig.js`（中立OpenRig桥接）；共享 `pi-runtime.js` 仅提供通用机制。默认只加载业务模块，桥接可单独或组合使用。配置分别在 `repostew.json` 与 `openrig-pi.json`；旧 `pi-native.js` 仅保留兼容。

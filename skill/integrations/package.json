@@ -1,6 +1,6 @@
 {
   "name": "repostew",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Assemble scoped repository maintenance Workers with shared RepoStew rules.",
   "type": "module",
   "license": "MIT",

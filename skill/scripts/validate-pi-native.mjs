@@ -67,6 +67,7 @@ process.env.PI_CODING_AGENT_DIR = agentDir;
 delete process.env.GH_CONFIG_DIR;
 try {
   const runtime = createExtensionRuntime();
+  runtime.getSettings = () => settings;
   runtime.getActiveTools = () => settings.defaultTools;
   runtime.getAllTools = () => settings.defaultTools.map(name => ({ name }));
   const session = SessionManager.inMemory(fixture);
@@ -80,7 +81,9 @@ try {
   assert.equal(status.details.role, "worker");
   assert.equal(status.details.approvalGate, false);
   assert.equal(status.details.automaticContinuation, false);
-  assert.equal(status.details.version, "0.5.0");
+  assert.equal(status.details.version, "0.5.1");
+  assert.deepEqual(status.details.toolSelection.configured.entries, settings.defaultTools);
+  assert.equal(status.details.toolSelection.intended, null);
   assert.equal(status.details.entrypoint, join(bundle, "extensions/pi-repostew.js"));
   assert.ok(runner.getToolDefinition("openrig_slots"));
   assert.equal(status.details.ghConfigDir, join(fixture, "GitHub CLI"));
@@ -136,13 +139,32 @@ try {
   let active = ["repostew_runtime_status"];
   runtime.getActiveTools = () => active;
   runtime.setActiveTools = names => { active = names; };
-  await runner.getCommand("repostew-restore-tools").handler("", { ui: { notify() {} } });
+  runtime.getAllTools = () => [...settings.defaultTools, "repostew_runtime_status"].map(name => ({ name }));
+  const notices = [];
+  const commandContext = { ui: { notify(text) { notices.push(JSON.parse(text)); } } };
+  await assert.rejects(() => runner.getCommand("repostew-restore-tools").handler("", commandContext), /Name the tools intended now/);
+  assert.deepEqual(active, ["repostew_runtime_status"]);
+  await runner.getCommand("repostew-restore-tools").handler("read", commandContext);
+  assert.deepEqual(active, ["repostew_runtime_status", "read"]);
+  assert.ok(settings.defaultTools.includes("bash"));
+  assert.equal(active.includes("bash"), false, "configured but not currently intended remains disabled");
+  assert.deepEqual(notices.at(-1).intended, ["read"]);
+  await runner.getCommand("repostew-restore-tools").handler(settings.defaultTools.join(" "), commandContext);
   assert.ok(active.includes("repostew_runtime_status"));
   for (const name of settings.defaultTools) assert.ok(active.includes(name));
   runtime.getAllTools = () => [];
   const beforeRejectedRestore = [...active];
-  await assert.rejects(() => runner.getCommand("repostew-restore-tools").handler("", { ui: { notify() {} } }), /not registered/);
+  await assert.rejects(() => runner.getCommand("repostew-restore-tools").handler("read", commandContext), /unregistered or hidden/);
   assert.deepEqual(active, beforeRejectedRestore);
+  runtime.getAllTools = () => [{ name: "read", exposure: "hidden" }];
+  await assert.rejects(() => runner.getCommand("repostew-restore-tools").handler("read", commandContext), /unregistered or hidden/);
+  assert.deepEqual(active, beforeRejectedRestore);
+  runtime.getAllTools = () => [...settings.defaultTools, "repostew_runtime_status"].map(name => ({ name }));
+  active = ["repostew_runtime_status", "read"];
+  runtime.setActiveTools = () => {}; // Pi may ignore a name it cannot activate.
+  await assert.rejects(() => runner.getCommand("repostew-restore-tools").handler("bash", commandContext), /activation incomplete/);
+  assert.equal(notices.at(-1).restored, false);
+  assert.deepEqual(notices.at(-1).missing, ["bash"]);
   assert.deepEqual(errors, []);
 } finally {
   for (const [key, value] of [["PI_CODING_AGENT_DIR", previous.agent], ["GH_CONFIG_DIR", previous.gh], ["GH_PROMPT_DISABLED", previous.prompt]]) {
@@ -173,6 +195,7 @@ try {
     delete process.env.GH_CONFIG_DIR;
     delete process.env.GH_PROMPT_DISABLED;
     const runtime = createExtensionRuntime();
+    runtime.getSettings = () => ({ defaultTools: ["read", "bash"] });
     runtime.getActiveTools = () => ["read"];
     runtime.getAllTools = () => [{ name: "read" }];
     const paths = (mode === "legacy" ? ["pi-native.js"] :

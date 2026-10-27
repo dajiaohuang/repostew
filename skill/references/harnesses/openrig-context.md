@@ -31,8 +31,8 @@ The Pi runner is the single activity producer. A locally authored bridge is not 
 
 The before-agent-start hook rereads the configured contract; C refill guidance remains composed with it.
 Code changes need an authorized idle reload; verify `repostew_runtime_status` version, entrypoint, role,
-tools and guidance path. `/repostew-restore-tools` restores configured native tools only on operator request
-and rejects unregistered tools; it is not an automatic reset or permission change.
+tools and guidance path. `/repostew-restore-tools read` adds only explicitly named current intended tools, preserves active extras
+and rejects unregistered/hidden requests before mutation; it is not an automatic reset or permission change.
 Discovery, configured files, loaded code and actual task progress are separate claims.
 
 Keep daemon/CLI identity separate from already-loaded runners. During an authorized upgrade record selected

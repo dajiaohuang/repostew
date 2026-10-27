@@ -27,6 +27,7 @@ try {
   process.env.PI_CODING_AGENT_DIR = agentDir;
   delete process.env.GH_CONFIG_DIR;
   const runtime = createExtensionRuntime();
+  runtime.getSettings = () => ({ defaultTools: ['read', 'bash'] });
   runtime.getActiveTools = () => ['read', 'bash'];
   runtime.getAllTools = () => ['read', 'bash'].map(name => ({ name }));
   const loaded = await loadExtensions([resolve(here, '../../skill/integrations/pi-repostew.js'), resolve(here, '../../skill/integrations/pi-openrig.js')], scratch, undefined, runtime);
@@ -36,7 +37,7 @@ try {
   runner.onError(error => errors.push(error));
   await runner.emit({ type: 'session_start', reason: 'startup' });
   const status = await runner.getToolDefinition('repostew_runtime_status').execute('status', {}, undefined, undefined, runner.createToolContext('status'));
-  assert.equal(status.details.version, '0.5.0');
+  assert.equal(status.details.version, '0.5.1');
   assert.equal(status.details.role, 'coordinator');
   assert.equal(status.details.automaticContinuation, false);
   assert.equal(status.details.approvalGate, false);
