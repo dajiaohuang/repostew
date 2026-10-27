@@ -44,7 +44,7 @@ submitted/link record, and feasible authorized task-owned cleanup before capacit
 W completes required terms/CLA/DCO using true established identity and rights facts. No routine CI
 lookup/wait or second review follows submission. Private reporting/disposal retains its exact user scope.
 OpenRig examples and standalone prompts use this contract; choose one execution owner per task.
-The package is 0.4.6; its native Pi extension is 0.4.6. The package and extension now share this release version.
+The package is 0.5.0; its native Pi extension is 0.5.0. The package and extension now share this release version.
 
 ## Repository layout
 
@@ -79,3 +79,5 @@ Run Skill build/check commands from `skill/`; generated package layout stays unc
 The root [SKILL.md](SKILL.md) remains a navigation entry.
 
 [MIT](LICENSE)
+
+Pi integration now has independent `pi-repostew.js` (application) and `pi-openrig.js` (neutral bridge) modules. Shared `pi-runtime.js` contains mechanisms only. The default loads the application; the bridge is explicit and works independently. Profiles are `repostew.json` and `openrig-pi.json`; `pi-native.js` is the legacy combined entrypoint.

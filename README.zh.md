@@ -36,7 +36,7 @@ GitHub/GitLab 读取、持续巡检、交付、维护、记录、备份和授权
 以[Skill](skill/SKILL.md)、[C/W职责](skill/roles/coordinator.md)和[固定合同＋短事实](skill/prompts/fixed-context.md)为当前规则。
 C只筛选、分派、登记和续派，无审批或工程验收权。W独立完成理解、修复、目标要求的测试、直接投稿、投稿链接登记、可行任务内清理六步后交回容量。
 W依据真实身份和权利事实自主完成所需条款、CLA/DCO；投稿后不例行查等CI、不加二次验收。私密发送／处置仅按用户明确范围执行。
-OpenRig示例与独立执行器提示词采用同一合同；每项任务只选一个执行owner。包版本0.4.6，原生Pi扩展版本0.4.6，本次统一为同一发布版本。
+OpenRig示例与独立执行器提示词采用同一合同；每项任务只选一个执行owner。包版本0.5.0，原生Pi扩展版本0.5.0，本次统一为同一发布版本。
 
 ## 目录
 
@@ -70,3 +70,5 @@ Skill 构建与检查命令改在 `skill/` 中执行，生成包的内部结构�
 根目录 [SKILL.md](SKILL.md)保留为导航入口。
 
 [MIT](LICENSE)
+
+Pi扩展现分为 `pi-repostew.js`（RepoStew业务）和 `pi-openrig.js`（中立OpenRig桥接）；共享 `pi-runtime.js` 仅提供通用机制。默认只加载业务模块，桥接可单独或组合使用。配置分别在 `repostew.json` 与 `openrig-pi.json`；旧 `pi-native.js` 仅保留兼容。

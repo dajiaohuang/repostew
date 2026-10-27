@@ -12,20 +12,25 @@ One bundle, one canonical skill; generated copies are never edited.
 | Pi | `rtk pi install ./dist/repostew` | Configure an explicit agent profile, then use native prompts and `/repostew-status` |
 | OMP (oh-my-pi) | `rtk omp --no-extensions -e ./dist/repostew` | `/repostew <task and workspace>` |
 
-The Pi integration uses the single `pi-native.js` extension, following official prompt, tool
-and reload patterns. Configure each agent with
-`rtk node <bundle>/scripts/configure-pi.mjs --agent-dir <dir> --workspace <workspace> --role coordinator|worker`.
+Pi has independent `pi-repostew.js` (application) and `pi-openrig.js` (neutral bridge) modules,
+with shared `pi-runtime.js` mechanisms. The package default loads only the application.
+The old `pi-native.js` combined wrapper remains for existing profiles; never load it with the new modules. Configure each agent with
+`rtk node <bundle>/scripts/configure-pi.mjs --agent-dir <dir> --workspace <workspace> --role coordinator|worker --mode repostew`.
 Add `--seat-guidance <absolute-contract>` for an assembled C/W contract and
-`--openrig-home <selected-instance>` for installed official skills. See the bundled
+`--mode combined --openrig-binding <binding.json> --openrig-home <selected-instance>` for the optional bridge.
+For bridge-only use, select `--mode openrig --openrig-binding <binding.json>`; it needs no RepoStew workspace/profile or gh setup. See the bundled
 [seat context guide](skills/repostew/references/harnesses/openrig-context.md).
+Bridge-only use loads the bridge files directly; do not also install/load the default application entry.
+The configurator does not rewrite installed package manifests. Choose package discovery or direct
+extension entries without loading the same module twice.
 Add `--trust-projects` when that native trust policy is explicitly wanted.
-This enables native editing/search/shell tools and existing host gh authentication
+The application enables native editing/search/shell tools and existing host gh authentication
 through non-secret configuration paths. No separate runtime, token store, approval
 gate or automatic completion loop is installed. See [Pi](skills/repostew/references/harnesses/pi.md).
 The former `pi.js`/`pi-extras.js` implementation is deprecated; remove its exact
 settings entries before enabling the new extension. Old files remain for rollback.
 OMP retains its existing command. These integrations create no execution service.
-Roles/forms/methods remain assembled by the Coordinator. Native delegation and permissions
+Roles/forms/methods remain assembled by the designated policy editor. Native delegation and permissions
 come from the harness; installation grants no public, maintainer or schedule authority.
 Workspace instructions/state stay outside the package: each native project uses
 `state/repositories/<host>/<namespace>/<repo>/state.md` with ignored local `work/`.

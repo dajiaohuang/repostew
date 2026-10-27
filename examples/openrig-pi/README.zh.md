@@ -39,7 +39,7 @@ flowchart LR
 | [profiles/](profiles/) | C/W 的 `repostew.json` 与 Pi 原生 settings 示例 |
 | [contracts/](contracts/) | 已集成的 C/W 固定契约；启用前补领域和精确席位绑定 |
 | [task-facts.example.md](task-facts.example.md) | 分离的五字段任务、捕获引用、游标、归属、限制与未知效果 |
-| [extensions/pi-native.js](extensions/pi-native.js) | 复用 Skill 当前 v0.4.6 实现的显式入口，无调度器和自动续跑 |
+| [settings示例](profiles/settings.example.json) | 从 `skill/integrations/` 显式加载两个独立v0.5.0模块；旧示例入口仅为兼容 |
 
 六个示例领域分别是新仓库、GitHub 反馈、既有 GitLab 列表未处理仓库、GitLab 反馈、此前已完成合格候选发布、关注列表新增 issue。候选发布组只是明确的历史任务领域，不是所有 W 的中央发布网关。容量和模型由使用者选择；Luna/xhigh 是记录中的配置，不保证当前 provider 可用或吞吐。
 
@@ -47,8 +47,8 @@ flowchart LR
 
 1. 先选择获授权的组和容量，通常从 1C+1W 开始。核对安装的 OpenRig/Pi 版本、模型与 effort 支持、既有认证和目标规则。读当前 spec/CLI 帮助，将两个 `agent_ref` 替换成已安装兼容 agent spec。未替换模板不能直接 launch。
 2. 将固定契约复制到私有配置目录，按领域集成并绑定精确席位。保留通用 [Skill](../../skill/SKILL.md)、目标规则、排除与条件安全/存储边界。新库动态任务可简短；反馈/新增 issue 必须给完整批次、窗口和修订。
-3. 在每个**已存在或明确选定的 Pi agent 目录**合并对应 profile 为 `repostew.json`，再合并 settings。把配置中所有 `<...>` 替换为真实绝对路径；`workspace` 必须存在，`seatGuidance` 指向已审阅契约。C 的 `openrig` 使用真实本地 daemon URL/端口和 canonical 席位名。不覆盖无关配置/认证，不复制 `auth.json` 或会话文件。
-4. 此集成仅加载本目录的 native 扩展；若替代旧版，精确移除旧 RepoStew `pi.js`/`pi-extras.js` 条目，保留其他扩展。Pi 的支持环境须能解析 `typebox`。本目录 package 不自动加载任何东西。不擅改现有模型。示例刻意不写 `defaultProjectTrust: always`，只有使用者明确选择该项目 trust 策略时才加入。
+3. 在每个**已存在或明确选定的 Pi agent 目录**合并对应 profile 为 `repostew.json`，再合并 settings。把配置中所有 `<...>` 替换为真实绝对路径；`workspace` 必须存在，`seatGuidance` 指向已审阅契约。另将 `coordinator.openrig-pi.json` 合并为 `openrig-pi.json`，填入真实loopback URL、rig、observer和seats；W可只加载业务模块。不覆盖无关配置/认证，不复制 `auth.json` 或会话文件。
+4. 加载 `pi-repostew.js` 和按需启用的 `pi-openrig.js`，不再同时加载旧 `pi-native.js`；若替代旧版，精确移除旧 RepoStew `pi.js`/`pi-extras.js` 条目，保留其他扩展。Pi 的支持环境须能解析 `typebox`。本目录 package 不自动加载任何东西。不擅改现有模型。示例刻意不写 `defaultProjectTrust: always`，只有使用者明确选择该项目 trust 策略时才加入。
 5. gh 指向既有配置目录。Bash `shellCommandPrefix` 是示例：保留已有 prefix 并对替换路径正确引用；扩展环境也向原生 PowerShell 和 `pi.exec` 提供缺失的 `GH_CONFIG_DIR`，已有环境覆盖优先。不读取或复制 token。将审阅后的初始任务事实放进宿主支持的**初始身份/启动输入，先于工作开始**，不要先开工再补发授权消息。
 
 这里没有修改活动集群的安装器。尤其不能用会丢掉 `seatGuidance`/`openrig` 的旧配置器覆盖已审阅 profile。rig spec 刻意不含无条件启动任务；恢复必须使用核对后的当前事实，不能重放陈旧任务。
@@ -59,10 +59,10 @@ flowchart LR
 
 必须在**目标会话**检查：
 
-- `repostew_runtime_status`：v0.4.6、角色、原生工具、契约路径符合预期；路径显示只证明配置，不证明该文本已被使用。
+- `repostew_runtime_status`：v0.5.0、角色、原生工具、契约路径符合预期；路径显示只证明配置，不证明该文本已被使用。
 - 实际 prompt/行为包含固定契约和初始可变事实；改模型/thinking 后检查持久会话事件，不能只看保存配置或命令接受。
 - `repostew_gh_status`：只读验证既有登录；不能因继承路径缺失就重新登录。
-- C 的 `repostew_openrig_slots`：精确 roster、活动任务、待收结果；只读 loopback daemon，拒绝不完整队列输入，不预留、派发或证明进程停止。
+- C 的 `openrig_slots`：精确 roster、活动任务、待收结果；只读 loopback daemon，拒绝不完整队列输入，不预留、派发或证明进程停止。
 - 一个获授权完整单元走完领取、W 工程/交付、原生结果和 C 补位；扩容前再覆盖无需交付、局部阻塞、未知写入与 Stop。区分本地测试、宿主行为、提交与合并。
 
 已发送、已领取、已处理、运行时 idle、已交付、全 campaign 完成是不同事实。timeout 先核对效果，不盲重发。项目保留 `state.md` 和短 `work/work.md`，不另建任务数据库。新 C 只接最小已核事实，活动 W 保留归属与累计限制。
@@ -92,5 +92,7 @@ rtk node examples/openrig-pi/validate.mjs <installed-pi-package-root>
 以[Skill](../../skill/SKILL.md)、[C/W职责](../../skill/roles/coordinator.md)和[固定合同＋短事实](../../skill/prompts/fixed-context.md)为当前规则。
 C只筛选、分派、登记和续派，无审批或工程验收权。W独立完成理解、修复、目标要求的测试、直接投稿、投稿链接登记、可行任务内清理六步后交回容量。
 W依据真实身份和权利事实自主完成所需条款、CLA/DCO；投稿后不例行查等CI、不加二次验收。私密发送／处置仅按用户明确范围执行。
-OpenRig示例与独立执行器提示词采用同一合同；每项任务只选一个执行owner。包版本0.4.6，原生Pi扩展版本0.4.6，本次统一为同一发布版本。
+OpenRig示例与独立执行器提示词采用同一合同；每项任务只选一个执行owner。包版本0.5.0，原生Pi扩展版本0.5.0，本次统一为同一发布版本。
 
+
+Pi扩展现分为 `pi-repostew.js`（RepoStew业务）和 `pi-openrig.js`（中立OpenRig桥接）；共享 `pi-runtime.js` 仅提供通用机制。默认只加载业务模块，桥接可单独或组合使用。配置分别在 `repostew.json` 与 `openrig-pi.json`；旧 `pi-native.js` 仅保留兼容。

@@ -1,7 +1,7 @@
 # Pi optional extras
 
 **Deprecated:** the supported extension is [Pi native](pi.md). This page records the
-old adapter for rollback/history only. Do not load it alongside `pi-native.js`;
+old adapter for rollback/history only. Do not load it alongside the current modules or `pi-native.js`;
 its completion helpers and opt-in confirmation hooks are not current defaults.
 
 Eight [official example](https://github.com/earendil-works/pi/tree/main/packages/coding-agent/examples/extensions)

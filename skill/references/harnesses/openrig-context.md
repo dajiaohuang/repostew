@@ -13,20 +13,19 @@ The Pi runner is the single activity producer. A locally authored bridge is not 
 2. Keep user-specific identity, model/effort, roster, source grants, holds, deadlines, receipts and recovery
    deltas in workspace-owned facts/profile/native task inputs. Do not put live fleets or credentials in a package.
    Preserve an isolated replacement seat's fresh context; do not inject its retired coordinator history.
-3. Configure `repostew.json` with absolute `workspace` and `seatGuidance`, `role`, optional `gh.configDir`,
-   and explicit `openrig: {url, rig, coordinator, workers}`. Bind only authorized canonical session names.
+3. Configure `repostew.json` with absolute `workspace` and `seatGuidance`, `role`, optional `gh.configDir`. Configure the independent bridge in
+   `openrig-pi.json` with `binding: {url, rig, observer, seats}`. Bind only authorized canonical session names.
    Example shape (replace values from the selected instance; these are not live destinations):
 
    ```json
-   {"version":1,"role":"coordinator","workspace":"/workspace","seatGuidance":"/workspace/contracts/c.md",
-    "openrig":{"url":"http://127.0.0.1:17433","rig":"assigned-team","coordinator":"c@assigned-team","workers":["w1@assigned-team"]}}
+   {"version":1,"binding":{"url":"http://127.0.0.1:17433","rig":"assigned-team","observer":"c@assigned-team","seats":["w1@assigned-team"]}}
    ```
 
-4. Use `configure-pi.mjs --seat-guidance <absolute-contract> --openrig-home <selected-instance>` with the
+4. Use `configure-pi.mjs --mode combined --seat-guidance <absolute-contract> --openrig-home <selected-instance>` with the
    ordinary agent-dir/workspace/role options. Preserve unrelated settings, models and roster fields;
    configuration neither creates seats nor supplies missing authorization. Inspect skill-name collisions.
-5. Use one declared `pi-native.js` entrypoint. Do not load old `pi.js`, `pi-extras.js` or `pi-native-seats.js`
-   alongside it. Preserve separately authorized model activation until a verified native replacement exists.
+5. Load `pi-repostew.js` for application rules and `pi-openrig.js` for neutral native facts. Do not also
+   load the legacy combined `pi-native.js`, old `pi.js`, `pi-extras.js` or `pi-native-seats.js`. Preserve separately authorized model activation until a verified native replacement exists.
 
 ## Loading and recovery
 
@@ -52,7 +51,7 @@ JSON/help; use structured arguments/body files for multiline content. Check nati
 
 ## Capacity evidence
 
-`repostew_openrig_slots` is a read-only snapshot, not a reservation, scheduler or process-stop certificate.
+`openrig_slots` is a read-only snapshot, not a reservation, scheduler or process-stop certificate.
 Apply current facts' user holds and eligibility even when a node looks available. Distinguish execution
 occupancy, retained project ownership, blocked obligations and pending result registration.
 Reconcile the affected owner without freezing independent compatible slots; no polling loop or second ledger.

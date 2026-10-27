@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "binding": {
+    "url": "http://127.0.0.1:17433",
+    "rig": "repostew-example",
+    "observer": "team-c@repostew-example",
+    "seats": [
+      "team-w1@repostew-example"
+    ]
+  }
+}

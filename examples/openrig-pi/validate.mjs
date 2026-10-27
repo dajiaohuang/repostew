@@ -20,6 +20,8 @@ profile.workspace = scratch;
 profile.seatGuidance = join(here, 'contracts/coordinator.md');
 profile.gh.configDir = join(scratch, 'existing-gh');
 writeFileSync(join(agentDir, 'repostew.json'), JSON.stringify(profile));
+const bridge = JSON.parse(readFileSync(join(here, 'profiles/coordinator.openrig-pi.json'), 'utf8'));
+writeFileSync(join(agentDir, 'openrig-pi.json'), JSON.stringify(bridge));
 const saved = Object.fromEntries(['PI_CODING_AGENT_DIR', 'GH_CONFIG_DIR', 'GH_PROMPT_DISABLED'].map(k => [k, process.env[k]]));
 try {
   process.env.PI_CODING_AGENT_DIR = agentDir;
@@ -27,14 +29,14 @@ try {
   const runtime = createExtensionRuntime();
   runtime.getActiveTools = () => ['read', 'bash'];
   runtime.getAllTools = () => ['read', 'bash'].map(name => ({ name }));
-  const loaded = await loadExtensions([join(here, 'extensions/pi-native.js')], scratch, undefined, runtime);
+  const loaded = await loadExtensions([resolve(here, '../../skill/integrations/pi-repostew.js'), resolve(here, '../../skill/integrations/pi-openrig.js')], scratch, undefined, runtime);
   assert.deepEqual(loaded.errors, []);
   const runner = new ExtensionRunner(loaded.extensions, runtime, scratch, SessionManager.inMemory(scratch), undefined);
   const errors = [];
   runner.onError(error => errors.push(error));
   await runner.emit({ type: 'session_start', reason: 'startup' });
   const status = await runner.getToolDefinition('repostew_runtime_status').execute('status', {}, undefined, undefined, runner.createToolContext('status'));
-  assert.equal(status.details.version, '0.4.6');
+  assert.equal(status.details.version, '0.5.0');
   assert.equal(status.details.role, 'coordinator');
   assert.equal(status.details.automaticContinuation, false);
   assert.equal(status.details.approvalGate, false);
@@ -46,7 +48,7 @@ try {
   // The published profile's bound seats must agree with the minimal rig template.
   const rig = JSON.parse(readFileSync(join(here, 'rig.example.json'), 'utf8'));
   const seats = rig.pods.flatMap(pod => pod.members.map(member => `${pod.id}-${member.id}@${rig.name}`));
-  assert.deepEqual(seats, [profile.openrig.coordinator, ...profile.openrig.workers]);
+  assert.deepEqual(seats, [bridge.binding.observer, ...bridge.binding.seats]);
   assert.deepEqual(errors, []);
   console.log('PASS: native Pi loader, status, exact contract injection, prompt preservation and profile/rig binding; no model/network/runtime launch.');
 } finally {

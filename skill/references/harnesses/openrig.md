@@ -37,7 +37,7 @@ including pending assignments and unprocessed results. The count is not a
 reservation: multiple Coordinators must retain disjoint agreed Worker scopes
 or use an actual native atomic admission mechanism before sharing destinations.
 Do not add independent counters, polling loops or another task database.
-Pi's optional `repostew_openrig_slots` tool reads this same native count and
+Pi's optional `openrig_slots` bridge tool reads this same native count and
 projects an explicitly configured authorized Worker set without mutating it.
 
 ## Native queue operations

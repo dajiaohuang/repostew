@@ -39,7 +39,7 @@ Pending, starting, active, unknown and unconsumed-result work occupy capacity. G
 | [profiles/](profiles/) | Per-agent coordinator/worker `repostew.json` and native Pi settings example |
 | [contracts/](contracts/) | Assembled C/W fixed contracts; customize domain and explicit seat binding before activation |
 | [task-facts.example.md](task-facts.example.md) | Separate five-field task, exact capture reference, cursor, custody, limits and unknown effects |
-| [extensions/pi-native.js](extensions/pi-native.js) | Opt-in re-export of the canonical v0.4.6 Skill extension; no scheduler or automatic continuation |
+| [settings example](profiles/settings.example.json) | Explicitly loads the two independent v0.5.0 modules from `skill/integrations/`; the old example extension entry remains for compatibility only |
 
 The six example domains are new repositories, GitHub feedback, existing GitLab-list work, GitLab feedback, eligible previously completed candidates, and followed-list new issues. Candidate publication is an explicit historical-work domain, not a mandatory gateway for other workers. Models and capacity are operator choices; the recorded Luna/xhigh selection is not a provider availability or throughput guarantee.
 
@@ -47,8 +47,8 @@ The six example domains are new repositories, GitHub feedback, existing GitLab-l
 
 1. Select one authorized group and capacity, normally 1C+1W first. Confirm the installed OpenRig/Pi versions, model/effort support, existing credentials and target rules. Inspect current OpenRig spec/CLI help; replace both `agent_ref` placeholders with installed compatible agent specifications. Do not pass unresolved templates to a launch command.
 2. Copy the fixed contracts into a private configuration directory. Assemble the applicable domain into each contract and bind the exact seats. Preserve the generic [Skill](../../skill/SKILL.md), target rules, exclusions and conditional security/storage boundaries. Keep new-repository tasks short; feedback/new issues must reference the complete captured batch, window and revision.
-3. In each **existing or deliberately chosen Pi agent directory**, merge the relevant profile example as `repostew.json` and merge settings. Replace all `<...>` configuration placeholders with real absolute paths. `workspace` must exist. `seatGuidance` points to the reviewed contract. Use the actual local daemon URL/port and exact canonical seats for the coordinator's `openrig` binding. Do not overwrite unrelated settings or authentication. Do not copy `auth.json` or session files.
-4. Load only this native extension for this integration. Remove the exact old RepoStew `pi.js`/`pi-extras.js` entries if replacing that generation; retain unrelated extensions. Pi must resolve `typebox` through its supported extension environment. The included package does not autoload anything. Keep existing model settings unless explicitly changing them. The example deliberately omits `defaultProjectTrust: always`; add it only when the operator has chosen that native project-trust policy.
+3. In each **existing or deliberately chosen Pi agent directory**, merge the relevant profile example as `repostew.json` and merge settings. Replace all `<...>` configuration placeholders with real absolute paths. `workspace` must exist. `seatGuidance` points to the reviewed contract. Copy `coordinator.openrig-pi.json` as `openrig-pi.json`; use its actual loopback URL, rig, observer and exact native seats. `repostew.json` holds only the application contract; W may use application-only mode. Do not overwrite unrelated settings or authentication. Do not copy `auth.json` or session files.
+4. Load `pi-repostew.js` and, when needed, `pi-openrig.js`; do not also load `pi-native.js`. Remove the exact old RepoStew `pi.js`/`pi-extras.js` entries if replacing that generation; retain unrelated extensions. Pi must resolve `typebox` through its supported extension environment. The included package does not autoload anything. Keep existing model settings unless explicitly changing them. The example deliberately omits `defaultProjectTrust: always`; add it only when the operator has chosen that native project-trust policy.
 5. Configure gh using its existing directory. The Bash `shellCommandPrefix` is an example: preserve existing prefix content and correctly quote the substituted path for your shell. The extension supplies a missing `GH_CONFIG_DIR` for native PowerShell and `pi.exec` as well; existing environment overrides win. No token is read or copied. Add reviewed initial task/facts through the host's supported **initial identity/startup input before work begins**, not a later message racing agent startup.
 
 No installer here mutates a live fleet. In particular, do not run an older configurator over a reviewed profile if it would drop `seatGuidance` or `openrig`. The rig spec intentionally contains no unconditional startup task: restoration must use reconciled current facts, not a stale assignment.
@@ -59,10 +59,10 @@ For an authorized fresh seat, use the installed OpenRig lifecycle. For an existi
 
 Check in the **target session**:
 
-- `repostew_runtime_status`: expected v0.4.6, role, native tools and reviewed guidance path. This reports configuration; a path alone is not proof that the intended text was used.
+- `repostew_runtime_status`: expected v0.5.0, role, native tools and reviewed guidance path. This reports configuration; a path alone is not proof that the intended text was used.
 - Inspect the actual prompt/behavior for fixed contract and initial variable facts. For model/thinking changes, inspect persisted Pi session events; an accepted command or saved setting is insufficient.
 - `repostew_gh_status`: read-only existing-account verification. Do not log in again merely because an inherited path was absent.
-- `repostew_openrig_slots` on C: exact roster, active tasks and pending results. It reads a loopback daemon, refuses incomplete queue input, and never reserves, dispatches or certifies stopped processes.
+- `openrig_slots` on C: exact roster, active tasks and pending results. It reads a loopback daemon, refuses incomplete queue input, and never reserves, dispatches or certifies stopped processes.
 - Run one authorized bounded unit through claim, W engineering/delivery, native result and C refill. Also verify no-action, local blocker, unknown-write and Stop behavior before scaling. Keep local tests, hosted behavior, submission and merge distinct.
 
 Sent, claimed, processed, runtime idle, delivered and whole-campaign complete are distinct. A timeout has unknown delivery until reconciled by effect; do not blindly resend. Keep project `state.md` and short `work/work.md`, not a parallel task database. Fresh C context takes minimal reconciled facts while live W retain custody and accumulated limits.
@@ -97,5 +97,7 @@ submitted/link record, and feasible authorized task-owned cleanup before capacit
 W completes required terms/CLA/DCO using true established identity and rights facts. No routine CI
 lookup/wait or second review follows submission. Private reporting/disposal retains its exact user scope.
 OpenRig examples and standalone prompts use this contract; choose one execution owner per task.
-The package is 0.4.6; its native Pi extension is 0.4.6. The package and extension now share this release version.
+The package is 0.5.0; its native Pi extension is 0.5.0. The package and extension now share this release version.
 
+
+Pi integration now has independent `pi-repostew.js` (application) and `pi-openrig.js` (neutral bridge) modules. Shared `pi-runtime.js` contains mechanisms only. The default loads the application; the bridge is explicit and works independently. Profiles are `repostew.json` and `openrig-pi.json`; `pi-native.js` is the legacy combined entrypoint.

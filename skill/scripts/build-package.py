@@ -27,7 +27,7 @@ def build(output):
     extension = bundle / "extensions" / "repostew.js"
     extension.parent.mkdir()
     shutil.copyfile(ROOT / "integrations" / "repostew.js", extension)
-    for name in ("pi.js", "pi-extras.js", "pi-native.js"):
+    for name in ("pi.js", "pi-extras.js", "pi-native.js", "pi-repostew.js", "pi-openrig.js", "pi-runtime.js"):
         shutil.copyfile(ROOT / "integrations" / name, extension.parent / name)
     (bundle / "scripts").mkdir()
     shutil.copyfile(ROOT / "scripts" / "configure-workers.py", bundle / "scripts/configure-workers.py")

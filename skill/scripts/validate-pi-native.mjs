@@ -21,12 +21,12 @@ const binding = { url: "http://127.0.0.1:17433", rig: "fixture", coordinator: "c
 writeFileSync(join(agentDir, "repostew.json"), JSON.stringify({ version: 1, workspace: fixture,
   role: "worker", seatGuidance, openrig: binding, retainedCustomField: "keep" }));
 writeFileSync(join(agentDir, "settings.json"), JSON.stringify({
-  defaultModel: "keep-existing", extensions: ["keep-extension.js", "old-extension.js"],
+  defaultModel: "keep-existing", extensions: ["keep-extension.js", "old-extension.js", join(bundle, "extensions/pi-native.js")],
   shellCommandPrefix: "export EXISTING_SETTING=1",
 }));
 const installer = join(bundle, "scripts/configure-pi.mjs");
 const args = [installer, "--agent-dir", agentDir, "--workspace", fixture, "--role", "worker",
-  "--seat-guidance", seatGuidance,
+  "--seat-guidance", seatGuidance, "--mode", "combined",
   "--openrig-home", openrigHome,
   "--trust-projects", "--gh-config-dir", join(fixture, "GitHub CLI"),
   "--remove-extension", "old-extension.js"];
@@ -36,7 +36,7 @@ for (let i = 0; i < 2; i++) {
 }
 const settings = JSON.parse(readFileSync(join(agentDir, "settings.json"), "utf8"));
 assert.equal(settings.defaultModel, "keep-existing");
-assert.deepEqual(settings.extensions, ["keep-extension.js", join(bundle, "extensions/pi-native.js")]);
+assert.deepEqual(settings.extensions, ["keep-extension.js", join(bundle, "extensions/pi-repostew.js"), join(bundle, "extensions/pi-openrig.js")]);
 assert.equal(settings.defaultProjectTrust, "always");
 assert.deepEqual(settings.skills, [officialSkills]);
 const profile = JSON.parse(readFileSync(join(agentDir, "repostew.json"), "utf8"));
@@ -49,6 +49,8 @@ const replaced = spawnSync(process.execPath, [installer, "--agent-dir", agentDir
   "--role", "worker", "--seat-guidance", changedGuidance], { encoding: "utf8" });
 assert.equal(replaced.status, 0, replaced.stderr);
 assert.equal(JSON.parse(readFileSync(join(agentDir, "repostew.json"), "utf8")).seatGuidance, changedGuidance);
+assert.deepEqual(JSON.parse(readFileSync(join(agentDir, "settings.json"), "utf8")).extensions,
+  ["keep-extension.js", join(bundle, "extensions/pi-repostew.js")]);
 const beforeMissing = readFileSync(join(agentDir, "repostew.json"), "utf8");
 const missing = spawnSync(process.execPath, [installer, "--agent-dir", agentDir, "--workspace", fixture,
   "--role", "worker", "--seat-guidance", join(fixture, "missing-contract.md")], { encoding: "utf8" });
@@ -68,7 +70,7 @@ try {
   runtime.getActiveTools = () => settings.defaultTools;
   runtime.getAllTools = () => settings.defaultTools.map(name => ({ name }));
   const session = SessionManager.inMemory(fixture);
-  const loaded = await loadExtensions([join(bundle, "extensions/pi-native.js")], fixture, undefined, runtime);
+  const loaded = await loadExtensions([join(bundle, "extensions/pi-repostew.js"), join(bundle, "extensions/pi-openrig.js")], fixture, undefined, runtime);
   assert.deepEqual(loaded.errors, []);
   const runner = new ExtensionRunner(loaded.extensions, runtime, fixture, session, undefined);
   const errors = [];
@@ -78,9 +80,9 @@ try {
   assert.equal(status.details.role, "worker");
   assert.equal(status.details.approvalGate, false);
   assert.equal(status.details.automaticContinuation, false);
-  assert.equal(status.details.version, "0.4.6");
-  assert.equal(status.details.entrypoint, join(bundle, "extensions/pi-native.js"));
-  assert.ok(runner.getToolDefinition("repostew_openrig_slots"));
+  assert.equal(status.details.version, "0.5.0");
+  assert.equal(status.details.entrypoint, join(bundle, "extensions/pi-repostew.js"));
+  assert.ok(runner.getToolDefinition("openrig_slots"));
   assert.equal(status.details.ghConfigDir, join(fixture, "GitHub CLI"));
   const prompt = await runner.emitBeforeAgentStart({ messageType: "user", prompt: "continue assigned work" },
     { cwd: fixture, sections: { native: "preserve" } });
@@ -97,6 +99,9 @@ try {
   const originalFetch = globalThis.fetch;
   const workers = ["free", "waiting", "result", "busy", "stopped", "terminal"].map(x => `${x}@fixture`);
   writeFileSync(join(agentDir, "repostew.json"), JSON.stringify({ ...profile, role: "coordinator", openrig: { ...binding, workers } }));
+  writeFileSync(join(agentDir, "openrig-pi.json"), JSON.stringify({ version: 1, binding: {
+    url: binding.url, rig: binding.rig, observer: binding.coordinator, seats: workers,
+  } }));
   const nodes = workers.map(canonicalSessionName => ({ canonicalSessionName, sessionStatus: "running", startupStatus: "ready",
     activityState: { activity: "idle-at-prompt", needsInput: { count: 0 } }, agentActivity: { state: "idle" }, assignedWorkCount: 0 }));
   nodes[4].intentionallyStopped = true;
@@ -115,10 +120,13 @@ try {
     return { rows: [] };
   } });
   try {
-    const result = await runner.getToolDefinition("repostew_openrig_slots").execute("slots", {}, undefined);
-    assert.deepEqual(result.details.slots.map(s => s.state), ["available", "waiting-reconciliation", "awaiting-coordinator", "occupied", "stopped", "available"]);
+    const result = await runner.getToolDefinition("openrig_slots").execute("slots", {}, undefined);
+    assert.deepEqual(result.details.slots.map(s => s.state), ["available", "waiting-reconciliation", "awaiting-observer", "occupied", "stopped", "available"]);
     assert.deepEqual(result.details.available, [workers[0], workers[5]]);
     assert.equal(result.details.processClearance, "unknown");
+    assert.equal(result.details.nextAction, undefined);
+    assert.equal(result.details.pendingCoordinatorItems, undefined);
+    assert.deepEqual(result.details.pendingObserverItems.map(row => row.id), ["result"]);
     assert.deepEqual(result.details.slots[1].executingAssignments, []);
     assert.equal(result.details.slots[1].waitingObligations[0].blockedOn, "external:maintainer");
   } finally { globalThis.fetch = originalFetch; }
@@ -141,4 +149,112 @@ try {
     if (value === undefined) delete process.env[key]; else process.env[key] = value;
   }
 }
-console.log("PASS: native Pi load, unified slot tool, seat contract/binding preservation, official skill default, settings idempotency and no approval/continuation hooks.");
+
+
+// Prove each layer loads without the other layer's profile, rules or host connection.
+const modes = ["repostew", "openrig", "combined", "legacy"];
+const savedEnv = { agent: process.env.PI_CODING_AGENT_DIR, gh: process.env.GH_CONFIG_DIR, prompt: process.env.GH_PROMPT_DISABLED };
+const savedFetch = globalThis.fetch;
+let networkCalls = 0;
+globalThis.fetch = async () => { networkCalls++; throw new Error("No network expected during layer loading"); };
+try {
+  for (const mode of modes) {
+    const dir = join(fixture, `mode-${mode}`);
+    mkdirSync(dir);
+    const genericGuidance = join(dir, "host-context.md");
+    writeFileSync(genericGuidance, "Host-only context. Preserve native custody.");
+    const appProfile = { version: 1, workspace: fixture, role: "coordinator", seatGuidance,
+      gh: { configDir: join(dir, "app-gh") }, ...(mode === "legacy" ? { openrig: binding } : {}) };
+    writeFileSync(join(dir, "repostew.json"), mode === "openrig" ? "malformed application data must not be read" : JSON.stringify(appProfile));
+    writeFileSync(join(dir, "openrig-pi.json"), mode === "repostew" || mode === "legacy"
+      ? "malformed bridge data must not be read" : JSON.stringify({ version: 1, seatGuidance: genericGuidance,
+        binding: { url: binding.url, rig: binding.rig, observer: binding.coordinator, seats: binding.workers } }));
+    process.env.PI_CODING_AGENT_DIR = dir;
+    delete process.env.GH_CONFIG_DIR;
+    delete process.env.GH_PROMPT_DISABLED;
+    const runtime = createExtensionRuntime();
+    runtime.getActiveTools = () => ["read"];
+    runtime.getAllTools = () => [{ name: "read" }];
+    const paths = (mode === "legacy" ? ["pi-native.js"] :
+      [ ...(mode !== "openrig" ? ["pi-repostew.js"] : []), ...(mode !== "repostew" ? ["pi-openrig.js"] : []) ])
+      .map(name => join(bundle, "extensions", name));
+    const loaded = await loadExtensions(paths, fixture, undefined, runtime);
+    assert.deepEqual(loaded.errors, [], mode);
+    const runner = new ExtensionRunner(loaded.extensions, runtime, fixture, SessionManager.inMemory(fixture), undefined);
+    const prompt = await runner.emitBeforeAgentStart({ messageType: "user", prompt: "fixture" },
+      { cwd: fixture, sections: { native: "keep" } });
+    assert.equal(prompt.systemPromptOptions.sections.native, "keep");
+    if (mode === "openrig") {
+      assert.equal(runner.getToolDefinition("repostew_runtime_status"), undefined);
+      assert.equal(runner.getToolDefinition("repostew_gh_status"), undefined);
+      assert.equal(prompt.systemPromptOptions.sections.repostew, undefined);
+      assert.equal(prompt.systemPromptOptions.sections.openrig, readFileSync(genericGuidance, "utf8"));
+      assert.equal(process.env.GH_CONFIG_DIR, undefined);
+      assert.equal(process.env.GH_PROMPT_DISABLED, undefined);
+    } else {
+      assert.ok(runner.getToolDefinition("repostew_runtime_status"));
+      assert.match(prompt.systemPromptOptions.sections.repostew, /Coordinator capacity and continuation/);
+    }
+    if (mode === "repostew") {
+      assert.equal(runner.getToolDefinition("openrig_slots"), undefined);
+      assert.equal(runner.getToolDefinition("repostew_openrig_slots"), undefined);
+      assert.equal(prompt.systemPromptOptions.sections.openrig, undefined);
+    }
+    if (mode === "combined") {
+      assert.equal(prompt.systemPromptOptions.sections.openrig, readFileSync(genericGuidance, "utf8"));
+      assert.ok(runner.getToolDefinition("openrig_slots"));
+      assert.equal(runner.getToolDefinition("repostew_openrig_slots"), undefined);
+    }
+    if (mode === "legacy") {
+      assert.ok(runner.getToolDefinition("repostew_openrig_slots"));
+      const status = await runner.getToolDefinition("openrig_runtime_status").execute("status", {}, undefined);
+      assert.deepEqual(status.details.binding, { url: binding.url, rig: binding.rig,
+        observer: binding.coordinator, seats: binding.workers });
+      const blockedFetch = globalThis.fetch;
+      globalThis.fetch = async url => ({ ok: true, json: async () => {
+        const path = new URL(url).pathname;
+        if (path === "/api/ps") return [{ name: binding.rig, rigId: "fixture" }];
+        if (path.endsWith("/nodes")) return [];
+        if (path === "/api/queue/list") return [{ qitemId: "legacy-result", state: "pending",
+          sourceSession: binding.workers[0], destinationSession: binding.coordinator }];
+        return { rows: [] };
+      } });
+      try {
+        const snapshot = await runner.getToolDefinition("repostew_openrig_slots").execute("legacy", {}, undefined);
+        assert.deepEqual(snapshot.details.pendingCoordinatorItems.map(row => row.id), ["legacy-result"]);
+        assert.equal(snapshot.details.slots[0].state, "awaiting-coordinator");
+        assert.equal(snapshot.details.nextAction, undefined);
+      } finally { globalThis.fetch = blockedFetch; }
+    }
+    for (const extension of loaded.extensions) {
+      assert.equal(extension.handlers.has("tool_call"), false);
+      assert.equal(extension.handlers.has("agent_before_settle"), false);
+    }
+  }
+  assert.equal(networkCalls, 0);
+} finally {
+  globalThis.fetch = savedFetch;
+  for (const [key, value] of [["PI_CODING_AGENT_DIR", savedEnv.agent], ["GH_CONFIG_DIR", savedEnv.gh], ["GH_PROMPT_DISABLED", savedEnv.prompt]]) {
+    if (value === undefined) delete process.env[key]; else process.env[key] = value;
+  }
+}
+
+// Explicit configuration modes must preserve unrelated data and reject incomplete combined setup before writes.
+const bridgeOnly = join(fixture, "bridge-config");
+const bindingPath = join(fixture, "binding.json");
+writeFileSync(bindingPath, JSON.stringify({ url: binding.url, rig: binding.rig, observer: binding.coordinator, seats: binding.workers }));
+let configured = spawnSync(process.execPath, [installer, "--mode", "openrig", "--agent-dir", bridgeOnly,
+  "--openrig-binding", bindingPath], { encoding: "utf8" });
+assert.equal(configured.status, 0, configured.stderr);
+const bridgeSettings = JSON.parse(readFileSync(join(bridgeOnly, "settings.json"), "utf8"));
+assert.deepEqual(bridgeSettings.extensions, [join(bundle, "extensions/pi-openrig.js")]);
+assert.equal(bridgeSettings.shellCommandPrefix, undefined);
+assert.equal(JSON.parse(configured.stdout).ghConfigDir, null);
+const missingBinding = join(fixture, "missing-binding-profile");
+configured = spawnSync(process.execPath, [installer, "--mode", "combined", "--agent-dir", missingBinding,
+  "--workspace", fixture, "--role", "worker"], { encoding: "utf8" });
+assert.notEqual(configured.status, 0);
+const { existsSync } = await import("node:fs");
+assert.equal(existsSync(missingBinding), false);
+assert.equal(existsSync(join(bridgeOnly, "repostew.json")), false);
+console.log("PASS: independent application, independent bridge, combined loading, legacy profile compatibility, facts-only snapshots and three explicit configuration modes; no model/network/runtime launch.");

@@ -1,6 +1,6 @@
 {
   "name": "repostew",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "description": "Assemble scoped repository maintenance Workers with shared RepoStew rules.",
   "type": "module",
   "license": "MIT",
@@ -23,7 +23,7 @@
   },
   "pi": {
     "extensions": [
-      "./extensions/pi-native.js"
+      "./extensions/pi-repostew.js"
     ],
     "skills": [
       "./skills"

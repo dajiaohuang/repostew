@@ -1,6 +1,7 @@
 {
   "extensions": [
-    "<ABSOLUTE_TEMPLATE_DIRECTORY>/extensions/pi-native.js"
+    "<ABSOLUTE_REPOSITORY>/skill/integrations/pi-repostew.js",
+    "<ABSOLUTE_REPOSITORY>/skill/integrations/pi-openrig.js"
   ],
   "defaultTools": [
     "read",

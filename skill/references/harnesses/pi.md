@@ -1,72 +1,71 @@
 # Pi
 
-RepoStew's supported Pi integration is `extensions/pi-native.js`, using Pi's official
-[prompt-customizer](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/extensions/prompt-customizer.ts),
-[tools](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/extensions/tools.ts)
-and [reload-runtime](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/extensions/reload-runtime.ts)
-patterns. It adds a role prompt, runtime status and native gh authentication check.
-Pi owns tools, settings, sessions, compaction and cancellation; the selected host
-owns queue, delegation and lifecycle. No parallel scheduler, completion loop or approval gate.
+The integration has two independent, explicitly loadable modules and shared native mechanisms.
+Pi owns tools, settings, sessions, compaction and cancellation; the selected host owns queue and lifecycle.
+Neither module schedules, reserves seats, certifies process stop or grants task/action authority.
 
-Use [seat context construction](openrig-context.md) for integrated C/W contracts.
-Configure each real Pi agent directory explicitly:
+## Select the layer
+
+- `extensions/pi-repostew.js`: RepoStew application. Reads `repostew.json`; injects the `repostew` prompt
+  section, assembled C/W contracts and continuation policy; provides `repostew_runtime_status`,
+  `repostew_gh_status` and `/repostew-status`, `/repostew-reload`, `/repostew-restore-tools`.
+  It does not import the OpenRig bridge, read its profile, register its tools or call its API.
+- `extensions/pi-openrig.js`: neutral OpenRig bridge. Reads `openrig-pi.json`; supplies `openrig_slots`,
+  `openrig_runtime_status` and the corresponding `/openrig-*` commands. Optional `seatGuidance` injects
+  caller-supplied text into the separate `openrig` section. No RepoStew role, publication, gh or cleanup policy.
+- `extensions/pi-runtime.js`: shared mechanisms for profile reads, namespaced prompt injection and
+  native reload/tool restoration; a library, not another extension entrypoint.
+
+The package manifest loads only the RepoStew application. The bridge can be loaded alone, or alongside it.
+Bridge-only users load its files directly instead of installing the default RepoStew application package.
+The configurator selects explicit extension settings; it does not rewrite installed package manifests.
+If that package is already installed, disable its application entry through Pi's native package settings
+before expecting bridge-only operation. Do not load the same application through multiple entries.
+For bridge-only distribution, `pi-openrig.js` and `pi-runtime.js` are sufficient in a Pi environment with
+`typebox`; no RepoStew profile, Skill tree or gh configuration is needed. This bridge is locally authored,
+not a claim of upstream OpenRig plugin support for Pi.
+
+## Explicit configuration
 
 ```sh
-rtk node <bundle>/scripts/configure-pi.mjs --agent-dir <agent-dir> --workspace <workspace> --role worker --seat-guidance <absolute-contract> --trust-projects
+rtk node <bundle>/scripts/configure-pi.mjs --mode repostew --agent-dir <dir> --workspace <workspace> --role worker --seat-guidance <absolute-contract>
+rtk node <bundle>/scripts/configure-pi.mjs --mode openrig --agent-dir <dir> --openrig-binding <binding.json>
+rtk node <bundle>/scripts/configure-pi.mjs --mode combined --agent-dir <dir> --workspace <workspace> --role coordinator --seat-guidance <absolute-contract> --openrig-binding <binding.json> --openrig-home <instance>
 ```
 
-For a managed OpenRig seat, also pass `--openrig-home <the-selected-instance>`
-(or use that instance's existing `OPENRIG_HOME`). The configurator adds the installed
-`plugins/openrig-core/skills` directory through Pi's native skill settings. It preserves
-existing `seatGuidance`, OpenRig roster bindings and other profile fields. The package's
-single `pi-native.js` entrypoint includes the read-only `repostew_openrig_slots` tool;
-do not additionally load the historical `pi-native-seats.js` entrypoint.
-Coordinator refill rules are composed with configured seat contracts; a custom contract
-must not suppress them. Source selection order and completed coverage are distinct.
-The slot projection separates executing assignments, returned results and blocked
-obligations. `waiting-reconciliation` is not automatically available: reconcile that
-Worker's execution and ownership without holding unrelated available Workers.
-`processClearance: "unknown"` means unmeasured, not a fleet-wide approval requirement.
-After changing extension code, reload only at an idle boundary and verify the loaded
-version; changing a contract is read by the existing before-agent-start hook next turn.
-Official Claude/Codex hook manifests are not Pi extensions: activity and lifecycle still
-belong to OpenRig's Pi runner, while RepoStew retains its business rules. Model activation
-extensions with explicit user authority remain separate until their setting is preserved
-and verified by a native replacement.
+Mode defaults to `repostew`. The binding file contains `url`, `rig`, `observer` and `seats` (canonical native
+session names), with an explicit loopback daemon URL. Bridge mode needs no workspace/role/gh setup and
+does not create or read `repostew.json`. Optional `--openrig-guidance` selects generic host context.
+`--openrig-home` (or the selected `OPENRIG_HOME`) adds installed official openrig-core skills only in a
+bridge-enabled mode. Official hook JSON is not a Pi extension; the Pi runner remains the activity producer.
 
-Use `coordinator` for C and `general` for unassigned interactive use. Configuration
-sets native tools (read/bash/powershell/edit/write/grep/find/ls/codemode/tool_search),
-the extension path and a non-secret `repostew.json` role/workspace/gh-path profile.
-`--trust-projects` explicitly enables Pi's native `defaultProjectTrust: always`;
-it is not OS elevation or authority for unassigned work. The profile adds no
-routine confirmation before assigned setup, repair, tests or authorized publication.
-Actual user/target restrictions, destructive-action authority and privacy remain.
+The configurator preserves unrelated settings, model/effort, auth references and profile fields. It
+replaces only these modules in the selected installation and exact `--remove-extension` paths. For old
+entries from a different installation, pass their exact paths; do not remove extensions by basename.
+`--trust-projects` explicitly selects native `defaultProjectTrust: always`; it grants no task or OS authority.
+No process starts or reloads, and no queue, credential or session is changed by configuration.
 
-For Windows setup that derives paths before writing, use task-specific variable
-names such as `$taskRoot`; never assign `$HOME`/`$home` (PowerShell is case-insensitive).
-Set `$ErrorActionPreference = 'Stop'` inside the actual PowerShell script, including
-a PowerShell child launched from Bash. A parent shell setting does not protect the
-child. Check each native program's `$LASTEXITCODE` separately: `Stop` does not make
-native exit codes terminating in Windows PowerShell. Do not continue dependent
-writes after failed path setup, and resolve task caches under the assigned work root.
+## Facts, application policy and migration
 
-GitHub CLI keeps its own login/keyring. The configurator resolves its documented
-[configuration path precedence](https://cli.github.com/manual/gh_help_environment)
-and supplies `GH_CONFIG_DIR` and `GH_PROMPT_DISABLED` through Pi's official
-[`shellCommandPrefix`](https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/shell-aliases.md)
-setting. The extension supplies the same missing path to its process environment,
-covering native PowerShell and `pi.exec` as well. No token is read, copied or stored.
-Existing token/config environment overrides retain precedence. Use native `gh`
-commands and `--body-file` for multiline text; `repostew_gh_status` verifies the
-existing login with a read-only authenticated API request and returns no credentials.
+Bridge snapshots return native availability, execution occupancy, pending observer results and blocked
+obligations. They include no `nextAction` or instruction to refill. RepoStew's application contract decides
+continuation using these facts and current source/Stop/hold/ownership boundaries. Raw availability is not
+eligibility; process clearance remains unmeasured. Do not add polling, duplicate queues or reservations.
 
-`repostew_runtime_status` shows the actual role/tools/version and non-secret paths.
-`/repostew-reload` uses native `ctx.reload()`; activate initial installs at a safe
-host-supported lifecycle boundary. Config files alone do not prove a live load.
-Verify native role/tools, local file and shell execution, gh identity and return
-to the original queue obligation. Never replace an active writer blindly.
+`pi-native.js` remains a legacy combined entrypoint. It reads the old `repostew.json.openrig` binding and
+retains `repostew_openrig_slots` plus the old snapshot field/state names; it also exposes native bridge
+tools. No business `nextAction` is returned. New installations use the independent modules. Do not load
+the legacy wrapper alongside either replacement module. `--mode combined` converts an existing legacy
+binding into `openrig-pi.json` when no new binding was supplied, while retaining the original profile fields.
+Keep `pi.js`, `pi-extras.js` and `pi-native-seats.js` disabled; retained files support recovery only.
 
-The former `pi.js` + `pi-extras.js` integration is deprecated and no longer auto-loaded.
-Remove its exact configured entries before enabling this extension. Retained old
-code/history supports rollback only; do not load both generations. The
-[legacy extras reference](pi-extras.md) documents historical behavior, not current defaults.
+Use [fixed seat context](openrig-context.md). Contracts are reread at the before-agent-start hook; code
+changes need an authorized idle reload and target-session status verification. Configuration, loaded
+version/entrypoint, contract injection and task progress remain separate claims. Preserve active writers
+and user-specific model activation; a source/package update does not migrate the live fleet.
+
+The application supplies only non-secret gh configuration paths; existing environment overrides win.
+The native gh CLI reads its own keyring. No token is read/copied; `repostew_gh_status` performs one read-only
+account check. Use body files for multiline text. On Windows use task-specific PowerShell variables,
+set `ErrorActionPreference = Stop` in the actual child script and inspect native exit codes separately.
+Pi shell timeouts use seconds; `pi.exec` uses milliseconds.
