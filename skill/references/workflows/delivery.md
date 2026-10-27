@@ -1,49 +1,31 @@
 # Engineering delivery
 
-## Complete the assigned work
+Use the [Worker fixed flow](../../roles/worker.md) for authorized code work. C assigns and records;
+S handles shared environments and cross-task faults. Existing task scope and original ownership remain.
 
-Complete feasible authorized stages within the same unit; real gates still bind. Capture/metadata alone
-creates no repair/test/publication or provisioning/release obligation. Load methods before their actions
-under [assembly](../worker-assembly.md).
+1. Understand the task: read the project, related issues and contribution requirements. Reuse existing
+   work and establish the actual problem and repair scope. Apply the assigned form's input and coverage.
+2. Complete the repair according to project requirements. Correct tool-call errors yourself; send shared
+   faults to S. If current conditions prevent continuation, record a short reason, skip and return capacity.
+3. Test only as required by the target. When testing is required, install the needed dependencies,
+   prepare an isolated environment and run those tests. With no testing requirement, proceed to submission
+   without adding a validation gate. Do not claim unrun tests passed.
+4. Submit PR/MR directly using the established identity. Autonomously agree to and complete the required
+   terms, CLA and DCO using true facts through the official flow. Complete fork/branch/commit/push as needed.
+   Reconcile an ambiguous result before another write. Use a regular Open PR unless the target or actual
+   task requires otherwise. Private findings follow [private reporting](../security.md).
+5. On successful submission record only “已投稿” and the link. Do not query, record or wait for CI; no C approval. Later feedback
+   returns to the original Worker through the existing flow.
+6. Complete feasible authorized task-owned cleanup under the [six-step W contract](../../roles/worker.md)
+   and [storage](../storage.md), then return capacity through the existing native completion path.
+   No-finding/skipped/blocked units also clean eligible temporary material; retain unknown or protected targets.
 
-1. Establish assignment/scope/base and actual checkout when needed. Read target access/privacy/security
-   restrictions before broad README/source/body reads; contribution requirements before engineering,
-   publication templates before the corresponding write. Apply [contribution-term consent](../safety.md#contribution-terms),
-   submitting before CLA/DCO prechecks; report actual later signing requests without signing for the user.
-   Preserve prior edits and reuse current rules.
-   New audits use [new workflow](new-repository.md); other forms keep assigned objects.
-2. Reconcile current issues/discussions/all-state PRs/claims/base fixes; refresh only relevant changes before
-   publication. Apply [necessity/implementation/grouping](../contribution-value.md), [audit](../audit.md),
-   [reassessment](../reassessment.md) or [security](../security.md) as appropriate. Fix completely/minimally;
-   correct inherited ineffective patches instead of pushing to satisfy counts.
-3. Provision necessary dependencies with task isolation, estimates and stage capacity checks, not mandatory hard quotas; no blind full install,
-   shared cache/toolchain mutation or production access. Run affected behavior/configuration/document checks plus mandatory prerequisites; broaden for concrete
-   uncertainty/target requirements only. Reuse unchanged passes; rerun affected checks after edits.
-   Combine diff/range, whitespace/style, public text/security/identity into one final pass; review later deltas.
-   Metadata-only dispositions need no tests. Share unchanged setup/checks across related repairs, not
-   across incompatible bases or contracts. No blanket full suite or extra review agent without a target
-   requirement, assigned review scope or concrete uncertainty.
-4. Deliver: every new security finding -> [private report only](../security.md), never public issue/PR/discussion;
-   ordinary proven error -> eligible repair; ordinary evidenced unsettled contract -> discussion;
-   unavailable evidence/gate -> blocker/retry; failed reassessment -> authorized correction/withdrawal;
-   no qualifying finding -> none with coverage. For ordinary work, claim available work; reuse/update objects. Prefer
-   [regular Open PR](../safety.md#prefer-a-regular-open-pr), without compulsory companion issue.
-   For PR writes only, establish owned fork/branch/permitted remote/base; publish and confirm URL/state/exact
-   head once via reliable result or lookup; a complete reliable result needs no duplicate lookup.
-   Reconcile ambiguity before retry; disclose unrun checks.
-   The assigned Worker completes its own fork/branch/commit/push and ordinary Open PR/MR; no global
-   publication gateway. Missing fork/remote head is a step, not a prohibition. Independent projects may
-   publish concurrently; one writer per project/checkout/shared index. Small proved repairs may ship before
-   the whole audit ends; evidenced unresolved problems may be issues, never invented output.
-   No stopping at a local patch when eligible delivery remains; upstream read-only is not fork prohibition.
-5. Classify unused resources under [storage's release paths](../storage.md#choose-the-release-path):
-   delivered/preserved, explicitly abandoned, or retained with a concrete use/ownership/authority blocker.
-   When ordinary work needs preservation before a PR is possible, use the permitted owned fork branch,
-   confirm its remote head and record recovery/next-action facts; no PR or duplicate preservation is needed.
-   Successful private-channel delivery permits release of corresponding local security/private material;
-   no public upload, human-receipt/triage/CI/merge wait or extra backup is a cleanup prerequisite.
-   Explicit abandonment is not delivery and never implies recoverability. Keep undelivered material not
-   covered by abandonment, ongoing-use resources and other excluded categories within their exact boundaries.
-   Stop unused task-owned services and hand resource facts to the Coordinator; Workers do not delete.
-   Write changed [records](../records.md) and return once under [Worker](../../roles/worker.md#result-and-continuation).
-   Separate local/CI/actual-use acceptance, coverage, contribution outcomes and resource disposition.
+Preserve actual target refusal, privacy, Stop/hold, fees, shared resources and unknown-write boundaries.
+Read actual terms and do not fabricate required declarations. No finding is a valid short result;
+do not invent contributions. Explicit capture/local-only tasks keep their assigned deliverables;
+Scientific writing keeps its full assigned scope and native submit/readback requirements.
+A submitted item does not claim unprocessed scope complete or PR merged.
+
+Stop unused task-owned services. Resource disposition follows the existing precise authority and
+[storage](../storage.md); the authorized execution owner performs it, C only coordinates and records.
+No new seats, timers, repeated audits or unchanged tests are needed to apply this flow.

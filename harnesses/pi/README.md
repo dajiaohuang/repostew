@@ -33,7 +33,7 @@ The service starts paused. Assign scoped C or independent W through the
 
 - Native Pi C/W sessions, fair capacity, durable waits and original-session continuation.
 - `harness_queue`: C manages only its own queue.
-- Completed submissions release W; personal CLA follow-up is reported by notification handling.
+- W completes required terms/CLA/DCO using true facts and feasible authorized task cleanup before capacity return; submitted code records status and URL without CI lookup/wait. Only missing personal facts or unavailable verification need user follow-up.
 - Independent guardian, one paused recovery attempt, separate lifecycle diagnostics.
 - [Governance event subscriptions](EVENT-SUBSCRIPTIONS.md) and [personal-computer fleet foundation](FLEET.md).
 - [All 19 workflow selectors](WORKFLOWS.md): full canonical Skill/forms, action-method reads, source capture, GitHub/GitLab access, maintenance, records, backup and authorized disposition.

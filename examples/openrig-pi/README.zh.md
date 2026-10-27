@@ -14,9 +14,9 @@
 | OpenRig | 原生身份、队列归属、结果交接与唤醒、依赖等待、Stop 与恢复 |
 | Pi | 原生工具、模型/会话、压缩、取消和扩展加载 |
 
-C 捕获与筛选输入，按仓库派完整单元、收结果并补位。W 负责调查、实现、相关验证和获授权的直接交付。**W 筛完已分配的 issue 批次后自行选择可做的 issue 并完成，不把候选清单交回 C 等批准。** 无发现、重复、已修复仍是有效结果。
+C 捕获与筛选输入，按仓库派完整单元、收结果并补位。W 负责调查、实现、目标要求的测试和获授权的直接交付。**W 筛完已分配的 issue 批次后自行选择可做的 issue 并完成，不把候选清单交回 C 等批准。** 无发现、重复、已修复仍是有效结果。
 
-每组保留自己的 W；同项目即使来自不同来源也只有一个写者。C 只有六种结果决定：已交付；无需交付；可行余项留原 W；真实阻塞；未知效果先核对；重复执行故障交有界恢复。C 检查覆盖和交付充分性，不例行第二次工程验收。
+每组保留自己的 W；同项目即使来自不同来源也只有一个写者。C 按六类事实路由结果：已交付；无需交付；可行余项留原 W；真实阻塞；未知效果先核对；重复执行故障交有界恢复。C只登记报告事实和协调归属，无审批或工程验收权；事实矛盾交原W说明。
 
 ```mermaid
 flowchart LR
@@ -39,7 +39,7 @@ flowchart LR
 | [profiles/](profiles/) | C/W 的 `repostew.json` 与 Pi 原生 settings 示例 |
 | [contracts/](contracts/) | 已集成的 C/W 固定契约；启用前补领域和精确席位绑定 |
 | [task-facts.example.md](task-facts.example.md) | 分离的五字段任务、捕获引用、游标、归属、限制与未知效果 |
-| [extensions/pi-native.js](extensions/pi-native.js) | 实际部署提炼的 v0.4.1 应用扩展，无调度器和自动续跑 |
+| [extensions/pi-native.js](extensions/pi-native.js) | 复用 Skill 当前 v0.4.6 实现的显式入口，无调度器和自动续跑 |
 
 六个示例领域分别是新仓库、GitHub 反馈、既有 GitLab 列表未处理仓库、GitLab 反馈、此前已完成合格候选发布、关注列表新增 issue。候选发布组只是明确的历史任务领域，不是所有 W 的中央发布网关。容量和模型由使用者选择；Luna/xhigh 是记录中的配置，不保证当前 provider 可用或吞吐。
 
@@ -59,7 +59,7 @@ flowchart LR
 
 必须在**目标会话**检查：
 
-- `repostew_runtime_status`：v0.4.1、角色、原生工具、契约路径符合预期；路径显示只证明配置，不证明该文本已被使用。
+- `repostew_runtime_status`：v0.4.6、角色、原生工具、契约路径符合预期；路径显示只证明配置，不证明该文本已被使用。
 - 实际 prompt/行为包含固定契约和初始可变事实；改模型/thinking 后检查持久会话事件，不能只看保存配置或命令接受。
 - `repostew_gh_status`：只读验证既有登录；不能因继承路径缺失就重新登录。
 - C 的 `repostew_openrig_slots`：精确 roster、活动任务、待收结果；只读 loopback daemon，拒绝不完整队列输入，不预留、派发或证明进程停止。
@@ -75,7 +75,7 @@ flowchart LR
 rtk node examples/openrig-pi/validate.mjs <installed-pi-package-root>
 ```
 
-验证器使用新的临时 profile，检查真实 Pi loader、精确契约注入、原生 prompt 保留、运行信息和 profile/rig 席位对应；不启动智能体，也不证明活动 campaign 已通过验收。
+验证器使用新的临时 profile，检查真实 Pi loader、固定合同与C续派规则注入、原生 prompt 保留、运行信息和 profile/rig 席位对应；不启动智能体，也不证明活动 campaign 已通过验收。
 
 扩展提供 prompt section 注入、运行信息、既有 gh 验证、原生容量只读投影；不增加审批门槛、工具拦截或完成循环。本目录发布此扩展及可复用模板，不改变现有 Skill 包安装行为或独立 Harness。
 
@@ -86,3 +86,11 @@ rtk node examples/openrig-pi/validate.mjs <installed-pi-package-root>
 公开上游背景：[启动分层](https://github.com/mvschwarz/openrig/issues/1329#issuecomment-6312986078)、[有效配置](https://github.com/mvschwarz/openrig/issues/1634#issuecomment-6312988178)、[拓扑](https://github.com/mvschwarz/openrig/discussions/1239#discussioncomment-19093949)、[Windows 实验](https://github.com/mvschwarz/openrig/pull/1309#issuecomment-6312988975)、[Pi 能力](https://github.com/mvschwarz/openrig/discussions/43#discussioncomment-19093951)、[队列语义 #1678](https://github.com/mvschwarz/openrig/issues/1678)。[提案 #11](https://github.com/dajiaohuang/repostew/issues/11)保留初始整合记录，本目录是持续维护的推荐形态/模板入口。
 
 后续收敛：统一不丢既有字段的 profile/契约装配、暴露实际加载状态、验证刷新/替换边界、按对应上游实际行为逐个退掉本地补丁。只发布审阅后的源码和模板，不发布集群数据库、真实任务记录、私密报告或机器配置快照。
+
+## 当前统一口径
+
+以[Skill](../../skill/SKILL.md)、[C/W职责](../../skill/roles/coordinator.md)和[固定合同＋短事实](../../skill/prompts/fixed-context.md)为当前规则。
+C只筛选、分派、登记和续派，无审批或工程验收权。W独立完成理解、修复、目标要求的测试、直接投稿、投稿链接登记、可行任务内清理六步后交回容量。
+W依据真实身份和权利事实自主完成所需条款、CLA/DCO；投稿后不例行查等CI、不加二次验收。私密发送／处置仅按用户明确范围执行。
+OpenRig示例与独立执行器提示词采用同一合同；每项任务只选一个执行owner。包版本0.4.6，原生Pi扩展版本0.4.6，本次统一为同一发布版本。
+

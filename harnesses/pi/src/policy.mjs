@@ -1,10 +1,12 @@
-import {readFileSync, realpathSync} from 'node:fs';
+import {readFileSync, realpathSync, existsSync} from 'node:fs';
 import {join, resolve, relative, isAbsolute, sep} from 'node:path';
 import {createHash} from 'node:crypto';
 import {workflows, workflowFor} from './workflows.mjs';
 
 export function policyRoot(config) {
-  return config.policyDir ?? join(config.workspace, 'RepoStew_skills');
+  if (config.policyDir) return config.policyDir;
+  const root = join(config.workspace, 'RepoStew_skills');
+  return existsSync(join(root, 'skill', 'SKILL.md')) ? join(root, 'skill') : root;
 }
 export function policyDocument(config, path) {
   if (typeof path !== 'string' || !/^(SKILL\.md|(?:roles|prompts|references)\/[A-Za-z0-9_./-]+\.md)$/.test(path) ||

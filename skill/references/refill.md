@@ -5,7 +5,7 @@
 On each assignment/result/failure event, adopt usable delivery evidence, then choose the next action before
 ending the turn: continue the owning W's feasible remainder; assign an independent complete unit within
 capacity; wait for named in-flight work; or retain an exact blocker/owner/next condition. Apply the
-[C delivery decision](../roles/coordinator.md); no second engineering acceptance or invented PR.
+[C result registration](../roles/coordinator.md); no second engineering acceptance or invented PR.
 One project's failure, overrun or external wait blocks that project, not the domain. A finished batch,
 zero children or a list of residual scope is not a reason to stop selecting from authorized remaining work.
 If eligibility is unknown, perform bounded selection from existing inputs, not another whole-domain audit.

@@ -1,6 +1,6 @@
 {
   "name": "repostew-openrig-pi-example",
-  "version": "0.4.1",
+  "version": "0.4.6",
   "private": true,
   "type": "module",
   "description": "Explicit opt-in OpenRig and Pi deployment templates",

@@ -47,8 +47,8 @@ its finite purpose is complete; do not treat creating this brief as resolving th
 - Reuse unchanged engineering evidence. Give eligible ordinary work complete fork/branch/commit/push/PR
   authority within the assigned unit; independent repository Workers publish directly, not via a backlog gateway.
   The backlog role takes only overlooked idle units after writer handoff; do not duplicate active assignments.
-- Apply [contribution terms](../references/safety.md#contribution-terms): submit before CLA/DCO prechecks,
-  report actual signing demands without signing. Preserve real checks, NoAI/privacy and unknown mutation gates.
+- Apply [contribution terms](../references/safety.md#contribution-terms): W completes required terms/CLA/DCO autonomously
+  through the official process using true facts. Preserve real checks, NoAI/privacy and unknown mutation gates.
 
 A mechanical helper failure normally uses [same-task continuation](continue.md), not a new reinforcement
 agent: name the cause, safe correction, permitted effects and cumulative limits under bounded recovery.

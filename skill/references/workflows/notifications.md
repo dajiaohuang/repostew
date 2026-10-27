@@ -5,7 +5,10 @@
    to other folders/mailbox. These peer sources retain independent positions, including folder identity.
 2. Fully paginate with overlap, native IDs/revisions/boundaries and documented limits; include already-read
    notifications. Authentication/scope/ordering uncertainty is failure/unknown, not empty capture.
-   Never mark read, alter subscriptions or send/reply by mail.
+   Retain each page's exit status and native pagination termination evidence. A page-count cap, exit zero
+   or short page alone does not prove complete coverage. Reconcile revision changes, not IDs alone;
+   a latest self-reply, bot comment or merged state alone does not establish no remaining action.
+   Never mark read, alter subscriptions or send/reply by mail through this capture authority.
 3. Merge duplicate native repository/objects across sources; mail links point to live engineering objects.
    The notification Coordinator directly dispatches complete [incremental W units](../../prompts/incremental-feedback/worker.md):
    inspect feedback, complete necessary setup/repair/checks and directly reply/publish/update the live objects.

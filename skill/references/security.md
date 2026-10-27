@@ -3,6 +3,25 @@
 Use for assigned security work or concrete findings; ordinary audits do not certify security
 or authorize another task/schedule.
 
+## Worker-owned private disposition under explicit authority
+
+Apply a workspace/user authorization to send privately or abandon undeliverable findings only to its
+actual category and scope; this portable skill grants neither email nor deletion authority itself.
+Where authorized, W determines a substantiated report and verified project/maintainer private channel,
+sends directly, and keeps a reliable success ID without waiting for human reply or remediation.
+Without a connector, W gives the current verified external S the exact recipient, contact provenance and
+protected complete report/attachments. That sender has sole custody; W must not compete. Missing tools
+do not prove no channel. Never guess recipients, use public lists or disclose details publicly.
+
+If no usable channel exists or delivery has definitively failed, and the user's explicit abandonment
+scope covers it, W independently deletes only that finding's unused dedicated report/attachments/evidence
+inside its project work/, after path/ownership and stopped-writer/process checks. No C approval or special
+C report, no unlimited address search and no substitute report copy. Retain minimal non-sensitive facts
+in existing records. Unknown sends require reconciliation before retry or deletion. Do not delete a mixed
+checkout, shared resources, unrelated work, credentials, persistent records or existing recovery archives;
+do not follow links out of scope. Without applicable abandonment authority, retain protected evidence.
+No finding needs no invented deletion; this rule wakes no stopped/unassigned Worker.
+
 ## Threat and evidence
 
 Establish actual deployment/configuration, assets, attacker capabilities, trust boundaries and mitigations.
@@ -16,6 +35,11 @@ no inferred attacks on live services or others' data.
 Every new security finding, including suspected findings from ordinary audits, stays private.
 Read disclosure policy and send evidenced reports only through an authorized private advisory/report channel
 or designated security contact; never open a public issue/PR/discussion or expose details in public comments.
+When the user explicitly authorizes private email reporting, a verified project or maintainer general
+contact can be used within that scope; it need not be labelled security-only. Verify recipient provenance,
+never guess an address, and preserve target contact refusals. This rule itself grants no email authority.
+If bounded investigation fails the threat/evidence test, record no substantiated reportable finding
+instead of inventing a report or retaining a missing-channel blocker; protect existing private evidence.
 If no usable private channel or disclosure authority exists, retain protected evidence and blocker/retry
 unless the user explicitly authorizes abandonment of that material under [storage](storage.md).
 Never fall back to public reporting. Keep findings/exploits/private links confidential and out of shared Git.

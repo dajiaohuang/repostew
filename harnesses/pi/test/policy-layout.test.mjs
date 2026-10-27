@@ -9,6 +9,6 @@ test('example configuration loads both role contracts from the sibling Skill', (
   for (const role of ['coordinator', 'worker']) {
     const prompt = instructions(config, role, { systemPrompt: 'Layout integration check' });
     assert.match(prompt, /1\. Object and outcome/);
-    assert.match(prompt, role === 'coordinator' ? /Check delivery/ : /fork\/branch\/commit\/push\/Open PR/);
+    assert.match(prompt, role === 'coordinator' ? /Record outcomes/ : /Six steps/);
   }
 });

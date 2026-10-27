@@ -34,6 +34,18 @@ documents the fixes derived from real task failures and remaining capability lim
 
 Choose one execution owner per task. The OpenRig examples do not start a fleet or change existing harness configuration; native Windows OpenRig remains experimental.
 
+## Current operating contract
+
+The canonical [Skill](skill/SKILL.md), [C/W roles](skill/roles/coordinator.md) and
+[fixed contract plus short facts](skill/prompts/fixed-context.md) define the current policy.
+C screens, assigns, registers facts and refills; it has no approval or engineering-acceptance role.
+W owns the complete six-step unit: understand, repair, target-required tests, direct submission,
+submitted/link record, and feasible authorized task-owned cleanup before capacity return.
+W completes required terms/CLA/DCO using true established identity and rights facts. No routine CI
+lookup/wait or second review follows submission. Private reporting/disposal retains its exact user scope.
+OpenRig examples and standalone prompts use this contract; choose one execution owner per task.
+The package is 0.4.6; its native Pi extension is 0.4.6. The package and extension now share this release version.
+
 ## Repository layout
 
 ```text

@@ -2,6 +2,7 @@
 
 Ordinary tooling failure is not a permanent project ban. This method applies inside an authorized unit;
 it does not waive user/target prohibitions, privacy, real account rights or mandatory behavior checks.
+Classify and narrow the affected action using [blocker decisions](blockers.md).
 
 ## Diagnose, repair, continue
 
@@ -39,3 +40,14 @@ The authorized Supervisor may allocate a realistic explicit missing-work/recover
 mandate, with cumulative accounting and a new prospective deadline; this is not a reset of prior consumption,
 a new audit, revival of paused sources or bypass of a true prohibition. Exclude unresolved risky resources
 while independent safe units continue. Do not switch executors merely to launder failure history.
+
+For an already authorized task, the Worker chooses and executes minimum sufficient validation meeting
+the target's explicit requirements and the defect's affected behavior. Missing ordinary tools or isolated
+environment setup is Worker-owned bounded recovery, not a reason to await a C/S validation plan.
+Do not default to full suites or multi-browser/platform checks without concrete necessity. Reuse unchanged
+passing evidence and continue delivery once sufficient checks pass. An actually expired authorized phase
+still requires the Supervisor to define a prospective recovery phase; it never resets prior consumption.
+Name the remaining checks, isolated resources, original Worker, prospective deadline and stop conditions.
+Obtain user approval before incurring real costs or changing a user-imposed hard limit. This default
+does not waive required validation, unknown-write reconciliation or the three-failed-repair stop rule;
+a new phase requires a concrete recovery plan, not another unchanged retry.

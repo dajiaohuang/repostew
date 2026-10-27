@@ -14,9 +14,9 @@ These templates were distilled from the operator's six-group deployment. They pr
 | OpenRig | Native identity, queue custody, result handoff/wakes, dependency waiting, Stop and recovery |
 | Pi | Native tools, model/session, compaction, cancellation and extension loading |
 
-The coordinator captures/screens inputs, assigns a complete repository unit, consumes results and refills. The worker owns investigation, implementation, relevant checks and authorized direct delivery. **After screening its assigned issue batch, W chooses actionable issues and completes them without returning a candidate list for C to approve.** No-finding, duplicate and already-fixed outcomes remain valid.
+The coordinator captures/screens inputs, assigns a complete repository unit, consumes results and refills. The worker owns investigation, implementation, target-required tests and authorized direct delivery. **After screening its assigned issue batch, W chooses actionable issues and completes them without returning a candidate list for C to approve.** No-finding, duplicate and already-fixed outcomes remain valid.
 
-Each group keeps its own workers. Cross-source overlap still has one writer per repository. Six result decisions govern continuation: delivered; no delivery needed; feasible remainder stays with W; concrete blocker; unknown effects require reconciliation; repeated execution failure needs bounded recovery. C checks coverage and delivery sufficiency, not a routine second engineering review.
+Each group keeps its own workers. Cross-source overlap still has one writer per repository. Six result-routing cases describe continuation: delivered; no delivery needed; feasible remainder stays with W; concrete blocker; unknown effects require reconciliation; repeated execution failure needs bounded recovery. C registers reported outcomes and routes factual gaps to the original W; it has no approval or engineering acceptance role.
 
 ```mermaid
 flowchart LR
@@ -39,7 +39,7 @@ Pending, starting, active, unknown and unconsumed-result work occupy capacity. G
 | [profiles/](profiles/) | Per-agent coordinator/worker `repostew.json` and native Pi settings example |
 | [contracts/](contracts/) | Assembled C/W fixed contracts; customize domain and explicit seat binding before activation |
 | [task-facts.example.md](task-facts.example.md) | Separate five-field task, exact capture reference, cursor, custody, limits and unknown effects |
-| [extensions/pi-native.js](extensions/pi-native.js) | The deployment's v0.4.1 application extension; no scheduler or automatic continuation |
+| [extensions/pi-native.js](extensions/pi-native.js) | Opt-in re-export of the canonical v0.4.6 Skill extension; no scheduler or automatic continuation |
 
 The six example domains are new repositories, GitHub feedback, existing GitLab-list work, GitLab feedback, eligible previously completed candidates, and followed-list new issues. Candidate publication is an explicit historical-work domain, not a mandatory gateway for other workers. Models and capacity are operator choices; the recorded Luna/xhigh selection is not a provider availability or throughput guarantee.
 
@@ -59,7 +59,7 @@ For an authorized fresh seat, use the installed OpenRig lifecycle. For an existi
 
 Check in the **target session**:
 
-- `repostew_runtime_status`: expected v0.4.1, role, native tools and reviewed guidance path. This reports configuration; a path alone is not proof that the intended text was used.
+- `repostew_runtime_status`: expected v0.4.6, role, native tools and reviewed guidance path. This reports configuration; a path alone is not proof that the intended text was used.
 - Inspect the actual prompt/behavior for fixed contract and initial variable facts. For model/thinking changes, inspect persisted Pi session events; an accepted command or saved setting is insufficient.
 - `repostew_gh_status`: read-only existing-account verification. Do not log in again merely because an inherited path was absent.
 - `repostew_openrig_slots` on C: exact roster, active tasks and pending results. It reads a loopback daemon, refuses incomplete queue input, and never reserves, dispatches or certifies stopped processes.
@@ -75,7 +75,7 @@ Validate the template against your installed Pi package without model or network
 rtk node examples/openrig-pi/validate.mjs <installed-pi-package-root>
 ```
 
-The validator uses a new temporary profile and checks the real Pi loader, exact contract injection, native prompt preservation, runtime status and profile/rig seat agreement. It does not launch agents or verify a live campaign.
+The validator uses a new temporary profile and checks the real Pi loader, fixed contract injection plus current C refill guidance, native prompt preservation, runtime status and profile/rig seat agreement. It does not launch agents or verify a live campaign.
 
 The extension provides prompt-section injection, runtime status, existing-gh verification and a read-only native capacity projection. It introduces no approval gate, tool interception or completion loop. This example ships that extension and reusable templates; it does not replace the existing Skill package's install behavior or change the standalone harness.
 
@@ -86,3 +86,16 @@ Local OpenRig experiments additionally retained Windows `APPDATA` for gh discove
 Public upstream context: [startup layers](https://github.com/mvschwarz/openrig/issues/1329#issuecomment-6312986078), [effective configuration](https://github.com/mvschwarz/openrig/issues/1634#issuecomment-6312988178), [topology](https://github.com/mvschwarz/openrig/discussions/1239#discussioncomment-19093949), [Windows experiment](https://github.com/mvschwarz/openrig/pull/1309#issuecomment-6312988975), [Pi capabilities](https://github.com/mvschwarz/openrig/discussions/43#discussioncomment-19093951), [queue semantics #1678](https://github.com/mvschwarz/openrig/issues/1678). [Proposal #11](https://github.com/dajiaohuang/repostew/issues/11) records the original synthesis; this directory is the maintained recommendation/template entry.
 
 Future work: consolidate profile/contract assembly without dropping existing fields, expose effective loaded state, validate supported refresh/replacement boundaries, and retire local host patches only when relevant upstream behavior is verified. Publish reviewed source/templates only, never fleet databases, actual task records, private reports or machine configuration snapshots.
+
+## Current operating contract
+
+The canonical [Skill](../../skill/SKILL.md), [C/W roles](../../skill/roles/coordinator.md) and
+[fixed contract plus short facts](../../skill/prompts/fixed-context.md) define the current policy.
+C screens, assigns, registers facts and refills; it has no approval or engineering-acceptance role.
+W owns the complete six-step unit: understand, repair, target-required tests, direct submission,
+submitted/link record, and feasible authorized task-owned cleanup before capacity return.
+W completes required terms/CLA/DCO using true established identity and rights facts. No routine CI
+lookup/wait or second review follows submission. Private reporting/disposal retains its exact user scope.
+OpenRig examples and standalone prompts use this contract; choose one execution owner per task.
+The package is 0.4.6; its native Pi extension is 0.4.6. The package and extension now share this release version.
+

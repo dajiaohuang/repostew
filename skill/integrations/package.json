@@ -1,20 +1,40 @@
 {
   "name": "repostew",
-  "version": "0.2.0",
+  "version": "0.4.6",
   "description": "Assemble scoped repository maintenance Workers with shared RepoStew rules.",
   "type": "module",
   "license": "MIT",
-  "author": {"name": "dajiaohuang"},
+  "author": {
+    "name": "dajiaohuang"
+  },
   "repository": "https://github.com/dajiaohuang/repostew",
-  "keywords": ["pi-package", "repository-maintenance", "skills"],
-  "peerDependencies": {"typebox": "*"},
-  "peerDependenciesMeta": {"typebox": {"optional": true}},
+  "keywords": [
+    "pi-package",
+    "repository-maintenance",
+    "skills"
+  ],
+  "peerDependencies": {
+    "typebox": "*"
+  },
+  "peerDependenciesMeta": {
+    "typebox": {
+      "optional": true
+    }
+  },
   "pi": {
-    "extensions": ["./extensions/pi.js"],
-    "skills": ["./skills"]
+    "extensions": [
+      "./extensions/pi-native.js"
+    ],
+    "skills": [
+      "./skills"
+    ]
   },
   "omp": {
-    "extensions": ["./extensions/repostew.js"],
-    "skills": ["./skills"]
+    "extensions": [
+      "./extensions/repostew.js"
+    ],
+    "skills": [
+      "./skills"
+    ]
   }
 }

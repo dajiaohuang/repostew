@@ -1,0 +1,74 @@
+# OpenRig and Pi seat context
+
+Use [fixed contract / variable facts](../../prompts/fixed-context.md) for persistent C/W seats.
+RepoStew supplies business policy; official openrig-core skills supply generic native operations;
+OpenRig owns custody, queue, generation, Stop and wake. Pi owns sessions, tools and compaction.
+The Pi runner is the single activity producer. A locally authored bridge is not upstream Pi support.
+
+## Seat construction
+
+1. Assemble the C or W role with its exact domain methods and applicable forge/action rules. Include a
+   current-facts path, not old conversations. C captures/screens/routes/registers/refills; W owns complete work.
+   Publication-only, feedback-only and scientific-writing seats retain their distinct scope.
+2. Keep user-specific identity, model/effort, roster, source grants, holds, deadlines, receipts and recovery
+   deltas in workspace-owned facts/profile/native task inputs. Do not put live fleets or credentials in a package.
+   Preserve an isolated replacement seat's fresh context; do not inject its retired coordinator history.
+3. Configure `repostew.json` with absolute `workspace` and `seatGuidance`, `role`, optional `gh.configDir`,
+   and explicit `openrig: {url, rig, coordinator, workers}`. Bind only authorized canonical session names.
+   Example shape (replace values from the selected instance; these are not live destinations):
+
+   ```json
+   {"version":1,"role":"coordinator","workspace":"/workspace","seatGuidance":"/workspace/contracts/c.md",
+    "openrig":{"url":"http://127.0.0.1:17433","rig":"assigned-team","coordinator":"c@assigned-team","workers":["w1@assigned-team"]}}
+   ```
+
+4. Use `configure-pi.mjs --seat-guidance <absolute-contract> --openrig-home <selected-instance>` with the
+   ordinary agent-dir/workspace/role options. Preserve unrelated settings, models and roster fields;
+   configuration neither creates seats nor supplies missing authorization. Inspect skill-name collisions.
+5. Use one declared `pi-native.js` entrypoint. Do not load old `pi.js`, `pi-extras.js` or `pi-native-seats.js`
+   alongside it. Preserve separately authorized model activation until a verified native replacement exists.
+
+## Loading and recovery
+
+The before-agent-start hook rereads the configured contract; C refill guidance remains composed with it.
+Code changes need an authorized idle reload; verify `repostew_runtime_status` version, entrypoint, role,
+tools and guidance path. `/repostew-restore-tools` restores configured native tools only on operator request
+and rejects unregistered tools; it is not an automatic reset or permission change.
+Discovery, configured files, loaded code and actual task progress are separate claims.
+
+Keep daemon/CLI identity separate from already-loaded runners. During an authorized upgrade record selected
+base, public head, runtime head and local overlays separately. Preserve recovery sources; daemon health or
+build success does not prove all runners reloaded or full Windows/cross-platform tests passed.
+Do not restart agents, restore databases or wake stopped seats as a side effect of package updates.
+
+Reconcile timeouts with exact native queue rows/results before another send/create. Accepted notification
+or closed reminder does not prove the linked engineering task resolved. Never guess `S` as a session address:
+use the verified external Supervisor channel, or return the exact non-sensitive fault and required action.
+Do not revive a retired automatic Supervisor. A crashed runner, route fault or exhausted finite capture
+is a local condition, not proof of a global serial-worker rule or permission to expand scope.
+
+Pi shell timeouts use seconds; `pi.exec` uses milliseconds. Use current CLI help and `rtk proxy` for exact
+JSON/help; use structured arguments/body files for multiline content. Check native exit codes.
+
+## Capacity evidence
+
+`repostew_openrig_slots` is a read-only snapshot, not a reservation, scheduler or process-stop certificate.
+Apply current facts' user holds and eligibility even when a node looks available. Distinguish execution
+occupancy, retained project ownership, blocked obligations and pending result registration.
+Reconcile the affected owner without freezing independent compatible slots; no polling loop or second ledger.
+Invocation/refill/pickup counts do not prove causal savings or delivery quality. Claim performance improvement
+only from a suitable comparison; require persisted queue-row evidence before counting dispatch success.
+
+## Domain-specific content contracts
+
+Preserve a content seat's exact assigned nodes, source boundaries, locale requirements and CAS baseline.
+Under an explicit full-rewrite assignment, empty sections/null drafts and existing prose all remain in
+scope: research and organize complete content rather than treating either state as a skip. Authorized
+ordered section keys/pages are document content, not an automatic database-schema engineering task.
+Keep scientific identity, verified facts, source qualifications, numbers, negation and attribution across
+languages. W checks out, writes, registers actually used references, submits, reconciles the matching
+receipt and reads back the complete result. A first submission does not require a pre-existing success
+receipt; a previously attempted unknown result does require reconciliation. Partial/no-write/unchanged
+outcomes remain incomplete under a full rewrite and return to their original owner, without C re-research
+or acceptance. Publication settings, Stop/hold and isolated fresh-seat context remain workspace facts;
+neither this template nor a successful local submission enables public publication.

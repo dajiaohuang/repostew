@@ -26,6 +26,7 @@ try {
   delete process.env.GH_CONFIG_DIR;
   const runtime = createExtensionRuntime();
   runtime.getActiveTools = () => ['read', 'bash'];
+  runtime.getAllTools = () => ['read', 'bash'].map(name => ({ name }));
   const loaded = await loadExtensions([join(here, 'extensions/pi-native.js')], scratch, undefined, runtime);
   assert.deepEqual(loaded.errors, []);
   const runner = new ExtensionRunner(loaded.extensions, runtime, scratch, SessionManager.inMemory(scratch), undefined);
@@ -33,14 +34,15 @@ try {
   runner.onError(error => errors.push(error));
   await runner.emit({ type: 'session_start', reason: 'startup' });
   const status = await runner.getToolDefinition('repostew_runtime_status').execute('status', {}, undefined, undefined, runner.createToolContext('status'));
-  assert.equal(status.details.version, '0.4.1');
+  assert.equal(status.details.version, '0.4.6');
   assert.equal(status.details.role, 'coordinator');
   assert.equal(status.details.automaticContinuation, false);
   assert.equal(status.details.approvalGate, false);
   assert.equal(process.env.GH_CONFIG_DIR, profile.gh.configDir);
   const prompt = await runner.emitBeforeAgentStart({ messageType: 'user', prompt: 'fixture only' }, { cwd: scratch, sections: { native: 'keep native prompt' } });
   assert.equal(prompt.systemPromptOptions.sections.native, 'keep native prompt');
-  assert.equal(prompt.systemPromptOptions.sections.repostew, readFileSync(profile.seatGuidance, 'utf8'));
+  assert.ok(prompt.systemPromptOptions.sections.repostew.startsWith(readFileSync(profile.seatGuidance, 'utf8')));
+  assert.match(prompt.systemPromptOptions.sections.repostew, /Coordinator capacity and continuation/);
   // The published profile's bound seats must agree with the minimal rig template.
   const rig = JSON.parse(readFileSync(join(here, 'rig.example.json'), 'utf8'));
   const seats = rig.pods.flatMap(pod => pod.members.map(member => `${pod.id}-${member.id}@${rig.name}`));
