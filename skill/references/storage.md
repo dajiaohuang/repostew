@@ -44,8 +44,12 @@ no active/shared dependency. File labels such as dirty, private or evidence are 
   private/security material uses only an authorized private channel under [security](security.md).
   A successful server result identifying the submitted report/material suffices; no extra human receipt,
   review, CI, merge, triage, remediation or disclosure wait. An attempted/failed/ambiguous send is not delivery.
-  A submitted summary does not prove omitted attachments/raw material were delivered: retain those parts
-  or use explicit abandonment. Do not create another local copy/archive solely to allow release.
+  A submitted summary does not prove omitted deliverable attachments/raw material were delivered:
+  retain those parts or use explicit abandonment. Ordinary task-owned test logs, captures and notes
+  supporting an already delivered contribution are not separate undelivered contributions merely
+  because they were not attached to its PR. Under the applicable end-of-pass cleanup scope, retain
+  them only for a concrete remaining use or protected boundary; preserve minimal durable result facts.
+  Do not create another local copy/archive solely to allow release.
 - **Explicitly abandoned:** use the bounded user authority below instead of preservation/reconstruction.
   Accept irreversible loss honestly; do not push, sign, test, rebuild or report merely to permit deletion.
 - **Retained:** keep active/shared, ownership-unclear, out-of-scope or otherwise restricted material and
