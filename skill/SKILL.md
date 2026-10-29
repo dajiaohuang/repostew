@@ -42,7 +42,7 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
    under [target/safety gates](references/safety.md); process feedback, consolidate or
    [withdraw within authority](references/reassessment.md). [Maintain](references/workflows/maintain.md)
    managed/self-owned repositories: triage issues, review/amend/merge PRs, audit and revise code/docs/CI/tests.
-5. **Retain and finish:** update [minimal records; migrate only when authorized](references/records.md),
+5. **Retain and finish:** [complete inherited work](prompts/completion-worker.md), update [minimal records; migrate only when authorized](references/records.md),
    [reconcile history/reclassify or recover](references/workflows/history.md),
    [publish reviewed backup](references/workflows/records-and-backup.md),
    and [provision/dispose resources](references/storage.md): Workers establish delivery/preservation or

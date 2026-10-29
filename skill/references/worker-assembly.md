@@ -47,6 +47,8 @@ of appending dated exceptions. Keep platform procedures in the harness adapter a
 holds, finite authorizations and task deadlines in a short accessible variable block. Remove stale or
 duplicated wording without cancelling active restrictions. Preserve domain-specific scope, provide the
 variable block before the revised contract is used, and distinguish file updates from live activation.
+Use the fixed-context source/binding/facts split for every persistent role, including directly assigned
+completion work; an instance's operational notes must not become repository-specific package policy.
 
 ## Deliver authoritative instructions
 

@@ -31,6 +31,9 @@ GitHub/GitLab 读取、持续巡检、交付、维护、记录、备份和授权
 
 每个任务只选一个执行所有者。OpenRig 模板不会启动集群或修改现有 Harness 配置；原生 Windows OpenRig 仍为实验形态。
 
+持久上下文分为通用规则、部署绑定和当前任务事实。[上下文装配器](skill/prompts/fixed-context.md#reusable-source-deployment-binding-current-work)
+分别生成这些内容，不把个人身份或仓库实时状态写进通用包规则。
+
 ## 当前统一口径
 
 以[Skill](skill/SKILL.md)、[C/W职责](skill/roles/coordinator.md)和[固定合同＋短事实](skill/prompts/fixed-context.md)为当前规则。

@@ -46,6 +46,10 @@ lookup/wait or second review follows submission. Private reporting/disposal reta
 OpenRig examples and standalone prompts use this contract; choose one execution owner per task.
 The package is 0.5.1; its native Pi extension is 0.5.1. The package and extension now share this release version.
 
+Persistent context separates portable policy, deployment binding and current task facts. The
+[context assembler](skill/prompts/fixed-context.md#reusable-source-deployment-binding-current-work)
+renders these layers without publishing personal identities or live repository state as package policy.
+
 ## Repository layout
 
 ```text

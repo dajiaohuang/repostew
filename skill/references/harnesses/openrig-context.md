@@ -1,6 +1,7 @@
 # OpenRig and Pi seat context
 
 Use [fixed contract / variable facts](../../prompts/fixed-context.md) for persistent C/W seats.
+For a directly assigned persistent execution owner, use the [native worker binding](openrig-worker-context.md).
 RepoStew supplies business policy; official openrig-core skills supply generic native operations;
 OpenRig owns custody, queue, generation, Stop and wake. Pi owns sessions, tools and compaction.
 The Pi runner is the single activity producer. A locally authored bridge is not upstream Pi support.
@@ -18,7 +19,7 @@ The Pi runner is the single activity producer. A locally authored bridge is not 
    Example shape (replace values from the selected instance; these are not live destinations):
 
    ```json
-   {"version":1,"binding":{"url":"http://127.0.0.1:17433","rig":"assigned-team","observer":"c@assigned-team","seats":["w1@assigned-team"]}}
+   {"version":1,"binding":{"url":"<daemon-url>","rig":"assigned-team","observer":"c@assigned-team","seats":["w1@assigned-team"]}}
    ```
 
 4. Use `configure-pi.mjs --mode combined --seat-guidance <absolute-contract> --openrig-home <selected-instance>` with the
@@ -34,6 +35,20 @@ Code changes need an authorized idle reload; verify `repostew_runtime_status` ve
 tools and guidance path. `/repostew-restore-tools read` adds only explicitly named current intended tools, preserves active extras
 and rejects unregistered/hidden requests before mutation; it is not an automatic reset or permission change.
 Discovery, configured files, loaded code and actual task progress are separate claims.
+
+Keep portable contract sources in the Skill and render the selected contract separately from workspace
+facts using the fixed-context assembler. A native member/profile binds those artifacts, runtime and
+model settings; its startup supplies current facts before the first work action. Persist the member,
+source hashes and queue mission in the workspace, without copying live identities or paths into the Skill.
+When a clean seat workspace is needed, project only its assembled contract and current facts there;
+the selected policy/state workspace remains authoritative. Check actual tools, model/effort and task
+pickup, then consecutive substantive work and continuation before claiming a stable deployment.
+
+Managed queue mutations must preserve the seat's native identity. An external orchestration helper
+that removes seat environment fields is unsuitable for the occupant's claim/update calls. External
+instructions use a declared sender and a stable queue ID; an unlabelled terminal send must not become
+an unverifiable ownership transfer. Runtime completion, cancellation request and actual stopped-writer
+evidence remain separate; transfer work only after reconciling possible writes and descendants.
 
 Keep daemon/CLI identity separate from already-loaded runners. During an authorized upgrade record selected
 base, public head, runtime head and local overlays separately. Preserve recovery sources; daemon health or

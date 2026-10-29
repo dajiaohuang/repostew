@@ -63,7 +63,8 @@ With explicit workspace/user authority, the designated execution owner may relea
 dependencies/build outputs inside a named boundary. Reuse known source/pins/lock/configuration evidence;
 no reinstall/rebuild or fresh audit to prove disposability. Retain reconstruction inputs and unique logs/
 fixtures unless their own delivery or explicit abandonment path applies. Directory names prove nothing.
-Shared/global caches, Go/module stores, toolchains and unrelated outputs remain excluded. Eligible subtrees
+Shared/global caches, protected module stores/toolchains and unrelated outputs remain excluded;
+workspace facts name additional protected resources. Eligible subtrees
 do not authorize deleting a parent containing excluded material; whole-checkout release needs every
 included category to satisfy its own path and boundary.
 

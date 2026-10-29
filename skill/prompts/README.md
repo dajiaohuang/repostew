@@ -11,7 +11,7 @@ variables, not copied policy, executable protocol or authority. Use one C/W role
 - Incremental feedback: [C](incremental-feedback/coordinator.md) / [W](incremental-feedback/worker.md).
 - Discovery + new repositories: [C](discovery/coordinator.md) / [new-repository W alias](discovery/worker.md).
 - Recurring patrol: [C](recurring-patrol/coordinator.md) / [W](recurring-patrol/worker.md).
-- [Disposition](disposition.md): existing authorized execution owner for a finite minimal-retention scope; C coordinates only.
+- [Complete inherited work](completion-worker.md) through delivery and closeout; [disposition](disposition.md) uses the authorized execution owner for finite minimal retention, with C coordinating only.
 - [Fixed contract and variable facts](fixed-context.md): persistent role/domain methods with short current inputs.
 - [Continue](continue.md): same-task delta/correction with suitable context.
 - [Handoff](handoff.md): unit-boundary transfer after stop and mutation reconciliation.

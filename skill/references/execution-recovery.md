@@ -17,6 +17,14 @@ Classify and narrow the affected action using [blocker decisions](blockers.md).
   repeated unchanged calls. Count prior repairs: after three failed repairs of the same fault stop and notify
   the user with the exact blocker, affected scope and minimum needed action. Notify sooner when unable to
   proceed or human access/identity/credentials are needed; do not keep writing status-only corrections.
+- Read instruction/data files with an explicit compatible encoding and bounded ranges. Recover a
+  truncated range using its continuation offset instead of repeating a combined full-file dump or
+  ending the task while that ordinary recovery remains available.
+- Keep the native process exit and output distinct from shell error handling. Windows PowerShell
+  can treat native stderr as a terminating error under Stop and write redirected logs as UTF-16.
+  If that obscures an expected regression failure, use a structured native process invocation with
+  explicit UTF-8 capture and an exit code; decode an existing BOM-marked log rather than rerunning
+  merely to read it. Record a reproduced product failure separately from execution-method failures.
 - No fresh user approval is needed for each mechanical correction. Real user stops, safety incidents,
   protected/unknown writes, exhausted repair allowance or unavailable rights are not mechanical exceptions.
   Known ordinary historical helper failures can be reassessed under this policy; history is never erased.
