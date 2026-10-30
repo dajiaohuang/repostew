@@ -12,6 +12,11 @@ Inspect remotely when sufficient; provision source only for investigation/editin
 Establish native identity/existing paths, preserve unrelated data, never clone into container root.
 Use Git-aware operations for linked/shared worktrees. Record actual relative/legacy paths;
 unknown ownership or unavailable resources retain exact blockers, not an invented release result.
+Run worktree removal from a surviving directory outside its deletion target. On Windows, entering the
+target as the Git process's working directory can prevent removal of the final directory. A failed
+operation may already have removed files or its worktree registration: reconcile those exact effects
+before retrying. If only an empty, nonlinked, unregistered task directory remains, remove that directory
+nonrecursively within the same authority; do not force recursive deletion or change ACLs to hide the error.
 Necessary dependency supply uses named task-local caches/build outputs under [bounded setup](execution-recovery.md),
 not shared/global toolchain mutation. Use estimates and stage capacity checks, not mandatory hard quotas.
 
