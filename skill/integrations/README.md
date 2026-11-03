@@ -39,6 +39,11 @@ or a separate root work tree. Installation never publishes local records or bind
 Other skill-capable harnesses can load `skills/repostew/SKILL.md` directly.
 
 Configure Codex native Workers: `rtk python <bundle>/scripts/configure-workers.py <workspace>`.
+For Pi-equivalent Codex CLI/local-app context, gh and OpenRig tools, run
+`rtk node <bundle>/harnesses/codex/configure.mjs <project> <local-profile.json>`.
+The adapter README lists the capability mapping and native hook trust/reconnect
+steps. It writes project configuration only; cloud/web environments need their
+own installed files and reachable tools, never local credentials or localhost paths.
 This creates only a Codex role-config file, preserves different existing definitions and prints CLI overrides;
 it changes no global config, model, permissions or concurrency. Existing Pi plugin files are left untouched,
 not generated or loaded. Pi uses the host's authorized delegation, not a subagent plugin.

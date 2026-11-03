@@ -27,15 +27,23 @@ def build(output):
     extension = bundle / "extensions" / "repostew.js"
     extension.parent.mkdir()
     shutil.copyfile(ROOT / "integrations" / "repostew.js", extension)
-    for name in ("pi.js", "pi-extras.js", "pi-native.js", "pi-repostew.js", "pi-openrig.js", "pi-runtime.js"):
+    for name in ("pi.js", "pi-extras.js", "pi-native.js", "pi-repostew.js", "pi-openrig.js", "pi-runtime.js", "pi-context-bound.js", "openrig-facts.js"):
         shutil.copyfile(ROOT / "integrations" / name, extension.parent / name)
+    codex = bundle / "harnesses" / "codex"
+    codex.mkdir(parents=True)
+    for name in ("runtime.mjs", "mcp.mjs", "hooks.mjs", "configure.mjs", "README.md"):
+        shutil.copyfile(ROOT.parent / "harnesses" / "codex" / name, codex / name)
+    shared = bundle / "skill" / "integrations"
+    shared.mkdir(parents=True)
+    for name in ("openrig-facts.js", "pi-context-bound.js"):
+        shutil.copyfile(ROOT / "integrations" / name, shared / name)
     (bundle / "scripts").mkdir()
     shutil.copyfile(ROOT / "scripts" / "configure-workers.py", bundle / "scripts/configure-workers.py")
     shutil.copyfile(ROOT / "scripts" / "configure-pi.mjs", bundle / "scripts/configure-pi.mjs")
     shutil.copyfile(ROOT.parent / "LICENSE", bundle / "LICENSE")
     shutil.copyfile(ROOT / "integrations" / "README.md", bundle / "README.md")
     package = json.loads((ROOT / "integrations" / "package.json").read_text(encoding="utf-8"))
-    package["files"] = ["plugin.json", ".codex-plugin", ".claude-plugin", "extensions", "skills", "scripts"]
+    package["files"] = ["plugin.json", ".codex-plugin", ".claude-plugin", "extensions", "skills", "scripts", "harnesses", "skill"]
     write_json(bundle / "package.json", package)
     identity = {key: package[key] for key in ("name", "version", "description", "license", "repository", "author")}
     write_json(bundle / "plugin.json", {

@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 
-export const VERSION = "0.5.1";
+export const VERSION = "0.5.3";
 export const agentDirectory = () => process.env.PI_CODING_AGENT_DIR || join(homedir(), ".pi", "agent");
 
 export function readOptionalJson(path) {

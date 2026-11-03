@@ -18,6 +18,8 @@ def validate(bundle):
                            (ROOT / "integrations/pi-repostew.js", bundle / "extensions/pi-repostew.js"),
                            (ROOT / "integrations/pi-openrig.js", bundle / "extensions/pi-openrig.js"),
                            (ROOT / "integrations/pi-runtime.js", bundle / "extensions/pi-runtime.js"),
+                           (ROOT / "integrations/pi-context-bound.js", bundle / "extensions/pi-context-bound.js"),
+                           (ROOT / "integrations/openrig-facts.js", bundle / "extensions/openrig-facts.js"),
                            (ROOT / "scripts/configure-pi.mjs", bundle / "scripts/configure-pi.mjs"),
                            (ROOT / "integrations/pi-extras.js", bundle / "extensions/pi-extras.js"),
                            (ROOT / "integrations/repostew.js", bundle / "extensions/repostew.js"),
@@ -25,6 +27,12 @@ def validate(bundle):
                            (ROOT / "integrations/README.md", bundle / "README.md")):
         assert source.read_bytes() == target.read_bytes(), f"Stale adapter: {target}"
     sources = [ROOT / "SKILL.md"]
+    codex_files = ("runtime.mjs", "mcp.mjs", "hooks.mjs", "configure.mjs", "README.md")
+    shared_files = ("openrig-facts.js", "pi-context-bound.js")
+    for name in codex_files:
+        assert (ROOT.parent / "harnesses/codex" / name).read_bytes() == (bundle / "harnesses/codex" / name).read_bytes()
+    for name in shared_files:
+        assert (ROOT / "integrations" / name).read_bytes() == (bundle / "skill/integrations" / name).read_bytes()
     for directory in ("roles", "prompts", "references"):
         sources.extend((ROOT / directory).rglob("*.md"))
     for source in sources:
@@ -57,7 +65,10 @@ def validate(bundle):
     expected = {"package/skills/repostew/" + source.relative_to(ROOT).as_posix() for source in sources}
     expected.update("package/" + path for path in (
         "package.json", "plugin.json", ".codex-plugin/plugin.json", ".claude-plugin/plugin.json",
-        "LICENSE", "README.md", "extensions/pi.js", "extensions/pi-extras.js", "extensions/pi-native.js", "extensions/pi-repostew.js", "extensions/pi-openrig.js", "extensions/pi-runtime.js", "extensions/repostew.js", "scripts/configure-workers.py", "scripts/configure-pi.mjs"))
+        "LICENSE", "README.md", "extensions/pi.js", "extensions/pi-extras.js", "extensions/pi-native.js", "extensions/pi-repostew.js", "extensions/pi-openrig.js", "extensions/pi-runtime.js", "extensions/pi-context-bound.js", "extensions/repostew.js", "scripts/configure-workers.py", "scripts/configure-pi.mjs"))
+    expected.add("package/extensions/openrig-facts.js")
+    expected.update("package/harnesses/codex/" + name for name in codex_files)
+    expected.update("package/skill/integrations/" + name for name in shared_files)
     with tarfile.open(archive) as tar:
         assert {entry.name for entry in tar if entry.isfile()} == expected, "Unexpected archive membership"
         for name in expected:

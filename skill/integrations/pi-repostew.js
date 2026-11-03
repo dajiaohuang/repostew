@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { Type } from "typebox";
 
 import { VERSION, agentDirectory, readOptionalJson, registerContext, registerRuntimeCommands, toolSelection } from "./pi-runtime.js";
+import { boundGrepContext, broadStateGrep, GREP_CONTEXT_MAX_BYTES } from "./pi-context-bound.js";
 export { VERSION } from "./pi-runtime.js";
 
 export const COORDINATOR_REFILL = `## Coordinator capacity and continuation
@@ -75,11 +76,15 @@ export default function repostewPi(pi) {
     profile = loadProfile(agentDir);
     applyGhEnvironment(profile);
   }
+  let lastBoundedGrep = null;
+  pi.on("tool_call", (event, ctx) => broadStateGrep(event, profile?.workspace, ctx.cwd));
+  pi.on("context", event => ({ messages: boundGrepContext(event.messages, evidence => { lastBoundedGrep = evidence; }) }));
   function status() {
     refresh();
     return {
       extension: "repostew-pi-native", version: VERSION,
       entrypoint: fileURLToPath(import.meta.url),
+      grepContextGuard: { maxBytes: GREP_CONTEXT_MAX_BYTES, lastBoundedGrep },
       role: profile?.role || "unconfigured", workspace: profile?.workspace || "",
       seatGuidance: profile?.seatGuidance || null,
       activeTools: pi.getActiveTools(),

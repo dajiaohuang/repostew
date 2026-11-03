@@ -81,7 +81,7 @@ try {
   assert.equal(status.details.role, "worker");
   assert.equal(status.details.approvalGate, false);
   assert.equal(status.details.automaticContinuation, false);
-  assert.equal(status.details.version, "0.5.1");
+  assert.equal(status.details.version, JSON.parse(readFileSync(join(bundle, "package.json"), "utf8")).version);
   assert.deepEqual(status.details.toolSelection.configured.entries, settings.defaultTools);
   assert.equal(status.details.toolSelection.intended, null);
   assert.equal(status.details.entrypoint, join(bundle, "extensions/pi-repostew.js"));
@@ -133,7 +133,7 @@ try {
     assert.deepEqual(result.details.slots[1].executingAssignments, []);
     assert.equal(result.details.slots[1].waitingObligations[0].blockedOn, "external:maintainer");
   } finally { globalThis.fetch = originalFetch; }
-  assert.equal(loaded.extensions[0].handlers.has("tool_call"), false, "no extra approval interceptor");
+  assert.equal(loaded.extensions[0].handlers.has("tool_call"), true, "application has the scoped search/context guard");
   assert.equal(loaded.extensions[0].handlers.has("agent_before_settle"), false, "no custom continuation loop");
   assert.ok(runner.getCommand("repostew-reload"));
   let active = ["repostew_runtime_status"];
@@ -250,7 +250,7 @@ try {
       } finally { globalThis.fetch = blockedFetch; }
     }
     for (const extension of loaded.extensions) {
-      assert.equal(extension.handlers.has("tool_call"), false);
+      assert.equal(extension.handlers.has("tool_call"), extension.handlers.has("context"), "only the application search/context guard observes tools");
       assert.equal(extension.handlers.has("agent_before_settle"), false);
     }
   }
