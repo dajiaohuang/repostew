@@ -13,7 +13,9 @@ export function configure(workspace, sourceProfile) {
   const stanza=`[mcp_servers.repostew]\ncommand = ${JSON.stringify(process.execPath)}\nargs = ${JSON.stringify([resolve(root,'mcp.mjs')])}\n[mcp_servers.repostew.env]\nREPOSTEW_CODEX_PROFILE = ${JSON.stringify(profilePath)}\n`;
   if(/\[mcp_servers\.repostew\]/.test(old)&&!old.includes(stanza))throw new Error('Different existing repostew MCP configuration; preserved');
   const hooksPath=resolve(directory,'hooks.json');const hooks=existsSync(hooksPath)?JSON.parse(readFileSync(hooksPath,'utf8')):{hooks:{}};hooks.hooks??={};
-  const command=`"${process.execPath}" "${resolve(root,'hooks.mjs')}" "${profilePath}"`;
+  // A quoted executable alone is a string expression in PowerShell. Resolve node
+  // through the same launch PATH and keep arguments portable across native shells.
+  const command=`node "${resolve(root,'hooks.mjs').replaceAll('\\','/')}" "${profilePath.replaceAll('\\','/')}"`;
   for(const event of ['SessionStart','UserPromptSubmit','PreToolUse','PostToolUse']) {
     const groups=hooks.hooks[event]||[];
     const own=groups.filter(g=>g.hooks?.some(h=>h.statusMessage==='RepoStew context and bounded search'));
