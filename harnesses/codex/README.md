@@ -16,6 +16,11 @@ tools; it does not create a runner, scheduler, token store or task queue.
 | Seat-specific model activation | Existing OpenRig model/effort selection, never a package default |
 | Turso-specific recovery | Existing applicable MCP/tool configuration; no embedded account or database binding |
 
+Pi and Codex both compose `skill/integrations/seat-guidance.js` for coordinator
+continuation and Worker result-return obligations. This shared text creates no
+scheduler: OpenRig's atomic handoff creates the receiving task and native wake;
+a completed state with only a recipient label is not that handoff.
+
 Create a local profile with `version: 1`, absolute `workspace`, `role`
 (`general`, `coordinator`, `worker`), optional absolute `seatGuidance`, `currentFacts`,
 `skillRoot`, optional `gh.configDir`, and optional explicit local OpenRig `binding`

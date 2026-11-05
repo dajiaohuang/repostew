@@ -1,3 +1,4 @@
+import { composeRoleGuidance } from '../../skill/integrations/seat-guidance.js';
 import { readFileSync } from 'node:fs';
 import { resolve, isAbsolute } from 'node:path';
 import { execFile } from 'node:child_process';
@@ -20,7 +21,7 @@ export function context(profile) {
     `Role: ${profile.role}; workspace: ${profile.workspace}. Use the selected host native lifecycle and queue. Keep configured, registered, currently available and human-intended tools distinct. MCP registration is not proof that this session loaded a tool.`,
     'Use native editing, shell, search, code mode and tool discovery where present. Preserve active extras; restore only explicitly intended tools through native configuration and reconnect. Do not emulate Pi commands or assume a reload changes an already running session.',
     'Use existing gh login through non-secret configuration paths; never copy credentials. Bound searches to the exact project/file. Do not recursively search the workspace state root. Oversized search output is incomplete evidence; narrow and repeat the search.',
-    profile.seatGuidance ? readFileSync(profile.seatGuidance,'utf8') : `Read ${resolve(profile.skillRoot || profile.workspace + '/RepoStew_skills/skill','SKILL.md')} and only applicable references.`,
+    composeRoleGuidance(profile.seatGuidance ? readFileSync(profile.seatGuidance,'utf8') : `Read ${resolve(profile.skillRoot || profile.workspace + '/RepoStew_skills/skill','SKILL.md')} and only applicable references.`, profile.role),
     profile.currentFacts ? '\nCURRENT TASK FACTS (take precedence over stale contract continuation/source directions):\n'+readFileSync(profile.currentFacts,'utf8') : '',
   ];
   const text=texts.join('\n\n');

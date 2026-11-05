@@ -27,7 +27,7 @@ def build(output):
     extension = bundle / "extensions" / "repostew.js"
     extension.parent.mkdir()
     shutil.copyfile(ROOT / "integrations" / "repostew.js", extension)
-    for name in ("pi.js", "pi-extras.js", "pi-native.js", "pi-repostew.js", "pi-openrig.js", "pi-runtime.js", "pi-context-bound.js", "openrig-facts.js"):
+    for name in ("pi.js", "pi-extras.js", "pi-native.js", "pi-repostew.js", "pi-openrig.js", "pi-runtime.js", "pi-context-bound.js", "openrig-facts.js", "seat-guidance.js"):
         shutil.copyfile(ROOT / "integrations" / name, extension.parent / name)
     codex = bundle / "harnesses" / "codex"
     codex.mkdir(parents=True)
@@ -35,7 +35,7 @@ def build(output):
         shutil.copyfile(ROOT.parent / "harnesses" / "codex" / name, codex / name)
     shared = bundle / "skill" / "integrations"
     shared.mkdir(parents=True)
-    for name in ("openrig-facts.js", "pi-context-bound.js"):
+    for name in ("openrig-facts.js", "pi-context-bound.js", "seat-guidance.js"):
         shutil.copyfile(ROOT / "integrations" / name, shared / name)
     (bundle / "scripts").mkdir()
     shutil.copyfile(ROOT / "scripts" / "configure-workers.py", bundle / "scripts/configure-workers.py")

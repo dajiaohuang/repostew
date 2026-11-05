@@ -1,3 +1,4 @@
+import { COORDINATOR_REFILL, composeRoleGuidance } from './seat-guidance.js';
 // RepoStew's Pi extension. Uses the official prompt-customizer, tools and
 // reload-runtime patterns; Pi owns tools/lifecycle and the host owns scheduling.
 import { readFileSync, realpathSync, existsSync } from "node:fs";
@@ -9,13 +10,7 @@ import { VERSION, agentDirectory, readOptionalJson, registerContext, registerRun
 import { boundGrepContext, broadStateGrep, GREP_CONTEXT_MAX_BYTES } from "./pi-context-bound.js";
 export { VERSION } from "./pi-runtime.js";
 
-export const COORDINATOR_REFILL = `## Coordinator capacity and continuation
-On each assignment, result or recovery event, register usable results and fill every available authorized compatible Worker slot while independent feasible work remains. Continue dispatching in this turn; one dispatch is not the stopping condition.
-Source order is selection order, not completion order. Record the next unassigned position separately from completed coverage and outstanding units. A parent waiting for one child does not block unrelated units or other Workers.
-Keep execution occupancy, retained project ownership, pending result registration and external waiting distinct. Reconcile each affected Worker before reuse; do not require fleet-wide process clearance. Unknown process state is not permission to reuse resources, and is not a global prohibition on independent dispatch.
-Use existing native queue and slot facts. Register returned results promptly; leave an external dependency with its original owner without treating every historical blocked row as an executing task. Do not clear real ownership or assign an ambiguous Worker merely to fill capacity.
-End the turn only when no compatible capacity remains, no independent feasible input remains, or a real constraint applies to every remaining candidate. Record the specific reason for unused capacity. No new polling loop, timer, seat, approval gate or task database.
-For feedback domains, an exhausted capture is a source checkpoint, not completion of a continuing authorized domain. Capture the necessary incremental window within current authority; preserve exclusions, original owners and exact captured task inputs. Explicit finite-source limits and user Stops still apply.`;
+export { COORDINATOR_REFILL } from './seat-guidance.js';
 
 export function loadProfile(agentDir) {
   const profile = readOptionalJson(join(agentDir, "repostew.json"));
@@ -40,8 +35,7 @@ export function applyGhEnvironment(profile, env = process.env) {
 export function roleGuidance(profile) {
   if (profile.seatGuidance) {
     const contract = readFileSync(profile.seatGuidance, "utf8");
-    return profile.role === "coordinator" && !contract.includes(COORDINATOR_REFILL)
-      ? `${contract}\n\n${COORDINATOR_REFILL}` : contract;
+    return composeRoleGuidance(contract, profile.role);
   }
   const candidates = [join(profile.workspace, "RepoStew_skills/skill"), join(profile.workspace, "skill"), join(profile.workspace, "RepoStew_skills")];
   const root = (candidates.find(path => existsSync(join(path, "roles/worker.md"))) || candidates[0]).replaceAll("\\", "/");
@@ -66,7 +60,7 @@ export function roleGuidance(profile) {
     "Resolve ordinary execution faults within scope. Return exact delivered/no-delivery-needed/externally-blocked/execution-failed facts internally to C. Do not claim completion merely from a local patch, ended turn or handoff.",
     "Preserve other writers and shared resources. Stop your unused owned processes; resource disposition remains with the assigned owner.",
   );
-  return lines.join("\n");
+  return composeRoleGuidance(lines.join("\n"), profile.role);
 }
 
 export default function repostewPi(pi) {
