@@ -73,7 +73,9 @@ steps within existing budgets unless a stricter stop scope applies. Pause forbid
 resumption; specify whether accepted work drains or is cancelled. Cancel requests termination, not proof of it. Before replacement confirm affected writers, queued writes and owned mutating processes
 stopped; preserve work and reconcile uncertain mutations. A tool timeout/returned call is not process-stop
 proof. Stop only identified task-owned processes within authority, never shared services.
-Coordinator replacement includes descendants and prevents old refill. Supervisor-only handoff stops its
+Coordinator replacement prevents old refill and reconciles affected descendant work; preserve unaffected Workers.
+Fresh context uses the current contract and independently reconciled facts, not an inherited transcript/summary.
+Supervisor-only handoff stops its
 runs/timers/queued writes and retires its governance authority, retaining unchanged domain owners unless
 replacement is separately authorized. Native references do not transfer ownership. Cleared independent
 scopes may restart without an inferred global drain; preserve paused schedules and exact authority.

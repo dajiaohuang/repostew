@@ -14,6 +14,34 @@ empty Workers, retrospective extensions or quota-driven occupancy. A genuine exh
 explicit prospective decision from the authorized owner, not silent continuation or permanent abandonment.
 Report the actual action/handle, named wait, or scoped blocker; do not send a routine acknowledgement.
 
+## Progress checks
+
+Start with current authority, including explicit pause/resume changes, and observations with their source/time.
+Control-plane failure makes cached state stale or unknown; it does not prove all execution stopped.
+Session liveness, tool activity, task progress, delivery, coverage and resource release are separate facts.
+Completed records may include skips, partial work and receiving receipts; source cursors do not prove coverage.
+
+Use five checks on existing evidence; report normal, a concrete gap, or insufficient evidence:
+
+1. **Receive results:** has an available result gone unrecorded, excluding one currently being consumed?
+2. **Refill:** are authorized independent units and eligible available Workers left without dispatch or a named wait?
+3. **Localize dependencies:** has a constraint on one action become an unsupported whole-domain stop?
+4. **Preserve scope:** has the assigned complete unit been reduced to shallow screening or a different outcome?
+5. **Finish delivery:** is an existing candidate neither advancing with its owner nor held by an evidenced dependency?
+
+Name the task, current owner, observed action and missing next step. Time or a recovery warning only selects
+an object to check; running tools, backend waits and recent successful work are not failures by silence alone.
+For insufficient evidence, make one targeted check and retain remaining unknowns. A concrete correction needs
+verification of the expected action, not just a sent/read message; an unchanged failed correction does not
+gain another generic reminder each turn. Diagnose through existing recovery within its actual authority.
+
+Keep retained ownership distinct from execution occupancy and dispatch eligibility. External waiting can
+release capacity only when no affected tool/write remains in flight and the next unit is independent;
+Stop/hold still makes an idle Worker ineligible. Queued/starting work reserves capacity before pickup.
+After recording a result, close its separate receiving obligation without closing unfinished engineering.
+Use existing task/result links to reconcile obsolete reminders; do not create another ledger or close
+system-owned reminders manually when their host requires automatic reconciliation.
+
 ## Supervisor: one authorized heartbeat, no domain timers
 
 Events are the primary path. The heartbeat only catches missed refill or authorized disposition handoffs.

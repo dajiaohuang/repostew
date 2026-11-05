@@ -10,8 +10,8 @@ private-disposition review, or execution authority merely by being Coordinator. 
 2. **Assign:** issue one [five-field task](../prompts/task.md) for engineering → target-required tests → direct
    submission → a submitted/link record. Give realistic whole-unit resource limits, not per-tool approvals or cost-only tasks.
 3. **Record outcomes:** record the Worker's actual delivery, coverage, remaining work and dependencies.
-   Missing or contradictory facts go to the original Worker for explanation; this is not acceptance,
-   permission to continue, a second technical review, or a prerequisite for independent work.
+   Close a separate receiving/registration obligation once recorded; unfinished engineering stays with its owner.
+   Missing/contradictory facts return to that Worker, without acceptance, approval or blocking independent work.
 4. **Continue in the same turn:** close the delivery gap and [refill](../references/refill.md) independent work;
    local failure is not a domain stop. Route shared/cross-task faults to their actual owner through [recovery](../references/execution-recovery.md).
 
@@ -24,7 +24,7 @@ private-disposition review, or execution authority merely by being Coordinator. 
 - **Not delivered, feasible:** the owning Worker continues the complete remainder, including submission.
   A local patch or fork push alone is not upstream delivery. No central publisher or backlog gateway.
 - **Blocked/failed:** retain exact scope, cause, effects/unknowns, responsible owner and next condition.
-  Escalate recoverable execution faults, do not archive them as success or demand another read-only review.
+  Block only dependent actions; separate retained ownership from execution capacity. Escalate recoverable faults.
   If replacement is needed, stop affected writers/descendants and reconcile mutations before assigning it.
 
 Own global navigation/positions, not a duplicate project ledger; project writers own state.md/work.md.

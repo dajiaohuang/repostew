@@ -22,14 +22,25 @@ Use a temporary C only for a distinct coordination gap; ordinary same-task corre
 A stalled or unresponsive C can itself be the serious anomaly. Diagnose from bounded domain-level
 facts, not mere silence or one failed turn. When recovery requires replacing the C, the Supervisor may
 restart/replace it within the authorized mandate rather than indefinitely repeating ineffective corrections.
-Stop new dispatch; drain accepted work, or confirm an explicitly authorized cancellation before replacing
-affected writers. Reconcile ambiguous mutations and preserve native identities, original scope/cursors,
+Stop the old C's new dispatch; preserve accepted Worker work. Drain or explicitly authorize cancellation
+only for writers whose ownership must change. Reconcile ambiguous mutations and preserve identities, original scope/cursors,
 artifacts, remote heads, spent budgets, deadlines, failures and exact process/ownership unknowns.
-Confirm the old C's affected writer/queued-work stop, seal/archive its task lineage, then launch a fresh C
-with the handoff and explicit exclusions. Unknown roots stay frozen, not the entire independent domain.
+Confirm the old C's dispatch/queued-write stop, retain its task lineage, then launch a fresh C with the
+current fixed contract and independently reconciled continuation facts. Task ownership/result routing must
+survive the change; do not import the old transcript, compacted summary or automatically copied old context.
+Use only a host path verified to provide that isolation. Preserve existing Workers and in-flight work unless
+their stop is actually required and authorized. Unknown roots stay frozen, not the entire independent domain.
 Do not revive the retired C, duplicate live units, reset limits or resume paused work. If the remaining
 scope is wholly blocked, assign no empty Workers. If the user explicitly requests a replacement Coordinator,
 establish it with exact blockers and exclusions; otherwise retain the replacement plan.
+
+Determine continuation from original tasks, Worker outcomes and project facts; the old C's summary is only
+a lead. Separate delivered work not to repeat, ready candidates, specific rework gaps, in-flight owners and
+real blockers. Preserve both the unstarted source position and earlier incomplete units; a cursor alone is
+not the restart point. Carry current bindings, restrictions, unknown mutations and cumulative limits, not
+the old C's unsupported exclusions. Reconcile affected changes before applying a stale continuation plan.
+Verify fresh context, preserved result routing and an actual receiving/continuation/dispatch action;
+a successful launch or delivered notice alone does not prove recovery. A failed launch is reconciled before retry.
 
 ## Scoped brief
 
