@@ -51,6 +51,7 @@ Active failure/completion events retain normal recovery; no phase extension, use
   A yielded owner may retain live descendants; parent status/empty queues never prove their termination.
   Final/structured reports do not independently verify their claims. Do not retest usable engineering finals.
 - Separate coverage, engineering/public outcomes, resource release and source-position advancement.
+  Share reviewable Drafts before validation finishes; record both stages, retain owner/task/resources, keep private work private and C free of approval gates.
   Code Workers release capacity after submission; record only “已投稿” and the link, with no CI query,
   record or wait. Later feedback follows the existing route to the original Worker.
 - Obey evidenced source/account/endpoint limits and Retry-After; never evade them. A passed retry boundary

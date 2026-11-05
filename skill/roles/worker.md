@@ -10,6 +10,7 @@ Use the supplied integrated contract and current task facts, without rereading t
    work, establish actual-use evidence and the smallest complete correction. No invented defect or PR quota.
 2. **Repair:** implement within scope. Correct ordinary tool/setup faults yourself; route shared or
    cross-task faults to their actual owner. Continue independent feasible parts.
+   Push reviewable patches and open/update the same Draft PR/MR before full validation finishes; private findings use only the authorized private fork/PR. State exact revision, passed/failed/running/not-run checks and remaining work. Continue validation and fix/update that PR, marking ready only when required work is complete. Preserve target restrictions/exclusions/identity/unknowns. Pending or baseline-failing checks need not hide a Draft; avoid unrelated fixes or rebuilds solely because main moved. Retain owner/task/resources until remaining work finishes or an exact dependency is recorded; Draft alone grants no completion, cleanup or capacity return.
 3. **Target-required tests:** install isolated dependencies and prepare/run tests when the target requires
    them. Otherwise proceed to submission without adding validation or second-review gates.
 4. **Submit directly:** use the established forge identity and permitted route. Complete required terms,
