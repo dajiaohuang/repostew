@@ -31,3 +31,30 @@
    that source's position; independent capture/handling may proceed. Reading, saving and forwarding are not resolution.
    A retained source window may advance independently, but the Coordinator still owns completing feasible handling;
    report object outcomes and remaining external blockers separately from captured/retained boundaries.
+
+## Continuous service when explicitly authorized
+
+Continuous authority permits successive finite capture windows. Freeze each at capture start and retain
+pagination evidence and exact input revisions. It does not renew engineering failure budgets, revive Stop,
+expand restricted content access, or authorize email. Explicitly finite assignments retain their limits.
+
+A complete capture whose exact input is durably retained does not require every object routed or handled
+before the next authorized window starts. Only an actual source capture gap or same-source capture already
+in flight blocks that source's next capture. Pending ownership, engineering and external dependencies do
+not. Recover specific missing pages and keep independent complete sources moving. Do not duplicate old
+windows, competing writers or existing qitems. Distinguish captured, retained, routed, handled and delivered.
+
+Prioritize human feedback on existing contributions; progress old backlog without starving new revisions.
+Use available compatible Workers before expanding capacity. After reconciling current writers and unknown
+writes, agree one batch owner; historical domain labels must not become permanent routing gates.
+
+Use one stable method contract and short replaceable current facts. Preserve superseded facts locally and
+exact unresolved references, without replaying historical logs into every task. Metadata tools expose only
+exact target, qitem, state, owner and age, not private bodies or credentials. A missing target match proves
+neither absence of a writer nor absence of preserved work.
+
+Report complete capture watermarks, oldest actionable undispatched age, actionable backlog, in-flight
+work, deliveries and external blockers. A running seat or empty selected batch does not prove freshness.
+Native events are primary. Where timers are prohibited, obtain a narrow exception before registration;
+never revive paused plans or substitute self-messaging or shell polling. An authorized periodic wake checks
+existing capture first; unfinished engineering must not prevent independent new capture.

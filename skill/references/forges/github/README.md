@@ -24,6 +24,13 @@ Preserve actual user/target prohibitions, cumulative attempts and expired-phase 
 
 ## Publication and client faults
 
+For read-only `gh api` lookups, specify `--method GET` whenever adding `-f/--raw-field`
+or `-F/--field` query parameters (such as `since`, `page` or `per_page`). Without an explicit
+method these flags select POST, including on review-list endpoints where an empty pending review
+can be created. For example: `rtk proxy gh api --method GET repos/OWNER/REPO/pulls/NUMBER/reviews -F per_page=100`.
+Keep intentional writes explicit as POST/PATCH/PUT/DELETE. A query error does not prove no mutation;
+reconcile any accidentally created object by its exact ID before retrying the intended action.
+
 Each repository W completes its own fork/branch/push/PR; absent fork/head is a step, not a refusal.
 Apply [contribution terms](../../safety.md#contribution-terms): W autonomously completes required
 terms/CLA/DCO using true established identity and rights facts; missing real facts remain concrete limitations. Ordinary automatic checks are not a manual-CI or deployment grant.
