@@ -39,6 +39,11 @@ release condition, and recovery owner. Do not create a separate blocker database
 6. Reading authorized public project/contact metadata is distinct from exercising a live service or
    accessing customer data. Report delivery requires reliable success; an ambiguous send is reconciled
    before retry, and a successful send does not imply remediation or public disclosure authority.
+7. After restore or context loss, an unrecorded local diff is not proof of an outside writer. Before
+   escalating it as unknown ownership, inspect the bounded original task/session tool history for the
+   exact changed files and match patch calls to their actual success or failure outputs. Restore proven
+   same-owner work to its original task; a later summary saying "no edits" cannot erase a successful
+   write receipt. Preserve genuinely unaccounted changes and never adopt a patch on resemblance alone.
 
 Workers own ordinary engineering recovery; Coordinators narrow dependencies and continue/refill eligible
 work; Supervisors resolve shared execution, policy and cross-project custody faults. Escalate inability

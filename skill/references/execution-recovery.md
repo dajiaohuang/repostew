@@ -25,6 +25,12 @@ Classify and narrow the affected action using [blocker decisions](blockers.md).
   If that obscures an expected regression failure, use a structured native process invocation with
   explicit UTF-8 capture and an exit code; decode an existing BOM-marked log rather than rerunning
   merely to read it. Record a reproduced product failure separately from execution-method failures.
+- If compilation reports missing definitions despite source files being present, compare the build tool's
+  discovered inputs with the expected files; a filesystem or another runtime's listing is not proof of coverage.
+  On Windows, check whether path depth changes discovery. Within existing resource authority, shorten only
+  an idle task-owned scratch copy, update its binding and verify unchanged file hashes and restored discovery
+  before retrying the required check. Do not move active/shared checkouts or infer a broken product baseline
+  from incomplete source discovery.
 - No fresh user approval is needed for each mechanical correction. Real user stops, safety incidents,
   protected/unknown writes, exhausted repair allowance or unavailable rights are not mechanical exceptions.
   Known ordinary historical helper failures can be reassessed under this policy; history is never erased.
@@ -42,6 +48,18 @@ materially exceeds the estimate, reduce concurrency/scope or adjust the plan wit
 writes on ENOSPC or actual capacity danger; retain original records. Monitoring is not hard enforcement.
 Keep real platform limits, explicit user-imposed ceilings, prior consumption and shared/production boundaries;
 no blind full install, shared/global toolchain mutation or unbounded retries.
+
+For virtualized builds, check both guest space and the host volume containing its backing disk; guest
+free space does not establish host capacity. Account for concurrent task growth at build boundaries.
+After relocating a stopped task-owned environment through the runtime's native mechanism, verify its
+registered destination, successful access, retained task identity and actual host space before clearing
+that specific capacity pause. Do not clear unrelated user Stops or delete unfinished candidates.
+
+When using an isolated build-output directory, verify that downstream scripts and test runners consume
+that same directory and executable paths. A missing executable at a hardcoded default path is an entry
+configuration failure, not thousands of proved product regressions. Correct the process-local runner
+path and reuse existing binaries within the remaining authorized validation scope; do not rebuild an
+unchanged target merely to satisfy a stale path assumption.
 
 Preserve spent budgets, failures and original deadlines. Never extend an expired phase retrospectively.
 The authorized Supervisor may allocate a realistic explicit missing-work/recovery phase for the existing
