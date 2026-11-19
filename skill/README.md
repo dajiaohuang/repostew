@@ -19,6 +19,13 @@ Installing the Skill does not start a daemon, create jobs, enable parallel agent
 
 Execution is serial by default and may combine role responsibilities. Authorized parallel Workers handle distinct repositories, with one writer per repository and serialized shared-state edits. See [roles](roles/coordinator.md), [Worker assembly](references/worker-assembly.md), [orchestration](references/orchestration.md), [harness capabilities](references/harness.md) and [Maintainer authority](roles/maintainer.md).
 
+## Evidence for ongoing work
+
+The [operating-evidence method](references/operating-evidence.md) distinguishes current identity,
+actual tool execution, delivery, coverage and resource disposition. It also covers role-based context
+maintenance, resource purpose and submission consolidation. Use it for assigned operational audits or
+concrete contradictions; it adds no routine acceptance gate, watcher or execution authority.
+
 ## What RepoStew does
 
 ### 1. Prepare and assemble the assignment

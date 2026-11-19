@@ -8,6 +8,9 @@ separate protection; private/imported notes are not implicitly included in a sou
 
 ## Provision and reuse
 
+For assigned cleanup audits, use [resource-use and result evidence](operating-evidence.md#resource-use-and-cleanup-results).
+Keep purpose/consumer facts with the existing resource owner; historical rechecks and newly released resources are distinct outcomes.
+
 Inspect remotely when sufficient; provision source only for investigation/editing/validation.
 Establish native identity/existing paths, preserve unrelated data, never clone into container root.
 Use Git-aware operations for linked/shared worktrees. Record actual relative/legacy paths;

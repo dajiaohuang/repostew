@@ -19,6 +19,12 @@ Harness 提供执行、工具、权限、原生委派和调度；RepoStew 提供
 
 默认串行，可由同一执行者兼任职责；获授权的并行 Worker 处理不同仓库。每库单写入者，共享状态串行修改。详见[Coordinator](roles/coordinator.md)、[Worker 组装](references/worker-assembly.md)、[协作](references/orchestration.md)、[harness 能力](references/harness.md)及[Maintainer](roles/maintainer.md)。
 
+## 持续工作的证据
+
+[执行证据方法](references/operating-evidence.md)区分当前身份、真实工具执行、交付、覆盖和资源处置，
+并说明按角色维护上下文、记录资源用途及投稿前归并。用于明确指派的运行审计或具体矛盾，
+不增加例行验收、监控循环或执行权限。
+
 ## 行为与流程
 
 ### 1. 准备并组装任务

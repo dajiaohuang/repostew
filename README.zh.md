@@ -34,6 +34,12 @@ GitHub/GitLab 读取、持续巡检、交付、维护、记录、备份和授权
 持久上下文分为通用规则、部署绑定和当前任务事实。[上下文装配器](skill/prompts/fixed-context.md#reusable-source-deployment-binding-current-work)
 分别生成这些内容，不把个人身份或仓库实时状态写进通用包规则。
 
+## 持续工作的证据
+
+[执行证据方法](skill/references/operating-evidence.md)区分当前身份、真实工具执行、交付、覆盖和资源处置，
+并说明按角色维护上下文、记录资源用途及投稿前归并。用于明确指派的运行审计或具体矛盾，
+不增加例行验收、监控循环或执行权限。
+
 ## 当前统一口径
 
 以[Skill](skill/SKILL.md)、[C/W职责](skill/roles/coordinator.md)和[固定合同＋短事实](skill/prompts/fixed-context.md)为当前规则。

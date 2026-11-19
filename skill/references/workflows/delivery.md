@@ -4,7 +4,9 @@ Use the [Worker fixed flow](../../roles/worker.md) for authorized code work. C a
 S handles shared environments and cross-task faults. Existing task scope and original ownership remain.
 
 1. Understand the task: read the project, related issues and contribution requirements. Reuse existing
-   work and establish the actual problem and repair scope. Apply the assigned form's input and coverage.
+   work and establish the actual problem and repair scope. Prioritize unsatisfied human maintainer requests;
+   check [extension/consolidation of existing objects](../operating-evidence.md#publication-and-continuous-responsibility)
+   before a new public submission. Apply the assigned form's input and coverage.
 2. Complete the repair according to project requirements. Correct tool-call errors yourself; send shared
    faults to S. If current conditions prevent continuation, record a short reason, skip and return capacity.
 3. Test only as required by the target. When testing is required, install the needed dependencies,

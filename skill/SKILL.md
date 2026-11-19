@@ -26,7 +26,7 @@ Wording: [prompts](prompts/README.md); native access: [harness](references/harne
 1. **Prepare and assemble:** establish outcome, scope, prior work, authority/resources;
    [assemble](references/worker-assembly.md) role/form/methods; [orchestrate](references/orchestration.md)
    dispatch, wait, integrate, continue and hand off; use [bounded execution recovery](references/execution-recovery.md)
-   for ordinary tool faults and missing setup, without erasing failures or bypassing true prohibitions.
+   for ordinary faults/setup without erasing failures or bypassing prohibitions; [audit operating evidence](references/operating-evidence.md) when assigned.
 2. **Select work:** [discover and process new repositories](references/work-forms/discovery.md),
    [audit new repositories](references/work-forms/new-repository.md),
    [reassess authored contributions](references/work-forms/contribution-reassessment.md),

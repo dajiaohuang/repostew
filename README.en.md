@@ -34,6 +34,13 @@ documents the fixes derived from real task failures and remaining capability lim
 
 Choose one execution owner per task. The OpenRig examples do not start a fleet or change existing harness configuration; native Windows OpenRig remains experimental.
 
+## Evidence for ongoing work
+
+The [operating-evidence method](skill/references/operating-evidence.md) distinguishes current identity,
+actual tool execution, delivery, coverage and resource disposition. It also covers role-based context
+maintenance, resource purpose and submission consolidation. Use it for assigned operational audits or
+concrete contradictions; it adds no routine acceptance gate, watcher or execution authority.
+
 ## Current operating contract
 
 The canonical [Skill](skill/SKILL.md), [C/W roles](skill/roles/coordinator.md) and

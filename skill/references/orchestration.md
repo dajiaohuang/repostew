@@ -112,4 +112,4 @@ Correct through its owner, preserve unrelated success and use native events ther
 path, encoding or invocation failures are recoverable, not permanent prohibitions. Follow [bounded recovery](execution-recovery.md):
 keep cumulative attempts, diagnose before retry, reconcile uncertain mutations first; after three failed repairs
 of one fault stop and notify the user. No custom watcher, blind retries or permission laundering.
-Independent reassessment is selected engineering work, not routine acceptance.
+Independent reassessment and [assigned execution audits](operating-evidence.md) are selected work, not routine acceptance; correlate current identity, tasks, tools and effects, retaining unknowns.

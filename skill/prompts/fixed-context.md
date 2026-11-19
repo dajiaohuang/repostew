@@ -19,7 +19,9 @@ Fill [the five task fields](task.md) once. A canonical repository name may be th
 fixed contract and native metadata already supply all five bindings; otherwise supply the missing facts.
 Feedback requires the exact captured batch, object/revision list and original-owner references, not a fresh
 whole-source rescan. Continue by [delta](continue.md); use [handoff](handoff.md) for owner transfer.
-Changing a file, configuring a profile and proving the loaded contract are separate operations.
+Changing a file, saved startup text, configuring a profile and proving the loaded contract are separate operations.
+Use [context source maintenance](../references/operating-evidence.md#maintain-context-at-its-source) to reconcile
+generators and saved inline instructions without replaying historical tasks or inferring live adoption.
 
 ## Reusable source, deployment binding, current work
 

@@ -66,6 +66,18 @@ JSON/help; use structured arguments/body files for multiline content. Check nati
 
 ## Capacity evidence
 
+For an assigned audit, correlate the native qitem/workflow frontier with current occupant evidence and
+the checked artifact; apply the [portable method](../operating-evidence.md). Finite telemetry pages and
+node inventory are bounded observations. Preserve cursors, coverage gaps and daemon-boot discontinuities;
+do not read an empty filtered page with more source rows as a completed capture. Never infer tool-to-qitem
+causality from timestamps. Missing tool metadata remains unavailable rather than invented execution.
+The shared-docs Markdown input of `rig heartbeat` is not full native queue/workflow coverage.
+
+Rendered role files, persisted startup actions/launch recipes, sent text and loaded runner context can
+differ. Inspect the selected runtime's supported update path; a contract render does not rewrite saved
+inline actions or prove adoption by an existing occupant. Preserve saved platform actions and original
+work; native lifecycle or database changes require their own exact authority and evidence.
+
 `openrig_slots` is a read-only snapshot, not a reservation, scheduler or process-stop certificate.
 Apply current facts' user holds and eligibility even when a node looks available. Distinguish execution
 occupancy, retained project ownership, blocked obligations and pending result registration.
