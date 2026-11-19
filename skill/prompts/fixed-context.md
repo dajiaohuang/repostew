@@ -20,8 +20,8 @@ fixed contract and native metadata already supply all five bindings; otherwise s
 Feedback requires the exact captured batch, object/revision list and original-owner references, not a fresh
 whole-source rescan. Continue by [delta](continue.md); use [handoff](handoff.md) for owner transfer.
 Changing a file, saved startup text, configuring a profile and proving the loaded contract are separate operations.
-Use [context source maintenance](../references/operating-evidence.md#maintain-context-at-its-source) to reconcile
-generators and saved inline instructions without replaying historical tasks or inferring live adoption.
+Use the [contract-update procedure](../references/context-updates.md) to reconcile generators and saved
+inline instructions without replaying historical tasks or inferring live adoption.
 
 ## Reusable source, deployment binding, current work
 

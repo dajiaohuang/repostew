@@ -37,17 +37,10 @@ causal improvement claims without a suitable comparison.
 
 ## Maintain context at its source
 
-Compose current procedures by role, with a short operating sequence first. Merge equivalent instructions
-into their authoritative rule, preserve domain exceptions and active restrictions, and move current
-identities, task state and temporary incidents into facts or historical evidence. Compression is semantic
-editing, not a byte target and not proof that a shorter contract preserves every requirement.
-
-Audit all inputs the deployment actually consumes: source modules, rendered files, saved inline startup
-instructions, compatibility entrypoints and their generators. Retire superseded generators at the source.
-File updates, saved launch changes, actual delivery and later adoption are separate observations; keep
-pending/unknown activation visible. Preserve current work and concurrent edits; do not replay old tasks
-or restart a healthy owner to make a contract update look effective. Native mechanics belong in the
-[selected host adapter](harness.md).
+Use the [contract-update procedure](context-updates.md) to merge new requirements into current rules,
+render from authoritative sources and reconcile saved startup inputs. Source/rendered, saved, delivered
+and adopted remain separate observations. The procedure owns this method; this page does not add a
+second contract-maintenance policy. Native mechanics stay in the selected host adapter.
 
 ## Resource use and cleanup results
 
